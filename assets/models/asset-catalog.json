@@ -1,0 +1,110 @@
+[
+  {
+    "file": "server.glb",
+    "bytes": 65740
+  },
+  {
+    "file": "rack.glb",
+    "bytes": 65648
+  },
+  {
+    "file": "switch.glb",
+    "bytes": 19192
+  },
+  {
+    "file": "router.glb",
+    "bytes": 6576
+  },
+  {
+    "file": "ap.glb",
+    "bytes": 4536
+  },
+  {
+    "file": "pc.glb",
+    "bytes": 91248
+  },
+  {
+    "file": "chair.glb",
+    "bytes": 53760
+  },
+  {
+    "file": "bed.glb",
+    "bytes": 82044
+  },
+  {
+    "file": "medical-monitor.glb",
+    "bytes": 20676
+  },
+  {
+    "file": "ups.glb",
+    "bytes": 28304
+  },
+  {
+    "file": "panel.glb",
+    "bytes": 3728
+  },
+  {
+    "file": "tablet.glb",
+    "bytes": 2720
+  },
+  {
+    "file": "cabinet.glb",
+    "bytes": 32472
+  },
+  {
+    "file": "shelf.glb",
+    "bytes": 23488
+  },
+  {
+    "file": "washer.glb",
+    "bytes": 6536
+  },
+  {
+    "file": "plant.glb",
+    "bytes": 6768
+  },
+  {
+    "file": "ct-scanner.glb",
+    "bytes": 13472
+  },
+  {
+    "file": "stairs.glb",
+    "bytes": 31188
+  },
+  {
+    "file": "cable-tray.glb",
+    "bytes": 33140
+  },
+  {
+    "file": "cctv.glb",
+    "bytes": 9812
+  },
+  {
+    "file": "socket.glb",
+    "bytes": 5808
+  },
+  {
+    "file": "roof-lower.glb",
+    "bytes": 67116
+  },
+  {
+    "file": "roof-upper.glb",
+    "bytes": 116316
+  },
+  {
+    "file": "stairs-connected.glb",
+    "bytes": 287928
+  },
+  {
+    "file": "lan-cable.glb",
+    "bytes": 8664
+  },
+  {
+    "file": "fiber-cable.glb",
+    "bytes": 8680
+  },
+  {
+    "file": "power-cable.glb",
+    "bytes": 8684
+  }
+]

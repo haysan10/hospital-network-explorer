@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#143d43">
+  <meta name="description" content="Game edukasi 3D untuk menjelajahi jaringan rumah sakit, menelusuri distribusi jaringan, belajar instalasi, menyelesaikan misi, dan presentasi dua lantai yang terhubung.">
+  <title>MediLink | Hospital Network Explorer</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="rail" aria-label="Menu utama">
+    <a class="brand-mark" href="#" title="MediLink" aria-label="MediLink"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></a>
+    <button id="nav-missions" class="rail-btn active" title="Alur mode aktif" aria-label="Alur mode aktif"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg></button>
+    <button id="nav-devices" class="rail-btn" title="Daftar perangkat" aria-label="Daftar perangkat"><svg viewBox="0 0 24 24"><path d="M3 4h18v12H3zM8 20h8M12 16v4M7 8h10"/></svg></button>
+    <button id="nav-plan" class="rail-btn" title="Denah referensi" aria-label="Denah referensi"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3zM9 4v9h12M9 13v7M15 4v9"/></svg></button>
+    <div class="rail-spacer"></div>
+    <button id="nav-help" class="rail-btn" title="Panduan & referensi" aria-label="Panduan dan referensi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 16v1"/></svg></button>
+  </aside>
+  <header class="topbar">
+    <div class="brand"><strong>Medi<span>Link</span></strong><span class="brand-divider"></span><span class="product">HOSPITAL NETWORK EXPLORER</span></div>
+    <div class="experience-switch" role="group" aria-label="Mode pengalaman"><button data-mode="explore" class="active" aria-pressed="true">Eksplorasi</button><button data-mode="game" aria-pressed="false">Game</button><button data-mode="installation" aria-pressed="false">Instalasi</button><button data-mode="presentation" aria-pressed="false">Presentasi</button></div><div class="header-right"><span class="local-tag"><i></i> SIMULASI 3D</span><button id="report" class="button subtle small">Ekspor progres <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <main class="workspace">
+    <section class="world" id="world" aria-label="Eksplorasi rumah sakit 3D">
+      <canvas id="scene" aria-label="Model tiga dimensi rumah sakit. Gunakan daftar perangkat untuk navigasi melalui keyboard."></canvas>
+      <div id="labels" class="labels"></div>
+      <div class="world-heading"><span class="eyebrow">JELAJAHI INFRASTRUKTUR DI BALIK LAYANAN</span><h1>Satu koneksi.<br>Banyak kehidupan.</h1><p id="experience-subtitle">Ikuti distribusi jaringan, dari pusat ke setiap layanan.</p></div>
+      <div class="floor-picker" aria-label="Pilih lantai"><button data-floor="1"><b>01</b> Lantai layanan</button><button data-floor="2"><b>02</b> Lantai perawatan</button><button data-floor="all" class="active" title="Lihat hubungan antarlantai">Gedung</button></div>
+      <div class="view-tools" aria-label="Kontrol tampilan"><button id="orbit" class="active" title="Pandangan orbit">Orbit 3D</button><button id="walk" title="Berjalan dengan WASD">Jelajah</button><button id="top-view" title="Tampak atas">Atas</button><button id="home-view" title="Kembalikan kamera">Reset</button><button id="roof-toggle" title="Atap otomatis: tertutup pada tampilan gedung, terbuka pada potongan lantai" aria-label="Pengaturan atap">Atap: otomatis</button></div>
+      <div class="building-caption" id="building-caption"><span class="status-dot"></span> DUA LANTAI TERHUBUNG <span>Atap terpasang · pilih lantai untuk membuka potongan</span></div>
+      <button id="stair-action" class="stair-action hidden">F · Naik ke lantai 2 ↗</button>
+      <div id="presentation-controls" class="presentation-controls hidden" aria-label="Kontrol presentasi"><button id="slide-prev" aria-label="Slide sebelumnya">←</button><span id="slide-count">01 / 08</span><button id="slide-play" aria-label="Putar otomatis">Putar otomatis</button><button id="slide-next" aria-label="Slide selanjutnya">→</button><button id="slide-fullscreen" aria-label="Layar penuh">⛶</button><button id="slide-exit">Selesai</button></div>
+      <div id="trace-banner" class="trace-banner hidden" role="status"></div>
+      <div class="map-card"><div class="map-heading"><span id="map-title">DENAH LANTAI 1</span><span>U ↑</span></div><canvas id="minimap" width="280" height="178" aria-label="Peta mini. Klik untuk memusatkan kamera."></canvas><div class="map-foot"><span><i class="map-dot"></i> Posisi Anda</span><span id="room-name">Koridor utara</span></div></div>
+      <div class="legend-card"><div class="eyebrow">LAPISAN INSTALASI</div><div class="layer-toggles"><button data-layer="copper" class="active"><i class="line blue"></i> LAN</button><button data-layer="fiber" class="active"><i class="line teal"></i> Fiber</button><button data-layer="wifi"><i class="line purple"></i> Wi-Fi</button><button data-layer="power"><i class="line amber"></i> Daya</button></div><div class="playback"><button id="pause" title="Jeda animasi" aria-label="Jeda animasi">Ⅱ</button><span>Aliran data</span><select id="speed" aria-label="Kecepatan animasi"><option value=".5">0,5x</option><option value="1" selected>1x</option><option value="2">2x</option></select><button id="toggle-labels" class="text-btn" title="Tampilkan atau sembunyikan nama ruang">Label</button></div></div>
+      <div class="scene-note"><span class="status-dot"></span><span id="scene-status">Menyiapkan dunia 3D</span><span id="fps">-- FPS</span></div>
+      <div id="crosshair" class="crosshair hidden" aria-hidden="true"></div>
+      <div id="walk-help" class="walk-help hidden">W A S D bergerak <span>·</span> Seret untuk melihat <span>·</span> E periksa <span>·</span> F tangga <span>·</span> Esc kembali</div>
+      <div class="touch-pad hidden" id="touch-pad"><button data-key="KeyW" aria-label="Maju">↑</button><div><button data-key="KeyA" aria-label="Kiri">←</button><button data-key="KeyS" aria-label="Mundur">↓</button><button data-key="KeyD" aria-label="Kanan">→</button></div></div>
+      <div id="loading" class="loading"><div class="loading-card"><div class="load-symbol"></div><h2>Menyiapkan rumah sakit Anda</h2><p id="load-text">Memuat denah dan aset lokal.</p><div class="load-track"><i id="load-bar"></i></div></div></div>
+    </section>
+    <aside class="panel" id="panel" aria-label="Misi dan informasi perangkat">
+      <div class="panel-heading"><span class="eyebrow" id="panel-eyebrow">EKSPLORASI JARINGAN</span><span class="chapter-tag" id="chapter-tag">DISTRIBUSI AWAL</span></div>
+      <div class="panel-tabs"><button class="active" id="tab-missions">Distribusi</button><button id="tab-devices">Perangkat</button></div>
+      <div class="panel-scroll" id="panel-content"></div>
+      <div class="progress-footer"><div><span>Progres eksplorasi</span><strong id="progress-count">0 / 6 misi</strong></div><div class="progress-track"><i id="progress-bar"></i></div><p><span id="xp">0 XP</span><span>Disimpan di browser ini</span></p></div>
+    </aside>
+  </main>
+  <footer class="bottom-status"><span><i></i> <b id="device-total">0</b> perangkat edukasi</span><span><b>4</b> segmen VLAN contoh</span><span id="power-status">Daya utama aktif</span><span class="footer-note">Visualisasi konseptual berdasarkan denah Anda</span><label>Grafis <select id="quality"><option value="eco">Hemat</option><option value="normal" selected>Standar</option><option value="high">Detail</option></select></label></footer>
+  <div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
+  <dialog id="welcome" class="welcome-dialog"><div class="welcome-art"><div class="art-ring one"></div><div class="art-ring two"></div><div class="art-node">M</div><span>CONNECT. EXPLORE. UNDERSTAND.</span></div><div class="welcome-copy"><span class="eyebrow">MEDILINK · DUA LANTAI, SATU JARINGAN</span><h2>Masuk ke gedung.<br>Pahami setiap koneksi.</h2><p>Pilih cara menjelajah. Ikuti distribusi dari ruang server, susuri tangga antarlantai, atau pelajari instalasi langkah demi langkah.</p><div class="welcome-modes" role="group" aria-label="Pilih mode awal"><button data-start-mode="explore" class="active" aria-pressed="true"><b>01 · Eksplorasi</b><span>Ikuti jalur distribusi awal.</span></button><button data-start-mode="game" aria-pressed="false"><b>02 · Game</b><span>Enam misi, diagnosis, dan XP.</span></button><button data-start-mode="installation" aria-pressed="false"><b>03 · Instalasi</b><span>Pasang dan uji jaringan bertahap.</span></button><button data-start-mode="presentation" aria-pressed="false"><b>04 · Presentasi</b><span>Delapan adegan untuk menjelaskan.</span></button></div><button id="start" class="button primary">Mulai eksplorasi <span>→</span></button><small>WASD bergerak · E periksa · F naik/turun di tangga. Seluruh aset tersedia lokal.</small></div></dialog>
+  <dialog id="info-dialog" class="info-dialog"><div class="dialog-top"><h2 id="dialog-title">Panduan</h2><button id="close-info" aria-label="Tutup dialog">×</button></div><div id="dialog-body"></div></dialog>
+  <script type="module">
+    const fail = error => {
+      document.querySelector('#load-text').textContent = 'Gagal memulai: ' + error.message + '. Jalankan server.py atau server.mjs, lalu buka alamat localhost yang ditampilkan. Browser harus mendukung WebGL 2.';
+      document.querySelector('.loading-card h2').textContent='Perlu memeriksa peluncuran';
+      console.error(error);
+    };
+    if(location.protocol==='file:') fail(new Error('Halaman dibuka langsung sebagai file'));
+    else import('./src/app.js').then(m=>m.init()).catch(fail);
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "floor": 1,
+    "source": "floorplan (1).glb",
+    "originalBytes": 130675032,
+    "optimizedBytes": 380292,
+    "collisionSegments": 774,
+    "removedDoorParts": 195,
+    "note": "Architecture retained and merged. Original furniture replaced by educational low-poly assets. Scene units are illustrative."
+  },
+  {
+    "floor": 2,
+    "source": "floorplan.glb",
+    "originalBytes": 617248,
+    "optimizedBytes": 293572,
+    "collisionSegments": 618,
+    "removedDoorParts": 135,
+    "note": "Architecture retained and merged. Original furniture replaced by educational low-poly assets. Scene units are illustrative."
+  }
+]

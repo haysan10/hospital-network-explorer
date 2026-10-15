@@ -1,0 +1,371 @@
+{
+  "application": "MediLink Hospital Network Explorer",
+  "version": "2.0.0",
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "bytes": 1313,
+      "sha256": "7540c2767e72a8400799d85f950921ca982d1daae2b1b606d8c323d630c9d2a2"
+    },
+    {
+      "path": "MULAI-MAC.command",
+      "bytes": 303,
+      "sha256": "80b7857498f20ac3ee5b2755ee82af1022515b478a3320c4375e69267657a9ac"
+    },
+    {
+      "path": "MULAI-WINDOWS.bat",
+      "bytes": 480,
+      "sha256": "22cfa85c1bfe55faea80875113b56157f96e0cf6d3a5855db96ca2366fa733ed"
+    },
+    {
+      "path": "README.md",
+      "bytes": 15445,
+      "sha256": "43d8c17cd4254f2b8f5d52aa8c893199b19d42768f99e27095d17050bcc58c6e"
+    },
+    {
+      "path": "assets/collision-1.json",
+      "bytes": 23608,
+      "sha256": "54f72afdd71342b29341995ca14adae8156d7e02ba023553394f0fcebaf10e91"
+    },
+    {
+      "path": "assets/collision-2.json",
+      "bytes": 20069,
+      "sha256": "c8ce49bd97c4e153b46018fc5d225c46ffc9dd0bbdf799b61a5a917282fd65ae"
+    },
+    {
+      "path": "assets/floorplan-manifest.json",
+      "bytes": 633,
+      "sha256": "9985aaa70ea6fe206e733ffc7ed4b1fb76a140eced4d4dd1bcb14a5d97443621"
+    },
+    {
+      "path": "assets/icon.svg",
+      "bytes": 187,
+      "sha256": "fb50afc72619b671ebffaf0aedaf02ee957e89218e27b9eccac890906629c05a"
+    },
+    {
+      "path": "assets/models/ap.glb",
+      "bytes": 4536,
+      "sha256": "d76a5f76af4319488b2c9c8550f4dc8d33d9936b76543a35106c62077a0bae3f"
+    },
+    {
+      "path": "assets/models/asset-catalog.json",
+      "bytes": 1478,
+      "sha256": "6324f6d43aa65b597372f26d093e2f8904889ffe4f8f9f60eeba093aae7df30d"
+    },
+    {
+      "path": "assets/models/bed.glb",
+      "bytes": 82044,
+      "sha256": "a9fe3d864bf128458ff9b6c3eb0b21d0bf179fd922763849c10275766fbf6a6c"
+    },
+    {
+      "path": "assets/models/cabinet.glb",
+      "bytes": 32472,
+      "sha256": "2b3c9a2fb8781aa79f9b9d14d9a49eca89bc154bf10549557262dd5876753f5b"
+    },
+    {
+      "path": "assets/models/cable-tray.glb",
+      "bytes": 33140,
+      "sha256": "9ba0bdc3777491d0a703f40ed91e712ee22c9985646f89cadc66de854240ffc8"
+    },
+    {
+      "path": "assets/models/cctv.glb",
+      "bytes": 9812,
+      "sha256": "bda2f80a090357e55eb0b02fe583dfdc62bc534b700b5141f85da8045f21e931"
+    },
+    {
+      "path": "assets/models/chair.glb",
+      "bytes": 53760,
+      "sha256": "fb2179c9d3da667f1d44fc0771a2a4e2ead83675948f0652fc430280c39d6ceb"
+    },
+    {
+      "path": "assets/models/ct-scanner.glb",
+      "bytes": 13472,
+      "sha256": "3a2267e0fddd87d5076f67da27aa060953f66e986ccdce041d427f830a449172"
+    },
+    {
+      "path": "assets/models/fiber-cable.glb",
+      "bytes": 8680,
+      "sha256": "b4a06427012e81c381f9d6df8f054ad6d77992758ffe0467af79c2576403035e"
+    },
+    {
+      "path": "assets/models/floor-1.glb",
+      "bytes": 380292,
+      "sha256": "85d25ce06308c73e70f1378b764edc1032c33d0cff6c6ef4763bd20e4d3ad39d"
+    },
+    {
+      "path": "assets/models/floor-2.glb",
+      "bytes": 293572,
+      "sha256": "3edc95346d63c93b029d6fb862d5fe441a4e56863b3ccac57bf9ac0910038cf0"
+    },
+    {
+      "path": "assets/models/lan-cable.glb",
+      "bytes": 8664,
+      "sha256": "557f120a022caee679c72f59e0eb4fa7d51be554fcbec9aa20f68f343fcf49a1"
+    },
+    {
+      "path": "assets/models/medical-monitor.glb",
+      "bytes": 20676,
+      "sha256": "d7cd6bdd7a7f4b60c247f403f9103fd51974398ff475b1baa3399d68f2d06867"
+    },
+    {
+      "path": "assets/models/panel.glb",
+      "bytes": 3728,
+      "sha256": "537ac3d9b2acbfa59254a509532dd8d4e5e79ae3c15649abfe5519bddf6e191c"
+    },
+    {
+      "path": "assets/models/pc.glb",
+      "bytes": 91248,
+      "sha256": "5976c915ff3e7f15cf4b8a0d45c2b27ee247cbf04e2d8f2a32b5600467216bea"
+    },
+    {
+      "path": "assets/models/plant.glb",
+      "bytes": 6768,
+      "sha256": "6799750a5324b58b579c25a909070aee6b64be0a1cf6876d6a1a41ab5011c19b"
+    },
+    {
+      "path": "assets/models/power-cable.glb",
+      "bytes": 8684,
+      "sha256": "4b0f5f83d8b791a3409114c2dab84546c1cbdf65f070a6f81149902be5ab9283"
+    },
+    {
+      "path": "assets/models/rack.glb",
+      "bytes": 65648,
+      "sha256": "823fb55f3be4e62dc3849a74d7efec924fdad9d3267817053cd85ebe76909a18"
+    },
+    {
+      "path": "assets/models/roof-lower.glb",
+      "bytes": 67116,
+      "sha256": "5161d9a65c3f8d67ca79f0381da2ffca70d69b1c6b15ddb21a3481af6e03f312"
+    },
+    {
+      "path": "assets/models/roof-upper.glb",
+      "bytes": 116316,
+      "sha256": "b01d5a649eed849f0e2c90f4a9cdb12c810511e12e549afe3a485bad7261b738"
+    },
+    {
+      "path": "assets/models/router.glb",
+      "bytes": 6576,
+      "sha256": "fee679cae285d2b836086ac60d7a77e906c06017331cbe7aa7bf54261dd32dcd"
+    },
+    {
+      "path": "assets/models/server.glb",
+      "bytes": 65740,
+      "sha256": "87041c9a74251dd2f31f09c742eaebd954a6f2446f92e30ca1afb33380704e56"
+    },
+    {
+      "path": "assets/models/shelf.glb",
+      "bytes": 23488,
+      "sha256": "3b9d70c1e42fac1473dc9e3882aca8398ef6a852d8c2ffd21c2797ed1162feca"
+    },
+    {
+      "path": "assets/models/socket.glb",
+      "bytes": 5808,
+      "sha256": "db54a350f9a6f1a2b92fd6c6902b696dffb9cb45a2dde437c503bf9496baea13"
+    },
+    {
+      "path": "assets/models/stairs-connected.glb",
+      "bytes": 287928,
+      "sha256": "c59c0ea82f2481d0b54cf3174c090615fbb63c9fe1f9cce29c3293345b37a7bd"
+    },
+    {
+      "path": "assets/models/stairs.glb",
+      "bytes": 31188,
+      "sha256": "4f6ccbfeaabf13ac5d8709ce9c4287e76cd0a6f2969c7b1e44aa3442fcc11bbe"
+    },
+    {
+      "path": "assets/models/switch.glb",
+      "bytes": 19192,
+      "sha256": "cc972ac73d77c58030d6a6eceff291773cc0c222fd7a0f79397a3f4254f57efd"
+    },
+    {
+      "path": "assets/models/tablet.glb",
+      "bytes": 2720,
+      "sha256": "297cacd4a6408acf0e7e3025a78911c71470b675f152fe921153c158e57643fc"
+    },
+    {
+      "path": "assets/models/ups.glb",
+      "bytes": 28304,
+      "sha256": "2fae06f7d5d7e2e4e43e66a403c4a18292c6fab4724ac932e3155695ed97fad0"
+    },
+    {
+      "path": "assets/models/washer.glb",
+      "bytes": 6536,
+      "sha256": "11ba7b1dad341eb4c62e004c8a4b522dc8c25c315b1424dc2265773b29976089"
+    },
+    {
+      "path": "assets/reference/floor-1.png",
+      "bytes": 267886,
+      "sha256": "be46000dd4afa1bd09b066421fa6513b1327ae20dcc099e51291de5aa5964c98"
+    },
+    {
+      "path": "assets/reference/floor-2.png",
+      "bytes": 170048,
+      "sha256": "cd3e5cec132e86219b2f934dedb143ee0423403d609b5aa840f2575f012ba45b"
+    },
+    {
+      "path": "docs/TOPLOGI.mmd",
+      "bytes": 444,
+      "sha256": "00d60b17467e8249c80870436f28f51e37dc9bc019be6cb78d3cdeb99b71d324"
+    },
+    {
+      "path": "docs/VALIDASI.md",
+      "bytes": 2582,
+      "sha256": "f8aecdd29e3fbaa3d47a737818b64b9671b772582a00e73f28662473dcd36b4e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 9915,
+      "sha256": "5dc464511cb2dee5c97f30dbd9c80aabc9a727f05a3dea3bf77e2518f50692d3"
+    },
+    {
+      "path": "mulai-linux.sh",
+      "bytes": 272,
+      "sha256": "eee0a22b88cdd41e8d5b39d3a00f020ac129c5b993c8d1465bc0e0b7d8906617"
+    },
+    {
+      "path": "package.json",
+      "bytes": 411,
+      "sha256": "c6a47ba36e5bd96683697edc36cfa0b60ed9bae0148c65853e7c922fcdacd719"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 2761,
+      "sha256": "ddcf8d5e4dca91a2171f17dfd873eb2bf7e27796f96a5a4de71db86add92bd7f"
+    },
+    {
+      "path": "server.py",
+      "bytes": 2556,
+      "sha256": "ed28d8a5b3fc5f8340a57df2b5f8e9437b9c392aaf3a1423ef2983f4ca02e9ec"
+    },
+    {
+      "path": "src/app.js",
+      "bytes": 24306,
+      "sha256": "2724f80382e5158cf8fa81ef60ae685da4af71f71d5d26bf3aeef405e0621a14"
+    },
+    {
+      "path": "src/assets.js",
+      "bytes": 10332,
+      "sha256": "3ca32ab2a869b5918f1efb52d9ffc93c74144d219e2880d3091de6cd9d269463"
+    },
+    {
+      "path": "src/building.js",
+      "bytes": 7737,
+      "sha256": "bcc54fa41586a7612443c9b25a9939168075f7ccff98ffe9f289a353bf6cccfe"
+    },
+    {
+      "path": "src/data.js",
+      "bytes": 12871,
+      "sha256": "54e6b18605e8d0aac113b3a989e2ab32dc2f07b13f8d488187b2f0433a5c48cd"
+    },
+    {
+      "path": "src/engine.js",
+      "bytes": 6786,
+      "sha256": "b737abed25118720d9f89963fbff144dc95d6780ad55f66fdf9269391e0f19c4"
+    },
+    {
+      "path": "src/experience.js",
+      "bytes": 12121,
+      "sha256": "7fcbcaf5b9749d28a3cb4be03b8d9a3e4c11a732dc0e7939951e116394fe17db"
+    },
+    {
+      "path": "src/modes.js",
+      "bytes": 17332,
+      "sha256": "ccfa9959dafedcc58a13d0d81c274b7c704f6851a090bfe5dbee46254229f2c2"
+    },
+    {
+      "path": "src/surfaces.js",
+      "bytes": 2445,
+      "sha256": "2b72e51bdf66ac5b576e81a1d1f0c9d6e7bc7e8fd16c9e028451a3ca50060eab"
+    },
+    {
+      "path": "src/world.js",
+      "bytes": 31179,
+      "sha256": "a8b4bbcf12664c52ce37bdc3321ce314224956e2d493eca90321a9a2102687d3"
+    },
+    {
+      "path": "style.css",
+      "bytes": 35817,
+      "sha256": "8d4a31e82d4b07bf71d0a60041589709912ef4822472f072ee6bdf859694aed3"
+    },
+    {
+      "path": "tests/assets.test.mjs",
+      "bytes": 2895,
+      "sha256": "1413c138aa60c10169b07061c62b3dcd6a07938a0c32b9c20ad110457cd774e3"
+    },
+    {
+      "path": "tests/experience.test.mjs",
+      "bytes": 7796,
+      "sha256": "a7acba933e914ea971a3b358ef42119e8599288b61c65b06b78168b0f374440a"
+    },
+    {
+      "path": "tests/modes.test.mjs",
+      "bytes": 5642,
+      "sha256": "dad9196a720503c87ce33b39b157fced33eb4588c2434f8817ef93cde1aac91a"
+    },
+    {
+      "path": "tests/network.test.mjs",
+      "bytes": 5167,
+      "sha256": "038483e7066b45038a49919c1824168526afc83948079521de0993da74507639"
+    },
+    {
+      "path": "tests/scene.test.mjs",
+      "bytes": 1236,
+      "sha256": "731f75d70976135bf8411c802d3cca7bce4686950e358ac5a0d1a7c2312fb5a0"
+    },
+    {
+      "path": "tools/export-assets.mjs",
+      "bytes": 2166,
+      "sha256": "c08a15f66006e9d864f0301798b0fb32697b2ae5acf49729cb1caca6af4ea588"
+    },
+    {
+      "path": "tools/png-canvas.mjs",
+      "bytes": 1724,
+      "sha256": "24957362350383c1d70b100968198fa8871b1c4f2ea43f6ce5f310b84f5d591e"
+    },
+    {
+      "path": "tools/prepare-static.mjs",
+      "bytes": 474,
+      "sha256": "2767e627d166ab089f812f61dc3016602a2299cdf923ca3ebcc7a9827d90f564"
+    },
+    {
+      "path": "tools/prepare_floorplans.py",
+      "bytes": 6812,
+      "sha256": "b88afbf5a73506d02a6017ca152b445a1fb3d762b73a395dcc1b1799433435cc"
+    },
+    {
+      "path": "vendor/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/addons/controls/OrbitControls.js",
+      "bytes": 38719,
+      "sha256": "d3b6283dcec39e541db397bdd868fec380e118f3053ec26e9873252a14b7b5d6"
+    },
+    {
+      "path": "vendor/addons/exporters/GLTFExporter.js",
+      "bytes": 86408,
+      "sha256": "c3462aec753006797689fef9ce8ec121d982b0956ff08527060f8d75bca784b9"
+    },
+    {
+      "path": "vendor/addons/loaders/GLTFLoader.js",
+      "bytes": 114755,
+      "sha256": "979269c237f704ffa4a37d3800ec21f237c017e40f8e28b1cd7accf5b2377574"
+    },
+    {
+      "path": "vendor/addons/utils/BufferGeometryUtils.js",
+      "bytes": 35555,
+      "sha256": "748066188940e858e5d48985866e84a6e6691fc31776ea59d9d89c1a7f6fe6cd"
+    },
+    {
+      "path": "vendor/three.core.js",
+      "bytes": 1403455,
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "bytes": 603113,
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+flowchart TD
+  S["Server layanan"] --- C["Core switch"]
+  F["Router dan firewall"] --- C
+  C ---|"Fiber"| N["Switch akses L1"]
+  C ---|"Fiber"| P["Switch penunjang L1"]
+  C ---|"Fiber antarlantai"| D["Distribusi L2"]
+  N ---|"LAN"| I["Terminal IGD"]
+  P ---|"LAN"| R["Terminal pendaftaran"]
+  P ---|"LAN"| A["AP pendaftaran"]
+  A ---|"Wi-Fi"| G["Tablet tamu VLAN 30"]
+  D ---|"LAN"| U["Terminal ICU"]
+  D ---|"LAN"| W["Terminal nurse station"]
