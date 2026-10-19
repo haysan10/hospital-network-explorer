@@ -1,4 +1,6 @@
-import {NETWORK,DEVICE_MAP,devicePoint,elevation,MISSIONS,QUIZ} from './data.js';
+import {NETWORK,DEVICE_MAP,devicePoint,elevation,terminalOutlet,MISSIONS,QUIZ,FLOOR_HEIGHT,FLOOR_OFFSETS} from './data.js';
+import {RISER,corridorZ,installationHeight,installationTrunk} from './installation.js';
+export {RISER,corridorZ} from './installation.js';
 const eq=(a,b)=>a.every((v,i)=>Math.abs(v-b[i])<.00001);
 export const compact = points=>points.filter((p,i)=>!i||!eq(p,points[i-1]));
 export function pathLength(points) {return points.slice(1).reduce((s,p,i)=>s+Math.hypot(...p.map((v,j)=>v-points[i][j])),0);}
@@ -11,40 +13,60 @@ export function pointOnPath(points,t) {
   }
   return [...points[points.length-1]];
 }
-const ceiling=n=>elevation(n.floor)+2.62;
-function routed(a,b) {
-  const pa=devicePoint(a),pb=devicePoint(b),ya=ceiling(a),yb=ceiling(b);
-  if(a.floor!==b.floor) return compact([pa,[a.x,ya,a.z],[10.35,ya,a.z],[10.35,ya,1.4],[10.35,yb,1.4],[b.x,yb,1.4],[b.x,yb,b.z],pb]);
-  let trunk;
-  if(a.floor===2) trunk=-.35;
-  else if(a.z<-3.7 && b.z<-3.7) trunk=-7.3;
-  else if(a.z>3.4&&b.z>3.4) trunk=7.4;
-  else trunk=2.72;
-  return compact([pa,[a.x,ya,a.z],[a.x,ya,trunk],[b.x,yb,trunk],[b.x,yb,b.z],pb]);
+const ceiling=(n,type)=>installationHeight(n.floor,type);
+export function deviceLead(n,type='copper'){
+ const p=devicePoint(n),y=ceiling(n,type);if(n.kind!=='pc')return [p,[p[0],y,p[2]]];
+ const o=terminalOutlet(n),base=elevation(n.floor),port=[o.x,base+o.y,o.z];
+ if(o.mount==='floor')return [p,[p[0],base+.42,p[2]],port,[o.x,base-.055,o.z],[o.riser[0],base-.055,o.riser[1]],[o.riser[0],y,o.riser[1]]];
+ return [p,[p[0],base+.42,p[2]],port,[o.x,y,o.z]];
 }
+function routed(a,b,type) {
+  const leadA=deviceLead(a,type),leadB=deviceLead(b,type),pa=leadA.at(-1),pb=leadB.at(-1),ya=ceiling(a,type),yb=ceiling(b,type),ta=installationTrunk(a.floor,type),tb=installationTrunk(b.floor,type);
+  if(a.floor!==b.floor) return compact([...leadA,[pa[0],ya,ta],[RISER.x,ya,ta],[RISER.x,ya,RISER.z],[RISER.x,yb,RISER.z],[RISER.x,yb,tb],[pb[0],yb,tb],...leadB.reverse()]);
+  const trunk=installationTrunk(a.floor,type,a.floor===1&&a.z>2&&b.z>2);
+  return compact([...leadA,[pa[0],ya,trunk],[pb[0],yb,trunk],...leadB.reverse()]);
+}
+// Clip physical paths at floor slabs. A cross-floor cable remains inspectable
+// in a single-floor view; hidden floors never leak cables or packet particles.
+export function clipPathToFloor(points,floor) {
+  if(floor==='all')return [points];
+  const lower=floor===1?-Infinity:FLOOR_HEIGHT-.12,upper=floor===1?FLOOR_HEIGHT-.12:Infinity,paths=[];let current=[];
+  for(let i=1;i<points.length;i++){
+    const a=points[i-1],b=points[i],dy=b[1]-a[1];let t0=0,t1=1;
+    if(Math.abs(dy)<1e-10){if(a[1]<lower||a[1]>upper){if(current.length>1)paths.push(current);current=[];continue;}}
+    else {const enter=(lower-a[1])/dy,leave=(upper-a[1])/dy;t0=Math.max(0,Math.min(enter,leave));t1=Math.min(1,Math.max(enter,leave));}
+    if(t0>t1){if(current.length>1)paths.push(current);current=[];continue;}
+    const at=t=>a.map((v,j)=>v+(b[j]-v)*t),p=at(t0),q=at(t1);
+    if(eq(p,q))continue;
+    if(current.length&&!eq(current.at(-1),p)){paths.push(current);current=[];}
+    if(!current.length)current.push(p);current.push(q);
+  }
+  if(current.length>1)paths.push(current);return paths;
+}
+export const edgeVisible=(edge,floor)=>floor==='all'||edge.floors.includes(floor);
 export function createEdges() {
-  const definitions=[['server','core','copper'],['firewall','core','copper'],['core','sw-north','fiber'],['core','sw-south','fiber'],['core','sw-l2','fiber']];
+  const definitions=[['server','core','copper'],['firewall','core','copper'],['core','sw-north','fiber'],['core','sw-south','fiber'],['core','sw-l2','fiber'],['sw-l2','sw-l2-west','fiber']];
   NETWORK.filter(n=>n.sw).forEach(n=>definitions.push([n.id,n.sw,n.kind==='tablet'?'wifi':'copper']));
-  return definitions.map(([a,b,type])=>({id:a==='core'?`link-core-${b}`:`link-${a}`,a,b,type,floors:[...new Set([DEVICE_MAP.get(a).floor,DEVICE_MAP.get(b).floor])],points:type==='wifi'?[devicePoint(DEVICE_MAP.get(a)),devicePoint(DEVICE_MAP.get(b))]:routed(DEVICE_MAP.get(a),DEVICE_MAP.get(b))}));
+  return definitions.map(([a,b,type])=>({id:a==='core'?`link-core-${b}`:a==='sw-l2'?`link-l2-west`:`link-${a}`,a,b,type,floors:[...new Set([DEVICE_MAP.get(a).floor,DEVICE_MAP.get(b).floor])],points:type==='wifi'?[devicePoint(DEVICE_MAP.get(a)),devicePoint(DEVICE_MAP.get(b))]:routed(DEVICE_MAP.get(a),DEVICE_MAP.get(b),type)}));
 }
 export const EDGES=createEdges();
 export function powered(device,state) {
   return Boolean(state.mains || (state.ups && device.protected));
 }
-export function traceRoute(source,target,state,{policy=true,edges:graphEdges=EDGES}={}) {
+export function traceRoute(source,target,state,{policy=true}={}) {
   const start=DEVICE_MAP.get(source),end=DEVICE_MAP.get(target);
   if(!start||!end) return {ok:false,reason:'unknown',nodes:[],edges:[]};
+  if(policy && start.vlan===30 && target==='server') return {ok:false,reason:'policy',nodes:[source,start.sw,'firewall'],edges:[],message:'Kebijakan simulasi menolak VLAN 30 menuju server internal.'};
   const broken=state.broken instanceof Set?state.broken:new Set(state.broken||[]);
   if(!powered(start,state)||!powered(end,state)) return {ok:false,reason:'power',nodes:[],edges:[],message:'Perangkat sumber atau tujuan tidak memperoleh daya.'};
   const queue=[[source]],visited=new Set([source]);
   while(queue.length) {
     const path=queue.shift(),last=path.at(-1);
     if(last===target) {
-      if(policy && start.vlan===30 && target==='server') return {ok:false,reason:'policy',nodes:path,edges:[],message:'Kebijakan simulasi menolak VLAN 30 menuju server internal.'};
-      const edges=path.slice(1).map((id,i)=>graphEdges.find(e=>(e.a===id&&e.b===path[i])||(e.b===id&&e.a===path[i])));
+      const edges=path.slice(1).map((id,i)=>EDGES.find(e=>(e.a===id&&e.b===path[i])||(e.b===id&&e.a===path[i])));
       return {ok:true,reason:'connected',nodes:path,edges,length:edges.reduce((s,e)=>s+pathLength(e.points),0)};
     }
-    for(const e of graphEdges) {
+    for(const e of EDGES) {
       if(broken.has(e.id))continue;
       const next=e.a===last?e.b:e.b===last?e.a:null;
       if(!next||visited.has(next)||!powered(DEVICE_MAP.get(next),state))continue;

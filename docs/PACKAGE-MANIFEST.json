@@ -1,6 +1,20 @@
 {
   "application": "MediLink Hospital Network Explorer",
-  "version": "2.0.0",
+  "version": "4.2.0",
+  "roomsAndCirculationAreas": 36,
+  "devices": 64,
+  "dataLinks": 59,
+  "additionalGlbAssets": 71,
+  "sourceWallModels": 2,
+  "operableDoors": 46,
+  "openPortals": 3,
+  "privacyStallDoors": 12,
+  "windowApertures": 26,
+  "ceilingAndArrivalLightPositions": 79,
+  "environmentDetailPlacements": 381,
+  "testedCirculationRoutes": 5,
+  "testsPassed": 89,
+  "browserRenderTested": false,
   "files": [
     {
       "path": "LICENSE.txt",
@@ -19,8 +33,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 15445,
-      "sha256": "43d8c17cd4254f2b8f5d52aa8c893199b19d42768f99e27095d17050bcc58c6e"
+      "bytes": 12299,
+      "sha256": "85f5444cca0dac7b511847585665def5250751a37f2832acaa9745022792af77"
+    },
+    {
+      "path": "assets/campus-plan.svg",
+      "bytes": 71444,
+      "sha256": "dbf4376fd4c0c1d9ff27937c32ce8a1e2038c354daea6b809200e0f2d50e2816"
     },
     {
       "path": "assets/collision-1.json",
@@ -38,54 +57,124 @@
       "sha256": "9985aaa70ea6fe206e733ffc7ed4b1fb76a140eced4d4dd1bcb14a5d97443621"
     },
     {
+      "path": "assets/front-office-flow.svg",
+      "bytes": 10534,
+      "sha256": "1ae8153fc87441ae189441710195dcad089d22b81e27df885e15cd9bea212295"
+    },
+    {
       "path": "assets/icon.svg",
       "bytes": 187,
       "sha256": "fb50afc72619b671ebffaf0aedaf02ee957e89218e27b9eccac890906629c05a"
     },
     {
+      "path": "assets/models/air-vent.glb",
+      "bytes": 108132,
+      "sha256": "d2167c0a89a43d64cd274ab07c7fc3b7eb38ba660cfae154f9ee14ec41be8cb5"
+    },
+    {
+      "path": "assets/models/ambulance.glb",
+      "bytes": 404164,
+      "sha256": "2f24ad7031e6bdfdfdc217baf0d32ae21ebbaf951c173abae14485a9e5cc8cf9"
+    },
+    {
       "path": "assets/models/ap.glb",
-      "bytes": 4536,
-      "sha256": "d76a5f76af4319488b2c9c8550f4dc8d33d9936b76543a35106c62077a0bae3f"
+      "bytes": 60620,
+      "sha256": "27dbcc6abb95cc61e47ed5d76a535c01f5d735c6c2f258002be055f6537c5e72"
     },
     {
       "path": "assets/models/asset-catalog.json",
-      "bytes": 1478,
-      "sha256": "6324f6d43aa65b597372f26d093e2f8904889ffe4f8f9f60eeba093aae7df30d"
+      "bytes": 10928,
+      "sha256": "f791f5a2ee2ea738b8fadf6b6b841cea2660fb55e8e82772b563a9d5c252e3f5"
+    },
+    {
+      "path": "assets/models/bed-head-unit.glb",
+      "bytes": 79236,
+      "sha256": "ac79d2ca40a9c5fdbe9325f43fca89818ff2f55e2d03b87f271ee1c62daf7a03"
     },
     {
       "path": "assets/models/bed.glb",
-      "bytes": 82044,
-      "sha256": "a9fe3d864bf128458ff9b6c3eb0b21d0bf179fd922763849c10275766fbf6a6c"
+      "bytes": 503232,
+      "sha256": "99ca61545715af9faa817e3c7fadaedb6b87c9b3ced053d4ff4fd8debe6c0ed0"
+    },
+    {
+      "path": "assets/models/bedside-table.glb",
+      "bytes": 294108,
+      "sha256": "c0b6fa14720bde036b5550782921b34908fcf4a65528da61b1f0143288a855fc"
+    },
+    {
+      "path": "assets/models/bollard-light.glb",
+      "bytes": 93828,
+      "sha256": "89acf467478826402ed5e666e3a290d312cd49eb4d897cf823b2bb7d6dfa7557"
     },
     {
       "path": "assets/models/cabinet.glb",
-      "bytes": 32472,
-      "sha256": "2b3c9a2fb8781aa79f9b9d14d9a49eca89bc154bf10549557262dd5876753f5b"
+      "bytes": 136220,
+      "sha256": "8627111de47e54551213a968c2589c3fc399658b89e6a99bc2413f768eed09d3"
     },
     {
       "path": "assets/models/cable-tray.glb",
-      "bytes": 33140,
-      "sha256": "9ba0bdc3777491d0a703f40ed91e712ee22c9985646f89cadc66de854240ffc8"
+      "bytes": 92920,
+      "sha256": "5049ace82d7bdfafa1d08e5fdd7044ed86fd636cafe416819bbfabc6548b6f4f"
+    },
+    {
+      "path": "assets/models/car.glb",
+      "bytes": 332764,
+      "sha256": "5de8526a777b7f93004ec6d88118cbc36b3f7b15a04d01d1ff260abce9509508"
     },
     {
       "path": "assets/models/cctv.glb",
-      "bytes": 9812,
-      "sha256": "bda2f80a090357e55eb0b02fe583dfdc62bc534b700b5141f85da8045f21e931"
+      "bytes": 103392,
+      "sha256": "328b23b84daa622995adf17986a4031bc9c8377261ff621a920b8186c771b50b"
+    },
+    {
+      "path": "assets/models/ceiling-light.glb",
+      "bytes": 78580,
+      "sha256": "898fab37c60428fd2816bc4620fcd4ddd0505638369782aae80cf95bd56bc869"
     },
     {
       "path": "assets/models/chair.glb",
-      "bytes": 53760,
-      "sha256": "fb2179c9d3da667f1d44fc0771a2a4e2ead83675948f0652fc430280c39d6ceb"
+      "bytes": 275280,
+      "sha256": "0ae9f605564f0437de036949ac0e86c67089992518dddd6c6679af2aff3efebf"
     },
     {
       "path": "assets/models/ct-scanner.glb",
-      "bytes": 13472,
-      "sha256": "3a2267e0fddd87d5076f67da27aa060953f66e986ccdce041d427f830a449172"
+      "bytes": 233992,
+      "sha256": "8396b514aa8cd1af3e650ae555677b7947b9dd97303fd60d798e73c14cbb25e7"
+    },
+    {
+      "path": "assets/models/data-outlet.glb",
+      "bytes": 60324,
+      "sha256": "f5bc05baa80c9dd1b1b91f595bf82e1c3239336a2d62c28cdc5cabab8fdc2456"
+    },
+    {
+      "path": "assets/models/door-leaf.glb",
+      "bytes": 166340,
+      "sha256": "28d516d057518a56d3a920347c5d8f8dfd4926623244d520dc3f9ef9501b44e3"
+    },
+    {
+      "path": "assets/models/entrance-leaf.glb",
+      "bytes": 187276,
+      "sha256": "916aeafe77f82b279b886d816efc35d41e0d4d80d84b592c6259d14e89ed670f"
+    },
+    {
+      "path": "assets/models/exit-sign.glb",
+      "bytes": 60516,
+      "sha256": "1c9d246be3a29425a10c64b588e3c967a8e32af4db47ec2517f1600c7e088bfe"
     },
     {
       "path": "assets/models/fiber-cable.glb",
-      "bytes": 8680,
-      "sha256": "b4a06427012e81c381f9d6df8f054ad6d77992758ffe0467af79c2576403035e"
+      "bytes": 77628,
+      "sha256": "595bdbeab0028efb602dc35acc05ec8ff9c40b8170ddea8d7f5d2650da4e87b7"
+    },
+    {
+      "path": "assets/models/fiber-panel.glb",
+      "bytes": 180968,
+      "sha256": "01c4ba80100e8d90b93786ae3af2d4198e766e9b8c0bd217cd81ee1d01d23b12"
+    },
+    {
+      "path": "assets/models/fire-extinguisher.glb",
+      "bytes": 159208,
+      "sha256": "7b016700a1a0c4cc38b4e3c8abd345d879cfa59d7cdeeee744cdad436a73a8f4"
     },
     {
       "path": "assets/models/floor-1.glb",
@@ -98,99 +187,254 @@
       "sha256": "3edc95346d63c93b029d6fb862d5fe441a4e56863b3ccac57bf9ac0910038cf0"
     },
     {
+      "path": "assets/models/fridge.glb",
+      "bytes": 105772,
+      "sha256": "eb3566923d6d764f84cfea7ddb6df49ac93e8c9ce4514ab548776727e217490e"
+    },
+    {
+      "path": "assets/models/garden-bench.glb",
+      "bytes": 146040,
+      "sha256": "243eb606e7956aaf78580fd34bc434d3c490db604dc3a1e92f0c01ea90a0f421"
+    },
+    {
+      "path": "assets/models/garden-tree.glb",
+      "bytes": 238868,
+      "sha256": "28ee19fcab774881295daab89173f881a21ed99420101b1cc728ddf5766e8d4b"
+    },
+    {
+      "path": "assets/models/hamper.glb",
+      "bytes": 288264,
+      "sha256": "47b17ff72a64a424db786f8e34bbabb9ace3bed9687e5ee741a6cead2302dc24"
+    },
+    {
+      "path": "assets/models/iv-pole.glb",
+      "bytes": 210712,
+      "sha256": "5664805cd6a5899cababa2e8aac5cfa0fcc3be01bbdd85a51bc3180034bf1bf3"
+    },
+    {
       "path": "assets/models/lan-cable.glb",
-      "bytes": 8664,
-      "sha256": "557f120a022caee679c72f59e0eb4fa7d51be554fcbec9aa20f68f343fcf49a1"
+      "bytes": 77612,
+      "sha256": "e5e8205bf7d9c1474d75626ace2b97abe567910995f6b981c4cc5eb29c6c999e"
     },
     {
       "path": "assets/models/medical-monitor.glb",
-      "bytes": 20676,
-      "sha256": "d7cd6bdd7a7f4b60c247f403f9103fd51974398ff475b1baa3399d68f2d06867"
+      "bytes": 285564,
+      "sha256": "b571c5b11814d67009dc78cf524a8a4592953ddf3158f6ec7ab76f53d51a4ad5"
+    },
+    {
+      "path": "assets/models/medicine-trolley.glb",
+      "bytes": 269700,
+      "sha256": "5de1190813c77f7e09afee81c1003d7c308f9101562e18bfca52d045b5b0f250"
+    },
+    {
+      "path": "assets/models/meeting-table.glb",
+      "bytes": 110172,
+      "sha256": "09d4a4bfb7cfd44727171172d5219f48960778c41056716b71b3cc904373ea1a"
+    },
+    {
+      "path": "assets/models/microscope.glb",
+      "bytes": 63896,
+      "sha256": "74dd98f33c9034d47d7ea2d156f29eb74648ca2fe5f9bef574cc72547c8e6a69"
+    },
+    {
+      "path": "assets/models/mirror.glb",
+      "bytes": 63984,
+      "sha256": "35c41da60050d71becbae07c0c6b9fa9fb1b1ab22ed1743d2c5d856a574b36fa"
+    },
+    {
+      "path": "assets/models/operating-table.glb",
+      "bytes": 299372,
+      "sha256": "f39280e9aade7d4f5552d223490afcca42fb84b63a03481f1b0ac3b4743e5a29"
     },
     {
       "path": "assets/models/panel.glb",
-      "bytes": 3728,
-      "sha256": "537ac3d9b2acbfa59254a509532dd8d4e5e79ae3c15649abfe5519bddf6e191c"
+      "bytes": 108548,
+      "sha256": "db0e6496e9f5947024ea107c15a03cad86fbbfd882ce5b526fdaa2b502bbe500"
+    },
+    {
+      "path": "assets/models/parallel-bars.glb",
+      "bytes": 157648,
+      "sha256": "c6857a9284cd71ecbc2f1acc3bfa7d1fef38bbc200b8d9e0f8dbc38773e8ba2f"
     },
     {
       "path": "assets/models/pc.glb",
-      "bytes": 91248,
-      "sha256": "5976c915ff3e7f15cf4b8a0d45c2b27ee247cbf04e2d8f2a32b5600467216bea"
+      "bytes": 613548,
+      "sha256": "e73dc2db173c94dda53f6e5ac0569d0636d08f98833bdb6d01e4143c5ef6258c"
     },
     {
       "path": "assets/models/plant.glb",
-      "bytes": 6768,
-      "sha256": "6799750a5324b58b579c25a909070aee6b64be0a1cf6876d6a1a41ab5011c19b"
+      "bytes": 173192,
+      "sha256": "768c4e62c66505d8019fde8fd97eabca0899ce815de7bdeaa90293087f34bc19"
     },
     {
       "path": "assets/models/power-cable.glb",
-      "bytes": 8684,
-      "sha256": "4b0f5f83d8b791a3409114c2dab84546c1cbdf65f070a6f81149902be5ab9283"
+      "bytes": 77628,
+      "sha256": "7f37abaa664ed337ff109af1318853fd4c2e978cf8600c31a13689fe695ad492"
+    },
+    {
+      "path": "assets/models/privacy-curtain.glb",
+      "bytes": 181020,
+      "sha256": "cdd9fe27880d8c9894e15924863b99187dd5e237f899deefc3659004372c4a0d"
     },
     {
       "path": "assets/models/rack.glb",
-      "bytes": 65648,
-      "sha256": "823fb55f3be4e62dc3849a74d7efec924fdad9d3267817053cd85ebe76909a18"
+      "bytes": 847812,
+      "sha256": "4ef316543c69fc8504fec6da8d919d52e37680a731a87609389f2f938392e549"
     },
     {
-      "path": "assets/models/roof-lower.glb",
-      "bytes": 67116,
-      "sha256": "5161d9a65c3f8d67ca79f0381da2ffca70d69b1c6b15ddb21a3481af6e03f312"
+      "path": "assets/models/reception-desk.glb",
+      "bytes": 101512,
+      "sha256": "ef220cd0c6ba3d27f704f8d65b628602ce88a1f8e35582fb50f5429dc280d807"
     },
     {
-      "path": "assets/models/roof-upper.glb",
-      "bytes": 116316,
-      "sha256": "b01d5a649eed849f0e2c90f4a9cdb12c810511e12e549afe3a485bad7261b738"
+      "path": "assets/models/reception-terminal.glb",
+      "bytes": 540024,
+      "sha256": "323dedb6fa29eaa067378710a4dccaa7dd3f19b5fa9fe732985dc85c7b72b09f"
+    },
+    {
+      "path": "assets/models/registration-counter.glb",
+      "bytes": 174540,
+      "sha256": "c1737dc80084f42576d5c936f6f16b8df6129b05f4483c1b053c059a315fce69"
+    },
+    {
+      "path": "assets/models/rooftop-hvac.glb",
+      "bytes": 175048,
+      "sha256": "3dc6b1f6c1cd6e42fdba86155cfb33c0f68499327564035d338099080c01866d"
     },
     {
       "path": "assets/models/router.glb",
-      "bytes": 6576,
-      "sha256": "fee679cae285d2b836086ac60d7a77e906c06017331cbe7aa7bf54261dd32dcd"
+      "bytes": 91600,
+      "sha256": "5712a7242fd5806caca02db21e04de1f831430cfffd9682cce3e54695cc70cb1"
     },
     {
       "path": "assets/models/server.glb",
-      "bytes": 65740,
-      "sha256": "87041c9a74251dd2f31f09c742eaebd954a6f2446f92e30ca1afb33380704e56"
+      "bytes": 847840,
+      "sha256": "920cad8636c2e5262273e67c17a8f5ba8d71f935a2d8490d359cd3d0cda26940"
     },
     {
       "path": "assets/models/shelf.glb",
-      "bytes": 23488,
-      "sha256": "3b9d70c1e42fac1473dc9e3882aca8398ef6a852d8c2ffd21c2797ed1162feca"
+      "bytes": 269020,
+      "sha256": "afb00b659935f246dc28d976d3c84086deb3681c2ab7c853438edc074a7843f1"
+    },
+    {
+      "path": "assets/models/sink.glb",
+      "bytes": 106220,
+      "sha256": "c54a607aa9188a3b40990516b35d10e79a4ea94c852f6b4ac844bf38f8eb2e02"
+    },
+    {
+      "path": "assets/models/smoke-detector.glb",
+      "bytes": 52140,
+      "sha256": "5c5674d83278e1960349dd92b85bb52b1ec7dfaee98ac8ca33a664a0a9745e68"
+    },
+    {
+      "path": "assets/models/soap-dispenser.glb",
+      "bytes": 50708,
+      "sha256": "21cd3d5664186695a71a2fb2c9a0ee10822a264e62a511c1da7510b042b594ed"
     },
     {
       "path": "assets/models/socket.glb",
-      "bytes": 5808,
-      "sha256": "db54a350f9a6f1a2b92fd6c6902b696dffb9cb45a2dde437c503bf9496baea13"
+      "bytes": 57228,
+      "sha256": "b8bc513c307f533754487eda27b8d2592a8a040cd66a9768fd5460c274e0da65"
     },
     {
-      "path": "assets/models/stairs-connected.glb",
-      "bytes": 287928,
-      "sha256": "c59c0ea82f2481d0b54cf3174c090615fbb63c9fe1f9cce29c3293345b37a7bd"
+      "path": "assets/models/sofa.glb",
+      "bytes": 298016,
+      "sha256": "68b4cd1d3b4af30a8299d882ba26b25ce476716acf65d4821870b521eed57f11"
+    },
+    {
+      "path": "assets/models/sprinkler.glb",
+      "bytes": 93740,
+      "sha256": "e3776b415460cbcf965f7e092ea8034c1db044bc60aeaf933d35215d610b6c50"
+    },
+    {
+      "path": "assets/models/stair-landing.glb",
+      "bytes": 100532,
+      "sha256": "cd768c129aea42973064c60b2fc78b94704799ef8ff6200b62741426f6920ce5"
     },
     {
       "path": "assets/models/stairs.glb",
-      "bytes": 31188,
-      "sha256": "4f6ccbfeaabf13ac5d8709ce9c4287e76cd0a6f2969c7b1e44aa3442fcc11bbe"
+      "bytes": 598804,
+      "sha256": "00a2835c6088d81f8853af2142ff3dde29c59da7d9a317c8246a615c757352b9"
+    },
+    {
+      "path": "assets/models/street-light.glb",
+      "bytes": 95404,
+      "sha256": "d01ec5bd928569ec9a3cb461c861b0df4e9f08dcbae7da6ab7cea7e4769e28d3"
+    },
+    {
+      "path": "assets/models/surgical-light.glb",
+      "bytes": 153260,
+      "sha256": "40b6e32feb51f099650325992ef0bda06edc56568df3c60d058e7cd752be5718"
     },
     {
       "path": "assets/models/switch.glb",
-      "bytes": 19192,
-      "sha256": "cc972ac73d77c58030d6a6eceff291773cc0c222fd7a0f79397a3f4254f57efd"
+      "bytes": 292484,
+      "sha256": "60241410f8375ad2b872a16dae1c6de18248cbeb8358778dbf5af81f60aab1c6"
     },
     {
       "path": "assets/models/tablet.glb",
-      "bytes": 2720,
-      "sha256": "297cacd4a6408acf0e7e3025a78911c71470b675f152fe921153c158e57643fc"
+      "bytes": 50824,
+      "sha256": "57e7d68397d10d78b7164ac8b1b37223d4210d90b582a87e1ecd2f5f6739b2db"
+    },
+    {
+      "path": "assets/models/test-tube-rack.glb",
+      "bytes": 160236,
+      "sha256": "0209b86d2b7911a6eea3b835c0d15c232acf522fb678f57583dfa4c9b4a16a81"
+    },
+    {
+      "path": "assets/models/toilet.glb",
+      "bytes": 94116,
+      "sha256": "a616df043c7ba2184ea105b7432790d0d7f0940fb8c55c3ab891deee3eefe739"
+    },
+    {
+      "path": "assets/models/ultrasound.glb",
+      "bytes": 277252,
+      "sha256": "e16f35262c32755ec98f2f4cf71296a8c472e0e5043862fcee5375d0719bea14"
     },
     {
       "path": "assets/models/ups.glb",
-      "bytes": 28304,
-      "sha256": "2fae06f7d5d7e2e4e43e66a403c4a18292c6fab4724ac932e3155695ed97fad0"
+      "bytes": 310316,
+      "sha256": "450b67680e30baf7c139528a79b44f0c2b1fe4f792b4cb696274a18e02a9afa1"
+    },
+    {
+      "path": "assets/models/waiting-bench.glb",
+      "bytes": 416320,
+      "sha256": "262def5f05fad8d85eb89a129eb680243b728893cf94f22a1b9d8ab5bf4baed7"
+    },
+    {
+      "path": "assets/models/wall-art.glb",
+      "bytes": 170028,
+      "sha256": "9e38f4b9e52a68ca2b5e9fce3aad578850cf07a165980a66e3f0924c70728b84"
+    },
+    {
+      "path": "assets/models/wall-clock.glb",
+      "bytes": 133780,
+      "sha256": "cfac6ff422d8b984d041924d528352ae8c41f44ae956da4e0d31713846fce9ca"
+    },
+    {
+      "path": "assets/models/wall-terminal.glb",
+      "bytes": 174180,
+      "sha256": "0fd37e12a0d9d74061052191bac3716be578cdef02aa7357a7a8640ac66e4b8a"
     },
     {
       "path": "assets/models/washer.glb",
-      "bytes": 6536,
-      "sha256": "11ba7b1dad341eb4c62e004c8a4b522dc8c25c315b1424dc2265773b29976089"
+      "bytes": 109332,
+      "sha256": "257ec1e76c7ee5623ba968bd4e900c8fbf362943050113855bee12e76bb12df2"
+    },
+    {
+      "path": "assets/models/waste-bin.glb",
+      "bytes": 90588,
+      "sha256": "e6635e2f6d868205c7b5a4fc987a485abaaf0cc7cf6ae4bc6898b4da0b00bdd6"
+    },
+    {
+      "path": "assets/models/water-dispenser.glb",
+      "bytes": 82496,
+      "sha256": "dd3351a52db3e68a9aeb1205adb68a0a5b39f32b7e25fb482ee775d8de8b6ea0"
+    },
+    {
+      "path": "assets/models/worktop.glb",
+      "bytes": 90948,
+      "sha256": "cf0566015b1b48358e63c14ed0ded183c6824fc0e23cc5bce4254a625dbfc7e1"
     },
     {
       "path": "assets/reference/floor-1.png",
@@ -203,19 +447,54 @@
       "sha256": "cd3e5cec132e86219b2f934dedb143ee0423403d609b5aa840f2575f012ba45b"
     },
     {
+      "path": "assets/room-layout-1.svg",
+      "bytes": 112172,
+      "sha256": "4c357e21510fda99d3d7efd4040d7ed17b6e494e6e0513ad963e83e5b928e48a"
+    },
+    {
+      "path": "assets/room-layout-2.svg",
+      "bytes": 95550,
+      "sha256": "d11fef87832f9f7cd30f783705f8b048ff04858b019270eb1c44027f5667689d"
+    },
+    {
       "path": "docs/TOPLOGI.mmd",
-      "bytes": 444,
-      "sha256": "00d60b17467e8249c80870436f28f51e37dc9bc019be6cb78d3cdeb99b71d324"
+      "bytes": 537,
+      "sha256": "5b4f1326340068f1106e8e4fdf4199fe89f5b894c4bc0d1fdb0ec08225b2c10d"
     },
     {
       "path": "docs/VALIDASI.md",
-      "bytes": 2582,
-      "sha256": "f8aecdd29e3fbaa3d47a737818b64b9671b772582a00e73f28662473dcd36b4e"
+      "bytes": 7810,
+      "sha256": "7c0394d11b1e787728fa59d8db5a0d8e1ed7714675dfe7e6434ba64c19a598d8"
+    },
+    {
+      "path": "docs/circulation-audit.json",
+      "bytes": 1521,
+      "sha256": "546a4b69632411235b692b018c8f653810fa179f92c138deb331b9385721ab42"
+    },
+    {
+      "path": "docs/environment-audit.json",
+      "bytes": 11402,
+      "sha256": "6c10fc563b6675e8952a97edf9d8cac34b5cc7095ff71ef9eb5a75a203100a9a"
+    },
+    {
+      "path": "docs/layout-audit.json",
+      "bytes": 607,
+      "sha256": "73dd886990c63ea08c3b4dc61110908139b8458f1f54907054c84ba98e48e7dd"
+    },
+    {
+      "path": "docs/room-access-audit.json",
+      "bytes": 165953,
+      "sha256": "c998294029c4e41e9adf1e78a4ca2efc15d23ea2d378d024d6543ec540140d29"
+    },
+    {
+      "path": "docs/tour-audit.json",
+      "bytes": 1203,
+      "sha256": "6c3fe7e76199db5d4b638967c4e0814be06e9f250869eb3ed3d04f52ff98ac3c"
     },
     {
       "path": "index.html",
-      "bytes": 9915,
-      "sha256": "5dc464511cb2dee5c97f30dbd9c80aabc9a727f05a3dea3bf77e2518f50692d3"
+      "bytes": 15725,
+      "sha256": "83e30be69e6c989ddf746036c9cff72156ab6dfb5e77a600a830e6e1f62e286b"
     },
     {
       "path": "mulai-linux.sh",
@@ -224,8 +503,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 411,
-      "sha256": "c6a47ba36e5bd96683697edc36cfa0b60ed9bae0148c65853e7c922fcdacd719"
+      "bytes": 898,
+      "sha256": "e7df193c94a42fec930aa75521449d5d17d163b7cb2d3b89801023bdd6e000ce"
     },
     {
       "path": "server.mjs",
@@ -239,68 +518,153 @@
     },
     {
       "path": "src/app.js",
-      "bytes": 24306,
-      "sha256": "2724f80382e5158cf8fa81ef60ae685da4af71f71d5d26bf3aeef405e0621a14"
+      "bytes": 33830,
+      "sha256": "af819cb3decf7bfad81bc32744277094ae742b292d9dd4e60b64531c31b944e1"
+    },
+    {
+      "path": "src/architecture.js",
+      "bytes": 9405,
+      "sha256": "0f93e4a82493d4b7cf377025da9dad6f67ec9f2c5c41ff8e4f124a869d9fdf08"
     },
     {
       "path": "src/assets.js",
-      "bytes": 10332,
-      "sha256": "3ca32ab2a869b5918f1efb52d9ffc93c74144d219e2880d3091de6cd9d269463"
+      "bytes": 29025,
+      "sha256": "188379e1b4e0cc70d997f88d6bc6aed5dbb41e30518a2484d164ef970e6942f4"
     },
     {
-      "path": "src/building.js",
-      "bytes": 7737,
-      "sha256": "bcc54fa41586a7612443c9b25a9939168075f7ccff98ffe9f289a353bf6cccfe"
+      "path": "src/building-envelope.js",
+      "bytes": 4032,
+      "sha256": "89a3f51634826cd08c9b529072eb0f5784d7124678859ddc4d55d49744067e96"
+    },
+    {
+      "path": "src/campus.js",
+      "bytes": 7598,
+      "sha256": "00e4c16ac46b7ae0261222100f49a53a5f1f3349a4c4e569e64ad304c6224bf4"
+    },
+    {
+      "path": "src/circulation.js",
+      "bytes": 2856,
+      "sha256": "9512cc047528632789c4d76369d5ab7c2a1b41d9ed6fdc40c240dce83b8c0d18"
     },
     {
       "path": "src/data.js",
-      "bytes": 12871,
-      "sha256": "54e6b18605e8d0aac113b3a989e2ab32dc2f07b13f8d488187b2f0433a5c48cd"
+      "bytes": 15255,
+      "sha256": "dfbff70b75537ec1d31a73fdd49d9e4585b0815f3595cd863bdb4fad4a4559f1"
+    },
+    {
+      "path": "src/door-access.js",
+      "bytes": 1982,
+      "sha256": "c04eed11fdd4cd00f3bbbd9d50b1f791bd523dd57946f9731552997643854e64"
     },
     {
       "path": "src/engine.js",
-      "bytes": 6786,
-      "sha256": "b737abed25118720d9f89963fbff144dc95d6780ad55f66fdf9269391e0f19c4"
+      "bytes": 8688,
+      "sha256": "657d6ad31b0023a2c9c7def28d59f9bd159f6411a161017bd5e2a395b6ac9204"
     },
     {
-      "path": "src/experience.js",
-      "bytes": 12121,
-      "sha256": "7fcbcaf5b9749d28a3cb4be03b8d9a3e4c11a732dc0e7939951e116394fe17db"
+      "path": "src/environment.js",
+      "bytes": 19129,
+      "sha256": "08c39216b547b94b1be725109740000697de182dfd5af84aef8986d649bf4436"
     },
     {
-      "path": "src/modes.js",
-      "bytes": 17332,
-      "sha256": "ccfa9959dafedcc58a13d0d81c274b7c704f6851a090bfe5dbee46254229f2c2"
+      "path": "src/installation.js",
+      "bytes": 2055,
+      "sha256": "b33ebdb34c095e16294dff04ec18bd5064e17a5dbae5e43c240f68b3dddb7904"
     },
     {
-      "path": "src/surfaces.js",
-      "bytes": 2445,
-      "sha256": "2b72e51bdf66ac5b576e81a1d1f0c9d6e7bc7e8fd16c9e028451a3ca50060eab"
+      "path": "src/layout.js",
+      "bytes": 4998,
+      "sha256": "b90f8898f92ad6553529cddbd1f4142ff1bffd09089f65ab9fe7db3720724d84"
+    },
+    {
+      "path": "src/lighting.js",
+      "bytes": 1227,
+      "sha256": "d49c1fbae78f6c55967bf3063fd93b7098fa12319b350fe026be1516bc825a20"
+    },
+    {
+      "path": "src/materials.js",
+      "bytes": 5809,
+      "sha256": "35689f19e75d3462830f47d3909372372c396d0477f4a948da7c91bdb9066e70"
+    },
+    {
+      "path": "src/narration.js",
+      "bytes": 9280,
+      "sha256": "bd1090f0c617e00f36e5c8d39cbbd6923e650fbb951165ef1a25139029645ddc"
+    },
+    {
+      "path": "src/navigation.js",
+      "bytes": 4171,
+      "sha256": "33c5cc361f7c92bcedec3594ac80a9267ad4b2d048c2d5c06f97981215f6b39b"
+    },
+    {
+      "path": "src/presentation.js",
+      "bytes": 9561,
+      "sha256": "299de70188634e0f15f671b7f1c5fba56da16bd0bde1130faeb1c4f56e402937"
+    },
+    {
+      "path": "src/tour-copy.js",
+      "bytes": 18921,
+      "sha256": "ba1c911c6b624ab0de747965753c05435ca5296dd31d8403eb729bccb1b13601"
+    },
+    {
+      "path": "src/tour-paths.js",
+      "bytes": 1360,
+      "sha256": "5c2ebb8ed274c330bdbd56310771e37c15d0e7929ee34658e50a86e17d8e75d1"
+    },
+    {
+      "path": "src/tour-ui.js",
+      "bytes": 5444,
+      "sha256": "436f83a106d877d1b206145e3a91b39d020bf8b58ceb7dcb28ef956f294e83ab"
+    },
+    {
+      "path": "src/tour.js",
+      "bytes": 9822,
+      "sha256": "4f73fa7afcf8dc8ee853056200355831bfeffa54a75f3ad91764afd871204e73"
     },
     {
       "path": "src/world.js",
-      "bytes": 31179,
-      "sha256": "a8b4bbcf12664c52ce37bdc3321ce314224956e2d493eca90321a9a2102687d3"
+      "bytes": 40918,
+      "sha256": "c282ec3722758470f24a60708d9bf441e7de9e4712f9552108f9499946a41af1"
     },
     {
       "path": "style.css",
-      "bytes": 35817,
-      "sha256": "8d4a31e82d4b07bf71d0a60041589709912ef4822472f072ee6bdf859694aed3"
+      "bytes": 34984,
+      "sha256": "e8bc078c88bdb75545f8316e1908c7082554b19a2a8ed60dd5bd39154b567d61"
     },
     {
       "path": "tests/assets.test.mjs",
-      "bytes": 2895,
-      "sha256": "1413c138aa60c10169b07061c62b3dcd6a07938a0c32b9c20ad110457cd774e3"
+      "bytes": 2905,
+      "sha256": "c0efc617ad1e55f91c002bbdd19e0bdd1398657dae0d78a989135dd72aa58a31"
     },
     {
-      "path": "tests/experience.test.mjs",
-      "bytes": 7796,
-      "sha256": "a7acba933e914ea971a3b358ef42119e8599288b61c65b06b78168b0f374440a"
+      "path": "tests/building-view.test.mjs",
+      "bytes": 8706,
+      "sha256": "f280bb7e08b257f70f8054ba1b33ee5b028dabaedfaf68cdb54979c7b0238089"
     },
     {
-      "path": "tests/modes.test.mjs",
-      "bytes": 5642,
-      "sha256": "dad9196a720503c87ce33b39b157fced33eb4588c2434f8817ef93cde1aac91a"
+      "path": "tests/campus.test.mjs",
+      "bytes": 4441,
+      "sha256": "db5170f67c91566381335d642bf34e64d46ef1f63a6bb81e6435404474903074"
+    },
+    {
+      "path": "tests/circulation.test.mjs",
+      "bytes": 4337,
+      "sha256": "6146889b1e866981f4bc7e9db4add17af8fcc616b9822f07da7be46477a29cc5"
+    },
+    {
+      "path": "tests/environment.test.mjs",
+      "bytes": 8049,
+      "sha256": "14986dc554dc17e2924930f24d2194951ad64d98e214d40fdf25247aa41822e3"
+    },
+    {
+      "path": "tests/installation.test.mjs",
+      "bytes": 5260,
+      "sha256": "6839d44669b1b1b0a7bc41a3bf62ac3aaeda22200979cc5d1b9a46ef8aaaf0c6"
+    },
+    {
+      "path": "tests/narration.test.mjs",
+      "bytes": 8448,
+      "sha256": "aa02a96e579c68bb7876781a2c873abfbca799cc91a251a9f30fa925f40f7c90"
     },
     {
       "path": "tests/network.test.mjs",
@@ -308,29 +672,89 @@
       "sha256": "038483e7066b45038a49919c1824168526afc83948079521de0993da74507639"
     },
     {
+      "path": "tests/presentation.test.mjs",
+      "bytes": 10030,
+      "sha256": "8e469341ac47ec82b373ee3556165ef7b16b9d78c5483ce65bf4645529139b74"
+    },
+    {
+      "path": "tests/room-access.test.mjs",
+      "bytes": 3292,
+      "sha256": "3d1b6da32a3c57cd98aaeba2bb98c114eeb7d4efd74e56594722728dc2eb4d9d"
+    },
+    {
       "path": "tests/scene.test.mjs",
       "bytes": 1236,
       "sha256": "731f75d70976135bf8411c802d3cca7bce4686950e358ac5a0d1a7c2312fb5a0"
     },
     {
+      "path": "tests/tour-ui.test.mjs",
+      "bytes": 4610,
+      "sha256": "733cd971728680eaade3bd1a79d2dce9a7683ea3a8318568e7f778cc9d441fa8"
+    },
+    {
+      "path": "tests/upgrade.test.mjs",
+      "bytes": 6545,
+      "sha256": "803bbdef04c3261a81e37161a797bd0d98c86a84782d77d9db5528b21f67176d"
+    },
+    {
+      "path": "tests/view-settings.test.mjs",
+      "bytes": 2438,
+      "sha256": "4920f26a33bdd3d1b92eb49412d0a85fe08737876fa567efd6a76c7cbecfbd3b"
+    },
+    {
+      "path": "tools/audit-circulation.mjs",
+      "bytes": 3348,
+      "sha256": "7bd57b2b042e09d1a87dfa7663f481361b08ac0885d4dac0506ee9d87348dce9"
+    },
+    {
+      "path": "tools/audit-environment.mjs",
+      "bytes": 2553,
+      "sha256": "fc07c5d81a46f23353a6a079623d4158f1191b09c4a0b797bb9b10bb79d35cc3"
+    },
+    {
+      "path": "tools/audit-layout.mjs",
+      "bytes": 2695,
+      "sha256": "fc99ecbf393121db580177fe363fc6a3f70017392c160dc4cd1176322b5664e7"
+    },
+    {
+      "path": "tools/audit-room-access.mjs",
+      "bytes": 6093,
+      "sha256": "a6e6132af7c1bd786b3684365590df0ab0c5fdd19b1b6d0348a3035f69923d44"
+    },
+    {
+      "path": "tools/build-static.mjs",
+      "bytes": 500,
+      "sha256": "f8d19799fef9992832007995d284e98534efd5f43336023418577ee94761d5d0"
+    },
+    {
       "path": "tools/export-assets.mjs",
-      "bytes": 2166,
-      "sha256": "c08a15f66006e9d864f0301798b0fb32697b2ae5acf49729cb1caca6af4ea588"
+      "bytes": 5567,
+      "sha256": "2fec0086d0a2009e26064731647acec697bcfaa5e3a3c7c7f917b4302fc3638a"
     },
     {
-      "path": "tools/png-canvas.mjs",
-      "bytes": 1724,
-      "sha256": "24957362350383c1d70b100968198fa8871b1c4f2ea43f6ce5f310b84f5d591e"
-    },
-    {
-      "path": "tools/prepare-static.mjs",
-      "bytes": 474,
-      "sha256": "2767e627d166ab089f812f61dc3016602a2299cdf923ca3ebcc7a9827d90f564"
+      "path": "tools/generate-tour-paths.mjs",
+      "bytes": 2681,
+      "sha256": "1f83b306871daa88b64af65826a53bc4458b9eb339463abd6a31f3ca20611c31"
     },
     {
       "path": "tools/prepare_floorplans.py",
       "bytes": 6812,
       "sha256": "b88afbf5a73506d02a6017ca152b445a1fb3d762b73a395dcc1b1799433435cc"
+    },
+    {
+      "path": "tools/render-campus-plan.mjs",
+      "bytes": 2781,
+      "sha256": "fcd829d358672e7524fcb18adef4a1e35bb858981c6fc47e089b37b5f218c4a1"
+    },
+    {
+      "path": "tools/render-front-office-plan.mjs",
+      "bytes": 2714,
+      "sha256": "6ced72c56e2dbb4078f75c007bc255273034608f279e05e0f581ffdc7aa7c3bf"
+    },
+    {
+      "path": "tools/render-room-layout.mjs",
+      "bytes": 3612,
+      "sha256": "d156af419888eef05ef9441b13ce5e7826adc333c06e57ebf5602bba5eed13b9"
     },
     {
       "path": "vendor/THREE-LICENSE.txt",
@@ -367,5 +791,43 @@
       "bytes": 603113,
       "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
     }
-  ]
+  ],
+  "baseFurnitureAndDevices": 108,
+  "testedDoorCrossings": 49,
+  "testedRoomAccessRoutes": 63,
+  "testedEquipmentAccessRoutes": 152,
+  "assetKinds": 68,
+  "campusObjectPlacements": 34,
+  "campusLightPositions": 11,
+  "totalLightPositions": 90,
+  "maximumDynamicLights": 8,
+  "presentationChapters": 14,
+  "presentationDurationSeconds": 315,
+  "testedRoomTourRoutes": 8,
+  "terminalDataOutlets": 24,
+  "lightingPresets": [
+    "day",
+    "dusk",
+    "night"
+  ],
+  "persistentLabelControl": true,
+  "buildingViewRegressionTests": 9,
+  "powerFeeds": 61,
+  "lanLinks": 54,
+  "fiberLinks": 4,
+  "radioLinks": 1,
+  "roomTourPanelCanHide": true,
+  "speechAudioTested": false,
+  "ttsAutomatedLifecycleTested": true,
+  "narrationLanguages": [
+    "id",
+    "en"
+  ],
+  "narrationStyles": [
+    "guide",
+    "presenter",
+    "calm"
+  ],
+  "narrationSentencePacing": true,
+  "narrationSubtitles": true
 }

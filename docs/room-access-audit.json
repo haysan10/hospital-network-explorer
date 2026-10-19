@@ -1,0 +1,7026 @@
+{
+  "version": "4.0.0",
+  "units": "illustrative scene units",
+  "floors": [
+    {
+      "floor": 1,
+      "doors": [
+        {
+          "id": "door-security-S-0",
+          "rooms": [
+            "security"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -11.595000000000002,
+            -5.72,
+            -10.8,
+            -3.8199999999999994
+          ],
+          "crossing": [
+            [
+              -11.197500000000002,
+              -5.289999999999999
+            ],
+            [
+              -11.197500000000002,
+              -4.25
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-front-toilet-S-1",
+          "rooms": [
+            "front-toilet"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -8.565000000000001,
+            -4.47,
+            -7.8950000000000005,
+            -3.0300000000000002
+          ],
+          "crossing": [
+            [
+              -8.23,
+              -4.27
+            ],
+            [
+              -8.23,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-igd-S-2",
+          "rooms": [
+            "igd"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -6.0024999999999995,
+            -4.7,
+            -4.922499999999999,
+            -2.8
+          ],
+          "crossing": [
+            [
+              -5.4624999999999995,
+              -4.27
+            ],
+            [
+              -5.4624999999999995,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-poly-S-3",
+          "rooms": [
+            "poly"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -1.8025000000000002,
+            -4.7,
+            -0.7225000000000001,
+            -2.8
+          ],
+          "crossing": [
+            [
+              -1.2625000000000002,
+              -4.27
+            ],
+            [
+              -1.2625000000000002,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-lab-S-4",
+          "rooms": [
+            "lab"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            2.3925,
+            -4.7,
+            3.4725,
+            -2.8
+          ],
+          "crossing": [
+            [
+              2.9325,
+              -4.27
+            ],
+            [
+              2.9325,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-pharmacy-S-5",
+          "rooms": [
+            "pharmacy"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            6.4174999999999995,
+            -4.7,
+            7.4975,
+            -2.8
+          ],
+          "crossing": [
+            [
+              6.9575,
+              -4.27
+            ],
+            [
+              6.9575,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-server-room-S-6",
+          "rooms": [
+            "server-room"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            10.585,
+            -4.7,
+            11.380000000000003,
+            -2.8
+          ],
+          "crossing": [
+            [
+              10.982500000000002,
+              -4.27
+            ],
+            [
+              10.982500000000002,
+              -3.23
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-rehab-N-7",
+          "rooms": [
+            "rehab"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -1.635,
+            -3.05,
+            -0.8400000000000001,
+            -1.1500000000000001
+          ],
+          "crossing": [
+            [
+              -1.2375,
+              -2.62
+            ],
+            [
+              -1.2375,
+              -1.58
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-radiology-N-8",
+          "rooms": [
+            "radiology"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            2.3675,
+            -2.8899999999999997,
+            3.4475000000000002,
+            -0.99
+          ],
+          "crossing": [
+            [
+              2.9075,
+              -2.46
+            ],
+            [
+              2.9075,
+              -1.42
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-usg-N-9",
+          "rooms": [
+            "usg"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            6.99,
+            -3.05,
+            7.785,
+            -1.1500000000000001
+          ],
+          "crossing": [
+            [
+              7.3875,
+              -2.62
+            ],
+            [
+              7.3875,
+              -1.58
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stairs-1-N-10",
+          "rooms": [
+            "stairs-1"
+          ],
+          "stall": false,
+          "portal": true,
+          "approach": [
+            10.9775,
+            -2.38,
+            12.057499999999997,
+            -1.82
+          ],
+          "crossing": [
+            [
+              11.517499999999998,
+              -2.3200000000000003
+            ],
+            [
+              11.517499999999998,
+              -1.8800000000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-kitchen-N-11",
+          "rooms": [
+            "kitchen"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -7.282500000000001,
+            2.5999999999999996,
+            -6.202500000000001,
+            4.5
+          ],
+          "crossing": [
+            [
+              -6.742500000000001,
+              3.03
+            ],
+            [
+              -6.742500000000001,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-laundry-N-12",
+          "rooms": [
+            "laundry"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -2.4125,
+            2.5999999999999996,
+            -1.3325,
+            4.5
+          ],
+          "crossing": [
+            [
+              -1.8725,
+              3.03
+            ],
+            [
+              -1.8725,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-storage-N-13",
+          "rooms": [
+            "storage"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            2.6425,
+            2.5999999999999996,
+            3.7225,
+            4.5
+          ],
+          "crossing": [
+            [
+              3.1825,
+              3.03
+            ],
+            [
+              3.1825,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-storage-E-14",
+          "rooms": [
+            "storage",
+            "ipsrs"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            4.62,
+            4.715,
+            6.06,
+            5.210000000000001
+          ],
+          "crossing": [
+            [
+              4.82,
+              4.9625
+            ],
+            [
+              5.859999999999999,
+              4.9625
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-storage-E-15",
+          "rooms": [
+            "storage",
+            "calibration"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            4.62,
+            6.29,
+            6.06,
+            6.760000000000001
+          ],
+          "crossing": [
+            [
+              4.82,
+              6.525
+            ],
+            [
+              5.859999999999999,
+              6.525
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-toilets-1-N-16",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            9.385,
+            2.83,
+            10.08,
+            4.27
+          ],
+          "crossing": [
+            [
+              9.7325,
+              3.03
+            ],
+            [
+              9.7325,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-toilets-1-N-17",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            10.985000000000001,
+            2.83,
+            11.655,
+            4.27
+          ],
+          "crossing": [
+            [
+              11.32,
+              3.03
+            ],
+            [
+              11.32,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-registration-main",
+          "rooms": [
+            "registration"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -10.08,
+            -0.64,
+            -8.180000000000001,
+            0.44000000000000006
+          ],
+          "crossing": [
+            [
+              -9.65,
+              -0.1
+            ],
+            [
+              -8.610000000000001,
+              -0.1
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-registration-north",
+          "rooms": [
+            "registration"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -8.59,
+            -3.05,
+            -7.510000000000001,
+            -1.1500000000000001
+          ],
+          "crossing": [
+            [
+              -8.05,
+              -2.62
+            ],
+            [
+              -8.05,
+              -1.58
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-registration-south",
+          "rooms": [
+            "registration"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -8.59,
+            0.95,
+            -7.510000000000001,
+            2.8499999999999996
+          ],
+          "crossing": [
+            [
+              -8.05,
+              1.38
+            ],
+            [
+              -8.05,
+              2.42
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-21",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.3092,
+            4.0725,
+            9.8092,
+            4.5024999999999995
+          ],
+          "crossing": [
+            [
+              8.7192,
+              4.2875
+            ],
+            [
+              9.3992,
+              4.2875
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-22",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.3092,
+            5.5475,
+            9.8092,
+            5.9775
+          ],
+          "crossing": [
+            [
+              8.7192,
+              5.7625
+            ],
+            [
+              9.3992,
+              5.7625
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-23",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.3092,
+            6.960000000000001,
+            9.8092,
+            7.390000000000001
+          ],
+          "crossing": [
+            [
+              8.7192,
+              7.175000000000001
+            ],
+            [
+              9.3992,
+              7.175000000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-24",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2742,
+            4.035,
+            12.7742,
+            4.465
+          ],
+          "crossing": [
+            [
+              11.6842,
+              4.25
+            ],
+            [
+              12.3642,
+              4.25
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-25",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2742,
+            5.4475,
+            12.7742,
+            5.8774999999999995
+          ],
+          "crossing": [
+            [
+              11.6842,
+              5.6625
+            ],
+            [
+              12.3642,
+              5.6625
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-26",
+          "rooms": [
+            "toilets-1"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2742,
+            6.91,
+            12.7742,
+            7.34
+          ],
+          "crossing": [
+            [
+              11.6842,
+              7.125
+            ],
+            [
+              12.3642,
+              7.125
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        }
+      ],
+      "rooms": [
+        {
+          "id": "security",
+          "hubs": [
+            [
+              -11.135,
+              -6.239999999999999
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-security-S-0",
+              "from": [
+                -11.197500000000002,
+                -5.109999999999999
+              ],
+              "path": [
+                [
+                  -11.197500000000002,
+                  -5.109999999999999
+                ],
+                [
+                  -11.135,
+                  -5.109999999999999
+                ],
+                [
+                  -11.135,
+                  -6.239999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "security-cabinet-0",
+              "kind": "cabinet",
+              "point": [
+                -12.26,
+                -6.87
+              ],
+              "path": [
+                [
+                  -11.135,
+                  -6.239999999999999
+                ],
+                [
+                  -12.26,
+                  -6.239999999999999
+                ],
+                [
+                  -12.26,
+                  -6.87
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-security",
+              "kind": "pc",
+              "point": [
+                -10,
+                -5.93
+              ],
+              "path": [
+                [
+                  -11.135,
+                  -6.239999999999999
+                ],
+                [
+                  -11.135,
+                  -5.93
+                ],
+                [
+                  -10,
+                  -5.93
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                -11.763974596215562,
+                -6.415999995470047
+              ],
+              "path": [
+                [
+                  -11.135,
+                  -6.239999999999999
+                ],
+                [
+                  -11.763974596215562,
+                  -6.239999999999999
+                ],
+                [
+                  -11.763974596215562,
+                  -6.415999995470047
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "front-toilet",
+          "hubs": [
+            [
+              -8.33,
+              -5.715
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-front-toilet-S-1",
+              "from": [
+                -8.23,
+                -4.09
+              ],
+              "path": [
+                [
+                  -8.23,
+                  -4.09
+                ],
+                [
+                  -8.33,
+                  -4.09
+                ],
+                [
+                  -8.33,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "front-toilet-toilet-0",
+              "kind": "toilet",
+              "point": [
+                -8.3,
+                -6.43
+              ],
+              "path": [
+                [
+                  -8.33,
+                  -5.715
+                ],
+                [
+                  -8.3,
+                  -5.715
+                ],
+                [
+                  -8.3,
+                  -6.43
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "front-toilet-sink-1",
+              "kind": "sink",
+              "point": [
+                -8.895000000000001,
+                -6.09
+              ],
+              "path": [
+                [
+                  -8.33,
+                  -5.715
+                ],
+                [
+                  -8.33,
+                  -6.09
+                ],
+                [
+                  -8.895000000000001,
+                  -6.09
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                -7.72,
+                -6.015999995470047
+              ],
+              "path": [
+                [
+                  -8.33,
+                  -5.715
+                ],
+                [
+                  -7.72,
+                  -5.715
+                ],
+                [
+                  -7.72,
+                  -6.015999995470047
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "igd",
+          "hubs": [
+            [
+              -5.424999999999999,
+              -5.715
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-igd-S-2",
+              "from": [
+                -5.4624999999999995,
+                -4.09
+              ],
+              "path": [
+                [
+                  -5.4624999999999995,
+                  -4.09
+                ],
+                [
+                  -5.424999999999999,
+                  -4.09
+                ],
+                [
+                  -5.424999999999999,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "igd-bed-0",
+              "kind": "bed",
+              "point": [
+                -6.52,
+                -5.029999999999999
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -5.424999999999999,
+                  -5.029999999999999
+                ],
+                [
+                  -6.52,
+                  -5.029999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "igd-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -6.72,
+                -4.58
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -5.424999999999999,
+                  -4.58
+                ],
+                [
+                  -6.72,
+                  -4.58
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-igd",
+              "kind": "pc",
+              "point": [
+                -4.12,
+                -5.879999999999999
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -4.12,
+                  -5.715
+                ],
+                [
+                  -4.12,
+                  -5.879999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                -5.199999995827675,
+                -6.980500001981854
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -5.199999995827675,
+                  -5.715
+                ],
+                [
+                  -5.199999995827675,
+                  -6.980500001981854
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -5.66054264638426,
+                -5.856085295152707
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -5.66054264638426,
+                  -5.715
+                ],
+                [
+                  -5.66054264638426,
+                  -5.856085295152707
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                -3.96,
+                -4.709999998807907
+              ],
+              "path": [
+                [
+                  -5.424999999999999,
+                  -5.715
+                ],
+                [
+                  -3.96,
+                  -5.715
+                ],
+                [
+                  -3.96,
+                  -4.709999998807907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "poly",
+          "hubs": [
+            [
+              -1.2750000000000004,
+              -5.715
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-poly-S-3",
+              "from": [
+                -1.2625000000000002,
+                -4.09
+              ],
+              "path": [
+                [
+                  -1.2625000000000002,
+                  -4.09
+                ],
+                [
+                  -1.2750000000000004,
+                  -4.09
+                ],
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "poly-bed-0",
+              "kind": "bed",
+              "point": [
+                -2.52,
+                -5.029999999999999
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  -1.2750000000000004,
+                  -5.029999999999999
+                ],
+                [
+                  -2.52,
+                  -5.029999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "poly-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -2.72,
+                -4.58
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  -1.2750000000000004,
+                  -4.58
+                ],
+                [
+                  -2.72,
+                  -4.58
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-poly",
+              "kind": "pc",
+              "point": [
+                0.09999999999999998,
+                -5.879999999999999
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  0.09999999999999998,
+                  -5.715
+                ],
+                [
+                  0.09999999999999998,
+                  -5.879999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                -1.1999999958276748,
+                -6.980500001981854
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  -1.1999999958276748,
+                  -5.715
+                ],
+                [
+                  -1.1999999958276748,
+                  -6.980500001981854
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -1.6605426463842612,
+                -5.856085295152707
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  -1.6605426463842612,
+                  -5.715
+                ],
+                [
+                  -1.6605426463842612,
+                  -5.856085295152707
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                0.26,
+                -4.709999998807907
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  0.26,
+                  -5.715
+                ],
+                [
+                  0.26,
+                  -4.709999998807907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "lab",
+          "hubs": [
+            [
+              2.87,
+              -5.715
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-lab-S-4",
+              "from": [
+                2.9325,
+                -4.09
+              ],
+              "path": [
+                [
+                  2.9325,
+                  -4.09
+                ],
+                [
+                  2.87,
+                  -4.09
+                ],
+                [
+                  2.87,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "lab-worktop-0",
+              "kind": "worktop",
+              "point": [
+                1.53,
+                -6.81
+              ],
+              "path": [
+                [
+                  2.87,
+                  -5.715
+                ],
+                [
+                  1.53,
+                  -5.715
+                ],
+                [
+                  1.53,
+                  -6.81
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "lab-worktop-1",
+              "kind": "worktop",
+              "point": [
+                2.69,
+                -6.81
+              ],
+              "path": [
+                [
+                  2.87,
+                  -5.715
+                ],
+                [
+                  2.69,
+                  -5.715
+                ],
+                [
+                  2.69,
+                  -6.81
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "lab-sink-2",
+              "kind": "sink",
+              "point": [
+                4.380000000000001,
+                -6.865
+              ],
+              "path": [
+                [
+                  2.87,
+                  -5.715
+                ],
+                [
+                  4.380000000000001,
+                  -5.715
+                ],
+                [
+                  4.380000000000001,
+                  -6.865
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-lab",
+              "kind": "pc",
+              "point": [
+                4.2,
+                -5.44
+              ],
+              "path": [
+                [
+                  2.87,
+                  -5.715
+                ],
+                [
+                  4.2,
+                  -5.715
+                ],
+                [
+                  4.2,
+                  -5.44
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                1.17,
+                -4.574000004529953
+              ],
+              "path": [
+                [
+                  2.87,
+                  -5.715
+                ],
+                [
+                  1.17,
+                  -5.715
+                ],
+                [
+                  1.17,
+                  -4.574000004529953
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "pharmacy",
+          "hubs": [
+            [
+              6.895,
+              -5.715
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-pharmacy-S-5",
+              "from": [
+                6.9575,
+                -4.09
+              ],
+              "path": [
+                [
+                  6.9575,
+                  -4.09
+                ],
+                [
+                  6.895,
+                  -4.09
+                ],
+                [
+                  6.895,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "pharmacy-cabinet-0",
+              "kind": "cabinet",
+              "point": [
+                5.63,
+                -6.85
+              ],
+              "path": [
+                [
+                  6.895,
+                  -5.715
+                ],
+                [
+                  5.63,
+                  -5.715
+                ],
+                [
+                  5.63,
+                  -6.85
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pharmacy-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                6.79,
+                -6.85
+              ],
+              "path": [
+                [
+                  6.895,
+                  -5.715
+                ],
+                [
+                  6.79,
+                  -5.715
+                ],
+                [
+                  6.79,
+                  -6.85
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-pharmacy",
+              "kind": "pc",
+              "point": [
+                8.2,
+                -5.44
+              ],
+              "path": [
+                [
+                  6.895,
+                  -5.715
+                ],
+                [
+                  8.2,
+                  -5.715
+                ],
+                [
+                  8.2,
+                  -5.44
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                5.42,
+                -4.709999998807907
+              ],
+              "path": [
+                [
+                  6.895,
+                  -5.715
+                ],
+                [
+                  5.42,
+                  -5.715
+                ],
+                [
+                  5.42,
+                  -4.709999998807907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "server-room",
+          "hubs": [
+            [
+              11.045000000000002,
+              -6.015
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-server-room-S-6",
+              "from": [
+                10.982500000000002,
+                -4.09
+              ],
+              "path": [
+                [
+                  10.982500000000002,
+                  -4.09
+                ],
+                [
+                  11.57,
+                  -4.0649999999999995
+                ],
+                [
+                  11.57,
+                  -6.015
+                ],
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  11.045000000000002,
+                  -6.015
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "server",
+              "kind": "server",
+              "point": [
+                11.59,
+                -6.8
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  11.59,
+                  -6.015
+                ],
+                [
+                  11.59,
+                  -6.8
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "core",
+              "kind": "switch",
+              "point": [
+                10.9,
+                -7.175
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  11.57,
+                  -6.015
+                ],
+                [
+                  11.57,
+                  -7.14
+                ],
+                [
+                  10.895000000000001,
+                  -7.14
+                ],
+                [
+                  10.9,
+                  -7.175
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "firewall",
+              "kind": "router",
+              "point": [
+                10,
+                -7.175
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  11.57,
+                  -6.015
+                ],
+                [
+                  11.57,
+                  -7.14
+                ],
+                [
+                  9.995000000000001,
+                  -7.14
+                ],
+                [
+                  10,
+                  -7.175
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sw-north",
+              "kind": "switch",
+              "point": [
+                10.9,
+                -6.074999999999999
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  10.9,
+                  -6.015
+                ],
+                [
+                  10.9,
+                  -6.074999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ups-1",
+              "kind": "ups",
+              "point": [
+                12.3,
+                -5.0649999999999995
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  12.3,
+                  -6.015
+                ],
+                [
+                  12.3,
+                  -5.0649999999999995
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "panel-1",
+              "kind": "panel",
+              "point": [
+                12.88,
+                -5.6499999999999995
+              ],
+              "path": [
+                [
+                  11.045000000000002,
+                  -6.015
+                ],
+                [
+                  12.88,
+                  -6.015
+                ],
+                [
+                  12.88,
+                  -5.6499999999999995
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "registration",
+          "hubs": [
+            [
+              -6.305000000000001,
+              -0.10000000000000009
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-registration-main",
+              "from": [
+                -8.790000000000001,
+                -0.1
+              ],
+              "path": [
+                [
+                  -8.790000000000001,
+                  -0.1
+                ],
+                [
+                  -6.305000000000001,
+                  -0.1
+                ],
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-registration-north",
+              "from": [
+                -8.05,
+                -1.76
+              ],
+              "path": [
+                [
+                  -8.05,
+                  -1.76
+                ],
+                [
+                  -8.05,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-registration-south",
+              "from": [
+                -8.05,
+                1.5599999999999998
+              ],
+              "path": [
+                [
+                  -8.05,
+                  1.5599999999999998
+                ],
+                [
+                  -6.305000000000001,
+                  1.5599999999999998
+                ],
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "registration-registration-counter-0",
+              "kind": "registration-counter",
+              "point": [
+                -5.5,
+                1.1099999999999999
+              ],
+              "path": [
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.305000000000001,
+                  1.1099999999999999
+                ],
+                [
+                  -5.5,
+                  1.1099999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "registration-waiting-bench-1",
+              "kind": "waiting-bench",
+              "point": [
+                -6.25,
+                -1.215
+              ],
+              "path": [
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.25,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.25,
+                  -1.215
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-registration",
+              "kind": "reception-terminal",
+              "point": [
+                -4.25,
+                -0.09999999999999998
+              ],
+              "path": [
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.08,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.08,
+                  1.0999999999999996
+                ],
+                [
+                  -4.28,
+                  1.0999999999999996
+                ],
+                [
+                  -4.28,
+                  -0.10000000000000009
+                ],
+                [
+                  -4.25,
+                  -0.09999999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "plant",
+              "kind": "plant",
+              "point": [
+                -3.77824124950319,
+                -1.1875629430141463
+              ],
+              "path": [
+                [
+                  -6.305000000000001,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.08,
+                  -0.10000000000000009
+                ],
+                [
+                  -6.08,
+                  1.0999999999999996
+                ],
+                [
+                  -3.755000000000001,
+                  1.0999999999999996
+                ],
+                [
+                  -3.755000000000001,
+                  -1.225
+                ],
+                [
+                  -3.77824124950319,
+                  -1.1875629430141463
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "rehab",
+          "hubs": [
+            [
+              -1.35,
+              -0.10000000000000009
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-rehab-N-7",
+              "from": [
+                -1.2375,
+                -1.76
+              ],
+              "path": [
+                [
+                  -1.2375,
+                  -1.76
+                ],
+                [
+                  -1.2375,
+                  -0.10000000000000009
+                ],
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "rehab-bed-0",
+              "kind": "bed",
+              "point": [
+                -2.52,
+                0.51
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -1.35,
+                  0.51
+                ],
+                [
+                  -2.52,
+                  0.51
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "rehab-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -2.72,
+                1.07
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -1.35,
+                  1.07
+                ],
+                [
+                  -2.72,
+                  1.07
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-rehab",
+              "kind": "pc",
+              "point": [
+                -0.030000000000000027,
+                -0.33999999999999997
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.030000000000000027,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.030000000000000027,
+                  -0.33999999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                -1.6994999980181456,
+                -1.3400000041723252
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -1.2750000000000004,
+                  -0.10000000000000009
+                ],
+                [
+                  -1.2750000000000004,
+                  -1.3000000000000003
+                ],
+                [
+                  -1.7250000000000003,
+                  -1.3000000000000003
+                ],
+                [
+                  -1.7250000000000003,
+                  -1.3750000000000002
+                ],
+                [
+                  -1.6994999980181456,
+                  -1.3400000041723252
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -0.7945172425998226,
+                -0.12391470484729206
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.7945172425998226,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.7945172425998226,
+                  -0.12391470484729206
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "parallel-bars",
+              "kind": "parallel-bars",
+              "point": [
+                -0.06999999999999995,
+                0.019999999999999907
+              ],
+              "path": [
+                [
+                  -1.35,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.06999999999999995,
+                  -0.10000000000000009
+                ],
+                [
+                  -0.06999999999999995,
+                  0.019999999999999907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "radiology",
+          "hubs": [
+            [
+              2.87,
+              -0.09000000000000008
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-radiology-N-8",
+              "from": [
+                2.9075,
+                -1.5999999999999999
+              ],
+              "path": [
+                [
+                  2.9075,
+                  -1.5999999999999999
+                ],
+                [
+                  2.87,
+                  -1.5999999999999999
+                ],
+                [
+                  2.87,
+                  -0.09000000000000008
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "radiology-ct-scanner-0",
+              "kind": "ct-scanner",
+              "point": [
+                1.62,
+                0.935
+              ],
+              "path": [
+                [
+                  2.87,
+                  -0.09000000000000008
+                ],
+                [
+                  2.87,
+                  0.935
+                ],
+                [
+                  1.62,
+                  0.935
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-radiology",
+              "kind": "pc",
+              "point": [
+                4.2,
+                0.04999999999999982
+              ],
+              "path": [
+                [
+                  2.87,
+                  -0.09000000000000008
+                ],
+                [
+                  4.2,
+                  -0.09000000000000008
+                ],
+                [
+                  4.2,
+                  0.04999999999999982
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "usg",
+          "hubs": [
+            [
+              7.475,
+              -0.10000000000000009
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-usg-N-9",
+              "from": [
+                7.3875,
+                -1.76
+              ],
+              "path": [
+                [
+                  7.3875,
+                  -1.76
+                ],
+                [
+                  7.475,
+                  -1.76
+                ],
+                [
+                  7.475,
+                  -0.10000000000000009
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "usg-bed-0",
+              "kind": "bed",
+              "point": [
+                5.93,
+                0.51
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  7.475,
+                  0.51
+                ],
+                [
+                  5.93,
+                  0.51
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "usg-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                5.7299999999999995,
+                1.07
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  7.475,
+                  1.07
+                ],
+                [
+                  5.7299999999999995,
+                  1.07
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-usg",
+              "kind": "pc",
+              "point": [
+                9.16,
+                -0.33999999999999997
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  9.16,
+                  -0.10000000000000009
+                ],
+                [
+                  9.16,
+                  -0.33999999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                6.76,
+                -1.3250000035762788
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  7.475,
+                  -1.3250000035762788
+                ],
+                [
+                  6.76,
+                  -1.3250000035762788
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                6.789457353615739,
+                0.2839147048472919
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  7.475,
+                  0.2839147048472919
+                ],
+                [
+                  6.789457353615739,
+                  0.2839147048472919
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ultrasound",
+              "kind": "ultrasound",
+              "point": [
+                9.348005570173264,
+                0.9500000065565108
+              ],
+              "path": [
+                [
+                  7.475,
+                  -0.10000000000000009
+                ],
+                [
+                  9.348005570173264,
+                  -0.10000000000000009
+                ],
+                [
+                  9.348005570173264,
+                  0.9500000065565108
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "stairs-1",
+          "structuralStair": true,
+          "doors": [
+            "door-stairs-1-N-10"
+          ]
+        },
+        {
+          "id": "kitchen",
+          "hubs": [
+            [
+              -6.83,
+              5.625
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-kitchen-N-11",
+              "from": [
+                -6.742500000000001,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  -6.742500000000001,
+                  3.8899999999999997
+                ],
+                [
+                  -6.83,
+                  3.8899999999999997
+                ],
+                [
+                  -6.83,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "kitchen-worktop-0",
+              "kind": "worktop",
+              "point": [
+                -8.3,
+                4.21
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -8.3,
+                  5.625
+                ],
+                [
+                  -8.3,
+                  4.21
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "kitchen-worktop-1",
+              "kind": "worktop",
+              "point": [
+                -8.3,
+                5.37
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -8.3,
+                  5.625
+                ],
+                [
+                  -8.3,
+                  5.37
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "kitchen-worktop-2",
+              "kind": "worktop",
+              "point": [
+                -8.81,
+                7.339999999999999
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -6.83,
+                  7.339999999999999
+                ],
+                [
+                  -8.81,
+                  7.339999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "kitchen-sink-3",
+              "kind": "sink",
+              "point": [
+                -4.949999999999999,
+                4.324999999999999
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -4.949999999999999,
+                  5.625
+                ],
+                [
+                  -4.949999999999999,
+                  4.324999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-kitchen",
+              "kind": "pc",
+              "point": [
+                -5.13,
+                6.06
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -5.13,
+                  5.625
+                ],
+                [
+                  -5.13,
+                  6.06
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "fridge",
+              "kind": "fridge",
+              "point": [
+                -8.13,
+                6.095000013113022
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -8.13,
+                  5.625
+                ],
+                [
+                  -8.13,
+                  6.095000013113022
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "laundry",
+          "hubs": [
+            [
+              -1.7600000000000002,
+              5.625
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-laundry-N-12",
+              "from": [
+                -1.8725,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  -1.8725,
+                  3.8899999999999997
+                ],
+                [
+                  -1.7600000000000002,
+                  3.8899999999999997
+                ],
+                [
+                  -1.7600000000000002,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "laundry-washer-0",
+              "kind": "washer",
+              "point": [
+                -3.33,
+                4.1499999999999995
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -3.33,
+                  5.625
+                ],
+                [
+                  -3.33,
+                  4.1499999999999995
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "laundry-washer-1",
+              "kind": "washer",
+              "point": [
+                -3.33,
+                5.01
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -3.33,
+                  5.625
+                ],
+                [
+                  -3.33,
+                  5.01
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "laundry-washer-2",
+              "kind": "washer",
+              "point": [
+                -3.92,
+                6.469999999999999
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -1.7600000000000002,
+                  6.469999999999999
+                ],
+                [
+                  -3.92,
+                  6.469999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "laundry-worktop-3",
+              "kind": "worktop",
+              "point": [
+                -3.6400000000000006,
+                6.92
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -1.7600000000000002,
+                  6.92
+                ],
+                [
+                  -3.6400000000000006,
+                  6.92
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-laundry",
+              "kind": "pc",
+              "point": [
+                0.18999999999999995,
+                6.06
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  0.18999999999999995,
+                  5.625
+                ],
+                [
+                  0.18999999999999995,
+                  6.06
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "hamper",
+              "kind": "hamper",
+              "point": [
+                0.44999999999999996,
+                4.615000005960464
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -1.7600000000000002,
+                  4.615000005960464
+                ],
+                [
+                  0.44999999999999996,
+                  4.615000005960464
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "storage",
+          "hubs": [
+            [
+              3.12,
+              5.625
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-storage-N-13",
+              "from": [
+                3.1825,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  3.1825,
+                  3.8899999999999997
+                ],
+                [
+                  3.12,
+                  3.8899999999999997
+                ],
+                [
+                  3.12,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-storage-E-14",
+              "from": [
+                5,
+                4.9625
+              ],
+              "path": [
+                [
+                  5,
+                  4.9625
+                ],
+                [
+                  3.12,
+                  4.9625
+                ],
+                [
+                  3.12,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-storage-E-15",
+              "from": [
+                5,
+                6.525
+              ],
+              "path": [
+                [
+                  5,
+                  6.525
+                ],
+                [
+                  5,
+                  5.625
+                ],
+                [
+                  3.12,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "storage-shelf-0",
+              "kind": "shelf",
+              "point": [
+                1.7750000000000001,
+                4.21
+              ],
+              "path": [
+                [
+                  3.12,
+                  5.625
+                ],
+                [
+                  1.7750000000000001,
+                  5.625
+                ],
+                [
+                  1.7750000000000001,
+                  4.21
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "storage-shelf-1",
+              "kind": "shelf",
+              "point": [
+                1.29,
+                6.18
+              ],
+              "path": [
+                [
+                  3.12,
+                  5.625
+                ],
+                [
+                  1.77,
+                  5.625
+                ],
+                [
+                  1.77,
+                  6.1499999999999995
+                ],
+                [
+                  1.3199999999999998,
+                  6.1499999999999995
+                ],
+                [
+                  1.29,
+                  6.18
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-storage",
+              "kind": "pc",
+              "point": [
+                3,
+                6.06
+              ],
+              "path": [
+                [
+                  3.12,
+                  5.625
+                ],
+                [
+                  3,
+                  5.625
+                ],
+                [
+                  3,
+                  6.06
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                1.47,
+                6.770000001192093
+              ],
+              "path": [
+                [
+                  3.12,
+                  5.625
+                ],
+                [
+                  1.77,
+                  5.625
+                ],
+                [
+                  1.77,
+                  6.1499999999999995
+                ],
+                [
+                  1.47,
+                  6.1499999999999995
+                ],
+                [
+                  1.47,
+                  6.75
+                ],
+                [
+                  1.47,
+                  6.770000001192093
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ipsrs",
+          "hubs": [
+            [
+              6.625,
+              4.574999999999999
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-storage-E-14",
+              "from": [
+                5.68,
+                4.9625
+              ],
+              "path": [
+                [
+                  5.68,
+                  4.9625
+                ],
+                [
+                  6.625,
+                  4.9625
+                ],
+                [
+                  6.625,
+                  4.574999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "sw-south",
+              "kind": "switch",
+              "point": [
+                6.65,
+                4.574999999999999
+              ],
+              "path": [
+                [
+                  6.625,
+                  4.574999999999999
+                ],
+                [
+                  6.65,
+                  4.574999999999999
+                ],
+                [
+                  6.65,
+                  4.574999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ipsrs",
+              "kind": "wall-terminal",
+              "point": [
+                7.33,
+                4.85
+              ],
+              "path": [
+                [
+                  6.625,
+                  4.574999999999999
+                ],
+                [
+                  7.33,
+                  4.574999999999999
+                ],
+                [
+                  7.33,
+                  4.85
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "calibration",
+          "hubs": [
+            [
+              6.625,
+              6.735
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-storage-E-15",
+              "from": [
+                5.68,
+                6.525
+              ],
+              "path": [
+                [
+                  5.68,
+                  6.525
+                ],
+                [
+                  6.625,
+                  6.525
+                ],
+                [
+                  6.625,
+                  6.735
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "calibration-worktop-0",
+              "kind": "worktop",
+              "point": [
+                6.65,
+                6.54
+              ],
+              "path": [
+                [
+                  6.625,
+                  6.735
+                ],
+                [
+                  6.65,
+                  6.735
+                ],
+                [
+                  6.65,
+                  6.54
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "calibration-sink-1",
+              "kind": "sink",
+              "point": [
+                7.48,
+                6.855
+              ],
+              "path": [
+                [
+                  6.625,
+                  6.735
+                ],
+                [
+                  7.48,
+                  6.735
+                ],
+                [
+                  7.48,
+                  6.855
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                5.75,
+                6.925999995470047
+              ],
+              "path": [
+                [
+                  6.625,
+                  6.735
+                ],
+                [
+                  5.75,
+                  6.735
+                ],
+                [
+                  5.75,
+                  6.925999995470047
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "toilets-1",
+          "hubs": [
+            [
+              10.27,
+              5.625
+            ],
+            [
+              10.795,
+              5.625
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-toilets-1-N-16",
+              "from": [
+                9.7325,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  9.7325,
+                  3.8899999999999997
+                ],
+                [
+                  10.27,
+                  3.8899999999999997
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-toilets-1-N-17",
+              "from": [
+                11.32,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  11.32,
+                  3.8899999999999997
+                ],
+                [
+                  10.795,
+                  3.8899999999999997
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-21",
+              "from": [
+                8.7192,
+                4.2875
+              ],
+              "path": [
+                [
+                  8.7192,
+                  4.2875
+                ],
+                [
+                  10.27,
+                  4.2875
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-21",
+              "from": [
+                9.3992,
+                4.2875
+              ],
+              "path": [
+                [
+                  9.3992,
+                  4.2875
+                ],
+                [
+                  10.27,
+                  4.2875
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-22",
+              "from": [
+                8.7192,
+                5.7625
+              ],
+              "path": [
+                [
+                  8.7192,
+                  5.7625
+                ],
+                [
+                  10.27,
+                  5.7625
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-22",
+              "from": [
+                9.3992,
+                5.7625
+              ],
+              "path": [
+                [
+                  9.3992,
+                  5.7625
+                ],
+                [
+                  10.27,
+                  5.7625
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-23",
+              "from": [
+                8.7192,
+                7.175000000000001
+              ],
+              "path": [
+                [
+                  8.7192,
+                  7.175000000000001
+                ],
+                [
+                  10.27,
+                  7.175000000000001
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-23",
+              "from": [
+                9.3992,
+                7.175000000000001
+              ],
+              "path": [
+                [
+                  9.3992,
+                  7.175000000000001
+                ],
+                [
+                  10.27,
+                  7.175000000000001
+                ],
+                [
+                  10.27,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-24",
+              "from": [
+                11.6842,
+                4.25
+              ],
+              "path": [
+                [
+                  11.6842,
+                  4.25
+                ],
+                [
+                  10.795,
+                  4.25
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-24",
+              "from": [
+                12.3642,
+                4.25
+              ],
+              "path": [
+                [
+                  12.3642,
+                  4.25
+                ],
+                [
+                  10.795,
+                  4.25
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-25",
+              "from": [
+                11.6842,
+                5.6625
+              ],
+              "path": [
+                [
+                  11.6842,
+                  5.6625
+                ],
+                [
+                  10.795,
+                  5.6625
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-25",
+              "from": [
+                12.3642,
+                5.6625
+              ],
+              "path": [
+                [
+                  12.3642,
+                  5.6625
+                ],
+                [
+                  10.795,
+                  5.6625
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-26",
+              "from": [
+                11.6842,
+                7.125
+              ],
+              "path": [
+                [
+                  11.6842,
+                  7.125
+                ],
+                [
+                  10.795,
+                  7.125
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-1-26",
+              "from": [
+                12.3642,
+                7.125
+              ],
+              "path": [
+                [
+                  12.3642,
+                  7.125
+                ],
+                [
+                  10.795,
+                  7.125
+                ],
+                [
+                  10.795,
+                  5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "toilets-1-toilet-0",
+              "kind": "toilet",
+              "point": [
+                8.36,
+                4.2875
+              ],
+              "path": [
+                [
+                  10.27,
+                  5.625
+                ],
+                [
+                  10.27,
+                  4.2875
+                ],
+                [
+                  8.36,
+                  4.2875
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-1-toilet-1",
+              "kind": "toilet",
+              "point": [
+                8.36,
+                5.7625
+              ],
+              "path": [
+                [
+                  10.27,
+                  5.625
+                ],
+                [
+                  10.27,
+                  5.7625
+                ],
+                [
+                  8.36,
+                  5.7625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-1-toilet-2",
+              "kind": "toilet",
+              "point": [
+                8.36,
+                7.175
+              ],
+              "path": [
+                [
+                  10.27,
+                  5.625
+                ],
+                [
+                  10.27,
+                  7.175
+                ],
+                [
+                  8.36,
+                  7.175
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-1-toilet-3",
+              "kind": "toilet",
+              "point": [
+                12.7,
+                4.245
+              ],
+              "path": [
+                [
+                  10.795,
+                  5.625
+                ],
+                [
+                  10.795,
+                  4.245
+                ],
+                [
+                  12.7,
+                  4.245
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-1-toilet-4",
+              "kind": "toilet",
+              "point": [
+                12.7,
+                5.6575
+              ],
+              "path": [
+                [
+                  10.795,
+                  5.625
+                ],
+                [
+                  12.7,
+                  5.625
+                ],
+                [
+                  12.7,
+                  5.6575
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-1-toilet-5",
+              "kind": "toilet",
+              "point": [
+                12.7,
+                7.132499999999999
+              ],
+              "path": [
+                [
+                  10.795,
+                  5.625
+                ],
+                [
+                  10.795,
+                  7.132499999999999
+                ],
+                [
+                  12.7,
+                  7.132499999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sink",
+              "kind": "sink",
+              "point": [
+                12.52000000000001,
+                5.674999996423726
+              ],
+              "path": [
+                [
+                  10.795,
+                  5.625
+                ],
+                [
+                  12.52000000000001,
+                  5.625
+                ],
+                [
+                  12.52000000000001,
+                  5.674999996423726
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                11.26115427318801,
+                6.075999995470048
+              ],
+              "path": [
+                [
+                  10.795,
+                  5.625
+                ],
+                [
+                  11.26115427318801,
+                  5.625
+                ],
+                [
+                  11.26115427318801,
+                  6.075999995470048
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "corridor-n",
+          "hubs": [
+            [
+              1.9449999999999985,
+              -2.915
+            ]
+          ],
+          "routes": [],
+          "equipment": [
+            {
+              "id": "corridor-n-waiting-bench-0",
+              "kind": "waiting-bench",
+              "point": [
+                -3.4000000000000004,
+                -2.8449999999999998
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  -2.915
+                ],
+                [
+                  -3.4000000000000004,
+                  -2.915
+                ],
+                [
+                  -3.4000000000000004,
+                  -2.8449999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "corridor-n-waiting-bench-1",
+              "kind": "waiting-bench",
+              "point": [
+                0.8,
+                -2.8449999999999998
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  -2.915
+                ],
+                [
+                  0.8,
+                  -2.915
+                ],
+                [
+                  0.8,
+                  -2.8449999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "corridor-n-waiting-bench-2",
+              "kind": "waiting-bench",
+              "point": [
+                8.9,
+                -2.8449999999999998
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  -2.915
+                ],
+                [
+                  8.9,
+                  -2.915
+                ],
+                [
+                  8.9,
+                  -2.8449999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                12.68,
+                -2.915999995470047
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  -2.915
+                ],
+                [
+                  12.68,
+                  -2.915
+                ],
+                [
+                  12.68,
+                  -2.915999995470047
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "corridor-s",
+          "hubs": [
+            [
+              1.9449999999999985,
+              2.6599999999999997
+            ]
+          ],
+          "routes": [],
+          "equipment": [
+            {
+              "id": "corridor-s-waiting-bench-0",
+              "kind": "waiting-bench",
+              "point": [
+                -4.4,
+                2.6449999999999996
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  2.6599999999999997
+                ],
+                [
+                  -4.4,
+                  2.6599999999999997
+                ],
+                [
+                  -4.4,
+                  2.6449999999999996
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "corridor-s-waiting-bench-1",
+              "kind": "waiting-bench",
+              "point": [
+                0.8500000000000001,
+                2.6449999999999996
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  2.6599999999999997
+                ],
+                [
+                  0.8500000000000001,
+                  2.6599999999999997
+                ],
+                [
+                  0.8500000000000001,
+                  2.6449999999999996
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                12.506794919243111,
+                2.6340000045299528
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  2.6599999999999997
+                ],
+                [
+                  12.506794919243111,
+                  2.6599999999999997
+                ],
+                [
+                  12.506794919243111,
+                  2.6340000045299528
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "water-dispenser",
+              "kind": "water-dispenser",
+              "point": [
+                -8.88,
+                2.6899999964237207
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  2.6599999999999997
+                ],
+                [
+                  -8.88,
+                  2.6599999999999997
+                ],
+                [
+                  -8.88,
+                  2.6899999964237207
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "floor": 2,
+      "doors": [
+        {
+          "id": "door-ward-a-S-0",
+          "rooms": [
+            "ward-a"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -6.184999999999999,
+            -5.2299999999999995,
+            -5.6899999999999995,
+            -3.79
+          ],
+          "crossing": [
+            [
+              -5.937499999999999,
+              -5.029999999999999
+            ],
+            [
+              -5.937499999999999,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-ward-b-S-1",
+          "rooms": [
+            "ward-b"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -2.4099999999999993,
+            -5.2299999999999995,
+            -1.9149999999999998,
+            -3.79
+          ],
+          "crossing": [
+            [
+              -2.1624999999999996,
+              -5.029999999999999
+            ],
+            [
+              -2.1624999999999996,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-ward-c-S-2",
+          "rooms": [
+            "ward-c"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            1.0450000000000002,
+            -5.2299999999999995,
+            1.5150000000000003,
+            -3.79
+          ],
+          "crossing": [
+            [
+              1.2800000000000002,
+              -5.029999999999999
+            ],
+            [
+              1.2800000000000002,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-icu-S-3",
+          "rooms": [
+            "icu"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            4.615,
+            -5.46,
+            5.695,
+            -3.5599999999999996
+          ],
+          "crossing": [
+            [
+              5.155,
+              -5.029999999999999
+            ],
+            [
+              5.155,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-toilets-2-S-4",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            9.839999999999998,
+            -5.2299999999999995,
+            10.334999999999999,
+            -3.79
+          ],
+          "crossing": [
+            [
+              10.087499999999999,
+              -5.029999999999999
+            ],
+            [
+              10.087499999999999,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-toilets-2-S-5",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            11.115,
+            -5.2299999999999995,
+            11.610000000000001,
+            -3.79
+          ],
+          "crossing": [
+            [
+              11.3625,
+              -5.029999999999999
+            ],
+            [
+              11.3625,
+              -3.9899999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-operation-N-6",
+          "rooms": [
+            "operation"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -7.927499999999999,
+            -3.25,
+            -6.847499999999999,
+            -1.3499999999999999
+          ],
+          "crossing": [
+            [
+              -7.387499999999999,
+              -2.82
+            ],
+            [
+              -7.387499999999999,
+              -1.7799999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-operation-S-7",
+          "rooms": [
+            "operation",
+            "ok-1"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -8.334999999999999,
+            -0.6599999999999999,
+            -7.839999999999999,
+            0.78
+          ],
+          "crossing": [
+            [
+              -8.087499999999999,
+              -0.45999999999999996
+            ],
+            [
+              -8.087499999999999,
+              0.5800000000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-operation-S-8",
+          "rooms": [
+            "operation",
+            "ok-2"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -5.959999999999999,
+            -0.6599999999999999,
+            -5.49,
+            0.78
+          ],
+          "crossing": [
+            [
+              -5.725,
+              -0.45999999999999996
+            ],
+            [
+              -5.725,
+              0.5800000000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-operation-E-9",
+          "rooms": [
+            "operation"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -5.720000000000001,
+            -0.9849999999999997,
+            -3.8200000000000003,
+            0.010000000000000508
+          ],
+          "crossing": [
+            [
+              -5.290000000000001,
+              -0.4874999999999996
+            ],
+            [
+              -4.25,
+              -0.4874999999999996
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-changing-S-10",
+          "rooms": [
+            "changing"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -4.02,
+            -1.89,
+            -3.5500000000000003,
+            -0.44999999999999996
+          ],
+          "crossing": [
+            [
+              -3.785,
+              -1.69
+            ],
+            [
+              -3.785,
+              -0.6499999999999999
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-ok-3-N-11",
+          "rooms": [
+            "ok-3"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -3.375,
+            -0.5399999999999998,
+            -2.88,
+            0.9000000000000001
+          ],
+          "crossing": [
+            [
+              -3.1275,
+              -0.33999999999999986
+            ],
+            [
+              -3.1275,
+              0.7000000000000002
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-management-N-12",
+          "rooms": [
+            "management"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -0.2875000000000004,
+            -3.25,
+            0.7924999999999996,
+            -1.3499999999999999
+          ],
+          "crossing": [
+            [
+              0.2524999999999996,
+              -2.82
+            ],
+            [
+              0.2524999999999996,
+              -1.7799999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-doctors-N-13",
+          "rooms": [
+            "doctors"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            3.245,
+            -3.0199999999999996,
+            3.715,
+            -1.5799999999999998
+          ],
+          "crossing": [
+            [
+              3.48,
+              -2.82
+            ],
+            [
+              3.48,
+              -1.7799999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-nurse-N-14",
+          "rooms": [
+            "nurse"
+          ],
+          "stall": false,
+          "portal": true,
+          "approach": [
+            7.284999999999999,
+            -3.25,
+            8.364999999999998,
+            -1.3499999999999999
+          ],
+          "crossing": [
+            [
+              7.824999999999999,
+              -2.82
+            ],
+            [
+              7.824999999999999,
+              -1.7799999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stairs-2-N-15",
+          "rooms": [
+            "stairs-2"
+          ],
+          "stall": false,
+          "portal": true,
+          "approach": [
+            10.9725,
+            -2.58,
+            12.052499999999998,
+            -2.0199999999999996
+          ],
+          "crossing": [
+            [
+              11.5125,
+              -2.52
+            ],
+            [
+              11.5125,
+              -2.0799999999999996
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-16",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.5825,
+            -7.8925,
+            10.0825,
+            -7.4625
+          ],
+          "crossing": [
+            [
+              8.9925,
+              -7.6775
+            ],
+            [
+              9.6725,
+              -7.6775
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-17",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.5825,
+            -6.5925,
+            10.0825,
+            -6.1625000000000005
+          ],
+          "crossing": [
+            [
+              8.9925,
+              -6.3775
+            ],
+            [
+              9.6725,
+              -6.3775
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-18",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            8.5825,
+            -5.367500000000001,
+            10.0825,
+            -4.937500000000001
+          ],
+          "crossing": [
+            [
+              8.9925,
+              -5.152500000000001
+            ],
+            [
+              9.6725,
+              -5.152500000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-19",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2975,
+            -7.942500000000001,
+            12.7975,
+            -7.512500000000001
+          ],
+          "crossing": [
+            [
+              11.7075,
+              -7.727500000000001
+            ],
+            [
+              12.3875,
+              -7.727500000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-20",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2975,
+            -6.567500000000001,
+            12.7975,
+            -6.137500000000001
+          ],
+          "crossing": [
+            [
+              11.7075,
+              -6.352500000000001
+            ],
+            [
+              12.3875,
+              -6.352500000000001
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-2-21",
+          "rooms": [
+            "toilets-2"
+          ],
+          "stall": true,
+          "portal": false,
+          "approach": [
+            11.2975,
+            -5.3425,
+            12.7975,
+            -4.9125000000000005
+          ],
+          "crossing": [
+            [
+              11.7075,
+              -5.1275
+            ],
+            [
+              12.3875,
+              -5.1275
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        }
+      ],
+      "rooms": [
+        {
+          "id": "ward-a",
+          "hubs": [
+            [
+              -7.249999999999999,
+              -6.465
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-ward-a-S-0",
+              "from": [
+                -5.937499999999999,
+                -4.85
+              ],
+              "path": [
+                [
+                  -5.937499999999999,
+                  -4.85
+                ],
+                [
+                  -7.249999999999999,
+                  -4.85
+                ],
+                [
+                  -7.249999999999999,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ward-a-bed-0",
+              "kind": "bed",
+              "point": [
+                -8.35,
+                -5.78
+              ],
+              "path": [
+                [
+                  -7.249999999999999,
+                  -6.465
+                ],
+                [
+                  -7.249999999999999,
+                  -5.78
+                ],
+                [
+                  -8.35,
+                  -5.78
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ward-a-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -8.469999999999999,
+                -5.34
+              ],
+              "path": [
+                [
+                  -7.249999999999999,
+                  -6.465
+                ],
+                [
+                  -7.249999999999999,
+                  -5.34
+                ],
+                [
+                  -8.469999999999999,
+                  -5.34
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ward-a",
+              "kind": "pc",
+              "point": [
+                -6.01,
+                -6.63
+              ],
+              "path": [
+                [
+                  -7.249999999999999,
+                  -6.465
+                ],
+                [
+                  -6.01,
+                  -6.465
+                ],
+                [
+                  -6.01,
+                  -6.63
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                -7.029999995827675,
+                -7.730500001981855
+              ],
+              "path": [
+                [
+                  -7.249999999999999,
+                  -6.465
+                ],
+                [
+                  -7.029999995827675,
+                  -6.465
+                ],
+                [
+                  -7.029999995827675,
+                  -7.730500001981855
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -7.49054264638426,
+                -6.606085295152709
+              ],
+              "path": [
+                [
+                  -7.249999999999999,
+                  -6.465
+                ],
+                [
+                  -7.49054264638426,
+                  -6.465
+                ],
+                [
+                  -7.49054264638426,
+                  -6.606085295152709
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ward-b",
+          "hubs": [
+            [
+              -3.4499999999999993,
+              -6.465
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-ward-b-S-1",
+              "from": [
+                -2.1624999999999996,
+                -4.85
+              ],
+              "path": [
+                [
+                  -2.1624999999999996,
+                  -4.85
+                ],
+                [
+                  -3.4499999999999993,
+                  -4.85
+                ],
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ward-b-bed-0",
+              "kind": "bed",
+              "point": [
+                -4.55,
+                -5.78
+              ],
+              "path": [
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ],
+                [
+                  -3.4499999999999993,
+                  -5.78
+                ],
+                [
+                  -4.55,
+                  -5.78
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ward-b-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -4.67,
+                -5.34
+              ],
+              "path": [
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ],
+                [
+                  -3.4499999999999993,
+                  -5.34
+                ],
+                [
+                  -4.67,
+                  -5.34
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ward-b",
+              "kind": "pc",
+              "point": [
+                -2.2300000000000004,
+                -6.63
+              ],
+              "path": [
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ],
+                [
+                  -2.2300000000000004,
+                  -6.465
+                ],
+                [
+                  -2.2300000000000004,
+                  -6.63
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                -3.229999995827675,
+                -7.730500001981855
+              ],
+              "path": [
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ],
+                [
+                  -3.229999995827675,
+                  -6.465
+                ],
+                [
+                  -3.229999995827675,
+                  -7.730500001981855
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -3.690542646384261,
+                -6.606085295152709
+              ],
+              "path": [
+                [
+                  -3.4499999999999993,
+                  -6.465
+                ],
+                [
+                  -3.690542646384261,
+                  -6.465
+                ],
+                [
+                  -3.690542646384261,
+                  -6.606085295152709
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ward-c",
+          "hubs": [
+            [
+              0.17999999999999972,
+              -6.465
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-ward-c-S-2",
+              "from": [
+                1.2800000000000002,
+                -4.85
+              ],
+              "path": [
+                [
+                  1.2800000000000002,
+                  -4.85
+                ],
+                [
+                  0.17999999999999972,
+                  -4.85
+                ],
+                [
+                  0.17999999999999972,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ward-c-bed-0",
+              "kind": "bed",
+              "point": [
+                -0.77,
+                -5.78
+              ],
+              "path": [
+                [
+                  0.17999999999999972,
+                  -6.465
+                ],
+                [
+                  0.17999999999999972,
+                  -5.78
+                ],
+                [
+                  -0.77,
+                  -5.78
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ward-c-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -0.8900000000000001,
+                -5.34
+              ],
+              "path": [
+                [
+                  0.17999999999999972,
+                  -6.465
+                ],
+                [
+                  0.17999999999999972,
+                  -5.34
+                ],
+                [
+                  -0.8900000000000001,
+                  -5.34
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ward-c",
+              "kind": "pc",
+              "point": [
+                1.3099999999999996,
+                -6.63
+              ],
+              "path": [
+                [
+                  0.17999999999999972,
+                  -6.465
+                ],
+                [
+                  1.3099999999999996,
+                  -6.465
+                ],
+                [
+                  1.3099999999999996,
+                  -6.63
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                0.5500000041723251,
+                -7.730500001981855
+              ],
+              "path": [
+                [
+                  0.17999999999999972,
+                  -6.465
+                ],
+                [
+                  0.5500000041723251,
+                  -6.465
+                ],
+                [
+                  0.5500000041723251,
+                  -7.730500001981855
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                0.08945735361573873,
+                -6.606085295152709
+              ],
+              "path": [
+                [
+                  0.17999999999999972,
+                  -6.465
+                ],
+                [
+                  0.08945735361573873,
+                  -6.465
+                ],
+                [
+                  0.08945735361573873,
+                  -6.606085295152709
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "icu",
+          "hubs": [
+            [
+              5.754999999999999,
+              -6.465
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-icu-S-3",
+              "from": [
+                5.155,
+                -4.85
+              ],
+              "path": [
+                [
+                  5.155,
+                  -4.85
+                ],
+                [
+                  5.754999999999999,
+                  -4.85
+                ],
+                [
+                  5.754999999999999,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "icu-bed-0",
+              "kind": "bed",
+              "point": [
+                2.88,
+                -5.78
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.754999999999999,
+                  -5.78
+                ],
+                [
+                  2.88,
+                  -5.78
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "icu-medical-monitor-1",
+              "kind": "medical-monitor",
+              "point": [
+                3.71,
+                -7.44
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.754999999999999,
+                  -5.790000000000001
+                ],
+                [
+                  3.7299999999999995,
+                  -5.790000000000001
+                ],
+                [
+                  3.7299999999999995,
+                  -7.44
+                ],
+                [
+                  3.71,
+                  -7.44
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "icu-bed-2",
+              "kind": "bed",
+              "point": [
+                4.98,
+                -5.78
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.754999999999999,
+                  -5.78
+                ],
+                [
+                  4.98,
+                  -5.78
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "icu-medical-monitor-3",
+              "kind": "medical-monitor",
+              "point": [
+                5.8100000000000005,
+                -7.44
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.8100000000000005,
+                  -6.465
+                ],
+                [
+                  5.8100000000000005,
+                  -7.44
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "icu-cabinet-4",
+              "kind": "cabinet",
+              "point": [
+                2.6599999999999997,
+                -5.34
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.754999999999999,
+                  -5.34
+                ],
+                [
+                  2.6599999999999997,
+                  -5.34
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-icu",
+              "kind": "pc",
+              "point": [
+                7.67,
+                -6.63
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  7.67,
+                  -6.465
+                ],
+                [
+                  7.67,
+                  -6.63
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                6.3100000000000005,
+                -7.246000000387431
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  6.3100000000000005,
+                  -6.465
+                ],
+                [
+                  6.3100000000000005,
+                  -7.246000000387431
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                3.7394573536157387,
+                -5.313914704847292
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  5.754999999999999,
+                  -5.313914704847292
+                ],
+                [
+                  3.7394573536157387,
+                  -5.313914704847292
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "bedside-table",
+              "kind": "bedside-table",
+              "point": [
+                6.819499998018146,
+                -7.249999995827675
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  6.819499998018146,
+                  -6.465
+                ],
+                [
+                  6.819499998018146,
+                  -7.249999995827675
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                6.23945735361574,
+                -6.221094381819741
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  6.23945735361574,
+                  -6.465
+                ],
+                [
+                  6.23945735361574,
+                  -6.221094381819741
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                7.83,
+                -5.469999998807907
+              ],
+              "path": [
+                [
+                  5.754999999999999,
+                  -6.465
+                ],
+                [
+                  7.83,
+                  -6.465
+                ],
+                [
+                  7.83,
+                  -5.469999998807907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "toilets-2",
+          "hubs": [
+            [
+              10.375,
+              -6.465
+            ],
+            [
+              10.975,
+              -6.465
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-toilets-2-S-4",
+              "from": [
+                10.087499999999999,
+                -4.85
+              ],
+              "path": [
+                [
+                  10.087499999999999,
+                  -4.85
+                ],
+                [
+                  10.375,
+                  -4.85
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-toilets-2-S-5",
+              "from": [
+                11.3625,
+                -4.85
+              ],
+              "path": [
+                [
+                  11.3625,
+                  -4.85
+                ],
+                [
+                  10.975,
+                  -4.85
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-16",
+              "from": [
+                8.9925,
+                -7.6775
+              ],
+              "path": [
+                [
+                  8.9925,
+                  -7.6775
+                ],
+                [
+                  10.375,
+                  -7.6775
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-16",
+              "from": [
+                9.6725,
+                -7.6775
+              ],
+              "path": [
+                [
+                  9.6725,
+                  -7.6775
+                ],
+                [
+                  10.375,
+                  -7.6775
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-17",
+              "from": [
+                8.9925,
+                -6.3775
+              ],
+              "path": [
+                [
+                  8.9925,
+                  -6.3775
+                ],
+                [
+                  10.375,
+                  -6.3775
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-17",
+              "from": [
+                9.6725,
+                -6.3775
+              ],
+              "path": [
+                [
+                  9.6725,
+                  -6.3775
+                ],
+                [
+                  10.375,
+                  -6.3775
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-18",
+              "from": [
+                8.9925,
+                -5.152500000000001
+              ],
+              "path": [
+                [
+                  8.9925,
+                  -5.152500000000001
+                ],
+                [
+                  10.375,
+                  -5.152500000000001
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-18",
+              "from": [
+                9.6725,
+                -5.152500000000001
+              ],
+              "path": [
+                [
+                  9.6725,
+                  -5.152500000000001
+                ],
+                [
+                  10.375,
+                  -5.152500000000001
+                ],
+                [
+                  10.375,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-19",
+              "from": [
+                11.7075,
+                -7.727500000000001
+              ],
+              "path": [
+                [
+                  11.7075,
+                  -7.727500000000001
+                ],
+                [
+                  10.975,
+                  -7.727500000000001
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-19",
+              "from": [
+                12.3875,
+                -7.727500000000001
+              ],
+              "path": [
+                [
+                  12.3875,
+                  -7.727500000000001
+                ],
+                [
+                  10.975,
+                  -7.727500000000001
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-20",
+              "from": [
+                11.7075,
+                -6.352500000000001
+              ],
+              "path": [
+                [
+                  11.7075,
+                  -6.352500000000001
+                ],
+                [
+                  10.975,
+                  -6.352500000000001
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-20",
+              "from": [
+                12.3875,
+                -6.352500000000001
+              ],
+              "path": [
+                [
+                  12.3875,
+                  -6.352500000000001
+                ],
+                [
+                  10.975,
+                  -6.352500000000001
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-21",
+              "from": [
+                11.7075,
+                -5.1275
+              ],
+              "path": [
+                [
+                  11.7075,
+                  -5.1275
+                ],
+                [
+                  10.975,
+                  -5.1275
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-stall-toilets-2-21",
+              "from": [
+                12.3875,
+                -5.1275
+              ],
+              "path": [
+                [
+                  12.3875,
+                  -5.1275
+                ],
+                [
+                  10.975,
+                  -5.1275
+                ],
+                [
+                  10.975,
+                  -6.465
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "toilets-2-toilet-0",
+              "kind": "toilet",
+              "point": [
+                8.79,
+                -7.697500000000002
+              ],
+              "path": [
+                [
+                  10.375,
+                  -6.465
+                ],
+                [
+                  10.375,
+                  -7.697500000000002
+                ],
+                [
+                  8.79,
+                  -7.697500000000002
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-2-toilet-1",
+              "kind": "toilet",
+              "point": [
+                8.79,
+                -6.397500000000001
+              ],
+              "path": [
+                [
+                  10.375,
+                  -6.465
+                ],
+                [
+                  8.79,
+                  -6.465
+                ],
+                [
+                  8.79,
+                  -6.397500000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-2-toilet-2",
+              "kind": "toilet",
+              "point": [
+                8.79,
+                -5.140000000000001
+              ],
+              "path": [
+                [
+                  10.375,
+                  -6.465
+                ],
+                [
+                  10.375,
+                  -5.140000000000001
+                ],
+                [
+                  8.79,
+                  -5.140000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-2-toilet-3",
+              "kind": "toilet",
+              "point": [
+                12.739999999999998,
+                -7.750000000000002
+              ],
+              "path": [
+                [
+                  10.975,
+                  -6.465
+                ],
+                [
+                  10.975,
+                  -7.750000000000002
+                ],
+                [
+                  12.739999999999998,
+                  -7.750000000000002
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-2-toilet-4",
+              "kind": "toilet",
+              "point": [
+                12.739999999999998,
+                -6.375000000000001
+              ],
+              "path": [
+                [
+                  10.975,
+                  -6.465
+                ],
+                [
+                  10.975,
+                  -6.375000000000001
+                ],
+                [
+                  12.739999999999998,
+                  -6.375000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "toilets-2-toilet-5",
+              "kind": "toilet",
+              "point": [
+                12.739999999999998,
+                -5.140000000000001
+              ],
+              "path": [
+                [
+                  10.975,
+                  -6.465
+                ],
+                [
+                  10.975,
+                  -5.140000000000001
+                ],
+                [
+                  12.739999999999998,
+                  -5.140000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sink",
+              "kind": "sink",
+              "point": [
+                10.149999999999999,
+                -7.664999996423722
+              ],
+              "path": [
+                [
+                  10.375,
+                  -6.465
+                ],
+                [
+                  10.149999999999999,
+                  -6.465
+                ],
+                [
+                  10.149999999999999,
+                  -7.664999996423722
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                12.850000000000009,
+                -6.364000004529949
+              ],
+              "path": [
+                [
+                  10.975,
+                  -6.465
+                ],
+                [
+                  10.975,
+                  -6.364000004529949
+                ],
+                [
+                  12.850000000000009,
+                  -6.364000004529949
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "operation",
+          "hubs": [
+            [
+              -6.949999999999999,
+              -1.125
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-operation-N-6",
+              "from": [
+                -7.387499999999999,
+                -1.9599999999999997
+              ],
+              "path": [
+                [
+                  -7.387499999999999,
+                  -1.9599999999999997
+                ],
+                [
+                  -6.949999999999999,
+                  -1.9599999999999997
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-operation-S-7",
+              "from": [
+                -8.087499999999999,
+                -0.27999999999999997
+              ],
+              "path": [
+                [
+                  -8.087499999999999,
+                  -0.27999999999999997
+                ],
+                [
+                  -8.087499999999999,
+                  -1.125
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-operation-S-8",
+              "from": [
+                -5.725,
+                -0.27999999999999997
+              ],
+              "path": [
+                [
+                  -5.725,
+                  -0.27999999999999997
+                ],
+                [
+                  -5.8999999999999995,
+                  -0.2999999999999998
+                ],
+                [
+                  -5.8999999999999995,
+                  -0.75
+                ],
+                [
+                  -6.949999999999999,
+                  -0.75
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-operation-E-9",
+              "from": [
+                -5.11,
+                -0.4874999999999996
+              ],
+              "path": [
+                [
+                  -5.11,
+                  -0.4874999999999996
+                ],
+                [
+                  -5.8999999999999995,
+                  -0.44999999999999996
+                ],
+                [
+                  -5.8999999999999995,
+                  -0.75
+                ],
+                [
+                  -6.949999999999999,
+                  -0.75
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -6.949999999999999,
+                  -1.125
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "operation-operating-table-0",
+              "kind": "operating-table",
+              "point": [
+                -8.129999999999999,
+                -1.0999999999999999
+              ],
+              "path": [
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -8.129999999999999,
+                  -1.125
+                ],
+                [
+                  -8.129999999999999,
+                  -1.0999999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "operation-medical-monitor-1",
+              "kind": "medical-monitor",
+              "point": [
+                -7.199999999999999,
+                -0.8099999999999999
+              ],
+              "path": [
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -7.199999999999999,
+                  -1.125
+                ],
+                [
+                  -7.199999999999999,
+                  -0.8099999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sw-l2-west",
+              "kind": "switch",
+              "point": [
+                -6.41,
+                -2.06
+              ],
+              "path": [
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -6.41,
+                  -1.125
+                ],
+                [
+                  -6.41,
+                  -2.06
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-operation",
+              "kind": "pc",
+              "point": [
+                -5.540000000000001,
+                -0.8399999999999996
+              ],
+              "path": [
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -6.949999999999999,
+                  -0.8399999999999996
+                ],
+                [
+                  -5.540000000000001,
+                  -0.8399999999999996
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                -6.390000000000001,
+                -0.819999998807907
+              ],
+              "path": [
+                [
+                  -6.949999999999999,
+                  -1.125
+                ],
+                [
+                  -6.390000000000001,
+                  -1.125
+                ],
+                [
+                  -6.390000000000001,
+                  -0.819999998807907
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "circulation-west-2",
+          "hubs": [
+            [
+              -3.26,
+              -0.475
+            ]
+          ],
+          "routes": [],
+          "equipment": []
+        },
+        {
+          "id": "changing",
+          "hubs": [
+            [
+              -3.26,
+              -1.725
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-changing-S-10",
+              "from": [
+                -3.785,
+                -1.51
+              ],
+              "path": [
+                [
+                  -3.785,
+                  -1.51
+                ],
+                [
+                  -3.26,
+                  -1.51
+                ],
+                [
+                  -3.26,
+                  -1.725
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "changing-cabinet-0",
+              "kind": "cabinet",
+              "point": [
+                -2.38,
+                -1.6114999999999997
+              ],
+              "path": [
+                [
+                  -3.26,
+                  -1.725
+                ],
+                [
+                  -3.26,
+                  -1.6114999999999997
+                ],
+                [
+                  -2.38,
+                  -1.6114999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "hamper",
+              "kind": "hamper",
+              "point": [
+                -4.36,
+                -1.5712500044703481
+              ],
+              "path": [
+                [
+                  -3.26,
+                  -1.725
+                ],
+                [
+                  -3.26,
+                  -1.5712500044703481
+                ],
+                [
+                  -4.36,
+                  -1.5712500044703481
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ok-1",
+          "hubs": [
+            [
+              -8.075,
+              1.1300000000000001
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-operation-S-7",
+              "from": [
+                -8.087499999999999,
+                0.4000000000000001
+              ],
+              "path": [
+                [
+                  -8.087499999999999,
+                  0.4000000000000001
+                ],
+                [
+                  -8.075,
+                  0.4000000000000001
+                ],
+                [
+                  -8.075,
+                  1.1300000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ok-1-operating-table-0",
+              "kind": "operating-table",
+              "point": [
+                -8.05,
+                1.1672
+              ],
+              "path": [
+                [
+                  -8.075,
+                  1.1300000000000001
+                ],
+                [
+                  -8.05,
+                  1.1300000000000001
+                ],
+                [
+                  -8.05,
+                  1.1672
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ok-1",
+              "kind": "wall-terminal",
+              "point": [
+                -7.52,
+                1
+              ],
+              "path": [
+                [
+                  -8.075,
+                  1.1300000000000001
+                ],
+                [
+                  -7.52,
+                  1.1300000000000001
+                ],
+                [
+                  -7.52,
+                  1
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ok-2",
+          "hubs": [
+            [
+              -5.620000000000001,
+              1.1300000000000001
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-operation-S-8",
+              "from": [
+                -5.725,
+                0.4000000000000001
+              ],
+              "path": [
+                [
+                  -5.725,
+                  0.4000000000000001
+                ],
+                [
+                  -5.620000000000001,
+                  0.4000000000000001
+                ],
+                [
+                  -5.620000000000001,
+                  1.1300000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ok-2-operating-table-0",
+              "kind": "operating-table",
+              "point": [
+                -5.6450000000000005,
+                1.1672
+              ],
+              "path": [
+                [
+                  -5.620000000000001,
+                  1.1300000000000001
+                ],
+                [
+                  -5.6450000000000005,
+                  1.1300000000000001
+                ],
+                [
+                  -5.6450000000000005,
+                  1.1672
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ok-2",
+              "kind": "wall-terminal",
+              "point": [
+                -4.9399999999999995,
+                1
+              ],
+              "path": [
+                [
+                  -5.620000000000001,
+                  1.1300000000000001
+                ],
+                [
+                  -4.9399999999999995,
+                  1.1300000000000001
+                ],
+                [
+                  -4.9399999999999995,
+                  1
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "ok-3",
+          "hubs": [
+            [
+              -3.04,
+              1.1300000000000001
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-ok-3-N-11",
+              "from": [
+                -3.1275,
+                0.5200000000000002
+              ],
+              "path": [
+                [
+                  -3.1275,
+                  0.5200000000000002
+                ],
+                [
+                  -3.04,
+                  0.5200000000000002
+                ],
+                [
+                  -3.04,
+                  1.1300000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "ok-3-operating-table-0",
+              "kind": "operating-table",
+              "point": [
+                -3.06,
+                1.1672
+              ],
+              "path": [
+                [
+                  -3.04,
+                  1.1300000000000001
+                ],
+                [
+                  -3.06,
+                  1.1300000000000001
+                ],
+                [
+                  -3.06,
+                  1.1672
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-ok-3",
+              "kind": "wall-terminal",
+              "point": [
+                -2.3500000000000005,
+                1
+              ],
+              "path": [
+                [
+                  -3.04,
+                  1.1300000000000001
+                ],
+                [
+                  -2.3500000000000005,
+                  1.1300000000000001
+                ],
+                [
+                  -2.3500000000000005,
+                  1
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "management",
+          "hubs": [
+            [
+              0.0649999999999995,
+              -0.07500000000000018
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-management-N-12",
+              "from": [
+                0.2524999999999996,
+                -1.9599999999999997
+              ],
+              "path": [
+                [
+                  0.2524999999999996,
+                  -1.9599999999999997
+                ],
+                [
+                  0.0649999999999995,
+                  -1.9599999999999997
+                ],
+                [
+                  0.0649999999999995,
+                  -0.07500000000000018
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "management-cabinet-0",
+              "kind": "cabinet",
+              "point": [
+                -1.0600000000000005,
+                -1.5299999999999998
+              ],
+              "path": [
+                [
+                  0.0649999999999995,
+                  -0.07500000000000018
+                ],
+                [
+                  -1.0600000000000005,
+                  -0.07500000000000018
+                ],
+                [
+                  -1.0600000000000005,
+                  -1.5299999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-management",
+              "kind": "pc",
+              "point": [
+                1.2399999999999998,
+                0.4099999999999999
+              ],
+              "path": [
+                [
+                  0.0649999999999995,
+                  -0.07500000000000018
+                ],
+                [
+                  1.2399999999999998,
+                  -0.07500000000000018
+                ],
+                [
+                  1.2399999999999998,
+                  0.4099999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "meeting-table",
+              "kind": "meeting-table",
+              "point": [
+                -0.6600000000000001,
+                -0.07500000953674313
+              ],
+              "path": [
+                [
+                  0.0649999999999995,
+                  -0.07500000000000018
+                ],
+                [
+                  -0.6600000000000001,
+                  -0.07500000000000018
+                ],
+                [
+                  -0.6600000000000001,
+                  -0.07500000953674313
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "chair",
+              "kind": "chair",
+              "point": [
+                0.20602540378443834,
+                0.19974575262815852
+              ],
+              "path": [
+                [
+                  0.0649999999999995,
+                  -0.07500000000000018
+                ],
+                [
+                  0.20602540378443834,
+                  -0.07500000000000018
+                ],
+                [
+                  0.20602540378443834,
+                  0.19974575262815852
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "doctors",
+          "hubs": [
+            [
+              3.88,
+              -0.07500000000000018
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-doctors-N-13",
+              "from": [
+                3.48,
+                -1.9599999999999997
+              ],
+              "path": [
+                [
+                  3.48,
+                  -1.9599999999999997
+                ],
+                [
+                  3.88,
+                  -1.9599999999999997
+                ],
+                [
+                  3.88,
+                  -0.07500000000000018
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "doctors-cabinet-0",
+              "kind": "cabinet",
+              "point": [
+                5.130000000000001,
+                -1.5299999999999998
+              ],
+              "path": [
+                [
+                  3.88,
+                  -0.07500000000000018
+                ],
+                [
+                  5.130000000000001,
+                  -0.07500000000000018
+                ],
+                [
+                  5.130000000000001,
+                  -1.5299999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-doctors",
+              "kind": "pc",
+              "point": [
+                5.07,
+                0.4099999999999999
+              ],
+              "path": [
+                [
+                  3.88,
+                  -0.07500000000000018
+                ],
+                [
+                  5.07,
+                  -0.07500000000000018
+                ],
+                [
+                  5.07,
+                  0.4099999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sofa",
+              "kind": "sofa",
+              "point": [
+                2.4987500050961966,
+                -0.007499997317790719
+              ],
+              "path": [
+                [
+                  3.88,
+                  -0.07500000000000018
+                ],
+                [
+                  2.4987500050961966,
+                  -0.07500000000000018
+                ],
+                [
+                  2.4987500050961966,
+                  -0.007499997317790719
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "plant",
+              "kind": "plant",
+              "point": [
+                2.381563333774942,
+                1.3029931711268576
+              ],
+              "path": [
+                [
+                  3.88,
+                  -0.07500000000000018
+                ],
+                [
+                  2.381563333774942,
+                  -0.07500000000000018
+                ],
+                [
+                  2.381563333774942,
+                  1.3029931711268576
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "nurse",
+          "hubs": [
+            [
+              7.85,
+              -0.2999999999999998
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-nurse-N-14",
+              "from": [
+                7.824999999999999,
+                -1.9599999999999997
+              ],
+              "path": [
+                [
+                  7.824999999999999,
+                  -1.9599999999999997
+                ],
+                [
+                  7.85,
+                  -1.9599999999999997
+                ],
+                [
+                  7.85,
+                  -0.2999999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "nurse-reception-desk-0",
+              "kind": "reception-desk",
+              "point": [
+                6.8999999999999995,
+                0.9000000000000004
+              ],
+              "path": [
+                [
+                  7.85,
+                  -0.2999999999999998
+                ],
+                [
+                  8.15,
+                  -0.2999999999999998
+                ],
+                [
+                  8.15,
+                  0.8999999999999999
+                ],
+                [
+                  6.875,
+                  0.8999999999999999
+                ],
+                [
+                  6.8999999999999995,
+                  0.9000000000000004
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sw-l2",
+              "kind": "rack",
+              "point": [
+                8.42,
+                1.35
+              ],
+              "path": [
+                [
+                  7.85,
+                  -0.2999999999999998
+                ],
+                [
+                  8.42,
+                  -0.2999999999999998
+                ],
+                [
+                  8.42,
+                  1.35
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "ups-2",
+              "kind": "ups",
+              "point": [
+                9.059999999999999,
+                -0.3649999999999998
+              ],
+              "path": [
+                [
+                  7.85,
+                  -0.2999999999999998
+                ],
+                [
+                  9.059999999999999,
+                  -0.2999999999999998
+                ],
+                [
+                  9.059999999999999,
+                  -0.3649999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "panel-2",
+              "kind": "panel",
+              "point": [
+                9.469999999999999,
+                -1.4500000000000002
+              ],
+              "path": [
+                [
+                  7.85,
+                  -0.2999999999999998
+                ],
+                [
+                  7.85,
+                  -1.4500000000000002
+                ],
+                [
+                  9.469999999999999,
+                  -1.4500000000000002
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-nurse",
+              "kind": "pc",
+              "point": [
+                6.55,
+                -1.6899999999999997
+              ],
+              "path": [
+                [
+                  7.85,
+                  -0.2999999999999998
+                ],
+                [
+                  7.85,
+                  -1.6899999999999997
+                ],
+                [
+                  6.55,
+                  -1.6899999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "stairs-2",
+          "structuralStair": true,
+          "doors": [
+            "door-stairs-2-N-15"
+          ]
+        },
+        {
+          "id": "corridor-2",
+          "hubs": [
+            [
+              1.9749999999999996,
+              -3.3649999999999993
+            ]
+          ],
+          "routes": [],
+          "equipment": [
+            {
+              "id": "corridor-2-waiting-bench-0",
+              "kind": "waiting-bench",
+              "point": [
+                -4.489999999999999,
+                -3.5949999999999998
+              ],
+              "path": [
+                [
+                  1.9749999999999996,
+                  -3.3649999999999993
+                ],
+                [
+                  -4.489999999999999,
+                  -3.3649999999999993
+                ],
+                [
+                  -4.489999999999999,
+                  -3.5949999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "corridor-2-waiting-bench-1",
+              "kind": "waiting-bench",
+              "point": [
+                -0.6899999999999995,
+                -3.5949999999999998
+              ],
+              "path": [
+                [
+                  1.9749999999999996,
+                  -3.3649999999999993
+                ],
+                [
+                  -0.6899999999999995,
+                  -3.3649999999999993
+                ],
+                [
+                  -0.6899999999999995,
+                  -3.5949999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "corridor-2-waiting-bench-2",
+              "kind": "waiting-bench",
+              "point": [
+                -3.1899999999999995,
+                -3.205
+              ],
+              "path": [
+                [
+                  1.9749999999999996,
+                  -3.3649999999999993
+                ],
+                [
+                  -3.1899999999999995,
+                  -3.3649999999999993
+                ],
+                [
+                  -3.1899999999999995,
+                  -3.205
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                12.709999999999999,
+                -3.665999995470047
+              ],
+              "path": [
+                [
+                  1.9749999999999996,
+                  -3.3649999999999993
+                ],
+                [
+                  12.709999999999999,
+                  -3.3649999999999993
+                ],
+                [
+                  12.709999999999999,
+                  -3.665999995470047
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        }
+      ],
+      "skipped": []
+    }
+  ],
+  "issues": []
+}

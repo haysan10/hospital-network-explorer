@@ -1,110 +1,570 @@
 [
   {
     "file": "server.glb",
-    "bytes": 65740
+    "bytes": 847840,
+    "triangles": 6652,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "rack.glb",
-    "bytes": 65648
+    "bytes": 847812,
+    "triangles": 6652,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "switch.glb",
-    "bytes": 19192
+    "bytes": 292484,
+    "triangles": 2172,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "router.glb",
-    "bytes": 6576
+    "bytes": 91600,
+    "triangles": 624,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "ap.glb",
-    "bytes": 4536
+    "bytes": 60620,
+    "triangles": 240,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "pc.glb",
-    "bytes": 91248
+    "bytes": 613548,
+    "triangles": 4860,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "chair.glb",
-    "bytes": 53760
+    "bytes": 275280,
+    "triangles": 2000,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "waiting-bench.glb",
+    "bytes": 416320,
+    "triangles": 4496,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "bed.glb",
-    "bytes": 82044
+    "bytes": 503232,
+    "triangles": 4308,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "medical-monitor.glb",
-    "bytes": 20676
+    "bytes": 285564,
+    "triangles": 1744,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "ups.glb",
-    "bytes": 28304
+    "bytes": 310316,
+    "triangles": 1696,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "panel.glb",
-    "bytes": 3728
+    "bytes": 108548,
+    "triangles": 384,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "tablet.glb",
-    "bytes": 2720
+    "bytes": 50824,
+    "triangles": 240,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "cabinet.glb",
-    "bytes": 32472
+    "bytes": 136220,
+    "triangles": 684,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "shelf.glb",
-    "bytes": 23488
+    "bytes": 269020,
+    "triangles": 1920,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "washer.glb",
-    "bytes": 6536
+    "bytes": 109332,
+    "triangles": 480,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "plant.glb",
-    "bytes": 6768
+    "bytes": 173192,
+    "triangles": 1600,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "ct-scanner.glb",
-    "bytes": 13472
+    "bytes": 233992,
+    "triangles": 2928,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "stairs.glb",
-    "bytes": 31188
+    "bytes": 598804,
+    "triangles": 4256,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "stair-landing.glb",
+    "bytes": 100532,
+    "triangles": 640,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "cable-tray.glb",
-    "bytes": 33140
+    "bytes": 92920,
+    "triangles": 576,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "cctv.glb",
-    "bytes": 9812
+    "bytes": 103392,
+    "triangles": 620,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "socket.glb",
-    "bytes": 5808
+    "bytes": 57228,
+    "triangles": 208,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
-    "file": "roof-lower.glb",
-    "bytes": 67116
+    "file": "toilet.glb",
+    "bytes": 94116,
+    "triangles": 1056,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
-    "file": "roof-upper.glb",
-    "bytes": 116316
+    "file": "sink.glb",
+    "bytes": 106220,
+    "triangles": 544,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
-    "file": "stairs-connected.glb",
-    "bytes": 287928
+    "file": "worktop.glb",
+    "bytes": 90948,
+    "triangles": 252,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "reception-desk.glb",
+    "bytes": 101512,
+    "triangles": 264,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "wall-terminal.glb",
+    "bytes": 174180,
+    "triangles": 656,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "operating-table.glb",
+    "bytes": 299372,
+    "triangles": 2256,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "door-leaf.glb",
+    "bytes": 166340,
+    "triangles": 728,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "ceiling-light.glb",
+    "bytes": 78580,
+    "triangles": 96,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "air-vent.glb",
+    "bytes": 108132,
+    "triangles": 384,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "smoke-detector.glb",
+    "bytes": 52140,
+    "triangles": 160,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "sprinkler.glb",
+    "bytes": 93740,
+    "triangles": 240,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "bedside-table.glb",
+    "bytes": 294108,
+    "triangles": 912,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "iv-pole.glb",
+    "bytes": 210712,
+    "triangles": 992,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "bed-head-unit.glb",
+    "bytes": 79236,
+    "triangles": 416,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "privacy-curtain.glb",
+    "bytes": 181020,
+    "triangles": 1184,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "medicine-trolley.glb",
+    "bytes": 269700,
+    "triangles": 1120,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "microscope.glb",
+    "bytes": 63896,
+    "triangles": 272,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "test-tube-rack.glb",
+    "bytes": 160236,
+    "triangles": 1008,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "ultrasound.glb",
+    "bytes": 277252,
+    "triangles": 1664,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "fridge.glb",
+    "bytes": 105772,
+    "triangles": 448,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "hamper.glb",
+    "bytes": 288264,
+    "triangles": 880,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "waste-bin.glb",
+    "bytes": 90588,
+    "triangles": 208,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "water-dispenser.glb",
+    "bytes": 82496,
+    "triangles": 272,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "fire-extinguisher.glb",
+    "bytes": 159208,
+    "triangles": 576,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "soap-dispenser.glb",
+    "bytes": 50708,
+    "triangles": 240,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "wall-clock.glb",
+    "bytes": 133780,
+    "triangles": 832,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "mirror.glb",
+    "bytes": 63984,
+    "triangles": 96,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "meeting-table.glb",
+    "bytes": 110172,
+    "triangles": 384,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "sofa.glb",
+    "bytes": 298016,
+    "triangles": 2480,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "parallel-bars.glb",
+    "bytes": 157648,
+    "triangles": 672,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "surgical-light.glb",
+    "bytes": 153260,
+    "triangles": 800,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "rooftop-hvac.glb",
+    "bytes": 175048,
+    "triangles": 1024,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "registration-counter.glb",
+    "bytes": 174540,
+    "triangles": 700,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "reception-terminal.glb",
+    "bytes": 540024,
+    "triangles": 4560,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "entrance-leaf.glb",
+    "bytes": 187276,
+    "triangles": 496,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "garden-tree.glb",
+    "bytes": 238868,
+    "triangles": 3068,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "garden-bench.glb",
+    "bytes": 146040,
+    "triangles": 640,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "bollard-light.glb",
+    "bytes": 93828,
+    "triangles": 240,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "street-light.glb",
+    "bytes": 95404,
+    "triangles": 256,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "car.glb",
+    "bytes": 332764,
+    "triangles": 2920,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "ambulance.glb",
+    "bytes": 404164,
+    "triangles": 3952,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "data-outlet.glb",
+    "bytes": 60324,
+    "triangles": 240,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "fiber-panel.glb",
+    "bytes": 180968,
+    "triangles": 1072,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "exit-sign.glb",
+    "bytes": 60516,
+    "triangles": 240,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "wall-art.glb",
+    "bytes": 170028,
+    "triangles": 336,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "lan-cable.glb",
-    "bytes": 8664
+    "bytes": 77612,
+    "triangles": 640,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "fiber-cable.glb",
-    "bytes": 8680
+    "bytes": 77628,
+    "triangles": 640,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   },
   {
     "file": "power-cable.glb",
-    "bytes": 8684
+    "bytes": 77628,
+    "triangles": 640,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
   }
 ]

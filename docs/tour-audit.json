@@ -1,0 +1,70 @@
+{
+  "version": "4.0.0",
+  "routes": [
+    {
+      "id": "arrival",
+      "room": "registration",
+      "floor": 1,
+      "forward": true,
+      "reverse": true,
+      "frames": 177
+    },
+    {
+      "id": "server",
+      "room": "server-room",
+      "floor": 1,
+      "forward": true,
+      "reverse": true,
+      "frames": 121
+    },
+    {
+      "id": "igd",
+      "room": "igd",
+      "floor": 1,
+      "forward": true,
+      "reverse": true,
+      "frames": 93
+    },
+    {
+      "id": "wifi",
+      "room": "registration",
+      "floor": 1,
+      "forward": true,
+      "reverse": true,
+      "frames": 84
+    },
+    {
+      "id": "power",
+      "room": "server-room",
+      "floor": 1,
+      "forward": true,
+      "reverse": true,
+      "frames": 134
+    },
+    {
+      "id": "nurse",
+      "room": "nurse",
+      "floor": 2,
+      "forward": true,
+      "reverse": true,
+      "frames": 81
+    },
+    {
+      "id": "ward",
+      "room": "ward-a",
+      "floor": 2,
+      "forward": true,
+      "reverse": true,
+      "frames": 118
+    },
+    {
+      "id": "icu",
+      "room": "icu",
+      "floor": 2,
+      "forward": true,
+      "reverse": true,
+      "frames": 118
+    }
+  ],
+  "issues": []
+}

@@ -15,9 +15,9 @@ test('Both optimized GLBs load with bundled GLTFLoader and preserve floor dimens
 });
 test('All procedural assets have finite geometry and batch without losing bounds',()=>{
   for(const name of ASSET_NAMES){
-    const model=makeAsset(name),before=new T.Box3().setFromObject(model);assert.ok(!before.isEmpty());
+    const model=makeAsset(name),before=new T.Box3().setFromObject(model,true);assert.ok(!before.isEmpty());
     model.traverse(o=>{if(o.isMesh)assert.ok([...o.geometry.getAttribute('position').array].every(Number.isFinite));});
-    const batched=mergeStatic(model),after=new T.Box3().setFromObject(batched);assert.ok(before.min.distanceTo(after.min)<.00001,name);assert.ok(before.max.distanceTo(after.max)<.00001,name);
+    const batched=mergeStatic(model),after=new T.Box3().setFromObject(batched,true);assert.ok(before.min.distanceTo(after.min)<.00001,name);assert.ok(before.max.distanceTo(after.max)<.00001,name);
   }
 });
 test('Every reusable asset is a valid embedded GLB without remote resources',async()=>{

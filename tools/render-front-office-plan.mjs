@@ -1,0 +1,15 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {FRONT_OFFICE,prepareWallSegments} from '../src/circulation.js';
+import {FURNITURE,DEVICE_PLACEMENTS,placementBounds} from '../src/layout.js';
+const walls=prepareWallSegments(1,JSON.parse(await readFile(new URL('../assets/collision-1.json',import.meta.url)))),X=x=>72+(x+13.1)*91,Z=z=>58+(z+3.5)*75;
+const rect=(b,fill,extra='')=>`<rect x="${X(b[0])}" y="${Z(b[1])}" width="${(b[2]-b[0])*91}" height="${(b[3]-b[1])*75}" fill="${fill}" ${extra}/>`;
+let svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640"><rect width="1000" height="640" fill="#f8f6ef"/><defs><clipPath id="plot"><rect x="48" y="76" width="912" height="505"/></clipPath></defs><g font-family="Arial,sans-serif" fill="#26474b"><text x="48" y="32" font-size="22" font-weight="bold">Alur masuk dan pendaftaran</text><text x="48" y="55" font-size="12">Teras masuk → pintu geser → loket → ruang tunggu / koridor layanan</text>`;
+svg+='<g clip-path="url(#plot)">';svg+=rect(FRONT_OFFICE.arrivalBounds,'#e4e0d3');svg+=rect(FRONT_OFFICE.bounds,'#f1ebdf');
+for(const zone of FRONT_OFFICE.protectedZones)svg+=rect(zone.bounds,'#d4e7de','opacity=".8"');
+for(const s of walls)if(Math.min(s[0],s[2])<-3.3&&Math.max(s[0],s[2])>-9.5&&Math.min(s[1],s[3])<3.5&&Math.max(s[1],s[3])>-3.5)svg+=`<path d="M${X(s[0])},${Z(s[1])} L${X(s[2])},${Z(s[3])}" stroke="#4b5b5d" stroke-width="2"/>`;
+for(const p of [...FURNITURE,...DEVICE_PLACEMENTS].filter(p=>p.room==='registration'))svg+=rect(placementBounds(p),p.kind==='waiting-bench'?'#99b3a1':p.kind==='registration-counter'?'#bb9a73':'#718d9c','rx="3"');
+const colors=['#207e72','#6688a2','#517eaa','#b48447','#976c83'];FRONT_OFFICE.routes.forEach((r,i)=>{svg+=`<polyline points="${r.points.map(p=>`${X(p[0])},${Z(p[1])}`).join(' ')}" fill="none" stroke="${colors[i]}" stroke-width="3"/>`;});
+for(const d of FRONT_OFFICE.doorways)svg+=`<circle cx="${X(d.x)}" cy="${Z(d.z)}" r="6" fill="#257f74"/>`;
+for(const [text,x,z]of [['TERAS MASUK',-11.4,1.7],['RUANG TUNGGU',-6.25,-2.3],['LOKET',-5.5,1.1],['PETUGAS',-4.25,-.75],['Koridor utara',-7.1,-2.95],['Koridor selatan',-7.1,2.95]])svg+=`<text x="${X(x)}" y="${Z(z)}" text-anchor="middle" font-size="13" font-weight="bold">${text}</text>`;
+svg+=`</g><text x="48" y="596" font-size="12">Hijau muda: jalur yang dilindungi dari penempatan furnitur dan dekorasi.</text><text x="48" y="617" font-size="11" fill="#6b7876">Denah operasional versi 4.0 · ukuran memakai unit scene, bukan gambar ukur bangunan.</text></g></svg>`;
+await writeFile(new URL('../assets/front-office-flow.svg',import.meta.url),svg);console.log('Front-office flow diagram generated from the same layout used by the scene.');

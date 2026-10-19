@@ -1,13 +1,19 @@
 {
   "name": "medilink-network-explorer",
-  "version": "2.0.0",
+  "version": "4.2.0",
   "private": true,
   "type": "module",
-  "description": "Hospital network explorer with connected floors, roof, installation training, game, and presentation",
+  "description": "Bilingual Indonesian/English hospital room tours with conversational scripts, real-voice accent selection, sentence-paced narration and optional subtitles",
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
     "assets": "node tools/export-assets.mjs",
-    "build": "node tools/prepare-static.mjs"
+    "audit": "node tools/audit-layout.mjs --save",
+    "build": "node tools/build-static.mjs",
+    "audit:environment": "node tools/audit-environment.mjs --save",
+    "audit:circulation": "node tools/audit-circulation.mjs --save",
+    "audit:rooms": "node tools/audit-room-access.mjs --save",
+    "plans": "node tools/render-front-office-plan.mjs && node tools/render-room-layout.mjs && node tools/render-campus-plan.mjs",
+    "tour:paths": "node tools/generate-tour-paths.mjs"
   }
 }

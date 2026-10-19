@@ -1,197 +1,120 @@
-# MediLink. Hospital Network Explorer 2.0
+# MediLink Hospital Network Explorer · 4.2.0
 
-Aplikasi edukasi 3D dengan empat mode untuk menjelajahi instalasi jaringan rumah sakit berdasarkan dua denah dan dua model GLB yang diberikan. Bahasa antarmuka: Indonesia. Seluruh kode, dependensi, aset, dan gambar referensi tersedia di paket ini. Tidak ada proses build, npm install, akun, API key, atau CDN yang diperlukan saat menjalankan.
+Simulasi edukasi jaringan rumah sakit dua lantai berdasarkan denah dan model pengguna. Kawasan luar, interior PBR, pencahayaan, presentasi room tour dan misi jaringan tersedia lokal tanpa CDN atau layanan jaringan rumah sakit.
 
-## Mulai dalam tiga langkah
+## Mulai menggunakan
 
-1. Ekstrak seluruh ZIP ke satu folder. Jangan menjalankan dari dalam jendela ZIP.
-2. Buka folder `hospital-network-explorer`, lalu jalankan peluncur yang sesuai: `MULAI-MAC.command`, `MULAI-WINDOWS.bat`, atau `mulai-linux.sh`.
-3. Browser membuka `http://127.0.0.1:8080/`. Jika port tersebut dipakai, peluncur memilih port berikutnya dan menampilkan alamat yang benar. Biarkan terminal tetap terbuka selama bermain.
-
-Komputer perlu memiliki **Python 3.8 atau lebih baru, atau Node.js 18 atau lebih baru**. Cukup salah satunya. Server hanya menggunakan pustaka bawaan. Browser perlu mendukung WebGL 2 dan JavaScript modules. Gunakan browser desktop dengan akselerasi grafis aktif. Performa aktual bergantung pada GPU, browser, resolusi layar, dan pengaturan grafis.
-
-Jika klik ganda peluncur tidak diizinkan, buka Terminal di folder proyek dan jalankan:
+Ekstrak seluruh ZIP dan jalankan peluncur Windows, Mac, atau Linux. Alternatif tanpa instalasi paket:
 
 ```sh
 python3 server.py
-```
-
-Alternatif dengan Node.js:
-
-```sh
+# atau
 node server.mjs
 ```
 
-Pada Windows dengan Python Launcher:
+Buka alamat localhost yang dicetak terminal. Jangan membuka index.html dengan protokol file. Browser memerlukan WebGL 2 dan akselerasi grafis. Opsi --port dan --check tetap tersedia pada server.
 
-```bat
-py -3 server.py
-```
+Pilih **Room tour** untuk presentasi, **Jelajah** untuk berjalan, atau **Eksterior** untuk melihat seluruh kawasan. Tombol **Label: tampil / mati** dan tombol L mengatur seluruh nama ruang serta penanda perangkat. Pilihan label dan pencahayaan disimpan pada browser ini.
 
-Pada macOS, jika berkas `.command` tidak memiliki izin eksekusi, jalankan perintah berikut dari folder proyek:
+## Narasi dua bahasa 4.2
 
-```sh
-chmod +x MULAI-MAC.command
-./MULAI-MAC.command
-```
+Pilih **Indonesia / English** di toolbar presentasi, di pengaturan narasi, atau lewat tombol ID/EN pada kontrol ringkas. Keempat belas bab memiliki judul, lokasi, paragraf, detail instalasi, urutan alur, fase, pemilih bab, dan pesan demo yang mengikuti bahasa. Navigasi gedung dan progres misi tetap sama. Pilihan bahasa mengubah teks meskipun suara sedang mati atau belum tersedia.
 
-Jangan membuka `index.html` langsung melalui `file://`. Module JavaScript dan pemuatan GLB memerlukan server HTTP lokal. Setelah semua berkas diekstrak, game dapat dimainkan tanpa internet. Referensi teknis hanya membutuhkan internet jika tautannya dibuka sendiri.
+Naskah **Pemandu ramah** memakai kalimat percakapan untuk mengajak pengunjung melihat objek dan mengikuti jalur. **Presentasi jelas** memakai penjelasan lebih padat. **Tenang** memakai naskah pemandu dengan tempo lebih pelan dan jeda lebih panjang. Naskah Indonesia serta Inggris ditulis per bab. Singkatan jaringan memiliki pelafalan khusus sesuai bahasa, termasuk LAN, UPS, ICU, VLAN, dan nomor lantai.
 
-## Pembaruan versi 2.0
+Pengaturan **Narasi & bahasa** menambahkan aksen, voice, kecepatan 0,75–1,25×, nada 0,85–1,15, volume, serta pilihan tur utama atau tur dengan detail instalasi. Aksen menggunakan voice nyata: misalnya English US, UK, atau Australia jika tersedia, dan Indonesia untuk voice Indonesia. Pilihan yang belum tersedia ditandai; perpindahan perangkat dapat menghasilkan pemberitahuan bahwa aksen lama diganti voice lain dalam bahasa yang sama. Bahasa yang tidak memiliki voice tidak dibacakan dengan voice bahasa lain. Suara yang terdaftar terlambat dapat dipakai setelah tersedia.
 
-- **Atap nyata dan plafon:** atap pelana pada lantai atas, atap sayap lantai 1, penutup sayap tangga, lis, dan detail sambungan. Pada tampilan Gedung, atap terpasang otomatis. Pilih lantai untuk melihat potongan atau gunakan tombol Atap untuk mengganti otomatis, terpasang, dan terbuka. Saat berjalan pada pengaturan otomatis, plafon terlihat.
-- **Lantai terhubung:** elevasi lantai diselaraskan menjadi 3,35 unit scene. Karena ruang tangga pada dua denah tidak segaris, sayap tangga tambahan di sisi timur menghubungkan kedua bordes. Pintu pada dinding model asli benar-benar dibuka, dan kamera mengikuti jalur kontinu saat naik/turun. Denah dan posisi perangkat awal dipertahankan.
-- **Empat mode:** Eksplorasi mengikuti distribusi jaringan awal; Game mempertahankan enam misi; Instalasi menyambungkan 48 link melalui delapan tahap; Presentasi menyediakan delapan adegan, catatan pembicara, kontrol keyboard, putar otomatis, dan layar penuh jika browser mengizinkan.
-- **Material dan detail:** tekstur prosedural PBR untuk kayu, kain, linen, logam, lantai, dan atap. UV dipertahankan saat batching. Ditambahkan bantalan membulat, jahitan kasur, sandaran tangan dan roda kursi, tombol keyboard, grafik monitor, port, ventilasi, kabel patch rak, kusen, dan fasia.
-- **Perbaikan diagnosis:** penolakan kebijakan tamu baru ditampilkan setelah jalur fisik yang aktif ditemukan. Tablet tanpa uplink atau daya dilaporkan sebagai gangguan fisik/daya.
+Narasi dibagi per kalimat, dengan jeda antarbagian. Subtitle opsional menampilkan kalimat yang sedang diproses; subtitle dapat ditutup terpisah dan tetap tersedia saat panel tersembunyi. Subtitle mengikuti event kalimat, bukan pengukuran audio atau penyelarasan kata. Penjelasan lengkap menambahkan detail instalasi setelah narasi utama. Tur menunggu seluruh rangkaian selesai sebelum berpindah otomatis. Ganti bahasa/gaya saat tur aktif membatalkan antrian lama dan memulai penjelasan bab yang sama; posisi kamera serta waktu bab tetap dipertahankan.
 
-### Pilih mode dan ikuti alurnya
+Profil bahasa, aksen/voice per bahasa, gaya, kecepatan, nada, volume, isi, dan subtitle disimpan di browser. Status aktif suara tidak disimpan agar reload tidak memulai audio sendiri. Suara lokal diprioritaskan di dalam aksen yang dipilih; pengguna bisa memilih voice nonlokal yang tersedia. Karakter suara dan dukungan nada mengikuti engine browser/perangkat. Tidak ada engine neural baru atau layanan suara premium yang ditambahkan, dan kualitas pengucapan belum didengar langsung. Suara nonlokal mungkin memerlukan koneksi. Referensi API: https://webaudio.github.io/web-speech-api/#tts-section.
 
-| Mode | Alur utama | Hasil |
-| --- | --- | --- |
-| Eksplorasi | Gedung utuh → pusat server → cabang akses L1 → penunjang L1 → riser fiber → distribusi L2 → AP/tamu | Memahami distribusi sesuai 53 perangkat dan 48 link awal |
-| Game | Kenali core → telusuri IGD → pulihkan ICU → uji tamu → uji UPS → evaluasi | Maksimum 1000 XP, progres game tetap kompatibel dengan versi 1 |
-| Instalasi | Survei → pusat jaringan → cabang L1 → fiber L2 → LAN endpoint → Wi-Fi → kebijakan → pengujian | Kabel tampil setelah pekerjaan yang benar; hasil uji IGD, radiologi, ICU, dan tamu |
-| Presentasi | Gedung → server → distribusi L1 → backbone → distribusi L2 → kebijakan → daya → penutup | Adegan 3D dan materi penjelasan yang dapat dinavigasi |
+## Roomtour tanpa panel dan narasi 4.1
 
-Latihan instalasi dan progres game disimpan terpisah. Berganti mode mengembalikan kondisi daya dan gangguan ke baseline aktif tanpa menghapus XP atau tahap instalasi. Ekspor progres mencakup keduanya. Tampilan instalasi menggunakan subset graf yang sama, sehingga kabel yang belum dipasang tidak dihitung sebagai koneksi aktif.
+Tekan **Sembunyikan panel** atau **H** untuk menampilkan scene hingga seluruh area aplikasi. Panel, toolbar besar, sidebar, header, dan footer disembunyikan; kontrol ringkas tetap menyediakan Tampilkan panel, Jeda/Lanjutkan, Narasi, dan Keluar. H mengembalikan panel. Kamera layar kecil kembali ke tengah saat panel tersembunyi. Layar penuh browser tetap tersedia melalui tombol Layar penuh sebelum menyembunyikan panel.
 
-### Menggunakan tangga penghubung
+Aktifkan **Narasi** atau **N** untuk membacakan judul serta paragraf penjelasan bab sesuai bahasa pilihan dengan text-to-speech. Pengaturan narasi suara menyediakan pilihan voice, kecepatan yang dapat diatur, dan Ulangi narasi. Suara Indonesia diprioritaskan, termasuk suara lokal jika tersedia. Voice mengikuti daftar browser/perangkat; sebagian suara nonlokal dapat membutuhkan koneksi. Narasi awalnya mati. Tidak ada API key yang diperlukan. Jika API atau voice gagal, penjelasan teks dan tur tetap dapat dipakai.
 
-1. Dalam mode Eksplorasi, pilih **Menuju tangga**. Anda ditempatkan di bordes lantai yang sedang aktif dan masuk ke mode berjalan.
-2. Tekan **F** atau tombol naik/turun yang muncul di layar. Kamera mengikuti jembatan bordes dan dua lintasan tangga sampai ke lantai tujuan.
-3. Setelah tiba, lanjutkan berjalan dengan WASD atau tombol arah. Turun menggunakan F di bordes lantai 2.
+Suara mengikuti jeda/lanjut, berhenti saat keluar atau pindah bab, serta dijeda ketika tab tersembunyi. Pergantian otomatis menunggu narasi bab selesai; kegagalan engine dibatasi agar tur tidak terkunci. Menyembunyikan panel tidak menghentikan narasi. Empat tombol lapisan serta Buka plafon & atap tersedia di panel tanpa keluar presentasi; perubahan manual dipertahankan antarbab dan kondisi sebelum tur dipulihkan saat keluar.
 
-Anda juga dapat berjalan sendiri ke ruang tangga. Dalam mode berjalan, memilih tombol lantai lain hanya memulai perjalanan jika Anda berada dekat tangga. Tampilan orbit tetap menyediakan pemilihan lantai langsung untuk inspeksi model. Perjalanan antarlantai merupakan navigasi terpandu, bukan simulasi fisika langkah per anak tangga.
+## Pemeriksaan instalasi 4.1
 
-### Kontrol presentasi
+54 koneksi LAN, empat backbone fiber, dan satu radio tablet–AP memakai graph yang sama dengan simulasi. LAN dan fiber memiliki lane berbeda pada tray data; 61 feed daya memakai tray di sisi lain koridor. Titik LAN AP disambungkan pada elevasi aset terpasang. Fiber antarlantai melewati lubang service nyata pada pelat L2 di riser internal. Daya mengikuti panel → UPS → beban terlindungi atau panel → beban biasa; tablet baterai tidak diberi kabel daya. Radio Wi-Fi memakai garis ungu putus-putus dan gelombang AP; uplink AP tetap LAN. Jalur dan pemisahan bersifat ilustrasi scene, bukan dimensi atau spesifikasi instalasi nyata.
 
-Gunakan tombol sebelumnya/selanjutnya atau tombol panah kiri/kanan. Spasi memulai atau menjeda pergantian otomatis tiap 10 detik. Esc mengakhiri presentasi. Tombol layar penuh memerlukan dukungan dan izin browser. Perpindahan otomatis berhenti saat tab tersembunyi atau dialog terbuka. Mode otomatis tidak dimulai tanpa tindakan pengguna.
+## Perbaikan tampilan gedung 4.0.1
 
-## Apa yang tersedia
+Gedung utuh menampilkan kedua lantai dengan atap dan fascia yang tersambung ke puncak dinding. Atap bawah hanya menutup area di luar footprint lantai 2 sehingga tidak berlapis dengan pelat lantai atas. Bukaan tangga tetap nyata. Kedua lantai juga tetap hadir secara fisik dalam Jelajah dan room tour interior.
 
-| Komponen | Implementasi |
+Buka plafon membuka atap sekaligus plafon. Pilihan lantai, Orbit 3D, Atas, dan Reset tampilan kembali ke denah terbuka tanpa meninggalkan atap penutup. Antarlantai memperlihatkan kedua lantai serta backbone fiber dalam mode denah. Label interior tidak menembus atap tertutup; preferensi label tetap tersimpan. Kamera, far plane dan kabut mengikuti framing portrait/landscape serta perubahan ukuran layar.
+
+## Lingkungan dan pencahayaan
+
+Kawasan memuat jalan melingkar, jalur pejalan kaki menuju pintu utama, penyeberangan, parkir, mobil, ambulans, taman, pohon dengan gerak daun GLSL, bangku, pagar, drainase, totem dan signage rumah sakit. Mode Jelajah dapat berjalan dari kawasan menuju loket; peta mini menyesuaikan ketika berada di luar gedung. Penataan bagian dalam tetap melindungi seluruh pintu dan jalur menuju peralatan.
+
+Interior 36 ruang/area dilengkapi furnitur sesuai fungsi, pintu, jendela, plafon, roof/slab, lampu, utilitas plafon dan detail dinding. Versi ini menambah outlet data, raceway vertikal, panel terminasi fiber, exit sign, dan wall art. Rak nurse station menghadap koridor sehingga muka rak bisa diamati. Outlet yang terlihat memakai titik yang sama dengan jalur kabel endpoint; pendaftaran memakai floor box dan feed bawah lantai menuju riser dinding.
+
+Preset **Siang, Senja, Malam** mengatur warna dan arah matahari, hemisphere/fill light, environment intensity, fog jauh, exposure serta lampu kawasan. Warna lampu ruang membedakan area publik, klinis dan perawatan. Contact grounding memakai instanced alpha planes; shadow matahari memakai PCF. Terdapat 79 posisi lampu interior/teras dan 11 posisi lampu kawasan. Pool PointLight terdekat dibatasi 3 pada Hemat, 6 pada Standar, dan 8 pada Detail; seluruh posisi tidak menjadi lampu dinamis secara bersamaan.
+
+Seluruh aset prosedural memakai base-color, normal, roughness dan AO. Profil meliputi vinyl, kain, kayu, logam, keramik, kaca, karet, plaster, leaf dan terrazzo. Geometry bantalan memakai bevel/crown, UV atlas dan tangent dipertahankan setelah batching. Terdapat 71 GLB tambahan, terdiri atas 68 jenis aset dan tiga kabel, serta dua GLB dinding sumber. Masing-masing aset berada di bawah 60.000 triangle; maksimum saat ini 6.652.
+
+## Presentasi room tour
+
+14 bab otomatis berlangsung sekitar 5 menit 15 detik tanpa narasi; durasi dapat memanjang ketika menunggu narasi selesai. Kamera memasuki delapan adegan ruang melalui rute yang diuji dengan collision aplikasi. Pergantian ruang/lantai memakai transisi bab; kamera tidak diberi lintasan menembus dinding. Tampilan overview membuka selubung untuk menjelaskan instalasi di atas plafon.
+
+| Bab | Fokus |
 | --- | --- |
-| Dua lantai rumah sakit | Arsitektur GLB pengguna, atap/plafon, sayap tangga kontinu, label mengikuti denah |
-| Eksplorasi 3D | Orbit, tampak atas, zoom, mode berjalan, peta mini, perpindahan lantai |
-| Interaksi | Klik perangkat, inspeksi dengan E, daftar perangkat yang dapat dicari |
-| Jalur LAN dan fiber | Kabel 3D, titik paket bergerak, penelusuran rute berdasarkan graf koneksi |
-| Wi-Fi | Model access point dan lingkaran aktivitas radio konseptual |
-| Listrik | Panel, UPS, jalur daya terpisah, status perangkat mengikuti skenario suplai |
-| Furnitur | Tempat tidur, monitor medis, meja dan komputer, kursi, lemari, rak, binatu, tangga, tanaman, pemindai radiologi sederhana |
-| Pembelajaran | Enam misi, delapan tahap instalasi, delapan adegan presentasi, tiga pertanyaan evaluasi |
-| Penyimpanan | LocalStorage untuk progres, ekspor JSON untuk catatan pembelajaran |
-| Aset reusable | 27 GLB tambahan, dua GLB arsitektur, dan sumber generator geometri |
+| 01 | Kawasan, kedatangan dan pemetaan layanan |
+| 02 | Pendaftaran, terminal administrasi dan titik data |
+| 03 | Server, core, router, panel fiber dan UPS pusat |
+| 04 | Agregasi akses dan segmentasi layanan |
+| 05 | Jalur terminal IGD ke server |
+| 06 | Cabang kabel dan tray koridor |
+| 07 | Backbone fiber dan riser internal antarlantai |
+| 08 | Tangga dan sirkulasi internal ke lantai 2 |
+| 09 | Rak distribusi serta terminasi di nurse station |
+| 10 | Terminal dan penataan ruang rawat inap |
+| 11 | ICU serta demo kabel endpoint putus/pulih |
+| 12 | Wi-Fi dan demo penolakan VLAN tamu |
+| 13 | UPS serta demo suplai utama padam/pulih |
+| 14 | Ringkasan alur dan dokumentasi |
 
-Paket berisi 35 zona berlabel, 53 perangkat edukasi, dan 48 koneksi data. Sebagian zona merupakan koridor atau fasilitas pendukung. Perangkat yang diperiksa dicatat sebagai aktivitas eksplorasi.
+Setiap bab memiliki penjelasan, urutan alur, fase instalasi, dan detail yang dapat dibuka. Gunakan Jeda/Lanjutkan, panah, pemilih bab, Layar penuh, dan Jelajah dari sini. Pada layar kecil isi penjelasan dapat digulir sementara kontrol bab tetap terlihat. Preferensi reduced motion membuat tur dimulai dalam keadaan jeda.
+
+Demo presentasi memakai state terpisah dari GameState pembelajaran. Skenario kabel, VLAN dan UPS tidak menambah XP, mengubah progres misi, atau menimpa kondisi sebelumnya. Keluar presentasi memulihkan lantai, kamera, mode, lapisan, label, pilihan perangkat, trace dan kondisi daya sebelumnya. Perubahan label yang dilakukan sendiri saat tur tetap dipertahankan. Pencahayaan merupakan preferensi pengguna yang tetap bisa diubah saat tur.
 
 ## Kontrol
 
-| Tindakan | Kontrol |
+| Aksi | Kontrol |
 | --- | --- |
-| Putar kamera orbit | Seret tombol kiri mouse |
-| Geser kamera orbit | Seret tombol kanan mouse |
-| Mendekat atau menjauh | Gulir mouse atau pinch dua jari |
-| Berjalan | Tombol WASD atau tombol arah |
-| Melihat saat berjalan | Seret layar |
-| Memeriksa perangkat terdekat | E atau klik perangkat dalam jangkauan |
-| Keluar dari mode berjalan | Esc atau tombol Orbit 3D |
-| Pindah fokus atau posisi | Klik peta mini. Pada mode berjalan, titik diperiksa terhadap penghalang |
-| Berganti lantai | Orbit: tombol 01/02. Berjalan: F atau tombol naik/turun di dekat bordes tangga |
-| Mengatur atap | Tombol Atap: otomatis, terpasang, terbuka |
-| Memilih pengalaman | Eksplorasi, Game, Instalasi, Presentasi di bagian atas |
-| Lihat backbone antarlantai | Tombol Gedung |
-| Tampilkan lapisan | LAN, Fiber, Wi-Fi, Daya |
-| Jeda atau ubah kecepatan | Kontrol aliran data di kanan bawah |
+| Orbit / zoom | Seret / gulir; satu dan dua jari pada layar sentuh |
+| Berjalan / melihat | WASD atau tombol arah / seret |
+| Periksa perangkat / tangga | E atau tombol interaksi |
+| Buka/tutup pintu | F atau tombol pintu |
+| Label ruang dan perangkat | Tombol Label atau L |
+| Sembunyikan/tampilkan panel roomtour | H atau tombol panel |
+| Narasi text-to-speech | N atau tombol Narasi |
+| Bab presentasi | Panah kiri/kanan atau pemilih bab |
+| Jeda/lanjutkan presentasi | Spasi atau tombol Jeda |
+| Keluar presentasi/jelajah | Esc |
+| Pencahayaan | Siang / Senja / Malam |
+| Instalasi | Lapisan LAN, fiber, Wi-Fi dan daya |
 
-Pada perangkat sentuh, tersedia tombol arah saat mode jelajah. Daftar perangkat juga dapat dioperasikan dengan keyboard tanpa memilih objek kecil pada kanvas. Jika preferensi perangkat meminta pengurangan animasi, aliran data dimulai dalam keadaan jeda dan dapat diaktifkan melalui tombol putar.
+Enam misi, diagnosis ICU, trace paket, kebijakan VLAN, UPS, kuis, penyimpanan progres dan ekspor JSON tetap tersedia. Daftar perangkat menyediakan alternatif navigasi ketika label dimatikan.
 
-## Alur keenam misi
+## Validasi dan sumber
 
-| Misi | Cara menyelesaikan | XP |
-| --- | --- | --- |
-| Kenali pusat jaringan | Periksa core switch atau rak server di lantai 1 | 100 |
-| Ikuti perjalanan paket | Buka terminal IGD dan pilih Telusuri paket | 150 |
-| Pulihkan koneksi ICU | Mulai skenario gangguan, diagnosis terminal ICU, sambungkan ulang kabel | 200 |
-| Uji akses pengunjung | Uji tablet pengunjung menuju server. Hasil sesuai adalah akses ditolak kebijakan | 150 |
-| Jaga layanan saat daya padam | Buka uji daya, biarkan UPS siap, simulasikan pemadaman suplai utama | 200 |
-| Tuntaskan evaluasi | Jawab tiga pertanyaan dengan tepat. Jawaban keliru dapat diperbaiki | 200 |
-
-Aktivitas tidak menggandakan XP jika diulang. Misi ditampilkan berurutan. Anda dapat memeriksa perangkat lain di luar misi aktif. Setelah uji pemadaman, pulihkan suplai utama melalui dialog uji daya untuk mengembalikan seluruh beban simulasi.
-
-Progres tersimpan pada browser dan alamat lokal yang digunakan. Pergantian browser, profil, port, atau penghapusan data situs dapat menghasilkan progres yang berbeda. Ekspor progres menghasilkan berkas JSON. Fitur impor progres belum disediakan. Kondisi gangguan dan pemadaman direset ketika halaman dimuat ulang; pencapaian pembelajaran tetap tersimpan.
-
-## Dasar model dan batas interpretasi
-
-Topologi memisahkan fungsi terminal, access point, switch akses, core, dan server. Backbone fiber menghubungkan area layanan dan distribusi lantai 2. Penelusuran memakai pencarian jalur pada graf yang menghapus link putus dan perangkat tanpa daya dari rute yang dapat digunakan. Hasil ini merupakan simulasi konektivitas, bukan ping atau analisis jaringan nyata.
-
-VLAN 10 untuk klinis, VLAN 20 untuk administrasi, VLAN 30 untuk tamu, dan VLAN 99 untuk manajemen dipakai sebagai contoh pembelajaran. Nomor VLAN tidak dengan sendirinya menegakkan keamanan. Fungsi kebijakan pada simulator menerapkan penolakan akses VLAN tamu menuju server internal. Router/firewall ditampilkan sebagai perangkat pembelajaran, sedangkan logika kebijakan dihitung pada engine aplikasi.
-
-UPS mempertahankan daya pada perangkat yang ditandai `protected`. Terminal tanpa suplai tetap tidak dapat berkomunikasi meskipun server menyala. Simulasi ini tidak menghitung beban, kapasitas, masa cadangan, proteksi, pembumian, gelombang arus, propagasi RF, interferensi, latensi, atau throughput. Lingkaran Wi-Fi dan titik paket bersifat konseptual.
-
-Gambar referensi mencantumkan tanpa skala. Panjang jalur ditampilkan dalam **unit scene**, bukan meter terverifikasi. Furnitur dan perangkat tambahan berupa model geometri ringan dengan material bertekstur untuk pembelajaran. Susunan perangkat, VLAN, jalur kabel, dan sirkuit daya adalah tambahan simulasi. Paket ini tidak mengandung data pasien atau konfigurasi produksi rumah sakit.
-
-## Struktur kode
-
-| Berkas atau folder | Peran |
-| --- | --- |
-| `index.html`, `style.css` | Struktur antarmuka dan tampilan responsif |
-| `src/app.js` | Misi, panel informasi, kuis, penyimpanan, ekspor |
-| `src/world.js` | Scene, kamera, kontrol, interaksi, furnitur, animasi |
-| `src/data.js` | Zona ruang, perangkat, VLAN contoh, materi dan pertanyaan |
-| `src/engine.js` | Graf koneksi, penelusuran, gangguan, daya, skor, collision |
-| `src/experience.js`, `src/modes.js` | Alur empat mode, instalasi bertahap, presentasi, dan jalur tangga |
-| `src/building.js` | Atap, plafon, detail fasad, jembatan dan tangga penghubung, bukaan pintu |
-| `src/surfaces.js` | Tekstur PBR prosedural tanpa unduhan |
-| `src/assets.js` | Generator seluruh geometri tambahan dan batching |
-| `assets/models/` | GLB arsitektur dan 27 aset tambahan siap digunakan |
-| `assets/collision-*.json` | Potongan geometri dinding untuk navigasi |
-| `assets/reference/` | Dua gambar denah asli |
-| `assets/floorplan-manifest.json` | Pemetaan sumber dan ukuran hasil optimasi |
-| `vendor/` | Three.js 0.180.0, addons, lisensi MIT |
-| `server.py`, `server.mjs` | Server lokal tanpa dependensi tambahan |
-| `tests/` | Pengujian engine, geometri, GLB, dan kelengkapan module lokal |
-| `tools/` | Ekspor aset dan konversi ulang model untuk pengembangan |
-| `docs/` | Topologi dan catatan validasi |
-
-Untuk menambah perangkat, ubah `NETWORK` pada `src/data.js`, tetapkan `sw` sebagai ID switch tujuan, lalu sesuaikan posisi dan VLAN. Perangkat dengan `sw` memperoleh link dari `createEdges()`. Jalur utama disediakan secara eksplisit. Simpan ID link tetap unik agar pemutusan satu uplink tidak memutus link lain.
-
-Generator aset dipakai langsung saat runtime agar tidak perlu memuat puluhan model kecil. Versi GLB tersedia untuk diedit di Blender atau dipakai di proyek lain. Untuk membuat ulang GLB tambahan:
-
-```sh
-node tools/export-assets.mjs
-```
-
-Konversi ulang model asli merupakan langkah pengembangan opsional yang memerlukan Python dan NumPy. Game yang sudah jadi tidak memerlukan NumPy:
-
-```sh
-python3 tools/prepare_floorplans.py /folder/berisi/model/asli
-```
-
-Konverter mempertahankan dinding dan skirting dalam koordinat asli, menggabungkan geometri, menghapus komponen daun pintu, dan menghasilkan data collision pada tinggi badan. Model berfurnitur besar tidak disalin seluruhnya. Furnitur aslinya diganti oleh geometri pembelajaran yang ringan. Dua GLB arsitektur hasil konversi hanya berukuran sekitar 380 KB dan 294 KB.
-
-## Validasi dan pemecahan masalah
-
-Jalankan pengujian dengan Node.js tanpa npm install:
+89 pengujian otomatis lulus. Pengujian meliputi 49 lintasan pintu/portal dua arah, 63 rute masuk ruang, 152 rute ke peralatan, delapan lintasan kamera room tour, akses kawasan–loket, lifecycle presentasi, isolasi demo, preferensi label, pemilihan lampu, geometri/GLB/PBR, serta seluruh misi dan jaringan sebelumnya. Hasil rinci tersedia pada docs/VALIDASI.md dan JSON audit.
 
 ```sh
 node --test tests/*.test.mjs
-python3 server.py --check
-node server.mjs --check
+node tools/audit-layout.mjs --save
+node tools/audit-environment.mjs --save
+node tools/audit-circulation.mjs --save
+node tools/audit-room-access.mjs --save
+node tools/generate-tour-paths.mjs
+node tools/export-assets.mjs
+node tools/build-static.mjs
 ```
 
-Pengujian mencakup konektivitas, segmentasi tamu, isolasi kabel putus, efek gangguan upstream, daya cadangan, urutan dan idempotensi XP, penyimpanan progres, collision, pemuatan GLB, instalasi bertahap, jalur tangga kontinu, geometri atap, UV material, kontrak kontrol empat mode, dan keberadaan module lokal. Catatan validasi menjelaskan cakupan pemeriksaan dan batas QA rendering.
+Browser dan GPU belum diuji. Pengujian ini tidak mengompilasi GLSL pada GPU, mengukur FPS, atau memverifikasi tampilan interaktif browser. Model memakai unit scene ilustratif dari referensi tanpa skala dan tidak merupakan gambar kerja bangunan, desain medis, atau rancangan instalasi listrik/jaringan nyata.
 
-Jika halaman gagal dimuat, periksa bahwa terminal server masih berjalan, seluruh ZIP sudah diekstrak, dan URL sesuai alamat yang dicetak. Untuk port khusus gunakan `python3 server.py --port 9000` atau `node server.mjs --port 9000`. Jika tampilan 3D gagal, pastikan WebGL 2 tersedia dan akselerasi grafis aktif. Pilih grafis Hemat untuk menonaktifkan bayangan dan menurunkan resolusi render. Tutup tab grafis berat lain jika diperlukan. Tidak ada klaim FPS tetap pada semua perangkat.
-
-## Referensi dan lisensi
-
-Materi konsep merujuk dokumentasi primer berikut. Tanggal pemeriksaan: 15 Oktober 2026.
-
-- Three.js, Installation: https://threejs.org/manual/pages/installation.html
-- Three.js, GLTFLoader: https://threejs.org/docs/pages/GLTFLoader
-- Cisco, Campus LAN and Wireless LAN Solution Design Guide: https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html
-- Cisco, VLAN Access Control Lists: https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15_2_6_e/configuration_guide/b_1526e_consolidated_2960x_cg/m_sec_vlan_maps_cg_cauvery.html
-- APC, UPS Buying Guide: https://www.apc.com/us/en/support/product-support/ups-buying-guide-for-selecting-a-battery-backup-system.jsp
-
-Kode aplikasi dan aset prosedural tambahan menggunakan lisensi MIT pada `LICENSE.txt`. Denah dan arsitektur turunan berasal dari unggahan pengguna; hak sumber tersebut tidak dialihkan oleh lisensi kode. Three.js dan addons menggunakan lisensi MIT tersendiri pada `vendor/THREE-LICENSE.txt`.
+Kode utama: src/tour-copy.js, installation.js, narration.js, tour-ui.js, world.js, environment.js, campus.js, assets.js, materials.js, lighting.js, presentation.js, tour.js, data.js dan engine.js. Rute room tour disimpan pada src/tour-paths.js dan dihasilkan kembali dari audit posisi akhir. Menu Denah memuat denah kawasan, penataan kedua lantai serta gambar referensi asli. Lisensi Three.js dan aset sumber dijelaskan pada LICENSE.txt.

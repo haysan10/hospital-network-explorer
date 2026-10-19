@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {renderTourControls} from '../src/tour-ui.js';
+function element(){const values=new Set();return {dataset:{},attributes:{},classList:{toggle(k,on){if(on)values.add(k);else values.delete(k);},contains:k=>values.has(k)},setAttribute(k,v){this.attributes[k]=v;},replaceChildren(...options){this.options=options;}};}
+test('Room-tour controls keep the popup hidden on updates and expose a working restoration control without changing narration',()=>{
+ const els=new Map(),layers=['copper','fiber','power','wifi'].map(k=>{const e=element();e.dataset.tourLayer=k;return e;}),doc={body:element(),querySelector(q){if(!els.has(q))els.set(q,element());return els.get(q);},querySelectorAll(){return layers;},createElement:element};
+ const status={active:true,panelHidden:true,playing:true,completed:false,layers:{copper:true,fiber:true,power:false,wifi:true},ceilingVisible:false,narration:{supported:true,enabled:true,busy:true,error:'',voiceName:'Indonesia',voiceURI:'',rate:1,voices:[]}};
+ for(let i=0;i<3;i++)renderTourControls(status,doc);assert.ok(doc.body.classList.contains('tour-clean'));assert.ok(els.get('#tour-panel').classList.contains('hidden'));assert.ok(els.get('#tour-toolbar').classList.contains('hidden'));assert.equal(els.get('#tour-clean-controls').classList.contains('hidden'),false);assert.equal(els.get('#tour-panel').attributes['aria-hidden'],'true');assert.equal(els.get('#tour-clean-narration').attributes['aria-pressed'],'true');assert.equal(layers[2].attributes['aria-pressed'],'false');
+ renderTourControls({...status,panelHidden:false},doc);assert.equal(doc.body.classList.contains('tour-clean'),false);assert.equal(els.get('#tour-panel').classList.contains('hidden'),false);assert.ok(els.get('#tour-clean-controls').classList.contains('hidden'));
+ renderTourControls({...status,active:false},doc);assert.equal(doc.body.classList.contains('tour-clean'),false);for(const id of ['#tour-panel','#tour-toolbar','#tour-clean-controls'])assert.ok(els.get(id).classList.contains('hidden'));
+});
+test('Hide/show, speech settings, compact controls and all four installation controls are wired once with accessible names',async()=>{
+ const html=await readFile(new URL('../index.html',import.meta.url),'utf8');for(const id of ['tour-hide-panel','tour-panel-hide','tour-show-panel','tour-clean-play','tour-clean-narration','tour-clean-exit','tour-voice','tour-voice-rate','tour-narration','tour-narration-replay','tour-installation-view'])assert.equal([...html.matchAll(new RegExp('id="'+id+'"','g'))].length,1,id);
+ for(const name of ['copper','fiber','power','wifi'])assert.equal([...html.matchAll(new RegExp('data-tour-layer="'+name+'"','g'))].length,1);
+ assert.match(html,/for="tour-voice"/);assert.match(html,/for="tour-voice-rate"/);assert.match(html,/id="tour-show-panel" aria-controls="tour-panel"/);
+});
+test('English narration localizes controls, filters real accent options and shows optional sentence subtitles in clean mode',()=>{
+ const els=new Map(),doc={body:element(),querySelector(q){if(!els.has(q))els.set(q,element());return els.get(q);},querySelectorAll(){return [];},createElement:element};
+ const status={active:true,panelHidden:true,playing:true,completed:false,layers:{},ceilingVisible:false,narration:{supported:true,enabled:true,busy:true,error:'',language:'en',accent:'en-GB',style:'guide',voiceName:'British voice',voiceURI:'gb',rate:1,pitch:1,volume:.5,detail:'full',subtitles:true,caption:"Let's follow the fiber upstairs.",sentenceIndex:2,sentenceCount:6,accents:['en-GB'],voices:[{id:'gb',name:'British voice',lang:'en-GB',local:true}]}};
+ renderTourControls(status,doc);assert.equal(els.get('#tour-panel').attributes.lang,'en');assert.equal(els.get('#tour-exit').textContent,'← Exit presentation');assert.equal(els.get('#tour-show-panel').textContent,'Show panel · H');assert.equal(els.get('#tour-subtitle').classList.contains('hidden'),false);assert.equal(els.get('#tour-caption-text').textContent,status.narration.caption);assert.equal(els.get('#tour-caption-counter').textContent,'EN · 2/6');assert.equal(els.get('#tour-accent').options.find(o=>o.value==='en-US').disabled,true);assert.equal(els.get('#tour-accent').options.find(o=>o.value==='en-GB').disabled,false);assert.equal(els.get('#tour-voice').options.length,2);
+ renderTourControls({...status,narration:{...status.narration,subtitles:false}},doc);assert.ok(els.get('#tour-subtitle').classList.contains('hidden'));assert.ok(els.get('#tour-panel').classList.contains('hidden'));
+});

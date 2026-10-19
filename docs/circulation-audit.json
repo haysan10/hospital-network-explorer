@@ -1,0 +1,74 @@
+{
+  "version": "4.0.0",
+  "units": "illustrative scene units",
+  "mainEntranceWidth": 1.8,
+  "corridorDoorWidth": 1.4,
+  "reservedZones": [
+    {
+      "id": "entry-landing",
+      "bounds": [
+        -9.09,
+        -0.82,
+        -6.15,
+        0.62
+      ]
+    },
+    {
+      "id": "north-south-spine",
+      "bounds": [
+        -8.65,
+        -3.64,
+        -7.45,
+        3.44
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "arrival-service",
+      "name": "Pintu masuk → loket",
+      "testedClearWidth": 1.2,
+      "samples": 164,
+      "blockedSamples": 0,
+      "walkCompleted": true,
+      "walkFrames": 125
+    },
+    {
+      "id": "service-waiting",
+      "name": "Loket → ruang tunggu",
+      "testedClearWidth": 0.9,
+      "samples": 27,
+      "blockedSamples": 0,
+      "walkCompleted": true,
+      "walkFrames": 19
+    },
+    {
+      "id": "service-north",
+      "name": "Loket → koridor utara",
+      "testedClearWidth": 1.2,
+      "samples": 126,
+      "blockedSamples": 0,
+      "walkCompleted": true,
+      "walkFrames": 94
+    },
+    {
+      "id": "service-south",
+      "name": "Loket → koridor selatan",
+      "testedClearWidth": 1.2,
+      "samples": 127,
+      "blockedSamples": 0,
+      "walkCompleted": true,
+      "walkFrames": 96
+    },
+    {
+      "id": "staff-access",
+      "name": "Akses petugas ke belakang loket",
+      "testedClearWidth": 0.8,
+      "samples": 233,
+      "blockedSamples": 0,
+      "walkCompleted": true,
+      "walkFrames": 172
+    }
+  ],
+  "issues": []
+}
