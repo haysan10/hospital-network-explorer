@@ -16,5 +16,5 @@ for(const floor of [1,2]){
  environment.root.traverse(o=>{if(o.isMesh&&!o.geometry.attributes.position.array.every(Number.isFinite))issues.push({floor,problem:'Non-finite geometry'});});
  floors.push({floor,rooms:environment.roomSummary,doorAssemblies:environment.doors.length,operableDoors:environment.doors.filter(d=>!d.definition.portal).length,openPortals:environment.doors.filter(d=>d.definition.portal).length,privacyStallDoors:environment.doors.filter(d=>d.definition.stall).length,windows:environment.windowDefinitions.length,luminairePositions:environment.lightPoints.length,detailObjects:placements.length,groundAdditions:placements.filter(p=>p.collidable).length,skipped:environment.skipped});
 }
-const report={version:'4.0.0',units:'illustrative scene units',floors,issues};if(process.argv.includes('--save'))await writeFile('docs/environment-audit.json',JSON.stringify(report,null,2));
+const report={version:'4.5.0',units:'illustrative scene units',floors,issues};if(process.argv.includes('--save'))await writeFile('docs/environment-audit.json',JSON.stringify(report,null,2));
 console.log(JSON.stringify({floors:floors.map(f=>({floor:f.floor,rooms:f.rooms.length,doors:f.operableDoors,portals:f.openPortals,windows:f.windows,lights:f.luminairePositions,details:f.detailObjects,skipped:f.skipped})),issues},null,2));if(issues.length)process.exitCode=1;

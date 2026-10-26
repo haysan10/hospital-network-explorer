@@ -1,3 +1,4 @@
+import {isGroundMode} from './camera-rig.js';
 import * as T from '../vendor/three.module.js';
 import {TOUR_STEPS,TourClock} from './tour.js';
 import {TOUR_PATHS} from './tour-paths.js';
@@ -22,7 +23,7 @@ export class PresentationDirector{
  constructor(world){this.world=world;this.clock=new TourClock();this.snapshot=null;this.lastNotify=-1;this.panelHidden=false;this.installationOpen=false;this.envelopeOverride=null;this.layerOverrides={};this.narrator=new TourNarrator({onChange:()=>{if(this.active)this.world.callbacks.tour?.(this.status(),false);}});}
  get active(){return this.clock.active;}
  start(index=0){
-  const w=this.world;if(!this.active)this.snapshot={state:w.state,floor:w.floor,mode:w.mode,layers:{...w.layers},shell:w.shellFull,ceiling:w.ceilingOverride,labelsVisible:w.labelsVisible,paused:w.paused,player:[...w.player],yaw:w.yaw,pitch:w.pitch,camera:w.camera.position.clone(),target:w.controls.target.clone(),fov:w.camera.fov,selected:w.selected,trace:w.traceResult,ringPosition:w.selectionRing.position.clone(),ringVisible:w.selectionRing.visible,exterior:w.exteriorFocused,framing:w.framing,maxDistance:w.controls.maxDistance,far:w.camera.far};
+  const w=this.world;w.clearInput?.();if(!this.active)this.snapshot={state:w.state,floor:w.floor,mode:w.mode,layers:{...w.layers},shell:w.shellFull,ceiling:w.ceilingOverride,labelsVisible:w.labelsVisible,paused:w.paused,player:[...w.player],yaw:w.yaw,pitch:w.pitch,dronePosition:w.dronePosition?[...w.dronePosition]:null,camera:w.camera.position.clone(),target:w.controls.target.clone(),fov:w.camera.fov,selected:w.selected,trace:w.traceResult,ringPosition:w.selectionRing.position.clone(),ringVisible:w.selectionRing.visible,exterior:w.exteriorFocused,framing:w.framing,maxDistance:w.controls.maxDistance,far:w.camera.far};
   this.panelHidden=false;this.installationOpen=false;this.envelopeOverride=null;this.layerOverrides={};this.clock.start(index,!w.reducedMotion);w.setMode('orbit');w.setLabels(false,{temporary:true});w.keys={};document.body.classList.add('presenting');this.applyStep();
  }
  applyStep(){
@@ -53,9 +54,9 @@ export class PresentationDirector{
  }
  stop({continueHere=false}={}){
   if(!this.active)return;const w=this.world,saved=this.snapshot,currentFloor=this.clock.step.floor,eye=w.camera.position.clone(),direction=new T.Vector3();w.camera.getWorldDirection(direction);this.clock.stop();this.narrator.stop();this.panelHidden=false;this.layerOverrides={};this.installationOpen=false;this.envelopeOverride=null;w.clearTrace();w.presentationEdges=null;w.state=saved.state;w.selected=saved.selected;w.layers={...saved.layers};w.shellFull=saved.shell;w.ceilingOverride=saved.ceiling;w.paused=saved.paused;
-  document.body.classList.remove('presenting');w.camera.clearViewOffset();w.setFloor(continueHere?(currentFloor==='all'?1:currentFloor):saved.floor,false);w.setMode(continueHere?'walk':saved.mode==='tour'?'orbit':saved.mode);
+  document.body.classList.remove('presenting');w.camera.clearViewOffset();w.setFloor(continueHere?(currentFloor==='all'?1:currentFloor):saved.floor,false);w.setMode(continueHere?'walk':saved.mode==='tour'?'orbit':saved.mode,{keepFloor:true});
   if(continueHere){const floor=w.floor,bounds=floor===1?CAMPUS_BOUNDS:FLOORS[floor].bounds;w.player=safeSpot([eye.x,eye.z],bounds,w.floors.get(floor).collisions,w.obstacles[floor])||[...FLOORS[floor].spawn];w.yaw=Math.atan2(-direction.x,-direction.z);w.pitch=Math.asin(T.MathUtils.clamp(direction.y,-1,1));w.updateWalkCamera();}
-  else{w.shellFull=saved.shell;w.ceilingOverride=saved.ceiling;w.framing=saved.framing;w.controls.maxDistance=saved.maxDistance;w.camera.far=saved.far;w.player=saved.player;w.yaw=saved.yaw;w.pitch=saved.pitch;w.camera.position.copy(saved.camera);w.controls.target.copy(saved.target);w.camera.fov=saved.fov;w.camera.updateProjectionMatrix();if(saved.mode==='walk')w.updateWalkCamera();else w.controls.update();}
+  else{w.shellFull=saved.shell;w.ceilingOverride=saved.ceiling;w.framing=saved.framing;w.controls.maxDistance=saved.maxDistance;w.camera.far=saved.far;w.player=saved.player;w.yaw=saved.yaw;w.pitch=saved.pitch;w.camera.position.copy(saved.camera);w.controls.target.copy(saved.target);w.camera.fov=saved.fov;w.camera.updateProjectionMatrix();w.dronePosition=saved.dronePosition?[...saved.dronePosition]:null;w.followEye=null;if(isGroundMode(saved.mode))w.updateWalkCamera();else if(saved.mode==='drone')w.updateDroneCamera();else w.controls.update();}
   w.selectionRing.position.copy(saved.ringPosition);w.selectionRing.visible=continueHere?false:saved.ringVisible;if(continueHere)w.selected=null;else{w.exteriorFocused=saved.exterior;document.querySelector('#exterior-view')?.classList.toggle('active',Boolean(saved.exterior));}
   for(const label of w.labelItems||[])label.el.classList.toggle('selected',label.id===w.selected);
   w.setLabels(saved.labelsVisible,{temporary:true});w.syncEnvelope();if(saved.trace)w.showTrace(saved.trace);else w.updateState();w.callbacks.tour?.(this.status(),true);this.snapshot=null;

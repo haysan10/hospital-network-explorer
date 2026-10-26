@@ -1,3 +1,4 @@
+import {SERVICE_FOOTPRINTS} from './service-layout.js';
 import * as T from '../vendor/three.module.js';
 import {FLOORS,FLOOR_HEIGHT,ROOMS,elevation} from './data.js';
 import {WALL_HEIGHT} from './architecture.js';
@@ -7,7 +8,7 @@ import {SERVICE_OPENING} from './installation.js';
 // The second floor is narrower and projects north of L1 in the supplied plans.
 // Only exposed L1 terraces need a roof; its occupied footprint uses the L2 slab.
 export const FLOOR_FOOTPRINTS={
-  1:[[-9.34,-7.85,13.29,7.96],[-13.12,-7.85,-9.34,-4.55]],
+  1:[[-9.34,-7.85,13.29,7.96],[-13.12,-7.85,-9.34,-4.55],...SERVICE_FOOTPRINTS],
   2:[[...FLOORS[2].bounds]]
 };
 export const STAIR_OPENING=(()=>{const [x,z]=ROOMS.find(r=>r.id==='stairs-2').center;return [x-1.3,z-2.05,x+1.3,z+1.5];})();
@@ -48,8 +49,8 @@ export function buildBuildingEnvelope(floor){
 }
 
 export function viewBounds(floor='all',campus=false){
-  if(campus)return new T.Box3(new T.Vector3(-26,-.28,-18),new T.Vector3(24,9,20));
-  if(floor==='all')return new T.Box3(new T.Vector3(-13.3,-.24,-8.75),new T.Vector3(13.5,7.6,8.1));
+  if(campus)return new T.Box3(new T.Vector3(-26,-.28,-18),new T.Vector3(24,9,28));
+  if(floor==='all')return new T.Box3(new T.Vector3(-13.3,-.24,-8.75),new T.Vector3(13.5,7.6,19.3));
   const [x,z,a,b]=FLOORS[floor].bounds,y=elevation(floor);return new T.Box3(new T.Vector3(x-.1,y-.24,z-.1),new T.Vector3(a+.1,y+3.4,b+.1));
 }
 // Fit all eight corners in both axes, including tall/portrait viewports.

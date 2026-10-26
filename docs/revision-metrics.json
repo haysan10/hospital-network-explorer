@@ -1,0 +1,15 @@
+{
+  "version": "4.5.0",
+  "rooms": 43,
+  "devices": 62,
+  "computers": 20,
+  "aps": 28,
+  "lan": 50,
+  "fiber": 4,
+  "radio": 2,
+  "powerFeeds": 58,
+  "basePlacements": 116,
+  "doors": 62,
+  "entries": 84,
+  "equipment": 163
+}

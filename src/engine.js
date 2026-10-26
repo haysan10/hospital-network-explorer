@@ -1,5 +1,6 @@
+import {serviceBridge} from './service-layout.js';
 import {NETWORK,DEVICE_MAP,devicePoint,elevation,terminalOutlet,MISSIONS,QUIZ,FLOOR_HEIGHT,FLOOR_OFFSETS} from './data.js';
-import {RISER,corridorZ,installationHeight,installationTrunk} from './installation.js';
+import {RISER,corridorZ,installationHeight,installationTrunk,exteriorLead} from './installation.js';
 export {RISER,corridorZ} from './installation.js';
 const eq=(a,b)=>a.every((v,i)=>Math.abs(v-b[i])<.00001);
 export const compact = points=>points.filter((p,i)=>!i||!eq(p,points[i-1]));
@@ -15,7 +16,7 @@ export function pointOnPath(points,t) {
 }
 const ceiling=(n,type)=>installationHeight(n.floor,type);
 export function deviceLead(n,type='copper'){
- const p=devicePoint(n),y=ceiling(n,type);if(n.kind!=='pc')return [p,[p[0],y,p[2]]];
+ const p=devicePoint(n),y=ceiling(n,type);if(n.exterior)return exteriorLead(n,type,p);if(n.kind!=='pc')return [p,[p[0],y,p[2]]];
  const o=terminalOutlet(n),base=elevation(n.floor),port=[o.x,base+o.y,o.z];
  if(o.mount==='floor')return [p,[p[0],base+.42,p[2]],port,[o.x,base-.055,o.z],[o.riser[0],base-.055,o.riser[1]],[o.riser[0],y,o.riser[1]]];
  return [p,[p[0],base+.42,p[2]],port,[o.x,y,o.z]];
@@ -23,6 +24,8 @@ export function deviceLead(n,type='copper'){
 function routed(a,b,type) {
   const leadA=deviceLead(a,type),leadB=deviceLead(b,type),pa=leadA.at(-1),pb=leadB.at(-1),ya=ceiling(a,type),yb=ceiling(b,type),ta=installationTrunk(a.floor,type),tb=installationTrunk(b.floor,type);
   if(a.floor!==b.floor) return compact([...leadA,[pa[0],ya,ta],[RISER.x,ya,ta],[RISER.x,ya,RISER.z],[RISER.x,yb,RISER.z],[RISER.x,yb,tb],[pb[0],yb,tb],...leadB.reverse()]);
+  const bridge=a.floor===1?serviceBridge(pa,pb,ya,type==='fiber'?.13:-.08):null;
+  if(bridge)return compact([...leadA,...bridge,...leadB.reverse()]);
   const trunk=installationTrunk(a.floor,type,a.floor===1&&a.z>2&&b.z>2);
   return compact([...leadA,[pa[0],ya,trunk],[pb[0],yb,trunk],...leadB.reverse()]);
 }
@@ -113,16 +116,16 @@ export function canStand(x,z,bounds,segments,radius=.18,obstacles=[]) {
   if(segments.some(s=>distanceToSegment(x,z,s)<radius))return false;
   return !obstacles.some(([a,b,c,d])=>x>a-radius&&x<c+radius&&z>b-radius&&z<d+radius);
 }
-export function moveWithCollision(position,dx,dz,bounds,segments,obstacles=[]) {
+export function moveWithCollision(position,dx,dz,bounds,segments,obstacles=[],radius=.18) {
   const p=[...position], steps=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.07));
   for(let i=0;i<steps;i++) {
-    if(canStand(p[0]+dx/steps,p[1],bounds,segments,.18,obstacles))p[0]+=dx/steps;
-    if(canStand(p[0],p[1]+dz/steps,bounds,segments,.18,obstacles))p[1]+=dz/steps;
+    if(canStand(p[0]+dx/steps,p[1],bounds,segments,radius,obstacles))p[0]+=dx/steps;
+    if(canStand(p[0],p[1]+dz/steps,bounds,segments,radius,obstacles))p[1]+=dz/steps;
   }
   return p;
 }
-export function safeSpot(point,bounds,segments,obstacles=[]) {
-  if(canStand(...point,bounds,segments,.2,obstacles))return point;
-  for(let r=.2;r<3;r+=.15)for(let a=0;a<Math.PI*2;a+=.28){const p=[point[0]+Math.cos(a)*r,point[1]+Math.sin(a)*r];if(canStand(...p,bounds,segments,.2,obstacles))return p;}
+export function safeSpot(point,bounds,segments,obstacles=[],radius=.2) {
+  if(canStand(...point,bounds,segments,radius,obstacles))return point;
+  for(let r=.2;r<3;r+=.15)for(let a=0;a<Math.PI*2;a+=.28){const p=[point[0]+Math.cos(a)*r,point[1]+Math.sin(a)*r];if(canStand(...p,bounds,segments,radius,obstacles))return p;}
   return null;
 }

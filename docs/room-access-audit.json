@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.5.0",
   "units": "illustrative scene units",
   "floors": [
     {
@@ -87,9 +87,9 @@
           "reverse": true
         },
         {
-          "id": "door-poly-S-3",
+          "id": "door-lab-S-3",
           "rooms": [
-            "poly"
+            "lab"
           ],
           "stall": false,
           "portal": false,
@@ -114,9 +114,9 @@
           "reverse": true
         },
         {
-          "id": "door-lab-S-4",
+          "id": "door-pharmacy-depot-S-4",
           "rooms": [
-            "lab"
+            "pharmacy-depot"
           ],
           "stall": false,
           "portal": false,
@@ -141,9 +141,9 @@
           "reverse": true
         },
         {
-          "id": "door-pharmacy-S-5",
+          "id": "door-pharmacy-store-S-5",
           "rooms": [
-            "pharmacy"
+            "pharmacy-store"
           ],
           "stall": false,
           "portal": false,
@@ -303,9 +303,9 @@
           "reverse": true
         },
         {
-          "id": "door-kitchen-N-11",
+          "id": "door-poli-general-N-11",
           "rooms": [
-            "kitchen"
+            "poli-general"
           ],
           "stall": false,
           "portal": false,
@@ -330,9 +330,9 @@
           "reverse": true
         },
         {
-          "id": "door-laundry-N-12",
+          "id": "door-poli-ent-N-12",
           "rooms": [
-            "laundry"
+            "poli-ent"
           ],
           "stall": false,
           "portal": false,
@@ -357,9 +357,9 @@
           "reverse": true
         },
         {
-          "id": "door-storage-N-13",
+          "id": "door-poli-dental-N-13",
           "rooms": [
-            "storage"
+            "poli-dental"
           ],
           "stall": false,
           "portal": false,
@@ -384,63 +384,7 @@
           "reverse": true
         },
         {
-          "id": "door-storage-E-14",
-          "rooms": [
-            "storage",
-            "ipsrs"
-          ],
-          "stall": false,
-          "portal": false,
-          "approach": [
-            4.62,
-            4.715,
-            6.06,
-            5.210000000000001
-          ],
-          "crossing": [
-            [
-              4.82,
-              4.9625
-            ],
-            [
-              5.859999999999999,
-              4.9625
-            ]
-          ],
-          "blockedSamples": 0,
-          "forward": true,
-          "reverse": true
-        },
-        {
-          "id": "door-storage-E-15",
-          "rooms": [
-            "storage",
-            "calibration"
-          ],
-          "stall": false,
-          "portal": false,
-          "approach": [
-            4.62,
-            6.29,
-            6.06,
-            6.760000000000001
-          ],
-          "crossing": [
-            [
-              4.82,
-              6.525
-            ],
-            [
-              5.859999999999999,
-              6.525
-            ]
-          ],
-          "blockedSamples": 0,
-          "forward": true,
-          "reverse": true
-        },
-        {
-          "id": "door-toilets-1-N-16",
+          "id": "door-toilets-1-N-14",
           "rooms": [
             "toilets-1"
           ],
@@ -467,7 +411,7 @@
           "reverse": true
         },
         {
-          "id": "door-toilets-1-N-17",
+          "id": "door-toilets-1-N-15",
           "rooms": [
             "toilets-1"
           ],
@@ -575,7 +519,422 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-21",
+          "id": "door-pharmacy-internal",
+          "rooms": [
+            "pharmacy-depot",
+            "pharmacy-store"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            3.965,
+            -5.96,
+            5.865,
+            -4.94
+          ],
+          "crossing": [
+            [
+              4.395,
+              -5.45
+            ],
+            [
+              5.4350000000000005,
+              -5.45
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-service-access-n",
+          "rooms": [
+            "service-access",
+            "corridor-s"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            6.11,
+            2.5999999999999996,
+            7.19,
+            4.5
+          ],
+          "crossing": [
+            [
+              6.65,
+              3.03
+            ],
+            [
+              6.65,
+              4.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-service-access-s",
+          "rooms": [
+            "service-access",
+            "service-link"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            6.11,
+            6.8,
+            7.19,
+            8.7
+          ],
+          "crossing": [
+            [
+              6.65,
+              7.23
+            ],
+            [
+              6.65,
+              8.27
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-service-link-s",
+          "rooms": [
+            "back-corridor",
+            "service-link"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            6.11,
+            10.91,
+            7.19,
+            12.809999999999999
+          ],
+          "crossing": [
+            [
+              6.65,
+              11.34
+            ],
+            [
+              6.65,
+              12.379999999999999
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-back-egress",
+          "rooms": [
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -10.08,
+            12.11,
+            -8.180000000000001,
+            13.190000000000001
+          ],
+          "crossing": [
+            [
+              -9.65,
+              12.65
+            ],
+            [
+              -8.610000000000001,
+              12.65
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-ipsrs-staff",
+          "rooms": [
+            "ipsrs",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -7.859999999999999,
+            12.600000000000001,
+            -6.84,
+            14.5
+          ],
+          "crossing": [
+            [
+              -7.35,
+              13.030000000000001
+            ],
+            [
+              -7.35,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-calibration-staff",
+          "rooms": [
+            "calibration",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -4.16,
+            12.600000000000001,
+            -3.1399999999999997,
+            14.5
+          ],
+          "crossing": [
+            [
+              -3.65,
+              13.030000000000001
+            ],
+            [
+              -3.65,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-ipsrs-receiving",
+          "rooms": [
+            "ipsrs"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -10.08,
+            15.66,
+            -8.180000000000001,
+            16.74
+          ],
+          "crossing": [
+            [
+              -9.65,
+              16.2
+            ],
+            [
+              -8.610000000000001,
+              16.2
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-medical-storage",
+          "rooms": [
+            "medical-storage",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            -0.835,
+            12.600000000000001,
+            0.034999999999999976,
+            14.5
+          ],
+          "crossing": [
+            [
+              -0.4,
+              13.030000000000001
+            ],
+            [
+              -0.4,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-kitchen-staff",
+          "rooms": [
+            "kitchen",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            2.24,
+            12.600000000000001,
+            3.26,
+            14.5
+          ],
+          "crossing": [
+            [
+              2.75,
+              13.030000000000001
+            ],
+            [
+              2.75,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-laundry-staff",
+          "rooms": [
+            "laundry",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            5.86,
+            12.600000000000001,
+            6.94,
+            14.5
+          ],
+          "crossing": [
+            [
+              6.4,
+              13.030000000000001
+            ],
+            [
+              6.4,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-linen-staff",
+          "rooms": [
+            "linen-clean",
+            "back-corridor"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            10.49,
+            12.600000000000001,
+            11.51,
+            14.5
+          ],
+          "crossing": [
+            [
+              11,
+              13.030000000000001
+            ],
+            [
+              11,
+              14.07
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-linen-dispatch",
+          "rooms": [
+            "linen-clean"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            12.13,
+            15.66,
+            14.03,
+            16.74
+          ],
+          "crossing": [
+            [
+              12.56,
+              16.2
+            ],
+            [
+              13.6,
+              16.2
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-kitchen-delivery",
+          "rooms": [
+            "kitchen"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            2.24,
+            17.95,
+            3.26,
+            19.849999999999998
+          ],
+          "crossing": [
+            [
+              2.75,
+              18.38
+            ],
+            [
+              2.75,
+              19.419999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-laundry-dirty",
+          "rooms": [
+            "laundry"
+          ],
+          "stall": false,
+          "portal": false,
+          "approach": [
+            7.11,
+            17.95,
+            8.190000000000001,
+            19.849999999999998
+          ],
+          "crossing": [
+            [
+              7.65,
+              18.38
+            ],
+            [
+              7.65,
+              19.419999999999998
+            ]
+          ],
+          "blockedSamples": 0,
+          "forward": true,
+          "reverse": true
+        },
+        {
+          "id": "door-stall-toilets-1-34",
           "rooms": [
             "toilets-1"
           ],
@@ -602,7 +961,7 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-22",
+          "id": "door-stall-toilets-1-35",
           "rooms": [
             "toilets-1"
           ],
@@ -629,7 +988,7 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-23",
+          "id": "door-stall-toilets-1-36",
           "rooms": [
             "toilets-1"
           ],
@@ -656,7 +1015,7 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-24",
+          "id": "door-stall-toilets-1-37",
           "rooms": [
             "toilets-1"
           ],
@@ -683,7 +1042,7 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-25",
+          "id": "door-stall-toilets-1-38",
           "rooms": [
             "toilets-1"
           ],
@@ -710,7 +1069,7 @@
           "reverse": true
         },
         {
-          "id": "door-stall-toilets-1-26",
+          "id": "door-stall-toilets-1-39",
           "rooms": [
             "toilets-1"
           ],
@@ -1135,7 +1494,7 @@
           ]
         },
         {
-          "id": "poly",
+          "id": "lab",
           "hubs": [
             [
               -1.2750000000000004,
@@ -1144,7 +1503,7 @@
           ],
           "routes": [
             {
-              "door": "door-poly-S-3",
+              "door": "door-lab-S-3",
               "from": [
                 -1.2625000000000002,
                 -4.09
@@ -1169,11 +1528,11 @@
           ],
           "equipment": [
             {
-              "id": "poly-bed-0",
-              "kind": "bed",
+              "id": "lab-worktop-0",
+              "kind": "worktop",
               "point": [
-                -2.52,
-                -5.029999999999999
+                -2.69,
+                -6.81
               ],
               "path": [
                 [
@@ -1181,23 +1540,23 @@
                   -5.715
                 ],
                 [
-                  -1.2750000000000004,
-                  -5.029999999999999
+                  -2.69,
+                  -5.715
                 ],
                 [
-                  -2.52,
-                  -5.029999999999999
+                  -2.69,
+                  -6.81
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "poly-cabinet-1",
-              "kind": "cabinet",
+              "id": "lab-worktop-1",
+              "kind": "worktop",
               "point": [
-                -2.72,
-                -4.58
+                -1.53,
+                -6.81
               ],
               "path": [
                 [
@@ -1205,23 +1564,47 @@
                   -5.715
                 ],
                 [
-                  -1.2750000000000004,
-                  -4.58
+                  -1.53,
+                  -5.715
                 ],
                 [
-                  -2.72,
-                  -4.58
+                  -1.53,
+                  -6.81
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "pc-poly",
+              "id": "lab-sink-2",
+              "kind": "sink",
+              "point": [
+                0.28,
+                -6.865
+              ],
+              "path": [
+                [
+                  -1.2750000000000004,
+                  -5.715
+                ],
+                [
+                  0.28,
+                  -5.715
+                ],
+                [
+                  0.28,
+                  -6.865
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-lab",
               "kind": "pc",
               "point": [
-                0.09999999999999998,
-                -5.879999999999999
+                0.1,
+                -5.44
               ],
               "path": [
                 [
@@ -1229,23 +1612,23 @@
                   -5.715
                 ],
                 [
-                  0.09999999999999998,
+                  0.1,
                   -5.715
                 ],
                 [
-                  0.09999999999999998,
-                  -5.879999999999999
+                  0.1,
+                  -5.44
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "bedside-table",
-              "kind": "bedside-table",
+              "id": "waste-bin",
+              "kind": "waste-bin",
               "point": [
-                -1.1999999958276748,
-                -6.980500001981854
+                -3.0500000000000003,
+                -4.574000004529953
               ],
               "path": [
                 [
@@ -1253,60 +1636,12 @@
                   -5.715
                 ],
                 [
-                  -1.1999999958276748,
+                  -3.0500000000000003,
                   -5.715
                 ],
                 [
-                  -1.1999999958276748,
-                  -6.980500001981854
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "iv-pole",
-              "kind": "iv-pole",
-              "point": [
-                -1.6605426463842612,
-                -5.856085295152707
-              ],
-              "path": [
-                [
-                  -1.2750000000000004,
-                  -5.715
-                ],
-                [
-                  -1.6605426463842612,
-                  -5.715
-                ],
-                [
-                  -1.6605426463842612,
-                  -5.856085295152707
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "medicine-trolley",
-              "kind": "medicine-trolley",
-              "point": [
-                0.26,
-                -4.709999998807907
-              ],
-              "path": [
-                [
-                  -1.2750000000000004,
-                  -5.715
-                ],
-                [
-                  0.26,
-                  -5.715
-                ],
-                [
-                  0.26,
-                  -4.709999998807907
+                  -3.0500000000000003,
+                  -4.574000004529953
                 ]
               ],
               "forward": true,
@@ -1315,7 +1650,7 @@
           ]
         },
         {
-          "id": "lab",
+          "id": "pharmacy-depot",
           "hubs": [
             [
               2.87,
@@ -1324,7 +1659,7 @@
           ],
           "routes": [
             {
-              "door": "door-lab-S-4",
+              "door": "door-pharmacy-depot-S-4",
               "from": [
                 2.9325,
                 -4.09
@@ -1345,15 +1680,38 @@
               ],
               "forward": true,
               "reverse": true
+            },
+            {
+              "door": "door-pharmacy-internal",
+              "from": [
+                4.575,
+                -5.45
+              ],
+              "path": [
+                [
+                  4.575,
+                  -5.45
+                ],
+                [
+                  2.87,
+                  -5.45
+                ],
+                [
+                  2.87,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
             }
           ],
           "equipment": [
             {
-              "id": "lab-worktop-0",
-              "kind": "worktop",
+              "id": "pharmacy-depot-cabinet-0",
+              "kind": "cabinet",
               "point": [
-                1.53,
-                -6.81
+                1.5299999999999998,
+                -6.85
               ],
               "path": [
                 [
@@ -1361,23 +1719,23 @@
                   -5.715
                 ],
                 [
-                  1.53,
+                  1.5299999999999998,
                   -5.715
                 ],
                 [
-                  1.53,
-                  -6.81
+                  1.5299999999999998,
+                  -6.85
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "lab-worktop-1",
-              "kind": "worktop",
+              "id": "pharmacy-depot-cabinet-1",
+              "kind": "cabinet",
               "point": [
                 2.69,
-                -6.81
+                -6.85
               ],
               "path": [
                 [
@@ -1390,41 +1748,17 @@
                 ],
                 [
                   2.69,
-                  -6.81
+                  -6.85
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "lab-sink-2",
-              "kind": "sink",
-              "point": [
-                4.380000000000001,
-                -6.865
-              ],
-              "path": [
-                [
-                  2.87,
-                  -5.715
-                ],
-                [
-                  4.380000000000001,
-                  -5.715
-                ],
-                [
-                  4.380000000000001,
-                  -6.865
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-lab",
+              "id": "pc-pharmacy-depot",
               "kind": "pc",
               "point": [
-                4.2,
+                1.72,
                 -5.44
               ],
               "path": [
@@ -1433,11 +1767,11 @@
                   -5.715
                 ],
                 [
-                  4.2,
+                  1.72,
                   -5.715
                 ],
                 [
-                  4.2,
+                  1.72,
                   -5.44
                 ]
               ],
@@ -1445,11 +1779,11 @@
               "reverse": true
             },
             {
-              "id": "waste-bin",
-              "kind": "waste-bin",
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
               "point": [
-                1.17,
-                -4.574000004529953
+                3.92,
+                -4.709999998807907
               ],
               "path": [
                 [
@@ -1457,12 +1791,12 @@
                   -5.715
                 ],
                 [
-                  1.17,
+                  3.92,
                   -5.715
                 ],
                 [
-                  1.17,
-                  -4.574000004529953
+                  3.92,
+                  -4.709999998807907
                 ]
               ],
               "forward": true,
@@ -1471,7 +1805,7 @@
           ]
         },
         {
-          "id": "pharmacy",
+          "id": "pharmacy-store",
           "hubs": [
             [
               6.895,
@@ -1480,7 +1814,7 @@
           ],
           "routes": [
             {
-              "door": "door-pharmacy-S-5",
+              "door": "door-pharmacy-store-S-5",
               "from": [
                 6.9575,
                 -4.09
@@ -1501,11 +1835,34 @@
               ],
               "forward": true,
               "reverse": true
+            },
+            {
+              "door": "door-pharmacy-internal",
+              "from": [
+                5.255,
+                -5.45
+              ],
+              "path": [
+                [
+                  5.255,
+                  -5.45
+                ],
+                [
+                  6.895,
+                  -5.45
+                ],
+                [
+                  6.895,
+                  -5.715
+                ]
+              ],
+              "forward": true,
+              "reverse": true
             }
           ],
           "equipment": [
             {
-              "id": "pharmacy-cabinet-0",
+              "id": "pharmacy-store-cabinet-0",
               "kind": "cabinet",
               "point": [
                 5.63,
@@ -1529,7 +1886,7 @@
               "reverse": true
             },
             {
-              "id": "pharmacy-cabinet-1",
+              "id": "pharmacy-store-cabinet-1",
               "kind": "cabinet",
               "point": [
                 6.79,
@@ -1553,7 +1910,31 @@
               "reverse": true
             },
             {
-              "id": "pc-pharmacy",
+              "id": "pharmacy-store-cabinet-2",
+              "kind": "cabinet",
+              "point": [
+                7.949999999999999,
+                -6.85
+              ],
+              "path": [
+                [
+                  6.895,
+                  -5.715
+                ],
+                [
+                  7.949999999999999,
+                  -5.715
+                ],
+                [
+                  7.949999999999999,
+                  -6.85
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-pharmacy-store",
               "kind": "pc",
               "point": [
                 8.2,
@@ -2472,7 +2853,7 @@
           ]
         },
         {
-          "id": "kitchen",
+          "id": "poli-general",
           "hubs": [
             [
               -6.83,
@@ -2481,7 +2862,7 @@
           ],
           "routes": [
             {
-              "door": "door-kitchen-N-11",
+              "door": "door-poli-general-N-11",
               "from": [
                 -6.742500000000001,
                 3.8899999999999997
@@ -2506,11 +2887,11 @@
           ],
           "equipment": [
             {
-              "id": "kitchen-worktop-0",
-              "kind": "worktop",
+              "id": "poli-general-bed-0",
+              "kind": "bed",
               "point": [
                 -8.3,
-                4.21
+                6.16
               ],
               "path": [
                 [
@@ -2518,47 +2899,23 @@
                   5.625
                 ],
                 [
-                  -8.3,
-                  5.625
+                  -6.83,
+                  6.16
                 ],
                 [
                   -8.3,
-                  4.21
+                  6.16
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "kitchen-worktop-1",
-              "kind": "worktop",
+              "id": "poli-general-cabinet-1",
+              "kind": "cabinet",
               "point": [
-                -8.3,
-                5.37
-              ],
-              "path": [
-                [
-                  -6.83,
-                  5.625
-                ],
-                [
-                  -8.3,
-                  5.625
-                ],
-                [
-                  -8.3,
-                  5.37
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "kitchen-worktop-2",
-              "kind": "worktop",
-              "point": [
-                -8.81,
-                7.339999999999999
+                -8.5,
+                6.92
               ],
               "path": [
                 [
@@ -2567,46 +2924,22 @@
                 ],
                 [
                   -6.83,
-                  7.339999999999999
+                  6.92
                 ],
                 [
-                  -8.81,
-                  7.339999999999999
+                  -8.5,
+                  6.92
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "kitchen-sink-3",
-              "kind": "sink",
-              "point": [
-                -4.949999999999999,
-                4.324999999999999
-              ],
-              "path": [
-                [
-                  -6.83,
-                  5.625
-                ],
-                [
-                  -4.949999999999999,
-                  5.625
-                ],
-                [
-                  -4.949999999999999,
-                  4.324999999999999
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-kitchen",
+              "id": "pc-poli-general",
               "kind": "pc",
               "point": [
                 -5.13,
-                6.06
+                5.3100000000000005
               ],
               "path": [
                 [
@@ -2619,18 +2952,18 @@
                 ],
                 [
                   -5.13,
-                  6.06
+                  5.3100000000000005
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "fridge",
-              "kind": "fridge",
+              "id": "bedside-table",
+              "kind": "bedside-table",
               "point": [
-                -8.13,
-                6.095000013113022
+                -7.470000000000001,
+                4.324999996423722
               ],
               "path": [
                 [
@@ -2638,12 +2971,60 @@
                   5.625
                 ],
                 [
-                  -8.13,
+                  -6.83,
+                  4.324999996423722
+                ],
+                [
+                  -7.470000000000001,
+                  4.324999996423722
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "iv-pole",
+              "kind": "iv-pole",
+              "point": [
+                -7.440542646384261,
+                5.933914704847292
+              ],
+              "path": [
+                [
+                  -6.83,
                   5.625
                 ],
                 [
-                  -8.13,
-                  6.095000013113022
+                  -6.83,
+                  5.933914704847292
+                ],
+                [
+                  -7.440542646384261,
+                  5.933914704847292
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                -4.97,
+                6.790000001192093
+              ],
+              "path": [
+                [
+                  -6.83,
+                  5.625
+                ],
+                [
+                  -4.97,
+                  5.625
+                ],
+                [
+                  -4.97,
+                  6.790000001192093
                 ]
               ],
               "forward": true,
@@ -2652,7 +3033,7 @@
           ]
         },
         {
-          "id": "laundry",
+          "id": "poli-ent",
           "hubs": [
             [
               -1.7600000000000002,
@@ -2661,7 +3042,7 @@
           ],
           "routes": [
             {
-              "door": "door-laundry-N-12",
+              "door": "door-poli-ent-N-12",
               "from": [
                 -1.8725,
                 3.8899999999999997
@@ -2686,59 +3067,11 @@
           ],
           "equipment": [
             {
-              "id": "laundry-washer-0",
-              "kind": "washer",
+              "id": "poli-ent-ent-chair-0",
+              "kind": "ent-chair",
               "point": [
-                -3.33,
-                4.1499999999999995
-              ],
-              "path": [
-                [
-                  -1.7600000000000002,
-                  5.625
-                ],
-                [
-                  -3.33,
-                  5.625
-                ],
-                [
-                  -3.33,
-                  4.1499999999999995
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "laundry-washer-1",
-              "kind": "washer",
-              "point": [
-                -3.33,
-                5.01
-              ],
-              "path": [
-                [
-                  -1.7600000000000002,
-                  5.625
-                ],
-                [
-                  -3.33,
-                  5.625
-                ],
-                [
-                  -3.33,
-                  5.01
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "laundry-washer-2",
-              "kind": "washer",
-              "point": [
-                -3.92,
-                6.469999999999999
+                -3.41,
+                4.07
               ],
               "path": [
                 [
@@ -2747,22 +3080,22 @@
                 ],
                 [
                   -1.7600000000000002,
-                  6.469999999999999
+                  4.07
                 ],
                 [
-                  -3.92,
-                  6.469999999999999
+                  -3.41,
+                  4.07
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "laundry-worktop-3",
-              "kind": "worktop",
+              "id": "poli-ent-sink-1",
+              "kind": "sink",
               "point": [
-                -3.6400000000000006,
-                6.92
+                -3.880000000000001,
+                6.955
               ],
               "path": [
                 [
@@ -2770,23 +3103,59 @@
                   5.625
                 ],
                 [
-                  -1.7600000000000002,
-                  6.92
+                  -2.81,
+                  5.625
                 ],
                 [
-                  -3.6400000000000006,
-                  6.92
+                  -2.81,
+                  6
+                ],
+                [
+                  -3.86,
+                  6
+                ],
+                [
+                  -3.86,
+                  6.975
+                ],
+                [
+                  -3.880000000000001,
+                  6.955
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "pc-laundry",
+              "id": "poli-ent-ent-console-2",
+              "kind": "ent-console",
+              "point": [
+                -2.2100000000000004,
+                6.73
+              ],
+              "path": [
+                [
+                  -1.7600000000000002,
+                  5.625
+                ],
+                [
+                  -2.2100000000000004,
+                  5.625
+                ],
+                [
+                  -2.2100000000000004,
+                  6.73
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-poli-ent",
               "kind": "pc",
               "point": [
                 0.18999999999999995,
-                6.06
+                5.3100000000000005
               ],
               "path": [
                 [
@@ -2799,31 +3168,7 @@
                 ],
                 [
                   0.18999999999999995,
-                  6.06
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "hamper",
-              "kind": "hamper",
-              "point": [
-                0.44999999999999996,
-                4.615000005960464
-              ],
-              "path": [
-                [
-                  -1.7600000000000002,
-                  5.625
-                ],
-                [
-                  -1.7600000000000002,
-                  4.615000005960464
-                ],
-                [
-                  0.44999999999999996,
-                  4.615000005960464
+                  5.3100000000000005
                 ]
               ],
               "forward": true,
@@ -2832,16 +3177,16 @@
           ]
         },
         {
-          "id": "storage",
+          "id": "poli-dental",
           "hubs": [
             [
-              3.12,
+              3.345,
               5.625
             ]
           ],
           "routes": [
             {
-              "door": "door-storage-N-13",
+              "door": "door-poli-dental-N-13",
               "from": [
                 3.1825,
                 3.8899999999999997
@@ -2852,57 +3197,11 @@
                   3.8899999999999997
                 ],
                 [
-                  3.12,
+                  3.345,
                   3.8899999999999997
                 ],
                 [
-                  3.12,
-                  5.625
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "door": "door-storage-E-14",
-              "from": [
-                5,
-                4.9625
-              ],
-              "path": [
-                [
-                  5,
-                  4.9625
-                ],
-                [
-                  3.12,
-                  4.9625
-                ],
-                [
-                  3.12,
-                  5.625
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "door": "door-storage-E-15",
-              "from": [
-                5,
-                6.525
-              ],
-              "path": [
-                [
-                  5,
-                  6.525
-                ],
-                [
-                  5,
-                  5.625
-                ],
-                [
-                  3.12,
+                  3.345,
                   5.625
                 ]
               ],
@@ -2912,116 +3211,433 @@
           ],
           "equipment": [
             {
-              "id": "storage-shelf-0",
-              "kind": "shelf",
+              "id": "poli-dental-dental-chair-0",
+              "kind": "dental-chair",
               "point": [
-                1.7750000000000001,
-                4.21
+                1.92,
+                3.915
               ],
               "path": [
                 [
-                  3.12,
+                  3.345,
                   5.625
                 ],
                 [
-                  1.7750000000000001,
-                  5.625
+                  3.345,
+                  3.915
                 ],
                 [
-                  1.7750000000000001,
-                  4.21
+                  1.92,
+                  3.915
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "storage-shelf-1",
-              "kind": "shelf",
+              "id": "poli-dental-sink-1",
+              "kind": "sink",
               "point": [
-                1.29,
-                6.18
+                1.45,
+                6.955
               ],
               "path": [
                 [
-                  3.12,
+                  3.345,
                   5.625
                 ],
                 [
-                  1.77,
-                  5.625
+                  3.345,
+                  6.955
                 ],
                 [
-                  1.77,
-                  6.1499999999999995
-                ],
-                [
-                  1.3199999999999998,
-                  6.1499999999999995
-                ],
-                [
-                  1.29,
-                  6.18
+                  1.45,
+                  6.955
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "pc-storage",
+              "id": "poli-dental-dental-unit-2",
+              "kind": "dental-unit",
+              "point": [
+                2.8200000000000003,
+                5.32
+              ],
+              "path": [
+                [
+                  3.345,
+                  5.625
+                ],
+                [
+                  3.345,
+                  5.32
+                ],
+                [
+                  2.8200000000000003,
+                  5.32
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-poli-dental",
               "kind": "pc",
               "point": [
-                3,
-                6.06
+                4.68,
+                5.3100000000000005
               ],
               "path": [
                 [
-                  3.12,
+                  3.345,
                   5.625
                 ],
                 [
-                  3,
+                  4.68,
                   5.625
                 ],
                 [
-                  3,
-                  6.06
+                  4.68,
+                  5.3100000000000005
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "service-access",
+          "hubs": [
+            [
+              6.625,
+              5.625
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-service-access-n",
+              "from": [
+                6.65,
+                3.8899999999999997
+              ],
+              "path": [
+                [
+                  6.65,
+                  3.8899999999999997
+                ],
+                [
+                  6.625,
+                  3.8899999999999997
+                ],
+                [
+                  6.625,
+                  5.625
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "medicine-trolley",
-              "kind": "medicine-trolley",
-              "point": [
-                1.47,
-                6.770000001192093
+              "door": "door-service-access-s",
+              "from": [
+                6.65,
+                7.41
               ],
               "path": [
                 [
-                  3.12,
+                  6.65,
+                  7.41
+                ],
+                [
+                  6.625,
+                  7.41
+                ],
+                [
+                  6.625,
                   5.625
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "id": "service-link",
+          "hubs": [
+            [
+              6.675000000000001,
+              9.785
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-service-access-s",
+              "from": [
+                6.65,
+                8.09
+              ],
+              "path": [
+                [
+                  6.65,
+                  8.09
                 ],
                 [
-                  1.77,
-                  5.625
+                  6.675000000000001,
+                  8.09
                 ],
                 [
-                  1.77,
-                  6.1499999999999995
+                  6.675000000000001,
+                  9.785
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-service-link-s",
+              "from": [
+                6.65,
+                11.52
+              ],
+              "path": [
+                [
+                  6.65,
+                  11.52
                 ],
                 [
-                  1.47,
-                  6.1499999999999995
+                  6.675000000000001,
+                  11.52
                 ],
                 [
-                  1.47,
-                  6.75
+                  6.675000000000001,
+                  9.785
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "id": "back-corridor",
+          "hubs": [
+            [
+              1.9449999999999985,
+              12.66
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-service-link-s",
+              "from": [
+                6.65,
+                12.2
+              ],
+              "path": [
+                [
+                  6.65,
+                  12.2
                 ],
                 [
-                  1.47,
-                  6.770000001192093
+                  1.9449999999999985,
+                  12.2
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-back-egress",
+              "from": [
+                -8.790000000000001,
+                12.65
+              ],
+              "path": [
+                [
+                  -8.790000000000001,
+                  12.65
+                ],
+                [
+                  1.9449999999999985,
+                  12.65
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-ipsrs-staff",
+              "from": [
+                -7.35,
+                13.21
+              ],
+              "path": [
+                [
+                  -7.35,
+                  13.21
+                ],
+                [
+                  -7.35,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-calibration-staff",
+              "from": [
+                -3.65,
+                13.21
+              ],
+              "path": [
+                [
+                  -3.65,
+                  13.21
+                ],
+                [
+                  -3.65,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-medical-storage",
+              "from": [
+                -0.4,
+                13.21
+              ],
+              "path": [
+                [
+                  -0.4,
+                  13.21
+                ],
+                [
+                  -0.4,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-kitchen-staff",
+              "from": [
+                2.75,
+                13.21
+              ],
+              "path": [
+                [
+                  2.75,
+                  13.21
+                ],
+                [
+                  2.75,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-laundry-staff",
+              "from": [
+                6.4,
+                13.21
+              ],
+              "path": [
+                [
+                  6.4,
+                  13.21
+                ],
+                [
+                  6.4,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-linen-staff",
+              "from": [
+                11,
+                13.21
+              ],
+              "path": [
+                [
+                  11,
+                  13.21
+                ],
+                [
+                  11,
+                  12.66
+                ],
+                [
+                  1.9449999999999985,
+                  12.66
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "waste-bin",
+              "kind": "waste-bin",
+              "point": [
+                12.68,
+                12.584000004529953
+              ],
+              "path": [
+                [
+                  1.9449999999999985,
+                  12.66
+                ],
+                [
+                  12.68,
+                  12.66
+                ],
+                [
+                  12.68,
+                  12.584000004529953
                 ]
               ],
               "forward": true,
@@ -3033,29 +3649,52 @@
           "id": "ipsrs",
           "hubs": [
             [
-              6.625,
-              4.574999999999999
+              -7.355,
+              16.225
             ]
           ],
           "routes": [
             {
-              "door": "door-storage-E-14",
+              "door": "door-ipsrs-staff",
               "from": [
-                5.68,
-                4.9625
+                -7.35,
+                13.89
               ],
               "path": [
                 [
-                  5.68,
-                  4.9625
+                  -7.35,
+                  13.89
                 ],
                 [
-                  6.625,
-                  4.9625
+                  -7.355,
+                  13.89
                 ],
                 [
-                  6.625,
-                  4.574999999999999
+                  -7.355,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-ipsrs-receiving",
+              "from": [
+                -8.790000000000001,
+                16.2
+              ],
+              "path": [
+                [
+                  -8.790000000000001,
+                  16.2
+                ],
+                [
+                  -7.355,
+                  16.2
+                ],
+                [
+                  -7.355,
+                  16.225
                 ]
               ],
               "forward": true,
@@ -3064,48 +3703,48 @@
           ],
           "equipment": [
             {
-              "id": "sw-south",
-              "kind": "switch",
+              "id": "ipsrs-workshop-bench-0",
+              "kind": "workshop-bench",
               "point": [
-                6.65,
-                4.574999999999999
+                -8.280000000000001,
+                17.829999999999995
               ],
               "path": [
                 [
-                  6.625,
-                  4.574999999999999
+                  -7.355,
+                  16.225
                 ],
                 [
-                  6.65,
-                  4.574999999999999
+                  -8.280000000000001,
+                  16.225
                 ],
                 [
-                  6.65,
-                  4.574999999999999
+                  -8.280000000000001,
+                  17.829999999999995
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "pc-ipsrs",
-              "kind": "wall-terminal",
+              "id": "ipsrs-cabinet-1",
+              "kind": "cabinet",
               "point": [
-                7.33,
-                4.85
+                -8.83,
+                14.020000000000001
               ],
               "path": [
                 [
-                  6.625,
-                  4.574999999999999
+                  -7.355,
+                  16.225
                 ],
                 [
-                  7.33,
-                  4.574999999999999
+                  -7.355,
+                  14.020000000000001
                 ],
                 [
-                  7.33,
-                  4.85
+                  -8.83,
+                  14.020000000000001
                 ]
               ],
               "forward": true,
@@ -3117,29 +3756,29 @@
           "id": "calibration",
           "hubs": [
             [
-              6.625,
-              6.735
+              -3.7349999999999994,
+              16.225
             ]
           ],
           "routes": [
             {
-              "door": "door-storage-E-15",
+              "door": "door-calibration-staff",
               "from": [
-                5.68,
-                6.525
+                -3.65,
+                13.89
               ],
               "path": [
                 [
-                  5.68,
-                  6.525
+                  -3.65,
+                  13.89
                 ],
                 [
-                  6.625,
-                  6.525
+                  -3.7349999999999994,
+                  13.89
                 ],
                 [
-                  6.625,
-                  6.735
+                  -3.7349999999999994,
+                  16.225
                 ]
               ],
               "forward": true,
@@ -3148,72 +3787,693 @@
           ],
           "equipment": [
             {
-              "id": "calibration-worktop-0",
-              "kind": "worktop",
+              "id": "calibration-calibration-bench-0",
+              "kind": "calibration-bench",
               "point": [
-                6.65,
-                6.54
+                -4.66,
+                17.829999999999995
               ],
               "path": [
                 [
-                  6.625,
-                  6.735
+                  -3.7349999999999994,
+                  16.225
                 ],
                 [
-                  6.65,
-                  6.735
+                  -4.66,
+                  16.225
                 ],
                 [
-                  6.65,
-                  6.54
+                  -4.66,
+                  17.829999999999995
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "calibration-sink-1",
+              "id": "calibration-cabinet-1",
+              "kind": "cabinet",
+              "point": [
+                -5.21,
+                14.020000000000001
+              ],
+              "path": [
+                [
+                  -3.7349999999999994,
+                  16.225
+                ],
+                [
+                  -3.7349999999999994,
+                  14.020000000000001
+                ],
+                [
+                  -5.21,
+                  14.020000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "medical-storage",
+          "hubs": [
+            [
+              -0.41500000000000004,
+              16.225
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-medical-storage",
+              "from": [
+                -0.4,
+                13.89
+              ],
+              "path": [
+                [
+                  -0.4,
+                  13.89
+                ],
+                [
+                  -0.41500000000000004,
+                  13.89
+                ],
+                [
+                  -0.41500000000000004,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "medical-storage-shelf-0",
+              "kind": "shelf",
+              "point": [
+                -1.5699999999999998,
+                15.020000000000001
+              ],
+              "path": [
+                [
+                  -0.41500000000000004,
+                  16.225
+                ],
+                [
+                  -1.5699999999999998,
+                  16.225
+                ],
+                [
+                  -1.5699999999999998,
+                  15.020000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "sw-south",
+              "kind": "wall-switch",
+              "point": [
+                -1.25,
+                18.45
+              ],
+              "path": [
+                [
+                  -0.41500000000000004,
+                  16.225
+                ],
+                [
+                  -1.25,
+                  16.225
+                ],
+                [
+                  -1.25,
+                  18.45
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "panel-boh",
+              "kind": "panel",
+              "point": [
+                0.89,
+                16.84
+              ],
+              "path": [
+                [
+                  -0.41500000000000004,
+                  16.225
+                ],
+                [
+                  0.89,
+                  16.225
+                ],
+                [
+                  0.89,
+                  16.84
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "pc-medical-storage",
+              "kind": "pc",
+              "point": [
+                0.39,
+                17.209999999999997
+              ],
+              "path": [
+                [
+                  -0.41500000000000004,
+                  16.225
+                ],
+                [
+                  0.39,
+                  16.225
+                ],
+                [
+                  0.39,
+                  17.209999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "medicine-trolley",
+              "kind": "medicine-trolley",
+              "point": [
+                -0.5899999999999999,
+                17.92000000119209
+              ],
+              "path": [
+                [
+                  -0.41500000000000004,
+                  16.225
+                ],
+                [
+                  -0.5899999999999999,
+                  16.225
+                ],
+                [
+                  -0.5899999999999999,
+                  17.92000000119209
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "kitchen",
+          "hubs": [
+            [
+              2.7849999999999997,
+              16.225
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-kitchen-staff",
+              "from": [
+                2.75,
+                13.89
+              ],
+              "path": [
+                [
+                  2.75,
+                  13.89
+                ],
+                [
+                  2.7849999999999997,
+                  13.89
+                ],
+                [
+                  2.7849999999999997,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-kitchen-delivery",
+              "from": [
+                2.75,
+                18.56
+              ],
+              "path": [
+                [
+                  2.75,
+                  18.56
+                ],
+                [
+                  2.7849999999999997,
+                  18.56
+                ],
+                [
+                  2.7849999999999997,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "kitchen-sink-0",
               "kind": "sink",
               "point": [
-                7.48,
-                6.855
+                1.46,
+                14.100000000000001
               ],
               "path": [
                 [
-                  6.625,
-                  6.735
+                  2.7849999999999997,
+                  16.225
                 ],
                 [
-                  7.48,
-                  6.735
+                  2.7849999999999997,
+                  14.100000000000001
                 ],
                 [
-                  7.48,
-                  6.855
+                  1.46,
+                  14.100000000000001
                 ]
               ],
               "forward": true,
               "reverse": true
             },
             {
-              "id": "waste-bin",
-              "kind": "waste-bin",
+              "id": "kitchen-stainless-table-1",
+              "kind": "stainless-table",
               "point": [
-                5.75,
-                6.925999995470047
+                1.56,
+                15.490000000000002
               ],
               "path": [
                 [
-                  6.625,
-                  6.735
+                  2.7849999999999997,
+                  16.225
                 ],
                 [
-                  5.75,
-                  6.735
+                  2.7849999999999997,
+                  15.490000000000002
                 ],
                 [
-                  5.75,
-                  6.925999995470047
+                  1.56,
+                  15.490000000000002
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "kitchen-industrial-range-2",
+              "kind": "industrial-range",
+              "point": [
+                3.8999999999999995,
+                14.93
+              ],
+              "path": [
+                [
+                  2.7849999999999997,
+                  16.225
+                ],
+                [
+                  2.7849999999999997,
+                  14.93
+                ],
+                [
+                  3.8999999999999995,
+                  14.93
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "fridge",
+              "kind": "fridge",
+              "point": [
+                1.6600000000000001,
+                18.06300000026822
+              ],
+              "path": [
+                [
+                  2.7849999999999997,
+                  16.225
+                ],
+                [
+                  2.7849999999999997,
+                  18.06300000026822
+                ],
+                [
+                  1.6600000000000001,
+                  18.06300000026822
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "meal-trolley",
+              "kind": "meal-trolley",
+              "point": [
+                3.6499999999999995,
+                13.705000003576279
+              ],
+              "path": [
+                [
+                  2.7849999999999997,
+                  16.225
+                ],
+                [
+                  2.7849999999999997,
+                  13.705000003576279
+                ],
+                [
+                  3.6499999999999995,
+                  13.705000003576279
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "laundry",
+          "hubs": [
+            [
+              6.6850000000000005,
+              16.225
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-laundry-staff",
+              "from": [
+                6.4,
+                13.89
+              ],
+              "path": [
+                [
+                  6.4,
+                  13.89
+                ],
+                [
+                  6.6850000000000005,
+                  13.89
+                ],
+                [
+                  6.6850000000000005,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-laundry-dirty",
+              "from": [
+                7.65,
+                18.56
+              ],
+              "path": [
+                [
+                  7.65,
+                  18.56
+                ],
+                [
+                  6.6850000000000005,
+                  18.56
+                ],
+                [
+                  6.6850000000000005,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "laundry-commercial-washer-0",
+              "kind": "commercial-washer",
+              "point": [
+                5.03,
+                13.690000000000001
+              ],
+              "path": [
+                [
+                  6.6850000000000005,
+                  16.225
+                ],
+                [
+                  6.6850000000000005,
+                  13.690000000000001
+                ],
+                [
+                  5.03,
+                  13.690000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "laundry-commercial-washer-1",
+              "kind": "commercial-washer",
+              "point": [
+                5.03,
+                16.360000000000003
+              ],
+              "path": [
+                [
+                  6.6850000000000005,
+                  16.225
+                ],
+                [
+                  6.6850000000000005,
+                  16.360000000000003
+                ],
+                [
+                  5.03,
+                  16.360000000000003
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "laundry-stainless-table-2",
+              "kind": "stainless-table",
+              "point": [
+                5.5600000000000005,
+                17.829999999999995
+              ],
+              "path": [
+                [
+                  6.6850000000000005,
+                  16.225
+                ],
+                [
+                  6.6850000000000005,
+                  17.829999999999995
+                ],
+                [
+                  5.5600000000000005,
+                  17.829999999999995
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "hamper",
+              "kind": "hamper",
+              "point": [
+                8.51,
+                14.615000005960466
+              ],
+              "path": [
+                [
+                  6.6850000000000005,
+                  16.225
+                ],
+                [
+                  6.6850000000000005,
+                  14.615000005960466
+                ],
+                [
+                  8.51,
+                  14.615000005960466
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "linen-clean",
+          "hubs": [
+            [
+              11.02,
+              16.225
+            ]
+          ],
+          "routes": [
+            {
+              "door": "door-linen-staff",
+              "from": [
+                11,
+                13.89
+              ],
+              "path": [
+                [
+                  11,
+                  13.89
+                ],
+                [
+                  11.02,
+                  13.89
+                ],
+                [
+                  11.02,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "door": "door-linen-dispatch",
+              "from": [
+                12.74,
+                16.2
+              ],
+              "path": [
+                [
+                  12.74,
+                  16.2
+                ],
+                [
+                  11.02,
+                  16.2
+                ],
+                [
+                  11.02,
+                  16.225
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
+          "equipment": [
+            {
+              "id": "linen-clean-linen-shelf-0",
+              "kind": "linen-shelf",
+              "point": [
+                9.77,
+                18.009999999999998
+              ],
+              "path": [
+                [
+                  11.02,
+                  16.225
+                ],
+                [
+                  11.02,
+                  18.009999999999998
+                ],
+                [
+                  9.77,
+                  18.009999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "linen-clean-linen-shelf-1",
+              "kind": "linen-shelf",
+              "point": [
+                12.33,
+                18.009999999999998
+              ],
+              "path": [
+                [
+                  11.02,
+                  16.225
+                ],
+                [
+                  12.33,
+                  16.225
+                ],
+                [
+                  12.33,
+                  18.009999999999998
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "linen-clean-stainless-table-2",
+              "kind": "stainless-table",
+              "point": [
+                9.49,
+                15.040000000000001
+              ],
+              "path": [
+                [
+                  11.02,
+                  16.225
+                ],
+                [
+                  11.02,
+                  15.040000000000001
+                ],
+                [
+                  9.49,
+                  15.040000000000001
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            },
+            {
+              "id": "linen-cart",
+              "kind": "linen-cart",
+              "point": [
+                9.62,
+                13.805000003576279
+              ],
+              "path": [
+                [
+                  11.02,
+                  16.225
+                ],
+                [
+                  11.02,
+                  13.805000003576279
+                ],
+                [
+                  9.62,
+                  13.805000003576279
                 ]
               ],
               "forward": true,
@@ -3235,7 +4495,7 @@
           ],
           "routes": [
             {
-              "door": "door-toilets-1-N-16",
+              "door": "door-toilets-1-N-14",
               "from": [
                 9.7325,
                 3.8899999999999997
@@ -3258,7 +4518,7 @@
               "reverse": true
             },
             {
-              "door": "door-toilets-1-N-17",
+              "door": "door-toilets-1-N-15",
               "from": [
                 11.32,
                 3.8899999999999997
@@ -3281,7 +4541,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-21",
+              "door": "door-stall-toilets-1-34",
               "from": [
                 8.7192,
                 4.2875
@@ -3304,7 +4564,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-21",
+              "door": "door-stall-toilets-1-34",
               "from": [
                 9.3992,
                 4.2875
@@ -3327,7 +4587,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-22",
+              "door": "door-stall-toilets-1-35",
               "from": [
                 8.7192,
                 5.7625
@@ -3350,7 +4610,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-22",
+              "door": "door-stall-toilets-1-35",
               "from": [
                 9.3992,
                 5.7625
@@ -3373,7 +4633,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-23",
+              "door": "door-stall-toilets-1-36",
               "from": [
                 8.7192,
                 7.175000000000001
@@ -3396,7 +4656,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-23",
+              "door": "door-stall-toilets-1-36",
               "from": [
                 9.3992,
                 7.175000000000001
@@ -3419,7 +4679,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-24",
+              "door": "door-stall-toilets-1-37",
               "from": [
                 11.6842,
                 4.25
@@ -3442,7 +4702,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-24",
+              "door": "door-stall-toilets-1-37",
               "from": [
                 12.3642,
                 4.25
@@ -3465,7 +4725,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-25",
+              "door": "door-stall-toilets-1-38",
               "from": [
                 11.6842,
                 5.6625
@@ -3488,7 +4748,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-25",
+              "door": "door-stall-toilets-1-38",
               "from": [
                 12.3642,
                 5.6625
@@ -3511,7 +4771,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-26",
+              "door": "door-stall-toilets-1-39",
               "from": [
                 11.6842,
                 7.125
@@ -3534,7 +4794,7 @@
               "reverse": true
             },
             {
-              "door": "door-stall-toilets-1-26",
+              "door": "door-stall-toilets-1-39",
               "from": [
                 12.3642,
                 7.125
@@ -3868,7 +5128,31 @@
               2.6599999999999997
             ]
           ],
-          "routes": [],
+          "routes": [
+            {
+              "door": "door-service-access-n",
+              "from": [
+                6.65,
+                3.21
+              ],
+              "path": [
+                [
+                  6.65,
+                  3.21
+                ],
+                [
+                  6.65,
+                  2.6599999999999997
+                ],
+                [
+                  1.9449999999999985,
+                  2.6599999999999997
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ],
           "equipment": [
             {
               "id": "corridor-s-waiting-bench-0",
@@ -5885,6 +7169,10 @@
             [
               -6.949999999999999,
               -1.125
+            ],
+            [
+              -5.75,
+              -1.125
             ]
           ],
           "routes": [
@@ -5946,23 +7234,11 @@
                   -0.27999999999999997
                 ],
                 [
-                  -5.8999999999999995,
-                  -0.2999999999999998
+                  -5.75,
+                  -0.27999999999999997
                 ],
                 [
-                  -5.8999999999999995,
-                  -0.75
-                ],
-                [
-                  -6.949999999999999,
-                  -0.75
-                ],
-                [
-                  -6.949999999999999,
-                  -1.125
-                ],
-                [
-                  -6.949999999999999,
+                  -5.75,
                   -1.125
                 ]
               ],
@@ -5981,23 +7257,11 @@
                   -0.4874999999999996
                 ],
                 [
-                  -5.8999999999999995,
-                  -0.44999999999999996
+                  -5.75,
+                  -0.4874999999999996
                 ],
                 [
-                  -5.8999999999999995,
-                  -0.75
-                ],
-                [
-                  -6.949999999999999,
-                  -0.75
-                ],
-                [
-                  -6.949999999999999,
-                  -1.125
-                ],
-                [
-                  -6.949999999999999,
+                  -5.75,
                   -1.125
                 ]
               ],
@@ -6010,8 +7274,8 @@
               "id": "operation-operating-table-0",
               "kind": "operating-table",
               "point": [
-                -8.129999999999999,
-                -1.0999999999999999
+                -6.869999999999999,
+                -1.1199999999999999
               ],
               "path": [
                 [
@@ -6019,12 +7283,12 @@
                   -1.125
                 ],
                 [
-                  -8.129999999999999,
+                  -6.869999999999999,
                   -1.125
                 ],
                 [
-                  -8.129999999999999,
-                  -1.0999999999999999
+                  -6.869999999999999,
+                  -1.1199999999999999
                 ]
               ],
               "forward": true,
@@ -6055,72 +7319,24 @@
               "reverse": true
             },
             {
-              "id": "sw-l2-west",
-              "kind": "switch",
-              "point": [
-                -6.41,
-                -2.06
-              ],
-              "path": [
-                [
-                  -6.949999999999999,
-                  -1.125
-                ],
-                [
-                  -6.41,
-                  -1.125
-                ],
-                [
-                  -6.41,
-                  -2.06
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-operation",
-              "kind": "pc",
-              "point": [
-                -5.540000000000001,
-                -0.8399999999999996
-              ],
-              "path": [
-                [
-                  -6.949999999999999,
-                  -1.125
-                ],
-                [
-                  -6.949999999999999,
-                  -0.8399999999999996
-                ],
-                [
-                  -5.540000000000001,
-                  -0.8399999999999996
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
               "id": "medicine-trolley",
               "kind": "medicine-trolley",
               "point": [
-                -6.390000000000001,
-                -0.819999998807907
+                -5.19,
+                -1.2419999996200202
               ],
               "path": [
                 [
-                  -6.949999999999999,
+                  -5.75,
                   -1.125
                 ],
                 [
-                  -6.390000000000001,
+                  -5.19,
                   -1.125
                 ],
                 [
-                  -6.390000000000001,
-                  -0.819999998807907
+                  -5.19,
+                  -1.2419999996200202
                 ]
               ],
               "forward": true,
@@ -6137,7 +7353,32 @@
             ]
           ],
           "routes": [],
-          "equipment": []
+          "equipment": [
+            {
+              "id": "sw-l2-west",
+              "kind": "wall-switch",
+              "point": [
+                -2.6,
+                -0.6099999999999999
+              ],
+              "path": [
+                [
+                  -3.26,
+                  -0.475
+                ],
+                [
+                  -2.6,
+                  -0.475
+                ],
+                [
+                  -2.6,
+                  -0.6099999999999999
+                ]
+              ],
+              "forward": true,
+              "reverse": true
+            }
+          ]
         },
         {
           "id": "changing",
@@ -6228,7 +7469,7 @@
           "hubs": [
             [
               -8.075,
-              1.1300000000000001
+              0.7550000000000001
             ]
           ],
           "routes": [
@@ -6249,7 +7490,7 @@
                 ],
                 [
                   -8.075,
-                  1.1300000000000001
+                  0.7550000000000001
                 ]
               ],
               "forward": true,
@@ -6262,44 +7503,20 @@
               "kind": "operating-table",
               "point": [
                 -8.05,
-                1.1672
+                0.7571999999999999
               ],
               "path": [
                 [
                   -8.075,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -8.05,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -8.05,
-                  1.1672
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-ok-1",
-              "kind": "wall-terminal",
-              "point": [
-                -7.52,
-                1
-              ],
-              "path": [
-                [
-                  -8.075,
-                  1.1300000000000001
-                ],
-                [
-                  -7.52,
-                  1.1300000000000001
-                ],
-                [
-                  -7.52,
-                  1
+                  0.7571999999999999
                 ]
               ],
               "forward": true,
@@ -6312,7 +7529,7 @@
           "hubs": [
             [
               -5.620000000000001,
-              1.1300000000000001
+              0.7550000000000001
             ]
           ],
           "routes": [
@@ -6333,7 +7550,7 @@
                 ],
                 [
                   -5.620000000000001,
-                  1.1300000000000001
+                  0.7550000000000001
                 ]
               ],
               "forward": true,
@@ -6346,44 +7563,20 @@
               "kind": "operating-table",
               "point": [
                 -5.6450000000000005,
-                1.1672
+                0.7571999999999999
               ],
               "path": [
                 [
                   -5.620000000000001,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -5.6450000000000005,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -5.6450000000000005,
-                  1.1672
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-ok-2",
-              "kind": "wall-terminal",
-              "point": [
-                -4.9399999999999995,
-                1
-              ],
-              "path": [
-                [
-                  -5.620000000000001,
-                  1.1300000000000001
-                ],
-                [
-                  -4.9399999999999995,
-                  1.1300000000000001
-                ],
-                [
-                  -4.9399999999999995,
-                  1
+                  0.7571999999999999
                 ]
               ],
               "forward": true,
@@ -6396,7 +7589,7 @@
           "hubs": [
             [
               -3.04,
-              1.1300000000000001
+              0.7550000000000001
             ]
           ],
           "routes": [
@@ -6417,7 +7610,7 @@
                 ],
                 [
                   -3.04,
-                  1.1300000000000001
+                  0.7550000000000001
                 ]
               ],
               "forward": true,
@@ -6430,44 +7623,20 @@
               "kind": "operating-table",
               "point": [
                 -3.06,
-                1.1672
+                0.7571999999999999
               ],
               "path": [
                 [
                   -3.04,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -3.06,
-                  1.1300000000000001
+                  0.7550000000000001
                 ],
                 [
                   -3.06,
-                  1.1672
-                ]
-              ],
-              "forward": true,
-              "reverse": true
-            },
-            {
-              "id": "pc-ok-3",
-              "kind": "wall-terminal",
-              "point": [
-                -2.3500000000000005,
-                1
-              ],
-              "path": [
-                [
-                  -3.04,
-                  1.1300000000000001
-                ],
-                [
-                  -2.3500000000000005,
-                  1.1300000000000001
-                ],
-                [
-                  -2.3500000000000005,
-                  1
+                  0.7571999999999999
                 ]
               ],
               "forward": true,

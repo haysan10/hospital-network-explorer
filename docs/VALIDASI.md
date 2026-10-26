@@ -1,73 +1,61 @@
-# Validasi MediLink 4.2.0
+# Validasi MediLink 4.6.0
 
-Tanggal: 20 Oktober 2026 (Asia/Jakarta).
+123 pengujian otomatis lulus dengan Node.js dan Three.js lokal. Lima pengujian fungsional baru mencakup pemindahan layanan penunjang, penghapusan komputer OK, lintasan servis, bukaan geometri, finishing klinis dan routing menuju blok belakang. Enam tes revisi tambahan mengunci fungsi ruang, bukaan farmasi, pemisahan back office, aturan perangkat OK, uplink outdoor dan konsistensi inventaris SVG.
 
-89 pengujian otomatis lulus menggunakan Node.js dan Three.js lokal. Audit penataan dasar mencakup 108 furnitur/perangkat. Jarak bed–komputer terdekat tetap 1,013 unit scene. Seluruh 36 ruang/area memiliki akses dan pencahayaan sesuai pengecualian rongga tangga bawah. Tidak ada perlengkapan lantai yang gagal ditempatkan atau menembus dinding sumber.
+## Kamera tambahan versi 4.6
 
-## Narasi bilingual 4.2
+Delapan tes baru mencakup pemilihan Orang ketiga dan Drone lewat `init` aplikasi, avatar berartikulasi dengan material PBR, gerak sebenarnya melalui loop animasi, benturan avatar, pembatas kamera mengikuti, batas tinggi dan kawasan Drone, kesetaraan gerak pada 30 dan 60 FPS, sumbu vertikal keyboard/sentuh, lifecycle pointer terpisah, serta pemulihan kedua mode sesudah presentasi. Pengujian ini memakai geometri dan DOM sintetis, bukan rendering GPU.
 
-Tujuh tes tambahan memeriksa cakupan 14 bab × dua bahasa × tiga gaya tanpa mengubah metadata scene, pemilihan voice dan aksen nyata, pembatalan audio bahasa lama, pelafalan istilah, fallback aksen yang diberitahukan, pemulihan voice terlambat tersedia, serta penolakan fallback ke bahasa yang berbeda.
+Pengunjung menggunakan avatar 1,75 unit scene. Tubuh Orang ketiga memakai radius benturan 0,34; kamera memakai boom yang memendek di depan penghalang pada lantai aktif. Model tidak menambahkan simulasi gravitasi atau berjalan fisik di anak tangga. Drone secara sengaja berfungsi sebagai kamera inspeksi yang dapat melintasi geometri.
 
-Urutan per kalimat, jeda, subtitle, pause saat berada di sela kalimat, pilihan detail lengkap, profil gaya, rate/pitch/volume, dan pemulihan preferensi diperiksa dengan engine palsu. Pengujian integrasi memastikan perubahan bahasa memperbarui detail dan demo sambil mempertahankan kamera, waktu bab, panel tersembunyi, dan state misi. Pengujian UI memastikan opsi aksen mengikuti voice tersedia, kontrol berbahasa Inggris, dan subtitle opsional tetap dapat ditutup saat panel tersembunyi.
+## Perbaikan kontrol 4.5.1
 
-Preferensi tidak menyimpan enabled, sehingga reload tidak memulai suara otomatis. Kontrol ini memakai kemampuan SpeechSynthesis browser; pengujian tidak membuktikan naturalness, pengucapan, kualitas aksen, atau dukungan pitch pada engine nyata. Tidak ada rekaman audio atau audit pendengaran yang dilakukan.
+Empat tes integrasi baru memulai `init` aplikasi dengan DOM dari HTML sebenarnya dan metode scene Three.js yang dipakai produksi, tanpa renderer GPU. Tes mengklik Gedung utuh dan plafon, memeriksa atap dan clipping kedua lantai, mengganti pilihan kamera, menjaga Jelajah antarlantai tunggal, mengalihkan fokus keyboard ke canvas, menutup panel mobile, menampilkan joystick, serta keluar dari presentasi sebelum mengganti scene. Tes sebelumnya hanya memanggil metode bangunan; sambungan tombol yang hilang kini ikut tercakup.
 
-## Instalasi, panel dan text-to-speech 4.1
+Dokumen dan denah lantai mempertahankan baseline fungsi ruang versi 4.5; tidak ada perubahan program ruang atau aset pada perbaikan kontrol ini.
 
-Tiga belas tes tambahan memeriksa lane LAN/fiber/daya di dalam koridor dan di bawah deck, lubang riser fiber pada pelat L2, 61 feed panel/UPS, tablet baterai tanpa kabel daya, port AP dan radio putus-putus dengan uplink LAN. Graph tetap 54 LAN + 4 fiber + 1 Wi-Fi.
+## Responsif dan penerangan 4.4
 
-Tes lifecycle memeriksa panel tersembunyi tetap tersembunyi setelah pembaruan/bab baru, pemusatan kamera mobile, pembukaan panel kembali, empat lapisan dan plafon tanpa keluar tur, serta pemulihan kondisi sebelumnya. Struktur kontrol dan HTML/ID ikut diperiksa.
+Tujuh tes kontrol mobile memeriksa tap/pinch/drag, joystick analog, dua pointer untuk bergerak dan melihat bersamaan, pointer capture/cancel, kehilangan fokus/visibility, inspeksi perangkat nyata, panel dan fokus, keyboard viewport, pemulihan desktop, label tanpa tabrakan dan anggaran render pada ukuran 320×568, 390×844, 568×320, 768×1024, 1024×768, 1366×768, 1920×1080 dan 3840×2160. Ukuran tersebut menguji fungsi anggaran render, bukan hasil screenshot browser. Status panel dan event sentuh diputar ulang dengan DOM sintetis.
 
-SpeechSynthesis diuji menggunakan engine palsu: opt-in, prioritas voice Indonesia lokal, voice terlambat tersedia, penolakan audio, timeout, pilihan suara/rate, pembatalan antrian, jeda/lanjut dan tab tersembunyi. Timer presentasi menunggu event akhir narasi sebelum melanjutkan otomatis. Ini menguji logika pengendali; kualitas suara, pengucapan, dan dukungan audio browser/perangkat belum didengar atau diuji langsung. Narasi memakai voice browser; model dan tur teks tetap dapat dipakai tanpa narasi. Referensi API: https://webaudio.github.io/web-speech-api/#tts-section.
+Empat tes lighting menguji sebaran cahaya pada sembilan titik di setiap ruang, data atlas dua lantai, area luar yang tidak mendapat fill, mask UPS, tiga preset, serta injeksi pada shader fisik dan lantai Three.js yang sebenarnya. Shader mempertahankan transformasi instancing/batching dan memasukkan irradiance sebelum AO. Cahaya dasar tidak memakai pemilihan pool lampu kamera; pool yang dibatasi sampai delapan hanya untuk detail lokal. Pengujian struktur shader bukan kompilasi atau render GPU.
 
-## Regresi tampilan gedung lengkap
-
-Sembilan pengujian tambahan memakai metode aplikasi sebenarnya untuk siklus Gedung utuh → lantai 1/2/Antarlantai, Eksterior → Atas/Reset, plafon dan atap, kedua lantai fisik dalam Jelajah, label di balik atap, serta pemulihan room tour ke eksterior.
-
-Seluruh sudut bounding box bangunan dan kawasan diproyeksikan pada aspect ratio 0,3 / 0,5 / 0,75 / 1 / 1,7 / 3, termasuk kamera atas. Resize memanggil framing ulang. Fog dan far plane diperiksa ketika kamera portrait kawasan berjarak lebih dari 250 unit. Raycast menutup celah dinding–deck sepanjang semua tepi footprint; atap L1 tidak bertumpuk dengan footprint pelat L2, dan lubang tangga pelat L2 tetap terbuka.
+CSS memakai breakpoint kompak untuk lebar sampai 1024 px, layar rendah, serta tablet sentuh sampai 1366 px. Canvas memakai pointer events, sedangkan panel dan menu memakai scroll native. Viewport-fit, safe area, tinggi visual viewport dan reset input disertakan. Tidak ada browser QA langsung karena control-browser tidak tersedia pada lingkungan ini.
 
 ## Cakupan scene
 
-| Komponen | Lantai 1 | Lantai 2 |
-| --- | ---: | ---: |
-| Ruang dan area sirkulasi | 20 | 16 |
-| Pintu operasional | 26 | 20 |
-| Portal terbuka | 1 | 2 |
-| Bilik toilet berpintu | 6 | 6 |
-| Jendela dengan bukaan nyata | 13 | 13 |
-| Posisi lampu interior/teras | 47 | 32 |
-| Catatan detail interior | 210 | 171 |
+| Area | Ruang | Pintu | Portal | Jendela | Posisi lampu | Detail interior |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Lantai 1 | 27 | 39 | 1 | 18 | 67 | 288 |
+| Lantai 2 | 16 | 20 | 2 | 13 | 32 | 175 |
 
-Sebelas posisi lampu tambahan berada di kawasan. Kawasan memuat jalan, pedestrian, penyeberangan, parkir, tiga mobil, ambulans, pohon, bangku, lampu, pagar, drainase serta signage. Aset tambahan menjadi 71 GLB: 68 jenis aset dan tiga kabel. Dua model dinding dasar tetap disertakan. Seluruh aset memiliki data hingga, UV/tangent, base-color, normal, roughness dan AO; batas tiap aset tetap di bawah 60.000 triangle, maksimum 6.652.
+Ada 116 penempatan furnitur/perangkat dasar, 62 perangkat, 50 LAN, 4 fiber, 2 hubungan radio dan 58 feed daya. Aset reusable terdiri dari 84 jenis ditambah tiga kabel: 87 GLB dengan PBR tertanam, di luar dua GLB dinding sumber. Maksimum per aset 6.652 triangle, di bawah batas 60.000. Pool lampu dinamis tetap dibatasi hingga delapan; sebelas posisi lampu kawasan tetap tersedia.
 
-## Akses dan kamera
+## Akses dan alur
 
-- Seluruh 49 akses pintu/portal diuji dua arah melalui logika gerak dan pintu otomatis aplikasi.
-- 63 rute masuk menuju area sirkulasi ruangan dan 152 rute menuju sisi peralatan diputar ulang dua arah, tanpa teleportasi.
-- Delapan adegan kamera room tour dibentuk dari rute yang diuji pada posisi akhir furnitur. Sampling camera pose tetap pada lokasi yang dapat ditempati avatar. Tinggi mata mengikuti elevasi lantai ditambah 1,62 unit.
-- Jalur pejalan kaki kawasan menuju pendaftaran diuji pada lebar bebas 1,2 unit serta dilalui memakai logika pintu otomatis.
-- Mesh daun pintu dan pegangan diperiksa sepanjang 72 frame pembukaan. Footprint furnitur dan perlengkapan pada tinggi tubuh tidak menghalanginya.
-- Partisi toilet tetap memisahkan dua jalur akses. Collision tangga mengikuti penerbangan, bordes dan handrail, bukan menganggap ruang kosong sebagai benda padat.
-- Lima rute front office sebelumnya tetap lulus lebar 1,2 / 0,9 / 0,8 unit sesuai skenario.
+62 lintasan pintu/portal, 84 rute masuk dan 163 rute sisi peralatan lulus dua arah melalui gerak dan pintu otomatis aplikasi. Mesh daun pintu dan pegangan diperiksa selama pembukaan. Audit tidak menemukan furnitur yang keluar ruang atau saling bertabrakan. Jarak bed–komputer terkecil 1,013 unit scene. Tidak ada detail wajib yang gagal ditempatkan.
 
-## Presentasi dan pengaturan
+Lima jalur front office tetap lulus. Delapan jalur servis diuji pada lebar 0,8 unit: akses dapur, IPSRS, kalibrasi dan linen bersih, penerimaan alat dari barat, bahan makanan dan linen kotor melalui dua pintu belakang terpisah, serta penyerahan linen bersih di timur. Semua lintasan diputar ulang dua arah. Bukaan pintu, lintel dan jendela builder dinding belakang diuji dengan raycaster Three.js. Partisi antara IPSRS dan kalibrasi juga diperiksa sebagai geometri nyata.
 
-- Empat belas bab merujuk ke perangkat dan link yang benar. Timer mendukung jeda, lanjut, pemilihan bab, akhir tur serta ulangi, dan membatasi lompatan waktu saat frame terlambat.
-- Demo kabel ICU, penolakan VLAN tamu dan daya UPS berjalan pada state terpisah. State dan progres pembelajaran asli tidak berubah.
-- Keluar presentasi memulihkan kamera, mode, lantai, lapisan, label, pilihan dan trace sebelumnya. Handoff ke Jelajah mempertahankan posisi ruang saat ini.
-- Perubahan label manual ketika presentasi aktif dipertahankan saat keluar. Label ruang maupun beacon perangkat disembunyikan bersama, kontrol aria-pressed diselaraskan, dan preferensi disimpan.
-- Preset siang/senja/malam memakai nilai pencahayaan hingga. Pemilihan lampu memfilter lantai dan membatasi pool. Suplai utama, UPS dan lampu luar memiliki kondisi daya eksplisit.
-- Titik outlet data yang dirender dipakai pada jalur LAN terminal, termasuk floor box pendaftaran dan feed bawah lantai. Port outlet serta cabang ke distribusi bukan dekorasi yang terpisah dari path jaringan.
-- Struktur HTML diperiksa untuk ID unik serta nesting seimbang. Kontrol presentasi menyediakan nama aksesibel, pemilih bab, dan pintasan keyboard. Pengujian ini tidak menggantikan uji pembaca layar atau perangkat sentuh nyata.
+## Instalasi, presentasi dan narasi
 
-## Regresi jaringan dan geometri
+Jalur data/daya back office melewati penghubung tertutup. AP outdoor memakai rute tiang dan jalur bawah tanah terpisah. Klien tamu outdoor diuji: jalur fisik tersedia, kebijakan VLAN menolak server, dan putus uplink benar-benar memutus akses. Panel back office menerima feed panel L1 dan melayani beban lokal. Fiber antarlantai tetap memakai penetrasi slab riser internal. Seluruh komputer kantor OK beserta koneksi dan outletnya dihapus. AP di OK 1, 2 dan 3 juga dihapus; satu AP tetap di OK besar. Distribusi barat berada di koridor OK.
 
-Semua skenario koneksi, trace endpoint ke server, backbone dua lantai dan sayap barat, VLAN 30, fault ICU, UPS, enam misi, kuis dan penyimpanan progres tetap dijalankan. Geometri kabel, pemotongan 26 jendela pada GLB sebenarnya, tiga bukaan front office, roof/slab, langit-langit serta material PBR tetap diuji. Semua impor ES module merujuk ke berkas lokal.
+Delapan lintasan kamera ruang dibentuk dan diputar ulang pada layout final. Presentasi mempunyai 15 bab, 339 detik tanpa menunggu suara. Semua bab mencakup dua bahasa dan tiga gaya narasi; pengujian meliputi pemilihan voice/aksen, pronunciation, jeda kalimat, subtitle, penggantian bahasa, pembatalan audio lama dan fallback bahasa. Panel dapat disembunyikan, label dapat dimatikan, dan demo tidak mengubah progres misi. Seluruh uji misi, VLAN, fault ICU, UPS, penyimpanan progres, framing bangunan, clipping dan impor lokal tetap lulus.
 
-Laporan mesin: layout-audit.json, environment-audit.json, circulation-audit.json, room-access-audit.json dan tour-audit.json. Rute room tour dihasilkan oleh tools/generate-tour-paths.mjs; denah kawasan dan penataan dihasilkan dari data scene.
+## Batas verifikasi
 
-## Batas pemeriksaan
+Pemeriksaan dilakukan secara programatis dengan geometri, raycaster, replay gerak, shader string dan data aplikasi. Denah SVG diperiksa secara visual. Render WebGL/GPU, kualitas suara speaker, kinerja perangkat pengguna, kontrol sentuh dan pembaca layar belum diuji langsung. Proyek tetap simulasi edukasi; ukuran memakai unit scene, tanpa perhitungan ventilasi/tekanan, proteksi kebakaran, struktur atau kapasitas instalasi. Dokumen ini tidak menyatakan sertifikasi rumah sakit nyata.
 
-Browser pengujian yang didukung tidak tersedia. Tidak dilakukan kompilasi shader pada GPU, screenshot render browser, benchmark FPS, uji fullscreen di perangkat nyata, pemutaran TTS pada engine nyata, atau verifikasi sentuhan/screen reader. Pemeriksaan yang selesai adalah unit, geometri, ray, struktur dokumen, simulasi collision dan lifecycle state presentasi.
+## Reproduksi
 
-Ukuran menggunakan unit scene dari referensi tanpa skala. Kamera terbang overview, portal otomatis, perpindahan bab/lantai, pencahayaan cadangan dan visual paket merupakan penyederhanaan edukasi. Model ini tidak memverifikasi standar bangunan, fasilitas medis, listrik, panjang kabel instalasi atau kapasitas UPS.
+```sh
+node --test tests/*.test.mjs
+node tools/audit-layout.mjs --save
+node tools/audit-environment.mjs --save
+node tools/audit-room-access.mjs --save
+node tools/audit-service-flow.mjs --save
+node tools/audit-circulation.mjs --save
+node tools/generate-tour-paths.mjs
+node tools/build-static.mjs
+```

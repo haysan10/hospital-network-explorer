@@ -1,0 +1,39 @@
+{
+  "rooms": 42,
+  "devices": 60,
+  "edges": 54,
+  "links": {
+    "copper": 49,
+    "fiber": 4,
+    "wifi": 1
+  },
+  "powerFeeds": 57,
+  "assetKinds": 78,
+  "additionalGLBs": 81,
+  "basePlacements": 111,
+  "chapters": 15,
+  "tourSeconds": 339,
+  "floors": [
+    {
+      "floor": 1,
+      "rooms": 26,
+      "doors": 35,
+      "portals": 1,
+      "windows": 18,
+      "lights": 66,
+      "details": 277
+    },
+    {
+      "floor": 2,
+      "rooms": 16,
+      "doors": 20,
+      "portals": 2,
+      "windows": 13,
+      "lights": 32,
+      "details": 175
+    }
+  ],
+  "crossings": 58,
+  "roomRoutes": 78,
+  "equipmentRoutes": 158
+}

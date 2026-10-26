@@ -1,10 +1,11 @@
+import {SERVICE_CLEAR_ZONES} from './service-layout.js';
 import {FRONT_OFFICE,prepareWallSegments,overlapsRect} from './circulation.js';
 import * as T from '../vendor/three.module.js';
 import {ROOMS,terminalOutlet} from './data.js';
-import {makeAsset,box,mergeStatic,material} from './assets.js';
+import {makeAsset,box,mergeStatic,material,addPlanarUVs} from './assets.js';
 import {FURNITURE,DEVICE_PLACEMENTS,placementBounds,placementObstacles} from './layout.js';
-import {PALETTE,ROOM_ACCENTS,floorMaterial} from './materials.js';
-import {CEILING_Y,sideRuns,findDoors,createDoor,planWindows,createWindow} from './architecture.js';
+import {PALETTE,ROOM_ACCENTS,floorMaterial,ROOM_FINISHES,finishAssetForRoom} from './materials.js';
+import {CEILING_Y,sideRuns,findDoors,createDoor,planWindows,createWindow,windowCutters,subtractBoxes} from './architecture.js';
 import {doorApproach,doorSweep,segmentIntersectsRect} from './door-access.js';
 import {navigationGrid,roomDoorPoint,pathRectangles,equipmentAccessPoints,accessHubs} from './navigation.js';
 import {ROOM_LIGHT_COLORS} from './lighting.js';
@@ -50,11 +51,12 @@ export function buildEnvironment(floor,walls){
   for(const p of destinations){const path=hubs.map(h=>grid.path(h,p)).find(Boolean);if(path){accessRoutes.push({room:r.id,path});accessAreas.push(...pathRectangles(path));}}
  }
  function placeFloor(r,kind,target,rotation=0,scale=1){
-  const model=makeAsset(kind);model.scale.setScalar(scale);const [x0,z0,x1,z1]=r.bounds,orientations=[rotation,rotation+Math.PI/2,rotation-Math.PI/2,rotation+Math.PI].map(a=>{model.rotation.y=a;return {rotation:a,local:new T.Box3().setFromObject(model,true)};});
+  const model=finishAssetForRoom(makeAsset(kind),r);model.scale.setScalar(scale);const [x0,z0,x1,z1]=r.bounds,orientations=[rotation,rotation+Math.PI/2,rotation-Math.PI/2,rotation+Math.PI].map(a=>{model.rotation.y=a;return {rotation:a,local:new T.Box3().setFromObject(model,true)};});
   const candidates=[target];for(let radius=.2;radius<2.8;radius+=.2)for(let i=0;i<12;i++){const a=i*Math.PI/6;candidates.push([target[0]+Math.cos(a)*radius,target[1]+Math.sin(a)*radius]);}
   const fallback=[];for(let x=x0+.2;x<x1-.15;x+=.15)for(let z=z0+.2;z<z1-.15;z+=.15)fallback.push([x,z]);fallback.sort((a,b)=>Math.hypot(a[0]-target[0],a[1]-target[1])-Math.hypot(b[0]-target[0],b[1]-target[1]));candidates.push(...fallback);
   for(const [x,z]of candidates)for(const {rotation:a,local}of orientations){const b=[local.min.x+x,local.min.z+z,local.max.x+x,local.max.z+z];
    if(b[0]<x0+.035-1e-6||b[2]>x1-.035+1e-6||b[1]<z0+.035-1e-6||b[3]>z1-.035+1e-6)continue;
+   if(floor===1&&SERVICE_CLEAR_ZONES.some(area=>overlaps(b,area,.025)))continue;
    if(floor===1&&FRONT_OFFICE.protectedZones.some(zone=>overlapsRect(b,zone.bounds,.05)))continue;
    if(occupied.some(o=>o.room===r.id&&overlaps(b,o.bounds))||blockedDoorAreas.some(area=>overlaps(b,area,.025))||accessAreas.some(area=>overlaps(b,area,.015)))continue;
    const inset=[b[0]+.02,b[1]+.02,b[2]-.02,b[3]-.02];if(walls.some(s=>segmentHitsRect(s,inset)))continue;
@@ -63,7 +65,7 @@ export function buildEnvironment(floor,walls){
  }
  function bodyBounds(o){const bounds=[];o.updateMatrixWorld(true);o.traverse(mesh=>{if(mesh.isMesh){const b=new T.Box3().setFromObject(mesh,true);if(b.min.y<1.95&&b.max.y>.15)bounds.push([b.min.x,b.min.z,b.max.x,b.max.z]);}});return bounds;}
  function elevated(r,kind,x,y,z,rotation=0,scale=1,parent=detail){
-  const o=makeAsset(kind);o.position.set(x,y,z);o.rotation.y=rotation;o.scale.setScalar(scale);
+  const o=finishAssetForRoom(makeAsset(kind),r);o.position.set(x,y,z);o.rotation.y=rotation;o.scale.setScalar(scale);
   if(kind==='ceiling-light'){const color=ROOM_LIGHT_COLORS[r.type]||0xf0f6ee;o.traverse(mesh=>{if(mesh.isMesh&&mesh.material.emissive?.getHex()){const base=mesh.material,key=base.uuid+color;let m=lightMaterials.get(key);if(!m){m=base.clone();m.onBeforeCompile=base.onBeforeCompile;m.customProgramCacheKey=base.customProgramCacheKey;m.color.setHex(color);m.emissive.setHex(color);lightMaterials.set(key,m);}mesh.material=m;}});}
   if(kind==='privacy-curtain')for(const a of [rotation,rotation+Math.PI]){
    o.rotation.y=a;o.position.z=z+Math.cos(a)*.12;
@@ -86,9 +88,9 @@ export function buildEnvironment(floor,walls){
   const [x0,z0,x1,z1]=r.bounds,[x,z]=r.center,accent=ROOM_ACCENTS[r.type]??PALETTE.blue,start=placements.length;
   // Acoustic ceiling panels, luminaires, diffusers, detector and sprinkler.
   if(!(r.type==='stairs'&&floor===1)){
-   rectSlab(ceilings,[x0-.055,z0-.055,x1+.055,z1+.055],CEILING_Y+.04,.07,0xedece4,'ceiling');
-   for(let gx=x0+.6;gx<x1;gx+=.6)box(ceilings,gx,CEILING_Y-.002,z,.009,.008,z1-z0,0xc4ceca,'steel');
-   for(let gz=z0+.6;gz<z1;gz+=.6)box(ceilings,x,CEILING_Y-.002,gz,x1-x0,.008,.009,0xc4ceca,'steel');
+   rectSlab(ceilings,[x0-.055,z0-.055,x1+.055,z1+.055],CEILING_Y+.04,.07,0xe9eee8,ROOM_FINISHES[r.type]?.ceiling||'ceiling');
+   if((ROOM_FINISHES[r.type]?.ceiling||'ceiling')==='ceiling')for(let gx=x0+.6;gx<x1;gx+=.6)box(ceilings,gx,CEILING_Y-.002,z,.009,.008,z1-z0,0xc4ceca,'steel');
+   if((ROOM_FINISHES[r.type]?.ceiling||'ceiling')==='ceiling')for(let gz=z0+.6;gz<z1;gz+=.6)box(ceilings,x,CEILING_Y-.002,gz,x1-x0,.008,.009,0xc4ceca,'steel');
    const count=r.type==='corridor'?Math.max(1,Math.floor((x1-x0)/3)):Math.min(3,Math.max(1,Math.ceil((x1-x0)*(z1-z0)/11)));
    for(let i=0;i<count;i++){const lx=x0+(i+.5)*(x1-x0)/count,lz=r.type==='corridor'?z:z0+(z1-z0)*.5;
     elevated(r,'ceiling-light',lx,CEILING_Y-.035,lz,0,1,fixtures);lightPoints.push({room:r.id,floor,x:lx,y:CEILING_Y-.18,z:lz,color:ROOM_LIGHT_COLORS[r.type]||0xf0f6ee});
@@ -99,31 +101,36 @@ export function buildEnvironment(floor,walls){
   for(const run of sideRuns(r,walls,true)){
    const length=run.width-.04;if(length<.12)continue;const v=(run.start+run.end)/2,px=run.h?v:run.k+(run.side==='W'?.018:-.018),pz=run.h?run.k+(run.side==='N'?.018:-.018):v;
    box(trim,px,.07,pz,run.h?length:.025,.13,run.h?.025:length,0x647e7c,'rubber');
-   box(trim,px,.62,pz,run.h?length:.018,1.04,run.h?.018:length,new T.Color(accent).lerp(new T.Color(PALETTE.ivory),.73).getHex(),'paint');
-   if(r.type==='corridor')box(trim,px,.89,pz,run.h?length:.065,.07,run.h?.065:length,PALETTE.oak,'wood');
+   const sealed=ROOM_FINISHES[r.type]?.ceiling==='polymer';box(trim,px,sealed?1.47:.62,pz,run.h?length:.018,sealed?2.8:1.04,run.h?.018:length,new T.Color(accent).lerp(new T.Color(PALETTE.ivory),.86).getHex(),sealed?'polymer':'paint');
+   if(r.type==='corridor')box(trim,px,.89,pz,run.h?length:.065,.07,run.h?.065:length,0x829e98,'polymer');
   }
   wallObject(r,'wall-clock','N',x1-.28,2.5);
+  if(['operation','clinical','icu','ward','lab'].includes(r.type))wallObject(r,'soap-dispenser','E',z0+.5,1.25);
   const roomDoors=doors.filter(d=>d.definition.rooms.includes(r.id));
   for(const door of roomDoors.filter(d=>d.definition.room===r.id&&!d.definition.stall)){const d=door.definition,sign=makeSign(d.label??r.name,Math.min(1.2,Math.max(.65,d.width)),accent,`LANTAI ${floor} · ${r.type==='stairs'?'AKSES VERTIKAL':'MEDILINK'}`);sign.position.set(d.x,2.47,d.z);sign.rotation.y={N:Math.PI,S:0,W:-Math.PI/2,E:Math.PI/2}[d.side];detail.add(sign);placements.push({kind:'room-sign',room:r.id,floor,x:d.x,y:2.47,z:d.z,collidable:false});}
   if(r.type==='corridor'){
-   const sign=makeSign(floor===1?'IGD · POLIKLINIK →':'RAWAT INAP · ICU →',Math.min(1.15,z1-z0-.12),PALETTE.teal,'← TANGGA · PUSAT LAYANAN');sign.position.set(x,2.45,z);sign.rotation.y=-Math.PI/2;for(const px of [-.4,.4])box(sign,px,.26,0,.008,.32,.008,PALETTE.metal,'steel');detail.add(sign);
+   const sign=makeSign(r.id.startsWith('service')||r.id==='back-corridor'?'BACK OFFICE · PETUGAS →':floor===1?(r.id==='corridor-s'?'POLI UMUM · THT · GIGI →':'IGD · LAB · FARMASI →'):'RAWAT INAP · ICU →',Math.min(1.15,z1-z0-.12),PALETTE.teal,r.id.startsWith('service')||r.id==='back-corridor'?'IPSRS · KALIBRASI · DAPUR · BINATU':'← TANGGA · PUSAT LAYANAN');sign.position.set(x,2.45,z);sign.rotation.y=-Math.PI/2;for(const px of [-.4,.4])box(sign,px,.26,0,.008,.32,.008,PALETTE.metal,'steel');detail.add(sign);
    for(const bx of [x0+.15,x1-.15])box(detail,bx,.026,z,.08,.005,z1-z0-.18,accent,'vinyl');
    wallObject(r,'fire-extinguisher','N',x0+.35,.64);
-   if(r.id!=='circulation-west-2'){placeFloor(r,'waste-bin',[x1-.4,z0+.3]);if(r.id==='corridor-s')placeFloor(r,'water-dispenser',[x0+.45,z0+.26]);}
+   if(!['circulation-west-2','service-link','service-access'].includes(r.id)){placeFloor(r,'waste-bin',[x1-.4,z0+.3]);if(r.id==='corridor-s')placeFloor(r,'water-dispenser',[x0+.45,z0+.26]);}
   }
   if(['ward','clinical','icu'].includes(r.type))for(const bed of FURNITURE.filter(p=>p.room===r.id&&p.kind==='bed')){
    wallObject(r,'bed-head-unit','N',bed.x,1.2);placeFloor(r,'bedside-table',[bed.x+.83,z0+.65]);
    placeFloor(r,'iv-pole',[bed.x+.86,bed.z+.61]);elevated(r,'privacy-curtain',bed.x,0,bed.z,0,1,detail);
   }
-  if(r.type==='icu'||['igd','poly','usg'].includes(r.id))placeFloor(r,r.id==='usg'?'ultrasound':'medicine-trolley',[x1-.5,z1-.48]);
+  if(r.type==='icu'||['igd','poli-general','usg'].includes(r.id))placeFloor(r,r.id==='usg'?'ultrasound':'medicine-trolley',[x1-.5,z1-.48]);
   if(r.id==='rehab')placeFloor(r,'parallel-bars',[x1-.7,z1-1.0],0,.8);
   if(r.type==='lab'){
    const work=FURNITURE.find(p=>p.room===r.id&&p.kind==='worktop');if(work){elevated(r,'microscope',work.x-.23,.93,work.z);elevated(r,'test-tube-rack',work.x+.26,.93,work.z);}
    placeFloor(r,'waste-bin',[x0+.3,z1-.4]);
   }
+  if(['ent','dental'].includes(r.type))wallObject(r,'soap-dispenser','S',x0+1.05,1.3);
   if(r.type==='pharmacy')placeFloor(r,'medicine-trolley',[x0+.45,z1-.48]);
   if(r.type==='storage')placeFloor(r,'medicine-trolley',[x0+.5,z1-.5]);
-  if(r.type==='kitchen')placeFloor(r,'fridge',[x0+.4,z1-1.1]);
+  if(r.type==='kitchen'){placeFloor(r,'fridge',[x0+.5,z0+1.7]);placeFloor(r,'meal-trolley',[x1-.7,z0+1.5]);const range=FURNITURE.find(p=>p.room===r.id&&p.kind==='industrial-range');if(range)elevated(r,'extractor-hood',range.x,2.2,range.z,range.rotation);wallObject(r,'soap-dispenser','N',x0+1.4,1.3);}
+  if(r.type==='linen')placeFloor(r,'linen-cart',[x0+.6,z0+1.6]);
+  if(r.type==='staff'){placeFloor(r,'water-dispenser',[x1-.4,z0+.4]);}
+  if(r.type==='workshop')wallObject(r,'fire-extinguisher','E',z0+.5,.65);
   if(r.type==='laundry')placeFloor(r,'hamper',[x1-.4,z0+1.55]);
   if(r.type==='toilet'){
    const sink=r.id!=='front-toilet'?placeFloor(r,'sink',r.floor===2?[x0+1.5,z0+.25]:[x,z0+.26]):null;
@@ -154,10 +161,11 @@ export function buildEnvironment(floor,walls){
    if(p.mount==='floor')outlet.rotation.x=-Math.PI/2;
    else{const h=3.08-p.y,normal={N:[0,-.035],S:[0,.035],W:[-.035,0],E:[.035,0]}[p.side];box(detail,p.x+normal[0],p.y+h/2,p.z+normal[1],['N','S'].includes(p.side)?.04:.025,h,['N','S'].includes(p.side)?.025:.04,0xd6ded4,'paint',.004);}
   }
+  if(r.id==='medical-storage')wallObject(r,'fiber-panel','S',x0+.64,1.25);
   if(r.type==='server'||r.id==='nurse'){
    const rack=DEVICE_PLACEMENTS.find(p=>p.room===r.id&&['server','rack'].includes(p.kind));if(rack){const a=rack.rotation||0;elevated(r,'fiber-panel',rack.x+Math.sin(a)*.46,1.68,rack.z+Math.cos(a)*.46,a,1);}
   }
-  roomSummary.push({id:r.id,name:r.name,floor,type:r.type,ceiling:!(r.type==='stairs'&&floor===1),openStairwell:r.type==='stairs'&&floor===1,lights:lightPoints.filter(p=>p.room===r.id).length,doors:roomDoors.length,detailCount:placements.length-start,accent:'#'+accent.toString(16)});
+  roomSummary.push({id:r.id,name:r.name,floor,type:r.type,ceiling:!(r.type==='stairs'&&floor===1),openStairwell:r.type==='stairs'&&floor===1,lights:lightPoints.filter(p=>p.room===r.id).length,doors:roomDoors.length,detailCount:placements.length-start,accent:'#'+accent.toString(16),finish:ROOM_FINISHES[r.type]});
  }
  if(floor===1){
   const b=FRONT_OFFICE.arrivalBounds;rectSlab(detail,b,-.12,.24,0xcdd5ce,'paint');rectSlab(detail,b,.007,.025,floorMaterial(0xe4e1d5));
@@ -170,6 +178,7 @@ export function buildEnvironment(floor,walls){
   for(const px of [-11.5,-10.3,-9.7])floorArrow(detail,px,-.1,0);
  }
  const windowsGroup=new T.Group();for(const w of windows)windowsGroup.add(createWindow(w));
+ const apertures=windowCutters(windows);trim.traverse(o=>{if(o.isMesh){const cuts=apertures.map(b=>({min:b.min.map((v,i)=>v-o.position.getComponent(i)),max:b.max.map((v,i)=>v-o.position.getComponent(i))}));const old=o.geometry;o.geometry=subtractBoxes(old,cuts);addPlanarUVs(o.geometry);}});
  const batchedTrim=mergeStatic(trim),batchedDetails=mergeStatic(detail),batchedCeiling=mergeStatic(ceilings),batchedFixtures=mergeStatic(fixtures),batchedRoof=mergeStatic(roof),batchedFascia=mergeStatic(fascia);
  root.add(batchedTrim,batchedDetails,batchedCeiling,batchedFixtures,batchedRoof,batchedFascia,windowsGroup);for(const door of doors)root.add(door.group);
  // Clone only shell materials, so cutaway clipping never affects furniture.

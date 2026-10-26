@@ -9,7 +9,7 @@ function fake(){
  const synth={paused:false,queue:[],cancels:0,events:{},voices:[{voiceURI:'en',name:'English',lang:'en-US',default:true},{voiceURI:'id-cloud',name:'Indonesia cloud',lang:'id-ID'},{voiceURI:'id-local',name:'Indonesia local',lang:'id-ID',localService:true}],getVoices(){return this.voices;},speak(u){this.queue.push(u);},cancel(){this.cancels++;this.queue=[];},pause(){this.paused=true;},resume(){this.paused=false;},addEventListener(k,fn){this.events[k]=fn;}};return {synth,Utterance};
 }
 test('Narration starts only after opt-in, prioritizes local Indonesian voice and reads each chapter explanation',()=>{
- const f=fake(),n=new TourNarrator(f);n.sync(TOUR_STEPS[1],true);assert.equal(f.synth.queue.length,0);n.setEnabled(true);assert.equal(f.synth.queue.length,1);assert.equal(n.utterance.voice.voiceURI,'id-local');assert.match(n.utterance.text,/Pendaftaran/);assert.equal(n.utterance.lang,'id-ID');assert.ok(n.busy);assert.match(spokenExplanation(TOUR_STEPS[12]),/catu daya cadangan/);
+ const f=fake(),n=new TourNarrator(f);n.sync(TOUR_STEPS[1],true);assert.equal(f.synth.queue.length,0);n.setEnabled(true);assert.equal(f.synth.queue.length,1);assert.equal(n.utterance.voice.voiceURI,'id-local');assert.match(n.utterance.text,/Pendaftaran/);assert.equal(n.utterance.lang,'id-ID');assert.ok(n.busy);assert.match(spokenExplanation(TOUR_STEPS.find(s=>s.id==='power')),/catu daya cadangan/);
 });
 test('Pause/resume, hidden-tab suspension and chapter changes cancel stale speech without replaying completed narration',()=>{
  const f=fake(),n=new TourNarrator(f);n.sync(TOUR_STEPS[1],true);n.setEnabled(true);const old=n.utterance;n.sync(TOUR_STEPS[1],false);assert.ok(f.synth.paused);n.sync(TOUR_STEPS[1],true);assert.equal(f.synth.paused,false);assert.equal(n.utterance,old);
@@ -22,7 +22,7 @@ test('Unsupported browsers, delayed voices, audio rejection and a stalled engine
  const unsupported=new TourNarrator({synth:null,Utterance:null});unsupported.sync(TOUR_STEPS[0],true);unsupported.setEnabled(true);assert.equal(unsupported.enabled,false);assert.equal(unsupported.status().supported,false);
  const f=fake();let updates=0;const n=new TourNarrator({...f,onChange:()=>updates++});f.synth.voices=[];assert.deepEqual(n.voices,[]);f.synth.voices=[{voiceURI:'id',name:'Indonesia',lang:'id-ID'}];f.synth.events.voiceschanged();assert.ok(updates);n.sync(TOUR_STEPS[0],true);n.setEnabled(true);n.utterance.onerror({error:'not-allowed'});assert.match(n.error,/diblokir/);assert.equal(n.busy,false);n.read();n.update(91);assert.equal(n.busy,false);assert.match(n.error,/batas waktu/);
 });
-test('All fourteen chapters have full English content and conversational Indonesian scripts without changing the scene route',()=>{
+test('All fifteen chapters have full English content and conversational Indonesian scripts without changing the scene route',()=>{
  for(const step of TOUR_STEPS)for(const language of ['id','en'])for(const style of ['guide','presenter','calm']){
   const s=localizedTourStep(step,language,style);assert.ok(s.title&&s.place&&s.phase&&s.text.length>50,step.id);assert.equal(s.details.length,step.details.length);assert.equal(s.flow.length,step.flow.length);for(const key of ['id','floor','view','device','room','trace','duration'])assert.equal(s[key],step[key]);assert.deepEqual(s.edges,step.edges);
   assert.ok(narrationSegments(step,language,style,'full').length>narrationSegments(step,language,style,'summary').length);
@@ -30,7 +30,7 @@ test('All fourteen chapters have full English content and conversational Indones
  assert.match(localizedTourStep(TOUR_STEPS[0],'en').text,/Let's/);assert.match(localizedTourStep(TOUR_STEPS[0],'id').text,/Kita/);assert.notEqual(localizedTourStep(TOUR_STEPS[0],'en','guide').text,localizedTourStep(TOUR_STEPS[0],'en','presenter').text);
 });
 test('Language and accent changes select a matching real voice, cancel stale audio and use language-specific pronunciation',()=>{
- const f=fake();f.synth.voices.push({voiceURI:'uk',name:'British',lang:'en-GB'},{voiceURI:'au',name:'Australian',lang:'en-AU',localService:true});const n=new TourNarrator(f);n.sync(TOUR_STEPS[12],true);n.setEnabled(true);const old=n.utterance;
+ const f=fake();f.synth.voices.push({voiceURI:'uk',name:'British',lang:'en-GB'},{voiceURI:'au',name:'Australian',lang:'en-AU',localService:true});const n=new TourNarrator(f);n.sync(TOUR_STEPS.find(s=>s.id==='power'),true);n.setEnabled(true);const old=n.utterance;
  n.configure({language:'en',accent:'en-GB'});assert.equal(n.utterance.lang,'en-GB');assert.equal(n.utterance.voice.voiceURI,'uk');assert.match(n.utterance.text,/Backup power/);assert.equal(n.status().warning,'');assert.ok(n.status().voices.every(v=>v.lang.startsWith('en')));old.onend();assert.equal(n.pendingNext,false);
  n.configure({accent:'en-AU'});assert.equal(n.utterance.voice.voiceURI,'au');assert.match(pronounce('UPS LAN L2','en'),/U P S local area network floor two/);assert.match(pronounce('UPS LAN L2','id'),/catu daya cadangan jaringan lokal lantai dua/);n.configure({language:'id'});assert.equal(n.utterance.lang,'id-ID');assert.equal(n.voice.voiceURI,'id-local');
 });

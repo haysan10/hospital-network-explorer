@@ -1,0 +1,1944 @@
+[
+  {
+    "id": "security",
+    "name": "Pos keamanan",
+    "floor": 1,
+    "type": "security",
+    "bounds": [
+      -12.91,
+      -7.64,
+      -9.34,
+      -4.77
+    ],
+    "finishes": {
+      "floor": "terrazzo",
+      "color": 14081236,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Pengawasan akses masuk"
+    },
+    "equipment": {
+      "id": "security",
+      "name": "Pos keamanan",
+      "floor": 1,
+      "type": "security",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#698fa9",
+      "finish": {
+        "floor": "terrazzo",
+        "color": 14081236,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Pengawasan akses masuk"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-security",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-security",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "front-toilet",
+    "name": "Toilet depan",
+    "floor": 1,
+    "type": "toilet",
+    "bounds": [
+      -9.13,
+      -7.64,
+      -7.46,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13162707,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+    },
+    "equipment": {
+      "id": "front-toilet",
+      "name": "Toilet depan",
+      "floor": 1,
+      "type": "toilet",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 9,
+      "accent": "#8dadaa",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13162707,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "igd",
+    "name": "IGD",
+    "floor": 1,
+    "type": "clinical",
+    "bounds": [
+      -7.35,
+      -7.64,
+      -3.46,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14148316,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+    },
+    "equipment": {
+      "id": "igd",
+      "name": "IGD",
+      "floor": 1,
+      "type": "clinical",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14148316,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-igd",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-igd",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "lab",
+    "name": "Laboratorium",
+    "floor": 1,
+    "type": "lab",
+    "bounds": [
+      -3.35,
+      -7.64,
+      0.76,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 14016480,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeriksaan sampel; meja kerja dan sink"
+    },
+    "equipment": {
+      "id": "lab",
+      "name": "Laboratorium",
+      "floor": 1,
+      "type": "lab",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 12,
+      "accent": "#698fa9",
+      "finish": {
+        "floor": "resin",
+        "color": 14016480,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeriksaan sampel; meja kerja dan sink"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-lab",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-lab",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-depot",
+    "name": "Depo farmasi",
+    "floor": 1,
+    "type": "pharmacy",
+    "bounds": [
+      0.87,
+      -7.64,
+      4.86,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14475988,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Penyimpanan obat tertutup dan pelayanan"
+    },
+    "equipment": {
+      "id": "pharmacy-depot",
+      "name": "Depo farmasi",
+      "floor": 1,
+      "type": "pharmacy",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 2,
+      "detailCount": 10,
+      "accent": "#7c9984",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14475988,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Penyimpanan obat tertutup dan pelayanan"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-pharmacy-depot",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-pharmacy-depot",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-store",
+    "name": "Gudang farmasi",
+    "floor": 1,
+    "type": "pharmacy",
+    "bounds": [
+      4.97,
+      -7.64,
+      8.86,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14475988,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Penyimpanan obat tertutup dan pelayanan"
+    },
+    "equipment": {
+      "id": "pharmacy-store",
+      "name": "Gudang farmasi",
+      "floor": 1,
+      "type": "pharmacy",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 2,
+      "detailCount": 9,
+      "accent": "#7c9984",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14475988,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Penyimpanan obat tertutup dan pelayanan"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-pharmacy-store",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-pharmacy-store",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "server-room",
+    "name": "Ruang server",
+    "floor": 1,
+    "type": "server",
+    "bounds": [
+      8.97,
+      -7.64,
+      13.08,
+      -3.75
+    ],
+    "finishes": {
+      "floor": "antistatic",
+      "color": 12569291,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Area kering untuk rak jaringan, UPS dan panel"
+    },
+    "equipment": {
+      "id": "server-room",
+      "name": "Ruang server",
+      "floor": 1,
+      "type": "server",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 9,
+      "accent": "#698fa9",
+      "finish": {
+        "floor": "antistatic",
+        "color": 12569291,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Area kering untuk rak jaringan, UPS dan panel"
+      }
+    },
+    "devices": [
+      {
+        "id": "server",
+        "kind": "server"
+      },
+      {
+        "id": "core",
+        "kind": "switch"
+      },
+      {
+        "id": "firewall",
+        "kind": "router"
+      },
+      {
+        "id": "sw-north",
+        "kind": "switch"
+      },
+      {
+        "id": "ups-1",
+        "kind": "ups"
+      },
+      {
+        "id": "panel-1",
+        "kind": "panel"
+      }
+    ]
+  },
+  {
+    "id": "registration",
+    "name": "Pendaftaran",
+    "floor": 1,
+    "type": "registration",
+    "bounds": [
+      -9.13,
+      -2.1,
+      -3.46,
+      1.9
+    ],
+    "finishes": {
+      "floor": "terrazzo",
+      "color": 15065038,
+      "ceiling": "ceiling",
+      "furniture": "wood",
+      "purpose": "Pendaftaran, antrean dan alur pengunjung"
+    },
+    "equipment": {
+      "id": "registration",
+      "name": "Pendaftaran",
+      "floor": 1,
+      "type": "registration",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 3,
+      "doors": 3,
+      "detailCount": 13,
+      "accent": "#b7765e",
+      "finish": {
+        "floor": "terrazzo",
+        "color": 15065038,
+        "ceiling": "ceiling",
+        "furniture": "wood",
+        "purpose": "Pendaftaran, antrean dan alur pengunjung"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-registration",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-registration",
+        "kind": "ap"
+      },
+      {
+        "id": "guest",
+        "kind": "tablet"
+      }
+    ]
+  },
+  {
+    "id": "rehab",
+    "name": "Rehabilitasi medik",
+    "floor": 1,
+    "type": "clinical",
+    "bounds": [
+      -3.35,
+      -2.1,
+      0.63,
+      1.9
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14148316,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+    },
+    "equipment": {
+      "id": "rehab",
+      "name": "Rehabilitasi medik",
+      "floor": 1,
+      "type": "clinical",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14148316,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-rehab",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-rehab",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "radiology",
+    "name": "Radiologi",
+    "floor": 1,
+    "type": "radiology",
+    "bounds": [
+      0.87,
+      -1.94,
+      4.86,
+      1.74
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 13818594,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pencitraan; jalur akses alat dan meja operator"
+    },
+    "equipment": {
+      "id": "radiology",
+      "name": "Radiologi",
+      "floor": 1,
+      "type": "radiology",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#70839c",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 13818594,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pencitraan; jalur akses alat dan meja operator"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-radiology",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-radiology",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "usg",
+    "name": "Ruang USG",
+    "floor": 1,
+    "type": "clinical",
+    "bounds": [
+      5.1,
+      -2.1,
+      9.82,
+      1.9
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14148316,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+    },
+    "equipment": {
+      "id": "usg",
+      "name": "Ruang USG",
+      "floor": 1,
+      "type": "clinical",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14148316,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-usg",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-usg",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "stairs-1",
+    "name": "Tangga & lift",
+    "floor": 1,
+    "type": "stairs",
+    "bounds": [
+      9.93,
+      -2.1,
+      13.08,
+      1.9
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13358543,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Akses vertikal di dalam bangunan"
+    },
+    "equipment": {
+      "id": "stairs-1",
+      "name": "Tangga & lift",
+      "floor": 1,
+      "type": "stairs",
+      "ceiling": false,
+      "openStairwell": true,
+      "lights": 0,
+      "doors": 1,
+      "detailCount": 2,
+      "accent": "#7c9192",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13358543,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Akses vertikal di dalam bangunan"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "poli-general",
+    "name": "Poli umum",
+    "floor": 1,
+    "type": "clinical",
+    "bounds": [
+      -9.13,
+      3.55,
+      -4.47,
+      7.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14148316,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+    },
+    "equipment": {
+      "id": "poli-general",
+      "name": "Poli umum",
+      "floor": 1,
+      "type": "clinical",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14148316,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeriksaan; akses sisi bed dan area kerja terpisah"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-poli-general",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-poli-general",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "poli-ent",
+    "name": "Poli THT",
+    "floor": 1,
+    "type": "ent",
+    "bounds": [
+      -4.36,
+      3.55,
+      0.85,
+      7.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "ceiling": "polymer",
+      "color": 14017245,
+      "furniture": "polymer"
+    },
+    "equipment": {
+      "id": "poli-ent",
+      "name": "Poli THT",
+      "floor": 1,
+      "type": "ent",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 9,
+      "accent": "#528f94",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "ceiling": "polymer",
+        "color": 14017245,
+        "furniture": "polymer"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-poli-ent",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-poli-ent",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "poli-dental",
+    "name": "Poli gigi",
+    "floor": 1,
+    "type": "dental",
+    "bounds": [
+      0.97,
+      3.55,
+      5.34,
+      7.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "ceiling": "polymer",
+      "color": 14017245,
+      "furniture": "polymer"
+    },
+    "equipment": {
+      "id": "poli-dental",
+      "name": "Poli gigi",
+      "floor": 1,
+      "type": "dental",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 9,
+      "accent": "#638fac",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "ceiling": "polymer",
+        "color": 14017245,
+        "furniture": "polymer"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-poli-dental",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-poli-dental",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "service-access",
+    "name": "Akses petugas back office",
+    "floor": 1,
+    "type": "corridor",
+    "bounds": [
+      5.45,
+      3.55,
+      7.86,
+      7.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "service-access",
+      "name": "Akses petugas back office",
+      "floor": 1,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 2,
+      "detailCount": 9,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "service-link",
+    "name": "Penghubung servis tertutup",
+    "floor": 1,
+    "type": "corridor",
+    "bounds": [
+      5.95,
+      7.86,
+      7.35,
+      11.75
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "service-link",
+      "name": "Penghubung servis tertutup",
+      "floor": 1,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 2,
+      "detailCount": 4,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "back-corridor",
+    "name": "Koridor back office",
+    "floor": 1,
+    "type": "corridor",
+    "bounds": [
+      -9.13,
+      11.86,
+      13.08,
+      13.44
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "back-corridor",
+      "name": "Koridor back office",
+      "floor": 1,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 7,
+      "doors": 8,
+      "detailCount": 18,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-back-corridor",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "ipsrs",
+    "name": "IPSRS · bengkel pemeliharaan",
+    "floor": 1,
+    "type": "workshop",
+    "bounds": [
+      -9.13,
+      13.55,
+      -5.62,
+      18.9
+    ],
+    "finishes": {
+      "floor": "concrete",
+      "color": 12766410,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeliharaan atau kalibrasi; bench dan penyimpanan alat"
+    },
+    "equipment": {
+      "id": "ipsrs",
+      "name": "IPSRS · bengkel pemeliharaan",
+      "floor": 1,
+      "type": "workshop",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 2,
+      "detailCount": 9,
+      "accent": "#7f9193",
+      "finish": {
+        "floor": "concrete",
+        "color": 12766410,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeliharaan atau kalibrasi; bench dan penyimpanan alat"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "calibration",
+    "name": "Kalibrasi alat medis",
+    "floor": 1,
+    "type": "workshop",
+    "bounds": [
+      -5.51,
+      13.55,
+      -2,
+      18.9
+    ],
+    "finishes": {
+      "floor": "concrete",
+      "color": 12766410,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Pemeliharaan atau kalibrasi; bench dan penyimpanan alat"
+    },
+    "equipment": {
+      "id": "calibration",
+      "name": "Kalibrasi alat medis",
+      "floor": 1,
+      "type": "workshop",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#7f9193",
+      "finish": {
+        "floor": "concrete",
+        "color": 12766410,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Pemeliharaan atau kalibrasi; bench dan penyimpanan alat"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-calibration",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "medical-storage",
+    "name": "Gudang alat medis",
+    "floor": 1,
+    "type": "storage",
+    "bounds": [
+      -1.89,
+      13.55,
+      1.05,
+      18.9
+    ],
+    "finishes": {
+      "floor": "concrete",
+      "color": 13884370,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Penyimpanan alat; rak dan akses troli bebas"
+    },
+    "equipment": {
+      "id": "medical-storage",
+      "name": "Gudang alat medis",
+      "floor": 1,
+      "type": "storage",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 10,
+      "accent": "#698fa9",
+      "finish": {
+        "floor": "concrete",
+        "color": 13884370,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Penyimpanan alat; rak dan akses troli bebas"
+      }
+    },
+    "devices": [
+      {
+        "id": "sw-south",
+        "kind": "switch"
+      },
+      {
+        "id": "panel-boh",
+        "kind": "panel"
+      },
+      {
+        "id": "pc-medical-storage",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-medical-storage",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "kitchen",
+    "name": "Dapur produksi · back office",
+    "floor": 1,
+    "type": "kitchen",
+    "bounds": [
+      1.16,
+      13.55,
+      4.35,
+      18.9
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13160651,
+      "ceiling": "polymer",
+      "furniture": "steel",
+      "purpose": "Penerimaan bahan dari pintu belakang, persiapan, masak dan distribusi makanan"
+    },
+    "equipment": {
+      "id": "kitchen",
+      "name": "Dapur produksi · back office",
+      "floor": 1,
+      "type": "kitchen",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 2,
+      "detailCount": 12,
+      "accent": "#8b9b7e",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13160651,
+        "ceiling": "polymer",
+        "furniture": "steel",
+        "purpose": "Penerimaan bahan dari pintu belakang, persiapan, masak dan distribusi makanan"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "laundry",
+    "name": "Binatu · penerimaan dan cuci",
+    "floor": 1,
+    "type": "laundry",
+    "bounds": [
+      4.46,
+      13.55,
+      8.91,
+      18.9
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 12504784,
+      "ceiling": "polymer",
+      "furniture": "steel",
+      "purpose": "Penerimaan kotor dari pintu belakang dan proses cuci; akses petugas dari koridor"
+    },
+    "equipment": {
+      "id": "laundry",
+      "name": "Binatu · penerimaan dan cuci",
+      "floor": 1,
+      "type": "laundry",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 3,
+      "doors": 2,
+      "detailCount": 10,
+      "accent": "#789da7",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 12504784,
+        "ceiling": "polymer",
+        "furniture": "steel",
+        "purpose": "Penerimaan kotor dari pintu belakang dan proses cuci; akses petugas dari koridor"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "linen-clean",
+    "name": "Penyimpanan linen bersih",
+    "floor": 1,
+    "type": "linen",
+    "bounds": [
+      9.02,
+      13.55,
+      13.08,
+      18.9
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14542038,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Linen bersih disimpan terpisah dari ruang cuci"
+    },
+    "equipment": {
+      "id": "linen-clean",
+      "name": "Penyimpanan linen bersih",
+      "floor": 1,
+      "type": "linen",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 2,
+      "detailCount": 9,
+      "accent": "#91aa8b",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14542038,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Linen bersih disimpan terpisah dari ruang cuci"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "toilets-1",
+    "name": "Toilet pria & wanita",
+    "floor": 1,
+    "type": "toilet",
+    "bounds": [
+      7.97,
+      3.55,
+      13.08,
+      7.75
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13162707,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+    },
+    "equipment": {
+      "id": "toilets-1",
+      "name": "Toilet pria & wanita",
+      "floor": 1,
+      "type": "toilet",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 8,
+      "detailCount": 12,
+      "accent": "#8dadaa",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13162707,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "corridor-n",
+    "name": "Koridor utara",
+    "floor": 1,
+    "type": "corridor",
+    "bounds": [
+      -9.13,
+      -3.64,
+      13.08,
+      -2.21
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "corridor-n",
+      "name": "Koridor utara",
+      "floor": 1,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 7,
+      "doors": 0,
+      "detailCount": 16,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-corridor-n",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "corridor-s",
+    "name": "Koridor selatan",
+    "floor": 1,
+    "type": "corridor",
+    "bounds": [
+      -9.13,
+      2.01,
+      13.08,
+      3.44
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "corridor-s",
+      "name": "Koridor selatan",
+      "floor": 1,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 7,
+      "doors": 1,
+      "detailCount": 17,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-corridor-s",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "ward-a",
+    "name": "Rawat inap A",
+    "floor": 2,
+    "type": "ward",
+    "bounds": [
+      -9.1,
+      -8.39,
+      -5.41,
+      -4.51
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14672852,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+    },
+    "equipment": {
+      "id": "ward-a",
+      "name": "Rawat inap A",
+      "floor": 2,
+      "type": "ward",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#829b86",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14672852,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-ward-a",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-ward-a",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "ward-b",
+    "name": "Rawat inap B",
+    "floor": 2,
+    "type": "ward",
+    "bounds": [
+      -5.3,
+      -8.39,
+      -1.6300000000000003,
+      -4.51
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14672852,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+    },
+    "equipment": {
+      "id": "ward-b",
+      "name": "Rawat inap B",
+      "floor": 2,
+      "type": "ward",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#829b86",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14672852,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-ward-b",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-ward-b",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "ward-c",
+    "name": "Rawat inap C",
+    "floor": 2,
+    "type": "ward",
+    "bounds": [
+      -1.52,
+      -8.39,
+      1.9099999999999997,
+      -4.51
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14672852,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+    },
+    "equipment": {
+      "id": "ward-c",
+      "name": "Rawat inap C",
+      "floor": 2,
+      "type": "ward",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 14,
+      "accent": "#829b86",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14672852,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Perawatan; bed, privasi, penyimpanan dan akses petugas"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-ward-c",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-ward-c",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "icu",
+    "name": "ICU",
+    "floor": 2,
+    "type": "icu",
+    "bounds": [
+      2.03,
+      -8.39,
+      8.33,
+      -4.51
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 13491931,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Perawatan intensif; monitor medis dan area kerja"
+    },
+    "equipment": {
+      "id": "icu",
+      "name": "ICU",
+      "floor": 2,
+      "type": "icu",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 3,
+      "doors": 1,
+      "detailCount": 19,
+      "accent": "#497e8b",
+      "finish": {
+        "floor": "resin",
+        "color": 13491931,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Perawatan intensif; monitor medis dan area kerja"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-icu",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-icu",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "toilets-2",
+    "name": "Toilet lantai 2",
+    "floor": 2,
+    "type": "toilet",
+    "bounds": [
+      8.45,
+      -8.39,
+      13.11,
+      -4.51
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13162707,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+    },
+    "equipment": {
+      "id": "toilets-2",
+      "name": "Toilet lantai 2",
+      "floor": 2,
+      "type": "toilet",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 8,
+      "detailCount": 12,
+      "accent": "#8dadaa",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13162707,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Sanitasi; bilik privasi, sink dan dispenser sabun"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "operation",
+    "name": "Ruang operasi (OK)",
+    "floor": 2,
+    "type": "operation",
+    "bounds": [
+      -9.1,
+      -2.3,
+      -4.7700000000000005,
+      0.06000000000000005
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 12835029,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+    },
+    "equipment": {
+      "id": "operation",
+      "name": "Ruang operasi (OK)",
+      "floor": 2,
+      "type": "operation",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 4,
+      "detailCount": 10,
+      "accent": "#6a9bab",
+      "finish": {
+        "floor": "resin",
+        "color": 12835029,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-operation",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "circulation-west-2",
+    "name": "Koridor operasi barat",
+    "floor": 2,
+    "type": "corridor",
+    "bounds": [
+      -4.66,
+      -1.0499999999999998,
+      -1.83,
+      0.06000000000000005
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "circulation-west-2",
+      "name": "Koridor operasi barat",
+      "floor": 2,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 0,
+      "detailCount": 9,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": [
+      {
+        "id": "sw-l2-west",
+        "kind": "switch"
+      }
+    ]
+  },
+  {
+    "id": "changing",
+    "name": "Ruang ganti",
+    "floor": 2,
+    "type": "changing",
+    "bounds": [
+      -4.66,
+      -2.3,
+      -1.83,
+      -1.17
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14082007,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Ganti pakaian sebelum masuk area tindakan"
+    },
+    "equipment": {
+      "id": "changing",
+      "name": "Ruang ganti",
+      "floor": 2,
+      "type": "changing",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 7,
+      "accent": "#698fa9",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14082007,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Ganti pakaian sebelum masuk area tindakan"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "ok-1",
+    "name": "Ruang OK 1",
+    "floor": 2,
+    "type": "operation",
+    "bounds": [
+      -9.1,
+      0.18000000000000016,
+      -7,
+      2.1
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 12835029,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+    },
+    "equipment": {
+      "id": "ok-1",
+      "name": "Ruang OK 1",
+      "floor": 2,
+      "type": "operation",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#6a9bab",
+      "finish": {
+        "floor": "resin",
+        "color": 12835029,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "ok-2",
+    "name": "Ruang OK 2",
+    "floor": 2,
+    "type": "operation",
+    "bounds": [
+      -6.870000000000001,
+      0.18000000000000016,
+      -4.42,
+      2.1
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 12835029,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+    },
+    "equipment": {
+      "id": "ok-2",
+      "name": "Ruang OK 2",
+      "floor": 2,
+      "type": "operation",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#6a9bab",
+      "finish": {
+        "floor": "resin",
+        "color": 12835029,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "ok-3",
+    "name": "Ruang OK 3",
+    "floor": 2,
+    "type": "operation",
+    "bounds": [
+      -4.29,
+      0.18000000000000016,
+      -1.83,
+      2.1
+    ],
+    "finishes": {
+      "floor": "resin",
+      "color": 12835029,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+    },
+    "equipment": {
+      "id": "ok-3",
+      "name": "Ruang OK 3",
+      "floor": 2,
+      "type": "operation",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 1,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#6a9bab",
+      "finish": {
+        "floor": "resin",
+        "color": 12835029,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Tindakan steril; permukaan tertutup, tanpa komputer kantor"
+      }
+    },
+    "devices": []
+  },
+  {
+    "id": "management",
+    "name": "Manajemen",
+    "floor": 2,
+    "type": "office",
+    "bounds": [
+      -1.7100000000000004,
+      -2.3,
+      1.8999999999999997,
+      2.1
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14606295,
+      "ceiling": "ceiling",
+      "furniture": "wood",
+      "purpose": "Administrasi pada area kering"
+    },
+    "equipment": {
+      "id": "management",
+      "name": "Manajemen",
+      "floor": 2,
+      "type": "office",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 11,
+      "accent": "#7c8b9f",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14606295,
+        "ceiling": "ceiling",
+        "furniture": "wood",
+        "purpose": "Administrasi pada area kering"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-management",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-management",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "doctors",
+    "name": "Ruang dokter",
+    "floor": 2,
+    "type": "office",
+    "bounds": [
+      2.03,
+      -2.3,
+      5.73,
+      2.1
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14606295,
+      "ceiling": "ceiling",
+      "furniture": "wood",
+      "purpose": "Administrasi pada area kering"
+    },
+    "equipment": {
+      "id": "doctors",
+      "name": "Ruang dokter",
+      "floor": 2,
+      "type": "office",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 11,
+      "accent": "#7c8b9f",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14606295,
+        "ceiling": "ceiling",
+        "furniture": "wood",
+        "purpose": "Administrasi pada area kering"
+      }
+    },
+    "devices": [
+      {
+        "id": "pc-doctors",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-doctors",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "nurse",
+    "name": "Nurse station",
+    "floor": 2,
+    "type": "nurse",
+    "bounds": [
+      5.85,
+      -2.3,
+      9.78,
+      2.1
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14016987,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Koordinasi perawatan dan distribusi jaringan"
+    },
+    "equipment": {
+      "id": "nurse",
+      "name": "Nurse station",
+      "floor": 2,
+      "type": "nurse",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 8,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14016987,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Koordinasi perawatan dan distribusi jaringan"
+      }
+    },
+    "devices": [
+      {
+        "id": "sw-l2",
+        "kind": "rack"
+      },
+      {
+        "id": "ups-2",
+        "kind": "ups"
+      },
+      {
+        "id": "panel-2",
+        "kind": "panel"
+      },
+      {
+        "id": "pc-nurse",
+        "kind": "pc"
+      },
+      {
+        "id": "ap-nurse",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "stairs-2",
+    "name": "Tangga & akses L1",
+    "floor": 2,
+    "type": "stairs",
+    "bounds": [
+      9.899999999999999,
+      -2.3,
+      13.11,
+      2.1
+    ],
+    "finishes": {
+      "floor": "wet-tile",
+      "color": 13358543,
+      "ceiling": "polymer",
+      "furniture": "polymer",
+      "purpose": "Akses vertikal di dalam bangunan"
+    },
+    "equipment": {
+      "id": "stairs-2",
+      "name": "Tangga & akses L1",
+      "floor": 2,
+      "type": "stairs",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 2,
+      "doors": 1,
+      "detailCount": 6,
+      "accent": "#7c9192",
+      "finish": {
+        "floor": "wet-tile",
+        "color": 13358543,
+        "ceiling": "polymer",
+        "furniture": "polymer",
+        "purpose": "Akses vertikal di dalam bangunan"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-stairs-2",
+        "kind": "ap"
+      }
+    ]
+  },
+  {
+    "id": "corridor-2",
+    "name": "Koridor lantai 2",
+    "floor": 2,
+    "type": "corridor",
+    "bounds": [
+      -9.1,
+      -4.39,
+      13.11,
+      -2.41
+    ],
+    "finishes": {
+      "floor": "sheet-vinyl",
+      "color": 14803928,
+      "ceiling": "ceiling",
+      "furniture": "polymer",
+      "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+    },
+    "equipment": {
+      "id": "corridor-2",
+      "name": "Koridor lantai 2",
+      "floor": 2,
+      "type": "corridor",
+      "ceiling": true,
+      "openStairwell": false,
+      "lights": 7,
+      "doors": 0,
+      "detailCount": 16,
+      "accent": "#3e8185",
+      "finish": {
+        "floor": "sheet-vinyl",
+        "color": 14803928,
+        "ceiling": "ceiling",
+        "furniture": "polymer",
+        "purpose": "Sirkulasi bebas hambatan dan wayfinding"
+      }
+    },
+    "devices": [
+      {
+        "id": "ap-corridor-2",
+        "kind": "ap"
+      }
+    ]
+  }
+]

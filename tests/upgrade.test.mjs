@@ -33,8 +33,8 @@ test('Fiber geometry and packets remain visible in either floor view without lea
  assert.ok(Math.abs(lengths[0]+lengths[1]-pathLength(fiber.points))<.00001);
  const west=EDGES.find(e=>e.id==='link-l2-west');assert.equal(west.type,'fiber');assert.deepEqual(west.floors,[2]);assert.ok(pathLength(west.points)>15);assert.deepEqual(clipPathToFloor(west.points,1),[]);
 });
-test('Every small operating room and reference corridor has its network endpoint',()=>{
- for(const r of ['ok-1','ok-2','ok-3'])assert.ok(NETWORK.some(n=>n.id===`pc-${r}`&&n.asset==='wall-terminal'));
+test('Operating rooms contain medical equipment without office PCs; corridors retain their access points',()=>{
+ for(const r of ROOMS.filter(r=>r.type==='operation')){assert.ok(!NETWORK.some(n=>n.room===r.id&&n.kind==='pc'));assert.equal(NETWORK.filter(n=>n.room===r.id&&n.kind==='ap').length,r.id==='operation'?1:0);}
  for(const r of ['corridor-n','corridor-s','corridor-2','stairs-2'])assert.ok(NETWORK.some(n=>n.id===`ap-${r}`));
 });
 test('All navigation spawn points remain clear with the new furnishings',()=>{

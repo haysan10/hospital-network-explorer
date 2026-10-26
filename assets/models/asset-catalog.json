@@ -1,5 +1,133 @@
 [
   {
+    "file": "visitor-avatar.glb",
+    "bytes": 331340,
+    "triangles": 2956,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "ent-console.glb",
+    "bytes": 179260,
+    "triangles": 1344,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "outdoor-ap.glb",
+    "bytes": 216332,
+    "triangles": 864,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "ent-chair.glb",
+    "bytes": 277996,
+    "triangles": 3104,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "dental-chair.glb",
+    "bytes": 278004,
+    "triangles": 3104,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "dental-unit.glb",
+    "bytes": 265676,
+    "triangles": 1760,
+    "embeddedPbrTextures": 20,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "wall-switch.glb",
+    "bytes": 199036,
+    "triangles": 1248,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "commercial-washer.glb",
+    "bytes": 246356,
+    "triangles": 1184,
+    "embeddedPbrTextures": 16,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "stainless-table.glb",
+    "bytes": 73660,
+    "triangles": 480,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "workshop-bench.glb",
+    "bytes": 203072,
+    "triangles": 1168,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "calibration-bench.glb",
+    "bytes": 374260,
+    "triangles": 2144,
+    "embeddedPbrTextures": 20,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "industrial-range.glb",
+    "bytes": 255136,
+    "triangles": 1308,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "extractor-hood.glb",
+    "bytes": 93412,
+    "triangles": 672,
+    "embeddedPbrTextures": 4,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "meal-trolley.glb",
+    "bytes": 229964,
+    "triangles": 1168,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "linen-cart.glb",
+    "bytes": 233852,
+    "triangles": 1168,
+    "embeddedPbrTextures": 12,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
+    "file": "linen-shelf.glb",
+    "bytes": 377788,
+    "triangles": 4992,
+    "embeddedPbrTextures": 8,
+    "uvAtlas": true,
+    "tangents": true
+  },
+  {
     "file": "server.glb",
     "bytes": 847840,
     "triangles": 6652,

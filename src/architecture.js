@@ -1,8 +1,9 @@
-import {FRONT_OFFICE,prepareWallSegments} from './circulation.js';
+import {SERVICE_ROOMS,SERVICE_DOORWAYS,SERVICE_WALLS} from './service-layout.js';
+import {FRONT_OFFICE,PHARMACY_LINK,prepareWallSegments} from './circulation.js';
 import * as T from '../vendor/three.module.js';
 import {ROOMS,FLOORS,FLOOR_OFFSETS} from './data.js';
 import {distanceToSegment} from './engine.js';
-import {box,makeAsset,material,mergeStatic} from './assets.js';
+import {box,makeAsset,material,mergeStatic,addPlanarUVs} from './assets.js';
 export const WALL_HEIGHT=2.94,CEILING_Y=2.92,DOOR_HEIGHT=2.1;
 export function sideDefinitions(r){const [x0,z0,x1,z1]=r.bounds;return [{side:'N',a:x0,b:x1,k:z0,h:true},{side:'S',a:x0,b:x1,k:z1,h:true},{side:'W',a:z0,b:z1,k:x0,h:false},{side:'E',a:z0,b:z1,k:x1,h:false}];}
 export function sideRuns(r,walls,solid=false){
@@ -19,15 +20,17 @@ export function sideRuns(r,walls,solid=false){
 }
 export function findDoors(floor,walls){
  walls=prepareWallSegments(floor,walls);const list=[];
- for(const r of ROOMS.filter(r=>r.floor===floor&&r.type!=='corridor'&&r.id!=='registration'))for(const gap of sideRuns(r,walls)){
+ for(const r of ROOMS.filter(r=>r.floor===floor&&r.type!=='corridor'&&r.id!=='registration'&&!SERVICE_ROOMS.has(r.id)))for(const gap of sideRuns(r,walls)){
+  if(floor===1&&PHARMACY_LINK.rooms.includes(r.id)&&!gap.h&&Math.abs((gap.start+gap.end)/2-PHARMACY_LINK.z)<.2)continue;
   const width=gap.width+.10,mid=(gap.start+gap.end)/2,x=gap.h?mid:gap.k,z=gap.h?gap.k:mid;
   // Wide openings to the nurse station and stairs remain accessible portals.
   const portal=width>2.25;
   const existing=list.find(d=>Math.hypot(d.x-x,d.z-z)<.22);
   if(existing){existing.rooms.push(r.id);const previous=ROOMS.find(q=>q.id===existing.room),area=q=>(q.bounds[2]-q.bounds[0])*(q.bounds[3]-q.bounds[1]);if(area(r)<area(previous)){existing.room=r.id;existing.name=r.name;existing.side=gap.side;existing.sign=gap.side==='S'||gap.side==='E'?1:-1;}continue;}
-  list.push({id:`door-${r.id}-${gap.side}-${list.length}`,room:r.id,rooms:[r.id],name:r.name,floor,x,z,width:Math.min(width,gap.b-gap.a-.08),side:gap.side,rotation:gap.h?0:Math.PI/2,portal,privacy:['toilet','changing'].includes(r.type),sliding:!portal&&width>.83&&['clinical','icu','operation','radiology'].includes(r.type),sign:gap.side==='S'||gap.side==='E'?1:-1});
+  list.push({id:`door-${r.id}-${gap.side}-${list.length}`,room:r.id,rooms:[r.id],name:r.name,floor,x,z,width:Math.min(width,gap.b-gap.a-.08),side:gap.side,rotation:gap.h?0:Math.PI/2,portal,privacy:['toilet','changing'].includes(r.type),sliding:!portal&&width>.83&&['clinical','ent','dental','icu','operation','radiology'].includes(r.type),sign:gap.side==='S'||gap.side==='E'?1:-1});
  }
  if(floor===1)for(const d of FRONT_OFFICE.doorways)list.push({...d,room:'registration',rooms:['registration'],name:d.label,floor:1,rotation:d.side==='W'?Math.PI/2:0,portal:false,privacy:false,sliding:true,glazed:true,sign:d.side==='S'?1:-1});
+ if(floor===1)list.push({...PHARMACY_LINK},...SERVICE_DOORWAYS.map(d=>({...d,rooms:[...d.rooms]})));
  // Internal toilet stalls are openings in partition lines inside each restroom.
  for(const r of ROOMS.filter(r=>r.floor===floor&&r.type==='toilet')){
   const [x0,z0,x1,z1]=r.bounds;
@@ -52,7 +55,7 @@ export function createDoor(d){
   const count=d.width>.86?2:1,leafWidth=(d.width-.035)/count;
   for(let i=0;i<count;i++){
    const hinge=new T.Group(),direction=i===0?1:-1;hinge.position.x=i===0?-d.width/2+.012:d.width/2-.012;
-   const leaf=makeAsset(d.glazed?'entrance-leaf':'door-leaf');if(d.privacy)leaf.traverse(o=>{if(o.isMesh&&o.material.userData.surface==='glass')o.material=material(0xd6dfd7,0,'paint');});leaf.scale.x=leafWidth/.82;leaf.position.x=direction*leafWidth/2;hinge.add(mergeStatic(leaf));group.add(hinge);leaves.push({hinge,closedX:hinge.position.x,direction,width:leafWidth});
+   const leaf=makeAsset(d.glazed?'entrance-leaf':'door-leaf');leaf.traverse(o=>{if(!o.isMesh)return;const profile=o.material.userData.surface;if(d.privacy&&profile==='glass')o.material=material(0xd6dfd7,0,'paint');if(profile==='wood')o.material=material(d.room?.startsWith('ok-')||d.room==='operation'?0xb9d4d1:0xd4dfd8,0,'polymer');});leaf.scale.x=leafWidth/.82;leaf.position.x=direction*leafWidth/2;hinge.add(mergeStatic(leaf));group.add(hinge);leaves.push({hinge,closedX:hinge.position.x,direction,width:leafWidth});
   }
   if(d.sliding)box(fixed,0,2.28,0,d.width+.18,.11,.17,0xc1ceca,'steel');
  }
@@ -75,7 +78,8 @@ export function planWindows(floor){
  for(const r of ROOMS.filter(r=>r.floor===floor&&r.type!=='corridor')){
   let side=null;const [x0,z0,x1,z1]=r.bounds;
   if(floor===1&&Math.abs(z0+7.64)<.05)side='N';
-  else if(floor===1&&Math.abs(z1-7.75)<.05)side='S';
+  else if(floor===1&&Math.abs(z1-7.75)<.05&&r.id!=='service-access')side='S';
+  else if(floor===1&&Math.abs(z1-18.9)<.05)side='S';
   else if(floor===2&&Math.abs(z0-(-5.24+dz))<.05)side='N';
   else if(floor===2&&Math.abs(z1-(5.25+dz))<.05)side='S';
   if(!side||r.type==='server')continue;
@@ -116,3 +120,12 @@ export function createWindow(w){
  box(group,0,0,0,.027,w.height,.08,METAL,'steel');return group;
 }
 const METAL=0x9baeb3;
+
+export function buildServiceArchitecture(materials=[]){
+ const service=new T.Group();service.name='Back office constructed walls';
+ for(const [x,z,a,b]of SERVICE_WALLS)box(service,(x+a)/2,WALL_HEIGHT/2,(z+b)/2,Math.abs(a-x)+.1,WALL_HEIGHT,Math.abs(b-z)+.1,0xe6e8e3,'plaster',0);
+ for(const d of SERVICE_DOORWAYS)box(service,d.x,(2.25+WALL_HEIGHT)/2,d.z,d.rotation===0?d.width+.1:.1,WALL_HEIGHT-2.25,d.rotation===0?.1:d.width+.1,0xe6e8e3,'plaster',0);
+ const cutters=windowCutters(planWindows(1)),clones=new Map();
+ service.traverse(o=>{if(o.isMesh){const old=o.geometry;o.geometry=subtractBoxes(old,cutters.map(b=>({min:b.min.map((v,i)=>v-o.position.getComponent(i)),max:b.max.map((v,i)=>v-o.position.getComponent(i))})));old.dispose();addPlanarUVs(o.geometry);const base=o.material;let m=clones.get(base.uuid);if(!m){m=base.clone();m.onBeforeCompile=base.onBeforeCompile;m.customProgramCacheKey=base.customProgramCacheKey;clones.set(base.uuid,m);materials.push(m);}o.material=m;}});
+ return mergeStatic(service);
+}

@@ -1,3 +1,6 @@
+import {isGroundMode,isDirectCamera,followPose,resolveBoom,droneStep} from './camera-rig.js';
+import {setIndoorLightState} from './indoor-lighting.js';
+import {ScenePointers,bindTouchStick,movementVector,renderBudget,compactLabels} from './input.js';
 import {FRONT_OFFICE,circulationCutters,prepareWallSegments,arrivalBarriers} from './circulation.js';
 import * as T from '../vendor/three.module.js';
 import {OrbitControls} from '../vendor/addons/controls/OrbitControls.js';
@@ -5,15 +8,15 @@ import {GLTFLoader} from '../vendor/addons/loaders/GLTFLoader.js';
 import {ROOMS,FLOORS,FLOOR_OFFSETS,FLOOR_HEIGHT,NETWORK,DEVICE_MAP,COLORS,devicePoint,elevation,roomById} from './data.js';
 import {EDGES,pointOnPath,pathLength,moveWithCollision,safeSpot,powered,clipPathToFloor,edgeVisible,corridorZ,RISER} from './engine.js';
 import {makeAsset,box,mergeStatic,material,addPlanarUVs} from './assets.js';
-import {floorMaterial,PALETTE} from './materials.js';
+import {floorMaterial,PALETTE,ROOM_FINISHES,finishAssetForRoom} from './materials.js';
 import {buildEnvironment} from './environment.js';
-import {WALL_HEIGHT,windowCutters,subtractBoxes,planWindows,animateDoor,closedDoorSegments} from './architecture.js';
+import {WALL_HEIGHT,buildServiceArchitecture,windowCutters,subtractBoxes,planWindows,animateDoor,closedDoorSegments} from './architecture.js';
 import {ROOM_LAYOUT,placementObstacles} from './layout.js';
 import {FURNITURE,DEVICE_PLACEMENTS,placementBounds} from './layout.js';
 import {buildCampus,CAMPUS_BOUNDS,CAMPUS_ROADS,createContactShadows} from './campus.js';
 import {LIGHTING_PRESETS,lightSelection,lightPower} from './lighting.js';
 import {PresentationDirector} from './presentation.js';
-import {buildFloorSlab,viewBounds,fittedView} from './building-envelope.js';
+import {buildFloorSlab,viewBounds,fittedView,FLOOR_FOOTPRINTS} from './building-envelope.js';
 import {INSTALLATION_LANES,createPowerFeeds} from './installation.js';
 
 const $=q=>document.querySelector(q),vec=p=>new T.Vector3(...p);
@@ -24,14 +27,14 @@ export class HospitalWorld {
     this.shellFull=false;this.ceilingOverride=null;this.lightPool=[];this.lightCandidates=[];this.doorItems=[];
     this.speed=1;this.simTime=0;this.layers={copper:true,fiber:true,wifi:false,power:false};
     this.floors=new Map();this.clickables=[];this.labelItems=[];this.cables=[];this.obstacles={1:[],2:[]};
-    this.keys={};this.player=[...FLOORS[1].spawn];this.yaw=-Math.PI/2;this.pitch=0;this.selected=null;
+    this.keys={};this.touchMove={forward:0,right:0};this.player=[...FLOORS[1].spawn];this.yaw=-Math.PI/2;this.pitch=0;this.selected=null;
     this.scene=new T.Scene();this.scene.background=new T.Color(0xedf0e9);
     this.renderer=new T.WebGLRenderer({canvas:$('#scene'),antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:false});
     this.renderer.localClippingEnabled=true;this.renderer.outputColorSpace=T.SRGBColorSpace;this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.03;
     this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=T.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false;
     this.camera=new T.PerspectiveCamera(43,1,.05,200);
     this.controls=new OrbitControls(this.camera,this.renderer.domElement);this.controls.enableDamping=true;this.controls.dampingFactor=.075;
-    this.controls.maxPolarAngle=Math.PI/2-.08;this.controls.minDistance=2;this.controls.maxDistance=95;this.controls.target.set(1,0,0);
+    this.controls.touches={ONE:T.TOUCH.ROTATE,TWO:T.TOUCH.DOLLY_PAN};this.controls.maxPolarAngle=Math.PI/2-.08;this.controls.minDistance=2;this.controls.maxDistance=95;this.controls.target.set(1,0,0);
     this.controls.addEventListener('start',()=>{this.framing=null;});
     this.hemi=new T.HemisphereLight(0xf5f9ff,0x8c9a8f,1.65);this.scene.add(this.hemi);
     this.sun=new T.DirectionalLight(0xfff3df,2.5);this.sun.position.set(10,25,14);this.sun.castShadow=true;
@@ -48,7 +51,7 @@ export class HospitalWorld {
     this.selectionRing=new T.Mesh(new T.TorusGeometry(.72,.025,6,40),new T.MeshBasicMaterial({color:0xd59b45}));this.selectionRing.rotation.x=Math.PI/2;this.selectionRing.visible=false;this.scene.add(this.selectionRing);
     const marker=new T.Group();const disk=new T.Mesh(new T.CylinderGeometry(.17,.17,.07,18),material(0x277d69));marker.add(disk);
     const cone=new T.Mesh(new T.ConeGeometry(.12,.28,8),material(0x277d69));cone.position.y=.28;marker.add(cone);this.marker=marker;this.scene.add(marker);
-    for(let i=0;i<8;i++){const light=new T.PointLight(0xfff2dd,0,5.8,2);this.scene.add(light);this.lightPool.push(light);}
+    for(let i=0;i<8;i++){const light=new T.PointLight(0xfff2dd,0,8,2);this.scene.add(light);this.lightPool.push(light);}
     this.resize=new ResizeObserver(()=>this.onResize());this.resize.observe($('#world'));
     this.bindInputs();this.onResize();this.home(false);this.setLabels(this.labelsVisible,{temporary:true});this.setLighting(this.lightingPreset,{temporary:true});
   }
@@ -67,13 +70,15 @@ export class HospitalWorld {
         o.geometry.applyMatrix4(new T.Matrix4().makeScale(1,WALL_HEIGHT/2.7,1));
         const old=o.geometry;o.geometry=subtractBoxes(old,cutters);old.dispose();addPlanarUVs(o.geometry);
         const base=material(o.name==='Skirting'?0x647e7c:PALETTE.wall,0,o.name==='Skirting'?'rubber':'plaster'),m=base.clone();m.onBeforeCompile=base.onBeforeCompile;m.customProgramCacheKey=base.customProgramCacheKey;m.side=T.DoubleSide;o.material=m;architectureMaterials.push(m);o.castShadow=true;o.receiveShadow=true;
-      }});root.add(architecture);
+      }});
+      if(floor===1)architecture.add(buildServiceArchitecture(architectureMaterials));
+      root.add(architecture);
       const fixed=new T.Group();
       fixed.add(buildFloorSlab(floor));
       for(const r of ROOMS.filter(r=>r.floor===floor))this.buildRoom(fixed,r);
       for(const n of NETWORK.filter(n=>n.floor===floor)) {
-        const obj=makeAsset(n.asset||n.kind);obj.position.set(n.x,n.y,n.z);obj.rotation.y=n.rotation||0;if(n.kind==='ap')obj.rotation.x=Math.PI;fixed.add(obj);
-        if(['switch','router'].includes(n.kind)){
+        const obj=finishAssetForRoom(makeAsset(n.asset||n.kind),roomById(n.room));obj.position.set(n.x,n.y,n.z);obj.rotation.y=n.rotation||0;if(n.kind==='ap'&&!n.exterior)obj.rotation.x=Math.PI;fixed.add(obj);
+        if(['switch','router'].includes(n.kind)&&n.asset!=='wall-switch'){
           box(fixed,n.x,n.y-.04,n.z,.82,.04,.43,0xc9d8ce,'steel');
           if(n.y<1.2)for(const x of [-.34,.34])for(const z of [-.16,.16])box(fixed,n.x+x,n.y/2-.04,n.z+z,.025,n.y-.08,.025,0x8aa79c,'steel');
           else for(const x of [-.28,.28])box(fixed,n.x+x,n.y-.16,n.z+.14,.028,.27,.04,0x8aa79c,'steel');
@@ -85,8 +90,9 @@ export class HospitalWorld {
         if(['server','core','sw-l2','sw-l2-west'].includes(n.id))this.makeLabel(n.name,[n.x,point[1]+.4,n.z],floor,n.id,true);
       }
       // Trays match the actual corridor trunk, including the internal riser.
-      const corridors=floor===1?[-2.9,2.72]:[corridorZ(2)];
+      const corridors=floor===1?[-2.9,2.72,12.65]:[corridorZ(2)];
       for(const z of corridors){const corridor=ROOMS.find(r=>r.floor===floor&&r.type==='corridor'&&z>=r.bounds[1]&&z<=r.bounds[3]);for(let x=corridor.bounds[0]+1;x<corridor.bounds[2]-.8;x+=2){for(const type of ['data','power']){const tray=makeAsset('cable-tray');tray.rotation.y=Math.PI/2;tray.scale.x=type==='data'?2:1;tray.scale.y=type==='data'?1.8:.65;tray.position.set(x,type==='data'?3.045:3.12,z+(type==='data'?.04:INSTALLATION_LANES.power.offset));fixed.add(tray);}}}
+      if(floor===1)for(let z=3.72;z<12;z+=1.8)for(const type of ['data','power']){const tray=makeAsset('cable-tray');tray.scale.x=type==='data'?2:1;tray.scale.y=type==='data'?1.8:.65;tray.position.set(6.65+(type==='data'?.04:INSTALLATION_LANES.power.offset),type==='data'?3.045:3.12,z);fixed.add(tray);}
       box(fixed,RISER.x+.09,FLOOR_HEIGHT/2,RISER.z,.025,FLOOR_HEIGHT,.3,0xb6c8c4,'steel');
       root.add(mergeStatic(fixed));
       const environment=buildEnvironment(floor,collisions);root.add(environment.root);this.obstacles[floor].push(...environment.obstacles);if(floor===1)collisions.push(...arrivalBarriers,...this.campus.barriers);
@@ -102,10 +108,10 @@ export class HospitalWorld {
   buildRoom(g,r) {
     const [x0,z0,x1,z1]=r.bounds,[x,z]=r.center;
     const color={server:0xd9e3df,clinical:0xe6e9e1,ward:0xe4e6d9,icu:0xdbe5e1,operation:0xdce5e5,lab:0xe0e6e6,pharmacy:0xe5e8dc,radiology:0xe1e5e9,corridor:0xeeeadd,registration:0xebe3d4,stairs:0xdce1da,toilet:0xdce5e0}[r.type]||0xe7e5dc;
-    if(!(r.type==='stairs'&&r.floor===2))box(g,x,.007,z,x1-x0,.025,z1-z0,floorMaterial(color));
+    if(!(r.type==='stairs'&&r.floor===2))box(g,x,.007,z,x1-x0,.025,z1-z0,floorMaterial(ROOM_FINISHES[r.type]?.color||color,ROOM_FINISHES[r.type]?.floor||'terrazzo'));
     this.makeLabel(r.name,[x,elevation(r.floor)+.11,z],r.floor,r.id,false);
     for(const p of ROOM_LAYOUT.get(r.id)||[]){
-      const o=makeAsset(p.kind);o.position.set(p.x,0,p.z);o.rotation.y=p.rotation;o.scale.setScalar(p.scale);g.add(o);
+      const o=finishAssetForRoom(makeAsset(p.kind),r);o.position.set(p.x,0,p.z);o.rotation.y=p.rotation;o.scale.setScalar(p.scale);g.add(o);
       this.obstacles[r.floor].push(...placementObstacles(p));
     }
     // Low skirting and door thresholds remain part of the supplied architecture.
@@ -180,10 +186,12 @@ export class HospitalWorld {
   }
   exteriorView(){this.setFloor('all',false);this.setMode('orbit');this.shellFull=true;this.ceilingOverride=null;this.exteriorFocused=true;this.syncEnvelope();this.frameView('campus');}
   setFloor(floor,home=true) {
-    if(this.mode==='walk')this.setMode('orbit');this.floor=floor;this.shellFull=false;this.ceilingOverride=null;this.exteriorFocused=false;this.framing=null;this.syncEnvelope();
-    if(floor!=='all')this.player=safeSpot(FLOORS[floor].spawn,FLOORS[floor].bounds,this.floors.get(floor).collisions,this.obstacles[floor])||[...FLOORS[floor].spawn];
+    const groundMode=isGroundMode(this.mode)?this.mode:null,keepWalking=groundMode&&floor!=='all',keepDrone=this.mode==='drone';
+    this.followEye=null;
+    if(isGroundMode(this.mode))this.setMode('orbit');this.floor=floor;this.shellFull=false;this.ceilingOverride=null;this.exteriorFocused=false;this.framing=null;this.syncEnvelope();
+    if(floor!=='all')this.player=safeSpot(FLOORS[floor].spawn,FLOORS[floor].bounds,this.floors.get(floor).collisions,this.obstacles[floor],groundMode==='third'?.34:.2)||[...FLOORS[floor].spawn];
     if(this.selected&&!this.visibleFloor(DEVICE_MAP.get(this.selected).floor))this.selectionRing.visible=false;
-    this.updateState();if(home)this.home();this.callbacks.floor(floor);this.updateLabels();
+    this.updateState();if(keepWalking)this.setMode(groundMode);else if(home&&!keepDrone)this.home();this.callbacks.floor(floor);this.updateLabels();
   }
   home(animate=true) {
     this.shellFull=false;this.ceilingOverride=null;this.setMode('orbit');this.frameView('floor',animate);
@@ -198,8 +206,9 @@ export class HospitalWorld {
   focusRoom(id) {const r=roomById(id);if(!r)return;if(!this.visibleFloor(r.floor)||this.floor==='all')this.setFloor(r.floor,false);this.focusPoint(r.center[0],r.center[1],r.floor);}
   focusPoint(x,z,floor=this.floor==='all'?1:this.floor) {
     this.framing=null;
-    if(this.mode==='walk'){
-      const p=safeSpot([x,z],this.walkBounds(floor),this.floors.get(floor).collisions,this.obstacles[floor]);if(p)this.player=p;else this.callbacks.toast('Titik ini terhalang. Pilih titik lain di dalam ruangan.');
+    if(isGroundMode(this.mode)){
+      const p=safeSpot([x,z],this.walkBounds(floor),this.floors.get(floor).collisions,this.obstacles[floor],this.mode==='third'?.34:.2);if(p)this.player=p;else this.callbacks.toast('Titik ini terhalang. Pilih titik lain di dalam ruangan.');
+    } else if(this.mode==='drone'){this.dronePosition=droneStep([x+4,elevation(floor)+4,z+5],0,0,0,0,0,CAMPUS_BOUNDS);const direction=new T.Vector3(x,elevation(floor)+.6,z).sub(new T.Vector3(...this.dronePosition)).normalize();this.yaw=Math.atan2(-direction.x,-direction.z);this.pitch=Math.asin(direction.y);this.updateDroneCamera();
     } else {const y=elevation(floor);this.fly(this.mode==='top'?new T.Vector3(x,y+18,z+.03):new T.Vector3(x+5,y+7,z+8),new T.Vector3(x,y+.3,z));}
   }
   select(id) {
@@ -207,7 +216,7 @@ export class HospitalWorld {
     if(!this.visibleFloor(n.floor)||this.floor==='all')this.setFloor(n.floor,false);
     this.selected=id;this.selectionRing.visible=true;this.selectionRing.position.set(n.x,elevation(n.floor)+.07,n.z);
     for(const l of this.labelItems)l.el.classList.toggle('selected',l.id===id);
-    if(this.mode==='walk')this.focusPoint(n.x,n.z+1.1,n.floor);else this.focusPoint(n.x,n.z,n.floor);
+    if(isGroundMode(this.mode)){if(Math.hypot(n.x-this.player[0],n.z-this.player[1])>3.6)this.callbacks.toast('Berjalan mendekati perangkat untuk memeriksanya.');}else this.focusPoint(n.x,n.z,n.floor);
   }
   showTrace(result) {
     this.clearTrace();this.traceResult=result;if(!result.ok)return;
@@ -219,25 +228,42 @@ export class HospitalWorld {
     this.updateState();
   }
   clearTrace() {for(const obj of [this.routeMesh,this.routeParticle,...(this.routeParts||[])])if(obj){this.scene.remove(obj);obj.geometry.dispose();obj.material.dispose();}this.routeMesh=null;this.routeParticle=null;this.routePoints=null;this.routeParts=null;this.traceResult=null;}
-  setMode(mode) {
-    if(mode==='walk'&&this.floor==='all')this.setFloor(1,false);
-    if(mode==='walk'){this.shellFull=false;this.ceilingOverride=null;}
-    this.mode=mode;this.flight=null;this.framing=null;this.keys={};this.controls.enabled=mode!=='walk'&&mode!=='tour';this.controls.enableRotate=mode==='orbit';this.exteriorFocused=false;$('#exterior-view')?.classList.remove('active');this.camera.fov=mode==='walk'?58:43;this.camera.updateProjectionMatrix();
+  touchCapable(){return Boolean(globalThis.navigator?.maxTouchPoints>0||globalThis.matchMedia?.('(any-pointer: coarse)').matches);}
+  clearInput(){this.keys={};this.touchMove={forward:0,right:0};this.touchLift=0;this.scenePointers?.cancel();this.touchStick?.reset();}
+  inspectNearest(){
+    if(!isGroundMode(this.mode))return false;const near=NETWORK.filter(n=>n.floor===this.floor).map(n=>({n,d:Math.hypot(n.x-this.player[0],n.z-this.player[1])})).sort((a,b)=>a.d-b.d)[0];
+    if(near&&near.d<3.2){this.clearInput();this.callbacks.select(near.n.id);return true;}this.callbacks.toast('Belum ada perangkat dalam jangkauan. Dekati perangkat terlebih dahulu.');return false;
+  }
+  setMode(mode,{keepFloor=false}={}) {
+    if(!['orbit','walk','third','drone','top','tour'].includes(mode))return;
+    const previous=this.mode,ground=isGroundMode(mode),direct=isDirectCamera(mode),oldPosition=this.camera.position.clone(),direction=new T.Vector3();this.camera.getWorldDirection(direction);
+    if(ground&&this.floor==='all')this.setFloor(1,false);
+    if(mode==='drone'&&previous!=='drone'&&!keepFloor)this.setFloor('all',false);
+    if(ground){this.shellFull=false;this.ceilingOverride=null;}
+    if(mode==='third'){const spot=safeSpot(this.player,this.walkBounds(),[...(this.floors.get(this.floor)?.collisions||[]),...closedDoorSegments((this.doorItems||[]).filter(d=>d.definition.floor===this.floor))],this.obstacles[this.floor]||[],.34);if(spot)this.player=spot;}
+    if(mode==='drone'){this.shellFull=true;this.ceilingOverride=null;this.dronePosition=droneStep(oldPosition.toArray(),0,0,0,0,0,CAMPUS_BOUNDS);this.yaw=Math.atan2(-direction.x,-direction.z);this.pitch=Math.asin(T.MathUtils.clamp(direction.y,-.95,.95));}
+    this.mode=mode;this.flight=null;this.framing=null;this.followEye=null;this.clearInput?.();this.keys={};this.controls.enabled=!direct&&mode!=='tour';this.controls.enableRotate=mode==='orbit';this.exteriorFocused=false;$('#exterior-view')?.classList.remove('active');this.camera.fov=mode==='walk'?58:mode==='third'?55:mode==='drone'?60:43;this.camera.updateProjectionMatrix();
+    if(this.avatar)this.avatar.visible=mode==='third';
     this.syncEnvelope();
-    document.body.classList.toggle('walking',mode==='walk');$('#crosshair').classList.toggle('hidden',mode!=='walk');$('#walk-help').classList.toggle('hidden',mode!=='walk');
-    $('#touch-pad').classList.toggle('hidden',mode!=='walk'||!matchMedia('(pointer:coarse)').matches);
-    $('#orbit').classList.toggle('active',mode==='orbit');$('#walk').classList.toggle('active',mode==='walk');$('#top-view').classList.toggle('active',mode==='top');
-    if(mode==='walk'){
-      this.mode='walk';this.controls.enabled=false;this.pitch=0;this.yaw=this.floor===1?FRONT_OFFICE.yaw:-Math.PI/2;this.updateWalkCamera();
-      this.callbacks.toast('WASD untuk bergerak. Seret layar untuk melihat. Tekan E di dekat perangkat.');
+    document.body.classList.toggle('walking',direct);document.body.classList.toggle('drone-camera',mode==='drone');$('#crosshair').classList.toggle('hidden',!direct);$('#walk-help').classList.toggle('hidden',!direct);
+    $('#touch-pad').classList.toggle('hidden',!direct||!this.touchCapable?.());
+    $('#drone-altitude')?.classList.toggle('hidden',mode!=='drone');
+    const modePicker=$('#camera-mode');if(modePicker)modePicker.value=mode==='tour'?'orbit':mode;
+    $('#orbit').classList.toggle('active',mode==='orbit');$('#walk').classList.toggle('active',mode==='walk');$('#third-view')?.classList.toggle('active',mode==='third');$('#drone-view')?.classList.toggle('active',mode==='drone');$('#top-view').classList.toggle('active',mode==='top');
+    if(ground){
+      if(!isGroundMode(previous)){this.pitch=mode==='third'?-.12:0;this.yaw=this.floor===1?FRONT_OFFICE.yaw:-Math.PI/2;}
+      if(mode==='third')this.pitch=T.MathUtils.clamp(this.pitch,-.58,.55);
+      this.updateWalkCamera();this.callbacks.toast(mode==='third'?'Orang ketiga: berjalan dengan WASD atau joystick. Seret layar untuk mengarahkan kamera.':this.touchCapable?.()?'Geser joystick untuk berjalan, geser layar untuk melihat, lalu ketuk Periksa di dekat perangkat.':'WASD untuk bergerak. Seret layar untuk melihat. Tekan E di dekat perangkat.');
     }
+    if(mode==='drone'){this.updateDroneCamera();this.callbacks.toast('Drone: WASD atau joystick untuk bergerak, E naik dan Q turun. Pada layar sentuh, tahan tombol Naik atau Turun.');}
+    if($('#walk-help'))$('#walk-help').textContent=mode==='drone'?'WASD gerak · E naik · Q turun · Shift cepat · Seret melihat · Esc kembali':mode==='third'?'Orang ketiga · WASD gerak · Seret kamera · E periksa · F pintu · Esc kembali':'WASD bergerak · Seret untuk melihat · E periksa · F pintu · Esc kembali';
     this.renderer.shadowMap.needsUpdate=true;
   }
   topView() {
     this.shellFull=false;this.ceilingOverride=null;this.setMode('top');this.frameView('top');
   }
   syncEnvelope(){
-    const enclosed=this.mode==='walk'||this.shellFull,ceiling=this.ceilingOverride??enclosed,full=enclosed||ceiling,physical=this.mode==='walk'||this.mode==='tour'&&this.shellFull;
+    const enclosed=isDirectCamera(this.mode)||this.shellFull,ceiling=this.ceilingOverride??enclosed,full=enclosed||ceiling,physical=isGroundMode(this.mode)||this.mode==='tour'&&this.shellFull;
     for(const [floor,f] of this.floors){
       if(f.root)f.root.visible=physical||this.visibleFloor(floor);
       const plane=full?null:[new T.Plane(new T.Vector3(0,-1,0),elevation(floor)+1.13)];
@@ -250,74 +276,82 @@ export class HospitalWorld {
     if(this.renderer)this.renderer.shadowMap.needsUpdate=true;
   }
   toggleShell(){if(this.presentation?.active)this.presentation.stop();if(this.shellFull)this.home();else{this.setFloor('all',false);this.setMode('orbit');this.shellFull=true;this.ceilingOverride=null;this.syncEnvelope();this.frameView('building');}this.updateLabels();}
-  toggleCeiling(){if(this.presentation?.active)this.presentation.stop();const current=this.ceilingOverride??(this.mode==='walk'||this.shellFull);this.ceilingOverride=!current;this.syncEnvelope();this.updateLabels();}
+  toggleCeiling(){if(this.presentation?.active)this.presentation.stop();const current=this.ceilingOverride??(isDirectCamera(this.mode)||this.shellFull);this.ceilingOverride=!current;this.syncEnvelope();this.updateLabels();}
   updateViewDistance(){
-    if(!this.scene?.fog)return;const distance=this.mode==='walk'?0:this.camera.position.distanceTo(this.controls.target);
+    if(!this.scene?.fog)return;const distance=isDirectCamera(this.mode)?0:this.camera.position.distanceTo(this.controls.target);
     this.scene.fog.near=Math.max(52,distance-35);this.scene.fog.far=Math.max(125,distance+85);
   }
   updateInteriorLights(){
+    setIndoorLightState(this.state,LIGHTING_PRESETS[this.lightingPreset]||LIGHTING_PRESETS.day);
     const count=$('#quality').value==='eco'?3:$('#quality').value==='high'?8:6;
     const preset=LIGHTING_PRESETS[this.lightingPreset]||LIGHTING_PRESETS.day,points=lightSelection(this.lightCandidates.filter(p=>p.floor!==0||preset.exterior>0),this.camera.position,this.floor,count,true);
     this.lightPool.forEach((light,i)=>{const p=points[i],power=p?lightPower(this.state,preset,p.floor===0):0;light.visible=Boolean(p&&power>0);light.intensity=power;if(p){light.position.set(p.x,p.y,p.z);light.color.setHex(p.color);}});
   }
   useDoor(){
-    if(this.mode!=='walk')return false;const near=this.doorItems.filter(d=>d.definition.floor===this.floor&&!d.definition.portal).map(d=>({d,distance:Math.hypot(this.player[0]-d.definition.x,this.player[1]-d.definition.z)})).sort((a,b)=>a.distance-b.distance)[0];
+    if(!isGroundMode(this.mode))return false;const near=this.doorItems.filter(d=>d.definition.floor===this.floor&&!d.definition.portal).map(d=>({d,distance:Math.hypot(this.player[0]-d.definition.x,this.player[1]-d.definition.z)})).sort((a,b)=>a.distance-b.distance)[0];
     if(!near||near.distance>1.8)return false;near.d.manual=near.d.progress<.5;return true;
   }
   updateDoorPrompt(){
-    const button=$('#door-action');if(!button)return;const near=this.mode==='walk'&&this.doorItems.find(d=>d.definition.floor===this.floor&&!d.definition.portal&&Math.hypot(this.player[0]-d.definition.x,this.player[1]-d.definition.z)<1.8);
+    const button=$('#door-action');if(!button)return;const near=isGroundMode(this.mode)&&this.doorItems.find(d=>d.definition.floor===this.floor&&!d.definition.portal&&Math.hypot(this.player[0]-d.definition.x,this.player[1]-d.definition.z)<1.8);
     button.classList.toggle('hidden',!near);if(near)button.textContent=(near.progress<.5?'Buka pintu':'Tutup pintu')+' · F';
   }
   useStairs() {
-    if(this.mode!=='walk')return false;
+    if(!isGroundMode(this.mode))return false;
     const stair=ROOMS.find(r=>r.floor===this.floor&&r.type==='stairs');
     if(Math.hypot(this.player[0]-stair.center[0],this.player[1]-(stair.bounds[1]-.35))>2)return false;
-    const next=this.floor===1?2:1,target=ROOMS.find(r=>r.floor===next&&r.type==='stairs');
-    this.setFloor(next,false);this.player=safeSpot([target.center[0],target.bounds[1]-.35],FLOORS[next].bounds,this.floors.get(next).collisions,this.obstacles[next])||[...FLOORS[next].spawn];
-    this.setMode('walk');this.callbacks.toast(`Anda tiba di ${FLOORS[next].name} melalui tangga interior.`);return true;
+    const mode=this.mode,next=this.floor===1?2:1,target=ROOMS.find(r=>r.floor===next&&r.type==='stairs');
+    this.setFloor(next,false);this.player=safeSpot([target.center[0],target.bounds[1]-.35],FLOORS[next].bounds,this.floors.get(next).collisions,this.obstacles[next],mode==='third'?.34:.2)||[...FLOORS[next].spawn];
+    this.setMode(mode);this.callbacks.toast(`Anda tiba di ${FLOORS[next].name} melalui tangga interior.`);return true;
   }
   updateStairPrompt(){
     const button=$('#stairs-action');if(!button)return;const stair=ROOMS.find(r=>r.floor===this.floor&&r.type==='stairs');
-    const near=this.mode==='walk'&&stair&&Math.hypot(this.player[0]-stair.center[0],this.player[1]-(stair.bounds[1]-.35))<=2;
+    const near=isGroundMode(this.mode)&&stair&&Math.hypot(this.player[0]-stair.center[0],this.player[1]-(stair.bounds[1]-.35))<=2;
     button.classList.toggle('hidden',!near);button.textContent=this.floor===1?'Naik ke lantai 2 · E':'Turun ke lantai 1 · E';
   }
-  updateWalkCamera() {this.camera.position.set(this.player[0],elevation(this.floor===2?2:1)+1.62,this.player[1]);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);}
+  updateWalkCamera(dt=1/60) {
+    const base=elevation(this.floor===2?2:1);
+    if(this.mode==='third'){
+      if(!this.avatar&&this.scene){this.avatar=makeAsset('visitor-avatar');this.avatar.traverse(o=>{if(o.isMesh)o.castShadow=false;});this.avatar.add(createContactShadows([[-.2,-.2,.2,.2]]));this.scene.add(this.avatar);}
+      const walls=[...(this.floors.get(this.floor)?.collisions||[]),...closedDoorSegments((this.doorItems||[]).filter(d=>d.definition.floor===this.floor))],obstacles=this.obstacles[this.floor]||[],indoor=ROOMS.some(r=>r.floor===this.floor&&this.player[0]>r.bounds[0]&&this.player[0]<r.bounds[2]&&this.player[1]>r.bounds[1]&&this.player[1]<r.bounds[3]),pose=followPose(this.player,this.yaw,this.pitch,base,walls,obstacles,indoor);
+      const eye=new T.Vector3(...pose.eye);if(this.followEye)eye.lerpVectors(this.followEye,eye,this.reducedMotion?1:1-Math.exp(-12*dt));
+      this.followEye=new T.Vector3(...resolveBoom(pose.anchor,eye.toArray(),walls,obstacles));this.camera.position.copy(this.followEye);this.camera.lookAt(...pose.anchor);this.controls.target.set(...pose.anchor);
+      if(this.avatar){this.avatar.position.set(this.player[0],base,this.player[1]);this.avatar.rotation.y=this.yaw;this.avatar.visible=this.camera.position.distanceTo(new T.Vector3(...pose.anchor))>.72;}
+    }else{this.camera.position.set(this.player[0],base+1.62,this.player[1]);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);}
+  }
+  updateDroneCamera(){
+    if(!this.dronePosition)this.dronePosition=this.camera.position.toArray();this.camera.position.set(...this.dronePosition);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);
+    const direction=new T.Vector3();this.camera.getWorldDirection(direction);this.controls.target.copy(this.camera.position).addScaledVector(direction,5);
+    if($('#drone-height'))$('#drone-height').textContent=this.dronePosition[1].toFixed(1)+' unit';
+  }
+  updateAvatar(dt,travel=0){
+    if(!this.avatar||this.mode!=='third')return;this.stride=(this.stride||0)+travel*4.5;const amount=travel>.0001?Math.sin(this.stride)*.45:0;
+    for(const [name,sign]of [['leg-left',1],['leg-right',-1],['arm-left',-1],['arm-right',1]]){const joint=this.avatar.getObjectByName(name);if(joint)joint.rotation.x=T.MathUtils.lerp(joint.rotation.x,amount*sign,1-Math.exp(-16*dt));}
+  }
   bindInputs() {
-    const canvas=this.renderer.domElement;let drag=null;
-    $('#door-action')?.addEventListener('click',()=>this.useDoor());
-    $('#shell-view')?.addEventListener('click',()=>this.toggleShell());
-    $('#ceiling-view')?.addEventListener('click',()=>this.toggleCeiling());
-    $('#stairs-action')?.addEventListener('click',()=>this.useStairs());
-    canvas.addEventListener('pointerdown',e=>{if(this.presentation?.active){if(this.presentation.clock.playing)this.presentation.toggle();return;}drag={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY};if(this.mode==='walk')canvas.setPointerCapture(e.pointerId);this.flight=null;});
-    canvas.addEventListener('pointermove',e=>{if(drag&&this.mode==='walk'){this.yaw-=(e.clientX-drag.lastX)*.004;this.pitch=T.MathUtils.clamp(this.pitch-(e.clientY-drag.lastY)*.003,-1.2,1.2);drag.lastX=e.clientX;drag.lastY=e.clientY;}});
+    const canvas=this.renderer.domElement;const pointers=new ScenePointers();this.scenePointers=pointers;this.touchStick=bindTouchStick(this);
+    canvas.addEventListener('pointerdown',e=>{if(e.button>0&&e.pointerType!=='touch')return;pointers.begin(e,isDirectCamera(this.mode));if(isDirectCamera(this.mode))canvas.setPointerCapture(e.pointerId);this.flight=null;});
+    canvas.addEventListener('pointermove',e=>{const delta=pointers.move(e);if(delta&&isDirectCamera(this.mode)&&!document.querySelector('dialog[open]')&&!document.body.classList.contains('mobile-panel-open')){this.yaw-=delta.x*.004;this.pitch=T.MathUtils.clamp(this.pitch-delta.y*.003,this.mode==='third'?-.58:-1.2,this.mode==='third'?.55:1.2);}});
     canvas.addEventListener('pointerup',e=>{
-      if(this.presentation?.active){drag=null;return;}
-      if(!drag)return;const click=Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<5;drag=null;if(!click)return;
+      const click=pointers.end(e);if(!click)return;
+      if(this.presentation?.active){this.presentation.toggle();return;}
       const r=canvas.getBoundingClientRect(),mouse=new T.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
       const ray=new T.Raycaster();ray.setFromCamera(mouse,this.camera);
       const doorHits=ray.intersectObjects(this.doorItems.filter(d=>this.visibleFloor(d.definition.floor)).flatMap(d=>d.leaves.map(p=>p.hinge)),true);
-      if(doorHits.length){const door=this.doorItems.find(d=>d.leaves.some(p=>{let o=doorHits[0].object;while(o){if(o===p.hinge)return true;o=o.parent;}return false;}));if(door&&(this.mode!=='walk'||Math.hypot(this.player[0]-door.definition.x,this.player[1]-door.definition.z)<2)){door.manual=door.progress<.5;return;}}
+      if(doorHits.length){const door=this.doorItems.find(d=>d.leaves.some(p=>{let o=doorHits[0].object;while(o){if(o===p.hinge)return true;o=o.parent;}return false;}));if(door&&(!isGroundMode(this.mode)||Math.hypot(this.player[0]-door.definition.x,this.player[1]-door.definition.z)<2)){door.manual=door.progress<.5;return;}}
       const hits=ray.intersectObjects(this.clickables.filter(m=>this.visibleFloor(m.userData.device.floor)),false);
-      if(hits.length){const n=hits[0].object.userData.device;if(this.mode==='walk'&&Math.hypot(n.x-this.player[0],n.z-this.player[1])>3.6){this.callbacks.toast('Dekati perangkat, lalu periksa dengan klik atau tombol E.');return;}this.callbacks.select(n.id);}
+      if(hits.length){const n=hits[0].object.userData.device;if(isGroundMode(this.mode)&&Math.hypot(n.x-this.player[0],n.z-this.player[1])>3.6){this.callbacks.toast('Dekati perangkat, lalu ketuk Periksa atau tekan E.');return;}this.callbacks.select(n.id);}
     });
-    canvas.addEventListener('pointercancel',()=>{drag=null;this.keys={};});
+    canvas.addEventListener('pointercancel',()=>this.clearInput());canvas.addEventListener('lostpointercapture',e=>pointers.cancel(e.pointerId));
     window.addEventListener('keydown',e=>{
       if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)||document.querySelector('dialog[open]'))return;
-      if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)&&this.mode==='walk'){e.preventDefault();this.keys[e.code]=true;}
-      if(e.code==='KeyF'&&!e.repeat&&this.mode==='walk'){e.preventDefault();this.useDoor();}
-      if(e.code==='Escape'&&this.mode==='walk'){this.setMode('orbit');this.home();}
-      if(e.code==='KeyE'&&this.mode==='walk'){
-        if(this.useStairs())return;
-        const near=NETWORK.filter(n=>n.floor===this.floor).map(n=>({n,d:Math.hypot(n.x-this.player[0],n.z-this.player[1])})).sort((a,b)=>a.d-b.d)[0];
-        if(near&&near.d<3.2)this.callbacks.select(near.n.id);else this.callbacks.toast('Belum ada perangkat dalam jangkauan.');
-      }
+      if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','KeyQ','KeyE','ShiftLeft','ShiftRight'].includes(e.code)&&isDirectCamera(this.mode)){e.preventDefault();this.keys[e.code]=true;}
+      if(e.code==='KeyF'&&!e.repeat&&isGroundMode(this.mode)){e.preventDefault();this.useDoor();}
+      if(e.code==='Escape'&&isDirectCamera(this.mode)){this.setMode('orbit');this.home();}
+      if(e.code==='KeyE'&&isGroundMode(this.mode)){if(!this.useStairs())this.inspectNearest();}
     });
-    window.addEventListener('keyup',e=>{this.keys[e.code]=false;});window.addEventListener('blur',()=>{this.keys={};drag=null;});
-    document.addEventListener('visibilitychange',()=>{if(document.hidden)this.keys={};this.last=performance.now();});
-    for(const b of document.querySelectorAll('[data-key]')) {
-      b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);this.keys[b.dataset.key]=true;});
-      for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>{this.keys[b.dataset.key]=false;});
-    }
+    window.addEventListener('keyup',e=>{this.keys[e.code]=false;});window.addEventListener('blur',()=>this.clearInput());window.addEventListener('pagehide',()=>this.clearInput());window.addEventListener('orientationchange',()=>this.clearInput());
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)this.clearInput();this.last=performance.now();});
+    document.addEventListener('focusin',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))this.clearInput();});
     $('#minimap').addEventListener('click',e=>{if(this.floor==='all')this.setFloor(1);const map=this.mapTransform;if(!map)return;const rect=e.target.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width*280,z=(e.clientY-rect.top)/rect.height*178;this.focusPoint((x-map.ox)/map.scale+map.bounds[0],(z-map.oz)/map.scale+map.bounds[1]);});
     canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();this.callbacks.contextLost();});
     canvas.addEventListener('webglcontextrestored',()=>location.reload());
@@ -325,47 +359,52 @@ export class HospitalWorld {
   onResize() {
     const rect=$('#world').getBoundingClientRect();if(rect.width<1||rect.height<1)return;
     this.width=rect.width;this.height=rect.height;this.camera.aspect=rect.width/rect.height;this.camera.updateProjectionMatrix();
-    this.renderer.setSize(rect.width,rect.height,false);this.setQuality($('#quality').value,false);if(this.framing)this.frameView(this.framing,false);
+    this.renderer.setSize(rect.width,rect.height,false);this.setQuality($('#quality').value,false);if(this.framing)this.frameView(this.framing,false);if(this.presentation?.active)this.presentation.updateCamera?.();this.callbacks?.viewport?.();
   }
   setQuality(name,refresh=true) {
-    const cap={eco:1,normal:1.35,high:2}[name]||1.35;this.renderer.setPixelRatio(Math.min(devicePixelRatio||1,cap));
+    this.renderer.setPixelRatio(renderBudget(this.width||1,this.height||1,globalThis.devicePixelRatio||1,name,this.touchCapable?.()||false));
     this.renderer.shadowMap.enabled=name!=='eco';const shadowSize=name==='high'?4096:2048;if(this.sun&&this.sun.shadow.mapSize.x!==shadowSize){this.sun.shadow.mapSize.set(shadowSize,shadowSize);this.sun.shadow.map?.dispose();this.sun.shadow.map=null;}this.renderer.shadowMap.needsUpdate=true;if(refresh)this.callbacks.toast(`Grafis ${name==='eco'?'hemat':name==='high'?'detail':'standar'} diaktifkan.`);
   }
   updateLabels() {
-    this.camera.updateMatrixWorld();
+    this.camera.updateMatrixWorld();const compact=(this.width<700||this.touchCapable?.())&&!isGroundMode(this.mode),candidates=[];
     for(const label of this.labelItems){
       const v=label.point.clone().project(this.camera),distance=this.camera.position.distanceTo(label.point);
-      const closedShell=this.shellFull&&(this.ceilingOverride??true)&&this.mode!=='walk'&&this.mode!=='tour';
-      const visible=this.labelsVisible!==false&&!closedShell&&this.visibleFloor(label.floor)&&v.z>-1&&v.z<1&&Math.abs(v.x)<.98&&Math.abs(v.y)<.98&&(this.mode!=='walk'||(distance<6&&label.device));
+      const closedShell=this.shellFull&&(this.ceilingOverride??true)&&!isGroundMode(this.mode)&&this.mode!=='tour';
+      const visible=this.labelsVisible!==false&&!closedShell&&this.visibleFloor(label.floor)&&v.z>-1&&v.z<1&&Math.abs(v.x)<.98&&Math.abs(v.y)<.98&&(!isGroundMode(this.mode)||(distance<6&&label.device));
       label.el.style.display=visible?'':'none';if(!visible)continue;
-      label.el.style.left=`${(v.x+1)*this.width/2}px`;label.el.style.top=`${(1-v.y)*this.height/2}px`;
+      const x=(v.x+1)*this.width/2,y=(1-v.y)*this.height/2;label.el.style.left=`${x}px`;label.el.style.top=`${y}px`;if(compact)candidates.push({id:label.id,device:label.device,name:label.el.textContent||'',selected:label.id===this.selected,distance,x,y});
     }
+    if(compact){const visible=compactLabels(candidates,this.width,this.height,{top:this.mode==='tour'?72:this.height<380?106:166,bottom:18});for(const label of this.labelItems)if(!visible.has(label.id))label.el.style.display='none';}
   }
   drawMap() {
-    const floor=this.floor===2?2:1,c=$('#minimap'),ctx=c.getContext('2d'),b=FLOORS[floor].bounds,outdoor=floor===1&&(this.floor==='all'||this.player[0]<b[0]||this.player[0]>b[2]||this.player[1]<b[1]||this.player[1]>b[3]||this.player[0]<-9.2&&this.player[1]>-4.55),bounds=outdoor?CAMPUS_BOUNDS:b;
+    const location=this.mode==='drone'?[this.camera.position.x,this.camera.position.z]:this.player;
+    const floor=this.floor===2?2:1,c=$('#minimap'),ctx=c.getContext('2d'),b=FLOORS[floor].bounds,outdoor=this.mode==='drone'||floor===1&&(this.floor==='all'||!FLOOR_FOOTPRINTS[1].some(([x,z,a,c])=>location[0]>=x&&location[0]<=a&&location[1]>=z&&location[1]<=c)),bounds=outdoor?CAMPUS_BOUNDS:b;
     ctx.clearRect(0,0,280,178);const scale=Math.min(264/(bounds[2]-bounds[0]),160/(bounds[3]-bounds[1])),ox=(280-(bounds[2]-bounds[0])*scale)/2,oz=(178-(bounds[3]-bounds[1])*scale)/2;
     this.mapTransform={scale,ox,oz,bounds};const X=x=>ox+(x-bounds[0])*scale,Z=z=>oz+(z-bounds[1])*scale;
     if(outdoor){ctx.fillStyle='#dce6d4';ctx.fillRect(ox,oz,(bounds[2]-bounds[0])*scale,(bounds[3]-bounds[1])*scale);ctx.fillStyle='#a5b0a5';for(const [x,z,a,b]of CAMPUS_ROADS)ctx.fillRect(X(x),Z(z),(a-x)*scale,(b-z)*scale);ctx.fillStyle='#edf1e3';ctx.fillRect(X(-24.5),Z(-1.65),11.9*scale,3.1*scale);}
     for(const r of ROOMS.filter(r=>r.floor===floor)){const [x,z,a,b]=r.bounds;ctx.fillStyle=r.id===DEVICE_MAP.get(this.selected)?.room?'#bfdccd':r.type==='corridor'?'#f8faf4':'#e4ebe0';ctx.fillRect(X(x),Z(z),(a-x)*scale,(b-z)*scale);}
     ctx.strokeStyle='#9bafa0';ctx.lineWidth=.8;ctx.beginPath();for(const [ax,az,bx,bz]of this.floors.get(floor).collisions){ctx.moveTo(X(ax),Z(az));ctx.lineTo(X(bx),Z(bz));}ctx.stroke();
     for(const n of NETWORK.filter(n=>n.floor===floor&&['server','rack','switch'].includes(n.kind))){ctx.fillStyle='#489d85';ctx.fillRect(X(n.x)-2,Z(n.z)-2,4,4);}
-    ctx.fillStyle='#247a66';ctx.beginPath();ctx.arc(X(this.player[0]),Z(this.player[1]),3.3,0,Math.PI*2);ctx.fill();
-    ctx.strokeStyle='#247a66';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(X(this.player[0]),Z(this.player[1]));ctx.lineTo(X(this.player[0]-Math.sin(this.yaw)*.8),Z(this.player[1]-Math.cos(this.yaw)*.8));ctx.stroke();
+    ctx.fillStyle='#247a66';ctx.beginPath();ctx.arc(X(location[0]),Z(location[1]),3.3,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#247a66';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(X(location[0]),Z(location[1]));ctx.lineTo(X(location[0]-Math.sin(this.yaw)*.8),Z(location[1]-Math.cos(this.yaw)*.8));ctx.stroke();
     $('#map-title').textContent=outdoor?'KAWASAN RUMAH SAKIT':`DENAH LANTAI ${floor}`;
-    const r=ROOMS.find(r=>r.floor===floor&&this.player[0]>r.bounds[0]&&this.player[0]<r.bounds[2]&&this.player[1]>r.bounds[1]&&this.player[1]<r.bounds[3]);
-    $('#room-name').textContent=r?.name||(outdoor?'Area luar':'Area sirkulasi');
+    const r=ROOMS.find(r=>r.floor===floor&&location[0]>r.bounds[0]&&location[0]<r.bounds[2]&&location[1]>r.bounds[1]&&location[1]<r.bounds[3]);
+    $('#room-name').textContent=this.mode==='drone'?'Drone bebas · '+this.camera.position.y.toFixed(1)+' unit':r?.name||(outdoor?'Area luar':'Area sirkulasi');
   }
   animate(now) {
     this.animationId=requestAnimationFrame(this.animate);const dt=Math.min((now-this.last)/1000,.05);this.last=now;if(document.hidden)return;
     const suspended=document.querySelector('dialog[open]');
     if(this.presentation?.active&&!suspended)this.presentation.update(dt);
-    let doorsChanged=false;for(const door of this.doorItems)if(this.visibleFloor(door.definition.floor))doorsChanged=animateDoor(door,dt,['walk','tour'].includes(this.mode)&&door.definition.floor===this.floor?this.player:null)||doorsChanged;
+    let doorsChanged=false;for(const door of this.doorItems)if(this.visibleFloor(door.definition.floor))doorsChanged=animateDoor(door,dt,['walk','third','tour'].includes(this.mode)&&door.definition.floor===this.floor?this.player:null)||doorsChanged;
     if(doorsChanged&&now-(this.lastDoorShadow||0)>80){this.renderer.shadowMap.needsUpdate=true;this.lastDoorShadow=now;}
-    if(this.mode==='walk'){
-      if(!suspended){const forward=Number(Boolean(this.keys.KeyW||this.keys.ArrowUp))-Number(Boolean(this.keys.KeyS||this.keys.ArrowDown)),right=Number(Boolean(this.keys.KeyD||this.keys.ArrowRight))-Number(Boolean(this.keys.KeyA||this.keys.ArrowLeft));
-        const magnitude=Math.hypot(forward,right)||1,speed=2.7*dt/magnitude;
-        this.player=moveWithCollision(this.player,(-Math.sin(this.yaw)*forward+Math.cos(this.yaw)*right)*speed,(-Math.cos(this.yaw)*forward-Math.sin(this.yaw)*right)*speed,this.walkBounds(),[...this.floors.get(this.floor).collisions,...closedDoorSegments(this.doorItems.filter(d=>d.definition.floor===this.floor))],this.obstacles[this.floor]);}
-      this.updateWalkCamera();
+    if(isGroundMode(this.mode)){
+      const previous=[...this.player];
+      if(!suspended&&!document.body.classList.contains('mobile-panel-open')){const {forward,right}=movementVector(this.keys,this.touchMove),speed=2.7*dt;
+        this.player=moveWithCollision(this.player,(-Math.sin(this.yaw)*forward+Math.cos(this.yaw)*right)*speed,(-Math.cos(this.yaw)*forward-Math.sin(this.yaw)*right)*speed,this.walkBounds(),[...this.floors.get(this.floor).collisions,...closedDoorSegments(this.doorItems.filter(d=>d.definition.floor===this.floor))],this.obstacles[this.floor],this.mode==='third'?.34:.18);}
+      this.updateWalkCamera(dt);this.updateAvatar(dt,Math.hypot(this.player[0]-previous[0],this.player[1]-previous[1]));
+    } else if(this.mode==='drone'){
+      if(!suspended&&!document.body.classList.contains('mobile-panel-open')){const {forward,right}=movementVector(this.keys,this.touchMove),lift=Number(Boolean(this.keys.KeyE||this.keys.Space))-Number(Boolean(this.keys.KeyQ))+(this.touchLift||0);this.dronePosition=droneStep(this.dronePosition||this.camera.position.toArray(),this.yaw,forward,right,lift,dt,CAMPUS_BOUNDS,this.keys.ShiftLeft||this.keys.ShiftRight);}
+      this.updateDroneCamera();
     } else if(this.presentation?.active){
       // Presentation owns the camera; user movement remains disabled until exit.
     } else if(this.flight){
@@ -397,7 +436,7 @@ export class HospitalWorld {
     if(this.routeParticle&&this.routePoints){this.routeTime+=this.paused?0:dt*this.speed;const p=pointOnPath(this.routePoints,(this.routeTime*.12)%1);this.routeParticle.position.set(...p);
       const f=p[1]>FLOOR_HEIGHT-.12?2:1;this.routeParticle.visible=this.visibleFloor(f);
     }
-    this.marker.visible=this.mode!=='walk'&&this.mode!=='tour';this.marker.position.set(this.player[0],elevation(this.floor===2?2:1)+.1,this.player[1]);
+    this.marker.visible=!isDirectCamera(this.mode)&&this.mode!=='tour';this.marker.position.set(this.player[0],elevation(this.floor===2?2:1)+.1,this.player[1]);
     if(now-(this.lastLabels||0)>90){this.updateLabels();this.drawMap();this.updateStairPrompt();this.updateDoorPrompt();this.updateInteriorLights();this.updateViewDistance();this.lastLabels=now;}
     this.renderer.render(this.scene,this.camera);this.frames++;
     if(now-this.fpsStart>1000){$('#fps').textContent=`${Math.round(this.frames*1000/(now-this.fpsStart))} FPS`;this.frames=0;this.fpsStart=now;}

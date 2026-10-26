@@ -14,7 +14,7 @@ import {prepareWallSegments} from '../src/circulation.js';
 import {TourNarrator} from '../src/narration.js';
 const data={};for(const floor of [1,2]){const [dx,dz]=FLOOR_OFFSETS[floor],walls=prepareWallSegments(floor,JSON.parse(await readFile(new URL(`../assets/collision-${floor}.json`,import.meta.url))).map(s=>s.map((v,i)=>v+(i%2?dz:dx)))),env=buildEnvironment(floor,walls);data[floor]={walls,env,obstacles:[...FURNITURE,...DEVICE_PLACEMENTS].filter(p=>p.floor===floor).flatMap(placementObstacles).concat(env.obstacles)};}
 test('Fourteen presentation chapters reference real rooms, devices and network links',()=>{
- assert.equal(TOUR_STEPS.length,14);assert.equal(new Set(TOUR_STEPS.map(s=>s.id)).size,14);
+ assert.equal(TOUR_STEPS.length,15);assert.equal(new Set(TOUR_STEPS.map(s=>s.id)).size,15);
  for(const step of TOUR_STEPS){assert.ok(step.text.length>50);assert.ok(step.details.length>=3);if(step.device)assert.ok(DEVICE_MAP.has(step.device),step.device);for(const id of step.edges||[])assert.ok(EDGES.some(e=>e.id===id),id);if(step.view==='room')assert.ok(TOUR_PATHS[step.id]?.length>=2,step.id);}
 });
 test('Presentation clock supports pause, chapter selection, completion and replay without timer jumps',()=>{
@@ -60,6 +60,6 @@ test('Automatic chapters wait for narration to finish, pause with it and cancel 
 });
 test('Switching narration language updates the whole chapter and demos while preserving camera, timeline and hidden-panel state',()=>{
  const oldDoc=globalThis.document;globalThis.document={body:{classList:classes()},querySelector(){return null;}};
- try{const w=mockWorld(),p=w.presentation,original=JSON.stringify(w.state.serialize());p.start(11);p.clock.elapsed=5;p.setPanelHidden(true);const camera=w.camera.position.clone(),floor=w.floor;p.narrator.configure({language:'en',style:'presenter'});let status=p.status();assert.equal(status.step.title,'Wi-Fi and the guest boundary');assert.match(status.step.phase,/policy/);assert.ok(status.step.details[0].startsWith('Observe'));assert.equal(status.panelHidden,true);assert.equal(p.clock.elapsed,5);assert.equal(w.floor,floor);assert.deepEqual(w.camera.position,camera);p.demo();assert.match(p.status().demoMessage,/Guest VLAN policy/);p.narrator.configure({language:'id'});assert.match(p.status().step.title,/batas akses tamu/);p.stop();assert.equal(JSON.stringify(w.state.serialize()),original);
+ try{const w=mockWorld(),p=w.presentation,original=JSON.stringify(w.state.serialize());p.start(TOUR_STEPS.findIndex(s=>s.id==='wifi'));p.clock.elapsed=5;p.setPanelHidden(true);const camera=w.camera.position.clone(),floor=w.floor;p.narrator.configure({language:'en',style:'presenter'});let status=p.status();assert.equal(status.step.title,'Wi-Fi and the guest boundary');assert.match(status.step.phase,/policy/);assert.ok(status.step.details[0].startsWith('Observe'));assert.equal(status.panelHidden,true);assert.equal(p.clock.elapsed,5);assert.equal(w.floor,floor);assert.deepEqual(w.camera.position,camera);p.demo();assert.match(p.status().demoMessage,/Guest VLAN policy/);p.narrator.configure({language:'id'});assert.match(p.status().step.title,/batas akses tamu/);p.stop();assert.equal(JSON.stringify(w.state.serialize()),original);
  }finally{if(oldDoc===undefined)delete globalThis.document;else globalThis.document=oldDoc;}
 });

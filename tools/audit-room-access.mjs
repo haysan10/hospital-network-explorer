@@ -53,7 +53,7 @@ export async function auditRoomAccess({includeGeometry=false}={}){
   }
   floors.push({floor,doors,rooms,skipped:environment.skipped,...(includeGeometry?{walls,items,overhead}: {})});
  }
- return {version:'4.0.0',units:'illustrative scene units',floors,issues};
+ return {version:'4.5.0',units:'illustrative scene units',floors,issues};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const report=await auditRoomAccess({includeGeometry:process.argv.includes('--geometry')});if(process.argv.includes('--save'))await writeFile(new URL('../docs/room-access-audit.json',import.meta.url),JSON.stringify(report,null,2));

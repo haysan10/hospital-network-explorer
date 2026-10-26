@@ -1,37 +1,44 @@
 import {FRONT_OFFICE} from './circulation.js';
-// Room bounds are registered to the two supplied GLBs, in their world coordinates.
+// Original room bounds follow the supplied GLBs. The rear service extension uses the shared service-layout contract.
 // These are learning scenarios, not a surveyed electrical/network installation.
 export const FLOOR_HEIGHT = 3.4;
 export const FLOOR_OFFSETS = {1:[0,0],2:[2.01,-3.15]};
 export const FLOORS = {
-  1: {name:'Lantai 1', subtitle:'Layanan & pusat jaringan', bounds:[-13.12,-7.85,13.29,7.96], spawn:[...FRONT_OFFICE.spawn], model:'assets/models/floor-1.glb'},
+  1: {name:'Lantai 1', subtitle:'Layanan & pusat jaringan', bounds:[-13.6,-7.95,13.95,19.9], spawn:[...FRONT_OFFICE.spawn], model:'assets/models/floor-1.glb'},
   2: {name:'Lantai 2', subtitle:'Perawatan & tindakan', bounds:[-11.32,-5.45,11.32,5.46], spawn:[8.8,-.2], model:'assets/models/floor-2.glb'}
 };
 for(const [f,config] of Object.entries(FLOORS)) {
   const [dx,dz]=FLOOR_OFFSETS[f];config.bounds=config.bounds.map((v,i)=>v+(i%2?dz:dx));config.spawn=config.spawn.map((v,i)=>v+(i?dz:dx));
 }
-const room = (id,floor,name,bounds,type='office',net=true) => {
+const room = (id,floor,name,bounds,type='office',net=true,options={}) => {
   const [dx,dz]=FLOOR_OFFSETS[floor];bounds=bounds.map((v,i)=>v+(i%2?dz:dx));
-  return {id,floor,name,bounds,type,net,center:[(bounds[0]+bounds[2])/2,(bounds[1]+bounds[3])/2]};
+  return {id,floor,name,bounds,type,net,...options,center:[(bounds[0]+bounds[2])/2,(bounds[1]+bounds[3])/2]};
 };
 export const ROOMS = [
   room('security',1,'Pos keamanan',[-12.91,-7.64,-9.34,-4.77],'security'),
   room('front-toilet',1,'Toilet depan',[-9.13,-7.64,-7.46,-3.75],'toilet',false),
   room('igd',1,'IGD',[-7.35,-7.64,-3.46,-3.75],'clinical'),
-  room('poly',1,'Poliklinik',[-3.35,-7.64,.76,-3.75],'clinical'),
-  room('lab',1,'Laboratorium',[.87,-7.64,4.86,-3.75],'lab'),
-  room('pharmacy',1,'Farmasi',[4.97,-7.64,8.86,-3.75],'pharmacy'),
+  room('lab',1,'Laboratorium',[-3.35,-7.64,.76,-3.75],'lab'),
+  room('pharmacy-depot',1,'Depo farmasi',[.87,-7.64,4.86,-3.75],'pharmacy'),
+  room('pharmacy-store',1,'Gudang farmasi',[4.97,-7.64,8.86,-3.75],'pharmacy',true,{stockroom:true}),
   room('server-room',1,'Ruang server',[8.97,-7.64,13.08,-3.75],'server',false),
   room('registration',1,'Pendaftaran',[-9.13,-2.1,-3.46,1.9],'registration'),
   room('rehab',1,'Rehabilitasi medik',[-3.35,-2.1,.63,1.9],'clinical'),
   room('radiology',1,'Radiologi',[.87,-1.94,4.86,1.74],'radiology'),
   room('usg',1,'Ruang USG',[5.1,-2.1,9.82,1.9],'clinical'),
   room('stairs-1',1,'Tangga & lift',[9.93,-2.1,13.08,1.9],'stairs',false),
-  room('kitchen',1,'Dapur',[-9.13,3.55,-4.47,7.75],'kitchen'),
-  room('laundry',1,'Binatu',[-4.36,3.55,.85,7.75],'laundry'),
-  room('storage',1,'Gudang alat medis',[.97,3.55,5.34,7.75],'storage'),
-  room('ipsrs',1,'IPSRS',[5.45,3.55,7.86,5.59],'office'),
-  room('calibration',1,'Ruang kalibrasi',[5.45,5.71,7.86,7.75],'lab',false),
+  room('poli-general',1,'Poli umum',[-9.13,3.55,-4.47,7.75],'clinical'),
+  room('poli-ent',1,'Poli THT',[-4.36,3.55,.85,7.75],'ent'),
+  room('poli-dental',1,'Poli gigi',[.97,3.55,5.34,7.75],'dental'),
+  room('service-access',1,'Akses petugas back office',[5.45,3.55,7.86,7.75],'corridor',false),
+  room('service-link',1,'Penghubung servis tertutup',[5.95,7.86,7.35,11.75],'corridor',false),
+  room('back-corridor',1,'Koridor back office',[-9.13,11.86,13.08,13.44],'corridor',false),
+  room('ipsrs',1,'IPSRS · bengkel pemeliharaan',[-9.13,13.55,-5.62,18.9],'workshop',false),
+  room('calibration',1,'Kalibrasi alat medis',[-5.51,13.55,-2,18.9],'workshop',true,{computer:false}),
+  room('medical-storage',1,'Gudang alat medis',[-1.89,13.55,1.05,18.9],'storage'),
+  room('kitchen',1,'Dapur produksi · back office',[1.16,13.55,4.35,18.9],'kitchen',false),
+  room('laundry',1,'Binatu · penerimaan dan cuci',[4.46,13.55,8.91,18.9],'laundry',false),
+  room('linen-clean',1,'Penyimpanan linen bersih',[9.02,13.55,13.08,18.9],'linen',false),
   room('toilets-1',1,'Toilet pria & wanita',[7.97,3.55,13.08,7.75],'toilet',false),
   room('corridor-n',1,'Koridor utara',[-9.13,-3.64,13.08,-2.21],'corridor',false),
   room('corridor-s',1,'Koridor selatan',[-9.13,2.01,13.08,3.44],'corridor',false),
@@ -43,9 +50,9 @@ export const ROOMS = [
   room('operation',2,'Ruang operasi (OK)',[-11.11,.85,-6.78,3.21],'operation'),
   room('circulation-west-2',2,'Koridor operasi barat',[-6.67,2.1,-3.84,3.21],'corridor',false),
   room('changing',2,'Ruang ganti',[-6.67,.85,-3.84,1.98],'changing',false),
-  room('ok-1',2,'Ruang OK 1',[-11.11,3.33,-9.01,5.25],'operation'),
-  room('ok-2',2,'Ruang OK 2',[-8.88,3.33,-6.43,5.25],'operation'),
-  room('ok-3',2,'Ruang OK 3',[-6.3,3.33,-3.84,5.25],'operation'),
+  room('ok-1',2,'Ruang OK 1',[-11.11,3.33,-9.01,5.25],'operation',false),
+  room('ok-2',2,'Ruang OK 2',[-8.88,3.33,-6.43,5.25],'operation',false),
+  room('ok-3',2,'Ruang OK 3',[-6.3,3.33,-3.84,5.25],'operation',false),
   room('management',2,'Manajemen',[-3.72,.85,-.11,5.25],'office'),
   room('doctors',2,'Ruang dokter',[.02,.85,3.72,5.25],'office'),
   room('nurse',2,'Nurse station',[3.84,.85,7.77,5.25],'nurse'),
@@ -58,41 +65,46 @@ export const NETWORK = [
   {id:'core',name:'Core switch',kind:'switch',floor:1,x:10.9,z:-6.7,y:.9,room:'server-room',vlan:99,protected:true},
   {id:'firewall',name:'Router & firewall',kind:'router',floor:1,x:10,z:-6.7,y:.9,room:'server-room',vlan:99,protected:true},
   {id:'sw-north',name:'Switch akses lantai 1',kind:'switch',floor:1,x:10.9,z:-5.6,y:.9,room:'server-room',vlan:99,protected:true},
-  {id:'sw-south',name:'Switch akses layanan penunjang',kind:'switch',floor:1,x:6.65,z:4.1,y:.9,room:'ipsrs',vlan:99,protected:false},
+  {id:'sw-south',name:'Switch akses layanan penunjang',kind:'switch',floor:1,x:-1.25,z:18.78,y:1.65,asset:'wall-switch',rotation:Math.PI,room:'medical-storage',vlan:99,protected:false},
   {id:'sw-l2',name:'Switch distribusi lantai 2',kind:'rack',floor:2,x:7.02,z:4.5,y:0,rotation:Math.PI,room:'nurse',vlan:99,protected:true},
   {id:'ups-1',name:'UPS pusat jaringan',kind:'ups',floor:1,x:12.3,z:-4.5,y:0,room:'server-room',network:false,protected:true},
   {id:'ups-2',name:'UPS nurse station',kind:'ups',floor:2,x:7.05,z:3.35,y:0,room:'nurse',network:false,protected:true},
   {id:'panel-1',name:'Panel distribusi listrik L1',kind:'panel',floor:1,x:12.88,z:-5.3,y:1.1,room:'server-room',network:false},
+  {id:'panel-boh',name:'Panel distribusi back office',kind:'panel',floor:1,x:.89,z:17.3,y:1.1,rotation:-Math.PI/2,room:'medical-storage',network:false},
   {id:'panel-2',name:'Panel distribusi listrik L2',kind:'panel',floor:2,x:7.46,z:2.05,y:1.1,room:'nurse',network:false}
 ];
 for(const n of NETWORK){const [dx,dz]=FLOOR_OFFSETS[n.floor];n.x+=dx;n.z+=dz;}
-NETWORK.push({id:'sw-l2-west',name:'Distribusi fiber sayap barat L2',kind:'switch',floor:2,x:-5.4,z:-2.06,y:1.8,rotation:0,room:'operation',vlan:99,protected:true});
-const lower = new Set(['registration','rehab','radiology','usg','kitchen','laundry','storage','ipsrs']);
+NETWORK.push({id:'sw-l2-west',name:'Distribusi fiber sayap barat L2',kind:'switch',floor:2,x:-2.6,z:-.94,y:1.8,rotation:0,room:'circulation-west-2',asset:'wall-switch',vlan:99,protected:true});
+const lower = new Set(['registration','rehab','radiology','usg','poli-general','poli-ent','poli-dental','medical-storage','calibration']);
 for (const r of ROOMS.filter(r=>r.net)) {
   const [x0,z0,x1,z1]=r.bounds;
   let x=x1-.66,z=z1-.46,rotation=Math.PI,asset='pc';
-  if(['clinical','ward','icu'].includes(r.type)){x=x1-.66;z=z0+.53;rotation=0;}
+  if(['clinical','ward','icu','ent','dental'].includes(r.type)){x=x1-.66;z=z0+.53;rotation=0;}
   if(r.type==='ward')x=x1-.6;
+  if(r.id==='pharmacy-depot')x=x0+.85;
   if(r.id==='security'){x=x1-.66;z=z0+.48;rotation=0;}
   if(r.id==='registration'){({x,z,rotation}=FRONT_OFFICE.terminal);asset='reception-terminal';}
   if(r.id==='operation'){x=x1-.45;z=z0+.66;rotation=-Math.PI/2;}
   if(r.id.startsWith('ok-')){x=x1-.14;z=z0+.82;rotation=-Math.PI/2;asset='wall-terminal';}
-  if(r.id==='storage')x=x0+2.03;
+
   if(r.id==='ipsrs'){x=x1-.15;z=z0+1.3;rotation=-Math.PI/2;asset='wall-terminal';}
   if(r.id==='nurse'){x=x0+.7;z=z0+1.2;rotation=0;}
-  const clinical = ['ward','icu','clinical','lab','radiology','operation','nurse'].includes(r.type);
+  const clinical = ['ward','icu','clinical','ent','dental','lab','radiology','operation','nurse'].includes(r.type);
   const vlan = clinical ? 10 : 20;
   const sw = r.floor===2 ? (['ward-a','ward-b','ward-c','operation','ok-1','ok-2','ok-3','management'].includes(r.id)?'sw-l2-west':'sw-l2') : lower.has(r.id) ? 'sw-south' : 'sw-north';
-  NETWORK.push({id:`pc-${r.id}`, name:`Terminal ${r.name}`, kind:'pc',asset,rotation, floor:r.floor,x,z,y:0,room:r.id,vlan,sw,protected:r.id==='nurse'});
+  if(r.type!=='operation'&&r.computer!==false)NETWORK.push({id:`pc-${r.id}`, name:`Terminal ${r.name}`, kind:'pc',asset,rotation, floor:r.floor,x,z,y:0,room:r.id,vlan,sw,protected:r.id==='nurse'});
   NETWORK.push({id:`ap-${r.id}`, name:`Access point ${r.name}`, kind:'ap', floor:r.floor,x:r.center[0]-.55,z:r.center[1]-.45,y:2.87,room:r.id,vlan:10,sw,protected:r.id==='nurse'});
 }
-for(const id of ['corridor-n','corridor-s','corridor-2','stairs-2']) {
+for(const id of ['corridor-n','corridor-s','corridor-2','stairs-2','back-corridor']) {
   const r=ROOMS.find(r=>r.id===id),[x,z]=r.center;
-  NETWORK.push({id:`ap-${id}`,name:`Access point ${r.name}`,kind:'ap',floor:r.floor,x,z,y:2.87,room:id,vlan:10,sw:r.floor===2?'sw-l2':'sw-north',protected:false});
+  NETWORK.push({id:`ap-${id}`,name:`Access point ${r.name}`,kind:'ap',floor:r.floor,x,z,y:2.87,room:id,vlan:10,sw:r.floor===2?'sw-l2':id==='back-corridor'?'sw-south':'sw-north',protected:false});
 }
 NETWORK.push({id:'guest',name:'Tablet pengunjung',kind:'tablet',floor:1,x:-5.55,z:.55,y:1.045,room:'registration',vlan:30,sw:'ap-registration',protected:false});
+export const EXTERIOR_AREAS=[{id:'visitor-garden',name:'Taman pengunjung · Wi-Fi luar',floor:1,type:'exterior',bounds:[-16.9,3,-13.5,10.7],center:[-15.2,6.85]}];
+NETWORK.push({id:'ap-outdoor',name:'AP outdoor · taman pengunjung',kind:'ap',asset:'outdoor-ap',exterior:true,floor:1,x:-16.28,z:10.1,y:2.4,room:'visitor-garden',vlan:99,guestVlan:30,ssid:'MediLink Tamu',sw:'sw-north',protected:false});
+NETWORK.push({id:'guest-outdoor',name:'Tablet tamu · taman luar',kind:'tablet',exterior:true,rotation:-Math.PI/2,floor:1,x:-14.8,z:6.1,y:.5,room:'visitor-garden',vlan:30,sw:'ap-outdoor',protected:false});
 export const DEVICE_MAP = new Map(NETWORK.map(n=>[n.id,n]));
-export const roomById = id=>ROOMS.find(r=>r.id===id);
+export const roomById = id=>ROOMS.find(r=>r.id===id)||EXTERIOR_AREAS.find(r=>r.id===id);
 export function terminalOutlet(n){
  const r=roomById(n.room),[x0,z0,x1,z1]=r.bounds;
  if(n.room==='registration')return {mount:'floor',side:'floor',x:n.x,z:n.z,y:.07,riser:[x1-.075,n.z]};
@@ -103,7 +115,7 @@ export function terminalOutlet(n){
 export const elevation = floor=>(floor-1)*FLOOR_HEIGHT;
 export const devicePoint = n=>{
   const localZ=n.kind==='pc'?(n.asset==='wall-terminal'?0:-.17):0,a=n.rotation||0;
-  return [n.x+Math.sin(a)*localZ,elevation(n.floor)+n.y+(n.kind==='pc'?(n.asset==='reception-terminal'?1.34:1.08):n.kind==='server'?1.3:n.kind==='rack'?1.4:n.kind==='ap'?.018:.18),n.z+Math.cos(a)*localZ];
+  return [n.x+Math.sin(a)*localZ,elevation(n.floor)+n.y+(n.kind==='pc'?(n.asset==='reception-terminal'?1.34:1.08):n.kind==='server'?1.3:n.kind==='rack'?1.4:n.kind==='ap'?(n.exterior?-.17:.018):.18),n.z+Math.cos(a)*localZ];
 };
 export const LESSONS = {
   server:{title:'Pusat layanan digital',text:'Server menyediakan aplikasi dan penyimpanan yang diakses terminal. Dalam skenario ini, terminal klinis mengirim permintaan layanan melalui switch akses menuju server.',concept:'Layanan terpusat',detail:'Rak ini memuat server simulasi. Tidak ada data pasien, koneksi rumah sakit nyata, atau akses ke perangkat fisik.'},

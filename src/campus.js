@@ -1,8 +1,9 @@
 import * as T from '../vendor/three.module.js';
 import {box,cylinder,makeAsset,mergeStatic,material} from './assets.js';
 import {makeSign} from './environment.js';
-export const CAMPUS_BOUNDS=[-26,-18,24,20];
-export const CAMPUS_ROADS=[[-21,-15,21,-11],[-21,11,21,15],[-21,-11,-17,11],[17,-11,21,11]];
+export const CAMPUS_BOUNDS=[-26,-18,24,28];
+export const CAMPUS_ROADS=[[-21,-15,21,-11],[-21,22,21,26],[-21,-11,-17,22],[17,-11,21,22]];
+export const CAMPUS_PAVING=[[-16.7,-10.1,-13.35,10.2],[-13.35,-10.1,15.4,-8.9],[-13.35,8.6,5.6,10.2],[7.7,8.6,15.4,10.2],[14.1,-8.9,15.4,21.4],[-12.5,11,-9.3,21.4],[-12.5,19.3,15.4,21.4],[-12.5,15.3,-9,17.1],[13,15.3,15.4,17.1],[2.0,18.9,3.5,20.7],[6.8,18.9,8.4,20.7],[-24.5,-1.65,-12.6,1.45]];
 export const CAMPUS_WALK=[[-23.5,-.1],[-19,-.1],[-15.4,-.1],[-12.15,-.1]];
 function terrainMaterial(color,profile,grain){
  const base=material(color,0,profile),m=base.clone();m.onBeforeCompile=shader=>{
@@ -23,10 +24,10 @@ export function buildCampus(){
  const slab=(b,y,h,m)=>box(ground,(b[0]+b[2])/2,y,(b[1]+b[3])/2,b[2]-b[0],h,b[3]-b[1],m);
  slab(CAMPUS_BOUNDS,-.23,.22,grass);
  for(const b of CAMPUS_ROADS)slab(b,-.075,.12,asphalt);
- for(const b of [[-16.7,-10.1,-13.35,10.2],[-13.35,-10.1,15.4,-8.9],[-13.35,8.6,15.4,10.2],[14.1,-8.9,15.4,8.6],[-24.5,-1.65,-12.6,1.45]])slab(b,-.035,.07,paving);
+ for(const b of CAMPUS_PAVING)slab(b,-.035,.07,paving);
  for(const z of [-10.18,10.27])box(detail,.5,.025,z,30.2,.12,.12,0xb0b6a9,'ceramic');
- for(let x=-20;x<20;x+=3.5)for(const z of [-13,13])box(detail,x,-.009,z,1.6,.006,.065,0xe5d8a7,'paint');
- for(let z=-9;z<10;z+=3.5)for(const x of [-19,19])box(detail,x,-.009,z,.065,.006,1.6,0xe5d8a7,'paint');
+ for(let x=-20;x<20;x+=3.5)for(const z of [-13,24])box(detail,x,-.009,z,1.6,.006,.065,0xe5d8a7,'paint');
+ for(let z=-9;z<22;z+=3.5)for(const x of [-19,19])box(detail,x,-.009,z,.065,.006,1.6,0xe5d8a7,'paint');
  for(let x=-20.6;x<-17.2;x+=.5)box(detail,x,-.004,-.1,.27,.008,2.5,0xf2eee0,'paint');
  for(let z=-9.5;z<10;z+=1.2)box(detail,-14.9,.003,z,3.15,.005,.014,0xa8b4aa,'ceramic');
  for(const x of [-23.2,22.1])for(let z=-15;z<18;z+=3)box(detail,x,-.006,z,.08,.01,.48,0xd2d8c7,'paint');
@@ -41,16 +42,23 @@ export function buildCampus(){
  for(const [x,z,s]of [[-15,7.4,1],[-15,-9.4,.95],[-9,-9.8,.8],[-3,-9.9,.9],[4,-9.9,.85],[11,-9.9,.85],[-9,9.7,.85],[-3,9.7,.9],[4,9.7,.85],[11,9.7,.9],[15.8,-5,.85],[15.8,4,.85],[-23.6,-8,1],[-23.6,15,1],[22.5,17,1]])asset('garden-tree',x,z,0,s);
  for(const z of [4.5,7.2,9.9]){slab([-25.1,z-1.15,-21.3,z+1.15],-.06,.1,asphalt);for(const a of [-1.15,1.15])box(detail,-23.2,-.002,z+a,3.7,.006,.055,0xeae4d0,'paint');asset('car',-23.2,z,Math.PI/2,.95);}
  asset('ambulance',-15.2,-5.8,Math.PI,.96);
- for(const [x,z,a]of [[-14.8,3.8,-Math.PI/2],[-14.8,6.1,-Math.PI/2],[-6,9.55,Math.PI],[7,9.55,Math.PI]])asset('garden-bench',x,z,a,.9);
- for(const [x,z]of [[-16.4,-8.5],[-16.4,4.1],[-16.4,10.1],[15.8,-9.5],[15.8,9.5],[-10,15.6],[10,15.6]]){asset('street-light',x,z);lights.push({floor:0,x:x+.65,y:3.68,z,color:0xffddb3});}
+ for(const [x,z,a]of [[-14.8,3.8,-Math.PI/2],[-14.8,6.1,-Math.PI/2],[-6,9.55,Math.PI],[9,9.55,Math.PI]])asset('garden-bench',x,z,a,.9);
+ for(const [x,z]of [[-16.4,-8.5],[-16.4,4.1],[-16.4,10.1],[15.8,-9.5],[15.8,9.5],[-13.3,19.9],[15.8,19.9]]){asset('street-light',x,z);lights.push({floor:0,x:x+.65,y:3.68,z,color:0xffddb3});}
  for(const x of [-15.5,-13.7])for(const z of [-1.45,1.25]){asset('bollard-light',x,z,.0,.9);lights.push({floor:0,x,y:.6,z,color:0xffddb3});}
+ for(const [title,sub,x,z,rot]of [
+ ['IPSRS · PENERIMAAN ALAT','BENGKEL · AKSES BARAT',-11.2,15.1,-Math.PI/2],
+ ['LINEN BERSIH','PENYERAHAN · AKSES TIMUR',14.8,15.1,Math.PI/2],
+ ['BAHAN MAKANAN','DAPUR · AKSES BELAKANG',2.75,20.5,0],
+ ['LINEN KOTOR','BINATU · AKSES BELAKANG',7.65,20.5,0]]){const sign=makeSign(title,1.75,0x5c7f83,sub);sign.position.set(x,2.4,z);sign.rotation.y=rot;detail.add(sign);}
+ const wifiSign=makeSign('WI FI TAMU',1.4,0x637e62,'TAMAN PENGUNJUNG');wifiSign.position.set(-16.2,1.65,10.1);wifiSign.rotation.y=Math.PI/2;detail.add(wifiSign);
+ for(const x of [-10.8,14.8])for(let z=14;z<20;z+=1.2)box(detail,x,.008,z,.07,.008,.5,0xd4ad68,'paint');
  // A framed entrance totem faces the road, outside the pedestrian route.
  box(detail,-15.2,1.43,-3.0,.18,2.86,1.2,0x315c60,'paint',.045,4);
  box(detail,-15.31,2.4,-3,.025,.42,.14,0xf1eada);box(detail,-15.31,2.4,-3,.025,.14,.42,0xf1eada);
  const title=makeSign('MEDILINK',1.04,0x315c60,'RUMAH SAKIT · MASUK →');title.position.set(-15.31,1.77,-3);title.rotation.y=-Math.PI/2;title.scale.y=2.2;detail.add(title);obstacles.push([-15.4,-3.65,-15,-2.35]);
  const hospital=makeSign('MEDILINK · HOSPITAL',3.4,0x315c60,'LAYANAN · PERAWATAN · TERHUBUNG');hospital.position.set(-12.67,3.05,-.1);hospital.rotation.y=-Math.PI/2;hospital.scale.y=1.8;detail.add(hospital);
  // Perimeter fence retains a clear western pedestrian gate and south service gate.
- for(const [a,b]of [[[-25.5,-17.5],[23.5,-17.5]],[[-25.5,19.5],[-3,19.5]],[[3,19.5],[23.5,19.5]],[[-25.5,-17.5],[-25.5,-2]], [[-25.5,1.8],[-25.5,19.5]],[[23.5,-17.5],[23.5,19.5]]]){
+ for(const [a,b]of [[[-25.5,-17.5],[23.5,-17.5]],[[-25.5,27.5],[-3,27.5]],[[3,27.5],[23.5,27.5]],[[-25.5,-17.5],[-25.5,-2]], [[-25.5,1.8],[-25.5,27.5]],[[23.5,-17.5],[23.5,27.5]]]){
   barriers.push([...a,...b]);const length=Math.hypot(b[0]-a[0],b[1]-a[1]),n=Math.ceil(length/2.2),h=a[1]===b[1];
   for(let i=0;i<=n;i++){const x=a[0]+(b[0]-a[0])*i/n,z=a[1]+(b[1]-a[1])*i/n;box(detail,x,.6,z,.065,1.2,.065,0x748981,'steel');}
   for(const y of [.35,.85])box(detail,(a[0]+b[0])/2,y,(a[1]+b[1])/2,h?length:.035,.045,h?.035:length,0x748981,'steel');

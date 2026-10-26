@@ -1,14 +1,10 @@
 {
   "units": "illustrative scene units, not surveyed metres",
-  "objects": 108,
+  "objects": 116,
   "clearances": [
     {
       "room": "igd",
       "gap": 1.333
-    },
-    {
-      "room": "poly",
-      "gap": 1.553
     },
     {
       "room": "rehab",
@@ -17,6 +13,10 @@
     {
       "room": "usg",
       "gap": 2.163
+    },
+    {
+      "room": "poli-general",
+      "gap": 2.103
     },
     {
       "room": "ward-a",

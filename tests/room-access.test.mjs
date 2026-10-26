@@ -10,8 +10,8 @@ import {buildEnvironment} from '../src/environment.js';
 import {rectOverlaps} from '../src/door-access.js';
 const report=await auditRoomAccess({includeGeometry:true});
 
-test('All 49 door/portal approaches and moving leaf envelopes are free of furnishings and body-height fixtures',()=>{
- assert.equal(report.floors.flatMap(f=>f.doors).length,49);
+test('All 62 door/portal approaches and moving leaf envelopes are free of furnishings and body-height fixtures',()=>{
+ assert.equal(report.floors.flatMap(f=>f.doors).length,62);
  assert.deepEqual(report.issues,[]);
  for(const f of report.floors)assert.deepEqual(f.skipped,[]);
 });

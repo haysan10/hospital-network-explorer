@@ -25,7 +25,7 @@ export async function auditCirculation(){
   const walk=simulateWalk(route.points,segments,obstacles,environment.doors),result={id:route.id,name:route.name,testedClearWidth:route.width,samples:samples.length,blockedSamples:blocked.length,walkCompleted:walk.ok,walkFrames:walk.frames};
   routes.push(result);if(blocked.length)issues.push({id:route.id,problem:'Insufficient clear width',points:blocked.slice(0,3)});if(!walk.ok)issues.push({id:route.id,problem:'Walk fails with automatic doors',...walk});
  }
- return {version:'4.0.0',units:'illustrative scene units',mainEntranceWidth:1.8,corridorDoorWidth:1.4,reservedZones:FRONT_OFFICE.protectedZones,routes,issues};
+ return {version:'4.5.0',units:'illustrative scene units',mainEntranceWidth:1.8,corridorDoorWidth:1.4,reservedZones:FRONT_OFFICE.protectedZones,routes,issues};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const result=await auditCirculation();if(process.argv.includes('--save'))await writeFile(new URL('../docs/circulation-audit.json',import.meta.url),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));if(result.issues.length)process.exitCode=1;

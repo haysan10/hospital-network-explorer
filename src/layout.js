@@ -1,7 +1,7 @@
 import {FRONT_OFFICE} from './circulation.js';
 import {ROOMS,NETWORK} from './data.js';
 // One reviewed placement schedule shared by rendering, collision and validation.
-export const FOOTPRINTS={'registration-counter':[1.9,.7],'reception-terminal':[.68,1.22],bed:[1.06,2.06],pc:[1.08,1.3],chair:[.58,.57],'waiting-bench':[2.09,.49],'medical-monitor':[.42,.42],cabinet:[1.04,.42],shelf:[1.1,.45],washer:[.68,.66],plant:[.48,.48],'ct-scanner':[1.52,2.5],stairs:[2.51,3.94],'stair-landing':[2.51,3.5],toilet:[.4,.66],sink:[.68,.43],worktop:[1.1,.5],'reception-desk':[2.12,.68],'operating-table':[.62,1.62],'wall-terminal':[.62,.24],rack:[.7,.8],server:[.8,.8],ups:[.4,.61],switch:[.82,.43],router:[.82,.43],panel:[.4,.18]};
+export const FOOTPRINTS={'ent-console':[1.3,.66],'ent-chair':[.8,1.44],'dental-chair':[.8,1.75],'dental-unit':[.58,.64],'wall-switch':[.76,.14],'commercial-washer':[.9,.9],'stainless-table':[1.3,.66],'workshop-bench':[1.3,.66],'calibration-bench':[1.3,.66],'industrial-range':[1.12,.76],'meal-trolley':[.73,.65],'linen-cart':[.73,.65],'linen-shelf':[1.1,.5],'registration-counter':[1.9,.7],'reception-terminal':[.68,1.22],bed:[1.06,2.06],pc:[1.08,1.3],chair:[.58,.57],'waiting-bench':[2.09,.49],'medical-monitor':[.42,.42],cabinet:[1.04,.42],shelf:[1.1,.45],washer:[.68,.66],plant:[.48,.48],'ct-scanner':[1.52,2.5],stairs:[2.51,3.94],'stair-landing':[2.51,3.5],toilet:[.4,.66],sink:[.68,.43],worktop:[1.1,.5],'reception-desk':[2.12,.68],'operating-table':[.62,1.62],'wall-terminal':[.62,.24],rack:[.7,.8],server:[.8,.8],ups:[.4,.61],switch:[.82,.43],router:[.82,.43],panel:[.4,.18]};
 export function placementBounds(p){
   const [w,d]=FOOTPRINTS[p.kind]||[.45,.45],a=p.rotation||0,s=p.scale||1;
   const width=(Math.abs(Math.cos(a))*w+Math.abs(Math.sin(a))*d)*s,depth=(Math.abs(Math.cos(a))*d+Math.abs(Math.sin(a))*w)*s;
@@ -24,15 +24,29 @@ for(const r of ROOMS){
     for(const bx of xs){add('bed',bx,z0+1.32);if(r.type==='icu')add('medical-monitor',bx+.83,z0+.48);}
     // Storage at the foot of the bed, leaving the entry side clear.
     if(z1-z0>3.5)add('cabinet',x0+.63,z1-.36,Math.PI);
+  }else if(['ent','dental'].includes(r.type)){
+    add(r.type==='ent'?'ent-chair':'dental-chair',x0+.95,z0+1.5);
+    add('sink',x0+.48,z1-.32,Math.PI);
+    if(r.type==='dental')add('dental-unit',x0+1.85,z0+2.35);
+    else add('ent-console',x0+2.15,z1-.43,Math.PI);
   }else if(r.type==='operation'){
-    if(r.id.startsWith('ok-'))add('operating-table',x,z1-.4,Math.PI/2,.88);
-    else {add('operating-table',x0+.4,z0+1.2);add('medical-monitor',x0+1.9,z1-.4);}
+    if(r.id.startsWith('ok-'))add('operating-table',x,z+.15,Math.PI/2,.88);
+    else {add('operating-table',x0+2.8,z);add('medical-monitor',x0+1.9,z1-.4);}
   }else if(r.type==='radiology')add('ct-scanner',x0+.75,z0+1.49,0,.9);
   else if(r.type==='laundry'){
-    for(let i=0;i<3;i++)add('washer',x0+.44,z0+.6+i*.86,Math.PI/2);add('worktop',x0+.72,z1-.32,Math.PI);
+    for(let i=0;i<2;i++)add('commercial-washer',x0+.57,z0+.85+i*1.25,Math.PI/2);add('stainless-table',x0+1.1,z1-.48,Math.PI);
+  }else if(r.type==='kitchen'){
+    add('sink',x0+.3,z0+1.15,Math.PI/2);add('stainless-table',x0+.4,z0+2.85,Math.PI/2);add('industrial-range',x1-.45,z0+2.2,-Math.PI/2);
+  }else if(r.type==='linen'){
+    for(const px of [x0+.75,x1-.75])add('linen-shelf',px,z1-.38,Math.PI);add('stainless-table',x0+.47,z0+2.4,Math.PI/2);
+  }else if(r.type==='workshop'){
+    add(r.id==='calibration'?'calibration-bench':'workshop-bench',x0+.85,z1-.48,Math.PI);add('cabinet',x0+.3,z0+1.25,Math.PI/2);
+  }else if(r.type==='staff'){
+    add('sofa',x0+1.25,z1-.55,Math.PI);add('meeting-table',x1-1,z1-1);add('chair',x1-1,z1-1.75);
   }else if(['storage','pharmacy','lab','kitchen'].includes(r.type)){
     const count=Math.min(3,Math.floor((x1-x0-1)/1.15));
-    for(let i=0;i<count;i++){
+    if(r.stockroom)for(let i=0;i<3;i++)add('cabinet',x0+.66+i*1.16,z0+.32);
+    for(let i=0;i<(r.stockroom?0:count);i++){
       const west=r.type==='storage'||r.type==='kitchen';
       add(r.type==='storage'?'shelf':r.type==='lab'||r.type==='kitchen'?'worktop':'cabinet',west?x0+.32:r.id==='calibration'?x0+1.2:x0+.66+i*1.16,west?z0+.66+i*1.16:z0+.32,west?Math.PI/2:0);
     }

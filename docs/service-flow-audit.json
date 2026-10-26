@@ -1,0 +1,209 @@
+{
+  "version": "4.5.0",
+  "units": "illustrative scene units",
+  "rooms": [
+    {
+      "id": "ipsrs",
+      "bounds": [
+        -9.13,
+        13.55,
+        -5.62,
+        18.9
+      ]
+    },
+    {
+      "id": "kitchen",
+      "bounds": [
+        1.16,
+        13.55,
+        4.35,
+        18.9
+      ]
+    },
+    {
+      "id": "laundry",
+      "bounds": [
+        4.46,
+        13.55,
+        8.91,
+        18.9
+      ]
+    },
+    {
+      "id": "linen-clean",
+      "bounds": [
+        9.02,
+        13.55,
+        13.08,
+        18.9
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "staff-kitchen",
+      "width": 0.8,
+      "points": [
+        [
+          6.65,
+          2.72
+        ],
+        [
+          6.65,
+          12.65
+        ],
+        [
+          2.75,
+          12.65
+        ],
+        [
+          2.75,
+          14.7
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "staff-maintenance",
+      "width": 0.8,
+      "points": [
+        [
+          6.65,
+          12.65
+        ],
+        [
+          -7.35,
+          12.65
+        ],
+        [
+          -7.35,
+          15
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "staff-calibration",
+      "width": 0.8,
+      "points": [
+        [
+          6.65,
+          12.65
+        ],
+        [
+          -3.65,
+          12.65
+        ],
+        [
+          -3.65,
+          15
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "clean-linen",
+      "width": 0.8,
+      "points": [
+        [
+          6.65,
+          12.65
+        ],
+        [
+          11,
+          12.65
+        ],
+        [
+          11,
+          15
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "maintenance-receiving-west",
+      "width": 0.8,
+      "points": [
+        [
+          -9.8,
+          16.2
+        ],
+        [
+          -8.3,
+          16.2
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "food-delivery-rear",
+      "width": 0.8,
+      "points": [
+        [
+          2.75,
+          19.2
+        ],
+        [
+          2.75,
+          18
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "soiled-linen-rear",
+      "width": 0.8,
+      "points": [
+        [
+          7.65,
+          19.2
+        ],
+        [
+          7.65,
+          18
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    },
+    {
+      "id": "clean-linen-dispatch-east",
+      "width": 0.8,
+      "points": [
+        [
+          13.5,
+          16.2
+        ],
+        [
+          12,
+          16.2
+        ]
+      ],
+      "blockedSamples": 0,
+      "blockedPoints": [],
+      "forward": true,
+      "reverse": true
+    }
+  ],
+  "issues": []
+}

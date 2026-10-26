@@ -67,15 +67,89 @@ export function makeAsset(kind) {
   if(assetCache.has(kind))return assetCache.get(kind).clone(true);
   const g=new T.Group();g.name=kind;g.userData.asset=kind;
   switch(kind){
+    case 'visitor-avatar':{
+      const fabric=0x4d7e86,pants=0x5e7181,skin=0xc79b7b;
+      box(g,0,1.16,0,.43,.49,.27,fabric,'fabric',.065,5);box(g,0,.86,0,.37,.15,.25,pants,'fabric',.035,4);cylinder(g,0,1.44,0,.065,.12,skin,'paint');
+      const headGeo=new T.SphereGeometry(.145,20,12);headGeo.computeTangents();const head=new T.Mesh(headGeo,material(skin,0,'paint'));head.scale.set(.86,1.08,.94);head.position.set(0,1.58,0);g.add(head);
+      const hair=new T.Mesh(headGeo,material(0x334449,0,'fabric'));hair.scale.set(.88,.48,.96);hair.position.set(0,1.68,.015);g.add(hair);
+      for(const x of [-.045,.045])box(g,x,1.59,-.131,.015,.012,.009,0x304049,'paint',.004);
+      for(const [side,sign]of [['left',-1],['right',1]]){
+        const arm=new T.Group();arm.name='arm-'+side;arm.position.set(sign*.275,1.35,0);cylinder(arm,0,-.12,0,.064,.25,fabric,'fabric');cylinder(arm,0,-.36,0,.044,.25,skin,'paint');box(arm,0,-.51,0,.075,.11,.08,skin,'paint',.03,4);g.add(arm);
+        const leg=new T.Group();leg.name='leg-'+side;leg.position.set(sign*.11,.82,0);cylinder(leg,0,-.18,0,.082,.36,pants,'fabric');cylinder(leg,0,-.51,0,.065,.31,pants,'fabric');box(leg,0,-.74,-.045,.15,.14,.29,0x33434a,'rubber',.035,4);g.add(leg);
+      }
+      break;
+    }
     case 'server': case 'rack': rack(g,kind==='server'?.76:.66,kind==='server'?2:1.85);break;
     case 'switch':{
       box(g,0,.07,0,.72,.14,.35,0x475d69,'steel',.012,3);
       for(let i=0;i<12;i++){box(g,-.3+i*.051,.067,.181,.038,.045,.012,DARK);box(g,-.3+i*.051,.065,.189,.025,.025,.004,0x8f9c9e,'steel');led(g,-.3+i*.051,.111,.185);}
       for(let i=0;i<7;i++)box(g,-.2+i*.06,.144,-.04,.031,.004,.16,DARK);break;
     }
+    case 'wall-switch':{
+      box(g,0,.12,0,.76,.28,.13,0xd5dfdc,'steel');box(g,0,.12,.071,.67,.21,.018,DARK,'steel');
+      for(let i=0;i<12;i++){box(g,-.29+i*.052,.12,.085,.033,.04,.016,METAL,'steel');led(g,-.29+i*.052,.19,.09);}break;
+    }
+    case 'commercial-washer':{
+      box(g,0,.61,0,.9,1.22,.86,0xb6c5c3,'steel',.035,4);box(g,0,1.11,.442,.8,.15,.025,DARK);
+      screen(g,-.15,1.11,.46,.26,.085);for(const x of [.14,.27])cylinder(g,x,1.11,.472,.026,.022,0x506b70,'paint').rotation.x=Math.PI/2;
+      cylinder(g,0,.58,.456,.31,.06,METAL,'steel').rotation.x=Math.PI/2;cylinder(g,0,.58,.493,.252,.018,0x517179,'glass').rotation.x=Math.PI/2;
+      box(g,.26,.58,.51,.045,.2,.035,DARK);for(const x of [-.35,.35])box(g,x,.06,0,.12,.12,.65,DARK,'rubber');break;
+    }
+    case 'stainless-table':case 'workshop-bench':case 'calibration-bench':{
+      const workshop=kind!=='stainless-table';box(g,0,.91,0,1.3,.065,.66,workshop?0x668782:METAL,workshop?'polymer':'steel',.018,4);
+      for(const x of [-.55,.55])for(const z of [-.24,.24])box(g,x,.44,z,.045,.88,.045,METAL,'steel');box(g,0,.23,0,1.16,.04,.54,METAL,'steel');
+      if(workshop){box(g,0,1.24,-.29,1.24,.57,.04,0x9eb4b1,'steel');for(let i=0;i<5;i++){const x=-.45+i*.22;pipe(g,[x,1.12,-.255],[x,1.38,-.255],.012,DARK);box(g,x,1.1,-.25,.06,.1,.025,0xa66d54,'rubber');}
+        box(g,.35,.96,.03,.23,.07,.2,DARK,'rubber');if(kind==='calibration-bench'){box(g,-.27,1.04,.02,.32,.2,.24,WHITE);screen(g,-.27,1.06,.15,.23,.11,true);curve(g,[[-.13,1,.15],[.03,.94,.24],[.17,.96,.1]],.006,DARK);}}
+      else box(g,0,1.0,-.31,1.3,.16,.025,METAL,'steel');break;
+    }
+    case 'ent-console':{
+      box(g,0,.46,0,1.3,.88,.6,WHITE,'polymer',.03,4);box(g,0,.93,0,1.3,.055,.66,METAL,'steel');
+      for(const y of [.27,.53,.76]){box(g,-.28,y,.312,.62,.18,.025,0xc2d6d2,'polymer');pipe(g,[-.49,y,.34],[-.1,y,.34],.01);}
+      for(let i=0;i<3;i++){const x=.18+i*.13;cylinder(g,x,.99,-.12,.04,.09,METAL,'steel');pipe(g,[x,1.03,-.12],[x,1.19,-.12],.009);}
+      cylinder(g,.37,1.03,.16,.14,.1,WHITE,'ceramic');pipe(g,[-.48,.97,-.18],[-.48,1.3,-.18],.015);const mirror=cylinder(g,-.48,1.36,-.18,.065,.02,METAL,'steel');mirror.rotation.x=Math.PI/2;break;
+    }
+    case 'industrial-range':{
+      box(g,0,.46,0,1.1,.88,.72,METAL,'steel',.025,3);box(g,0,.93,0,1.12,.06,.74,METAL,'steel');
+      for(const x of [-.28,.28])for(const z of [-.18,.18]){cylinder(g,x,.97,z,.14,.025,DARK,'steel');for(const a of [0,Math.PI/2])box(g,x,.99,z,.31,.018,.03,DARK,'steel').rotation.y=a;}
+      for(const x of [-.35,-.12,.12,.35])cylinder(g,x,.8,.378,.026,.026,DARK,'rubber').rotation.x=Math.PI/2;
+      box(g,0,.42,.37,.8,.48,.025,DARK);pipe(g,[-.33,.65,.41],[.33,.65,.41],.015);break;
+    }
+    case 'extractor-hood':{
+      box(g,0,0,0,1.32,.24,.8,METAL,'steel',.035,4);box(g,0,.25,-.13,.42,.4,.38,METAL,'steel');
+      for(let i=0;i<9;i++)box(g,-.52+i*.13,-.13,0,.06,.015,.6,0x526c70,'steel');break;
+    }
+    case 'meal-trolley':case 'linen-cart':{
+      const food=kind==='meal-trolley';box(g,0,.61,0,.69,1.04,.57,food?METAL:0xb1c7bd,food?'steel':'polymer',.035,4);
+      for(const x of [-.17,.17]){box(g,x,.62,.294,.31,.91,.018,food?0xc5d3d0:0xdae5dd,food?'steel':'polymer');pipe(g,[x,.7,.32],[x,.87,.32],.012);}
+      wheels(g,0,0,.55,.44,.075);pipe(g,[-.34,1.12,-.22],[.34,1.12,-.22],.018);break;
+    }
+    case 'linen-shelf':{
+      for(const x of [-.53,.53])for(const z of [-.22,.22])box(g,x,.95,z,.035,1.9,.035,METAL,'steel');
+      for(const y of [.16,.65,1.14,1.63]){box(g,0,y,0,1.1,.035,.5,0xb5c7c1,'steel');for(const x of [-.28,.28])for(let i=0;i<3;i++)box(g,x,y+.07+i*.08,0,.43,.07,.38,0xedece0,'fabric',.025,4);}
+      break;
+    }
     case 'router':{
       box(g,0,.065,0,.46,.13,.3,WHITE,'paint',.023,4);for(const x of [-.18,0,.18]){const p=cylinder(g,x,.23,-.1,.012,.34,DARK,'paint');p.rotation.z=x*.3;}
       for(let i=0;i<4;i++)led(g,-.12+i*.065,.067,.157);break;
+    }
+    case 'outdoor-ap':{
+      box(g,0,0,0,.18,.34,.1,WHITE,'polymer',.035,4);box(g,0,0,-.065,.12,.26,.035,METAL,'steel');
+      for(const x of [-.055,.055]){cylinder(g,x,.29,0,.012,.25,WHITE,'polymer');box(g,0,x*2,-.09,.26,.022,.025,METAL,'steel');}
+      led(g,0,-.12,.055);curve(g,[[0,-.17,0],[0,-.24,-.015],[0,-.22,-.07]],.009,DARK);break;
+    }
+    case 'ent-chair':case 'dental-chair':{
+      const dental=kind==='dental-chair';box(g,0,.08,0,.62,.12,.64,0xd8e1df,'polymer',.045,4);cylinder(g,0,.29,0,.12,.4,METAL,'steel');
+      cushion(g,0,.57,0,.58,.14,.55,0x5f9798);const back=cushion(g,0,.85,-.33,.56,.68,.14,0x5f9798);back.rotation.x=dental?-.52:-.18;
+      const head=cushion(g,0,1.19,dental?-.55:-.4,.3,.21,.12,0x5f9798);head.rotation.x=-.25;
+      const foot=cushion(g,0,.44,.46,.49,.12,dental?.72:.47,0x5f9798);foot.rotation.x=.24;
+      for(const x of [-.36,.36]){pipe(g,[x,.48,0],[x,.74,-.05],.022);cushion(g,x,.76,0,.085,.06,.42,DARK);}
+      pipe(g,[-.25,.14,.2],[.25,.14,.2],.018);break;
+    }
+    case 'dental-unit':{
+      box(g,0,.42,0,.4,.8,.42,WHITE,'polymer',.045,4);cylinder(g,0,.9,0,.22,.08,WHITE,'ceramic');cylinder(g,0,.945,0,.15,.012,0x719c9b,'glass');
+      pipe(g,[.13,.97,-.11],[.13,1.12,-.11],.012);pipe(g,[.13,1.12,-.11],[0,1.12,-.11],.012);
+      box(g,0,.92,.23,.54,.035,.24,METAL,'steel');for(let i=0;i<3;i++){const x=-.17+i*.16;pipe(g,[x,.95,.23],[x,1.03,.19],.012);curve(g,[[x,.97,.24],[x,.5,.3],[x,.25,.16],[x,.63,.18]],.007,0x819f9c);}
+      break;
     }
     case 'ap':{cylinder(g,0,0,0,.22,.045,WHITE,'paint');cylinder(g,0,.026,0,.195,.018,0xe2e8e4,'paint');cylinder(g,0,.041,0,.027,.004,material(0x49bda6,0x49bda6));break;}
     case 'pc':{
@@ -245,7 +319,7 @@ export function makeAsset(kind) {
     mesh.geometry.userData.atlasCell=index;mesh.geometry.userData.atlasGrid=grid;
   });g.userData.atlasCells=meshes.length;assetCache.set(kind,g);return g.clone(true);
 }
-export const ASSET_NAMES=['server','rack','switch','router','ap','pc','chair','waiting-bench','bed','medical-monitor','ups','panel','tablet','cabinet','shelf','washer','plant','ct-scanner','stairs','stair-landing','cable-tray','cctv','socket','toilet','sink','worktop','reception-desk','wall-terminal','operating-table','door-leaf','ceiling-light','air-vent','smoke-detector','sprinkler','bedside-table','iv-pole','bed-head-unit','privacy-curtain','medicine-trolley','microscope','test-tube-rack','ultrasound','fridge','hamper','waste-bin','water-dispenser','fire-extinguisher','soap-dispenser','wall-clock','mirror','meeting-table','sofa','parallel-bars','surgical-light','rooftop-hvac','registration-counter','reception-terminal','entrance-leaf','garden-tree','garden-bench','bollard-light','street-light','car','ambulance','data-outlet','fiber-panel','exit-sign','wall-art'];
+export const ASSET_NAMES=['visitor-avatar','ent-console','outdoor-ap','ent-chair','dental-chair','dental-unit','wall-switch','commercial-washer','stainless-table','workshop-bench','calibration-bench','industrial-range','extractor-hood','meal-trolley','linen-cart','linen-shelf','server','rack','switch','router','ap','pc','chair','waiting-bench','bed','medical-monitor','ups','panel','tablet','cabinet','shelf','washer','plant','ct-scanner','stairs','stair-landing','cable-tray','cctv','socket','toilet','sink','worktop','reception-desk','wall-terminal','operating-table','door-leaf','ceiling-light','air-vent','smoke-detector','sprinkler','bedside-table','iv-pole','bed-head-unit','privacy-curtain','medicine-trolley','microscope','test-tube-rack','ultrasound','fridge','hamper','waste-bin','water-dispenser','fire-extinguisher','soap-dispenser','wall-clock','mirror','meeting-table','sofa','parallel-bars','surgical-light','rooftop-hvac','registration-counter','reception-terminal','entrance-leaf','garden-tree','garden-bench','bollard-light','street-light','car','ambulance','data-outlet','fiber-panel','exit-sign','wall-art'];
 export function mergeStatic(root) {
   root.updateMatrixWorld(true);const groups=new Map();
   root.traverse(o=>{

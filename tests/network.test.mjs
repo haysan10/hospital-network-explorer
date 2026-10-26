@@ -8,7 +8,7 @@ test('Every network endpoint has a valid graph connection and finite cable coord
   const ids=NETWORK.map(n=>n.id);assert.equal(new Set(ids).size,ids.length);
   assert.equal(new Set(EDGES.map(e=>e.id)).size,EDGES.length);
   for(const e of EDGES){assert.ok(DEVICE_MAP.has(e.a));assert.ok(DEVICE_MAP.has(e.b));assert.ok(e.points.length>1);assert.ok(e.points.flat().every(Number.isFinite));assert.ok(pathLength(e.points)>0);}
-  for(const n of NETWORK.filter(n=>n.network!==false&&n.id!=='guest'))assert.equal(traceRoute(n.id,'server',new GameState()).ok,true,n.id);
+  for(const n of NETWORK.filter(n=>n.network!==false&&n.vlan!==30))assert.equal(traceRoute(n.id,'server',new GameState()).ok,true,n.id);
 });
 test('IGD reaches server through access and core, in physical order',()=>{
   const r=traceRoute('pc-igd','server',new GameState());assert.equal(r.ok,true);assert.deepEqual(r.nodes,['pc-igd','sw-north','core','server']);assert.ok(r.length>0);
